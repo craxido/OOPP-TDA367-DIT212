@@ -1,0 +1,6 @@
+# Compilation files for TeX
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+
