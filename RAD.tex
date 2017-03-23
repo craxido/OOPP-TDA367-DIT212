@@ -1,7 +1,9 @@
 \documentclass{article}
 \usepackage{graphicx}
-
 \usepackage[utf8]{inputenc}
+
+\setlength\fboxsep{0pt}
+\setlength\fboxrule{0.5pt}
 
 \title{
     Requirements and Analysis Document for group 16
@@ -40,6 +42,8 @@ LOTR: Lord of the Rings.
 \subsection{Non-functional requirements}
 
 \section{Use cases}
+\subsection{Usability model}
+\fbox{\includegraphics[scale=0.4]{usabilityModel.png}}
 \subsection{Use case listings}
 \subsubsection{Use case: Attack}
 Summary: The user clicks the screen and the game calculates new health for the monster.\\
@@ -261,8 +265,6 @@ Alternate flow: The player wants to sell an animal, has no animals.\\
 \end{tabular}
 
 \section{Domain model}
-\setlength\fboxsep{0pt}
-\setlength\fboxrule{0.5pt}
 \fbox{\includegraphics[scale=0.3]{domainModel.png}}
 
 \subsection{Class responsibilities}
