@@ -37,11 +37,33 @@ Priority: High\\
 Extends: undefined\\
 Includes: undefined\\
 Participators: Player\\
-Normal flow of event: The player attacks the monster and the monster survives:
-\begin{tabular}{| c | c | c |} \hline
+Normal flow of event: The player attacks the monster and the monster survives.
+\begin{tabular}{| c | l | l |} \hline
     & Actor & System \\ \hline
     1 & Player clicks screen & \\ \hline
-    2 & & Calculate new health for monster\\ \hline
+    2 & & Attack animation plays \\ \hline
+    3 & & Calculate new health for monster\\ \hline
+\end{tabular}\\
+Alternate flow: The player attacks the monster and the monster dies. The level is not cleared.\\
+\begin{tabular}{| c | l | l |} \hline
+    & Actor & System \\ \hline
+    1 & Player clicks screen & \\ \hline
+    2 & & Attack animation plays \\ \hline
+    3 & & Calculate new health for monster\\ \hline
+    4 & & Health <= 0 \\ \hline
+    5 & & Death animation plays \\ \hline 
+    6 & & Replace dead monster with new monster \\ \hline
+\end{tabular}\\
+Alternate flow: The player attacks the monster and the monster dies. The level is cleared.\\
+\begin{tabular}{| c | l | l |} \hline
+    & Actor & System \\ \hline
+    1 & Player clicks screen & \\ \hline
+    2 & & Attack animation plays \\ \hline
+    3 & & Calculate new health for monster\\ \hline
+    4 & & Health <= 0 \\ \hline
+    5 & & Death animation plays \\ \hline 
+    6 & & Replace dead monster with new monster \\ \hline
+    7 & & The option to change level is made avliable\\ \hline
 \end{tabular}
 
 \section{Domain model}
