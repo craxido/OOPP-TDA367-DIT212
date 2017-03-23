@@ -264,7 +264,26 @@ Alternate flow: The player wants to sell an animal, has no animals.\\
 \setlength\fboxsep{0pt}
 \setlength\fboxrule{0.5pt}
 \fbox{\includegraphics[scale=0.3]{domainModel.png}}
-\section{References}
 
+\subsection{Class responsibilities}
+\subsubsection{Game screen}
+Combines all other classes into one unified interface.
+\subsubsection{Player}
+The actual player. Has money, animals, space, and an amount of damage.
+\subsubsection{Monster}
+A bad guy. Has health points, and an amount of money to drop.
+\subsubsection{Stats}
+A view for the players stats.
+\subsubsection{Map}
+A view for a map over the levels that a player can travel to.
+\subsubsection{Upgrades}
+A view over the upgrades that a player can buy.
+\subsubsection{Home}
+The players home. Here the player can buy animals which earn passive money. 
+\subsubsection{Area}
+An area, has a name, and a list of levels associated with that area.
+\subsubsection{Level}
+Determines how hard the monsters are, and how much money they drop.
+\section{References}
 \end{document}
 
