@@ -27,6 +27,15 @@ LOTR: Lord of the Rings.
 \section{Requirements}
 \subsection{User interface}
 \subsection{Functional requirements}
+\begin{itemize}
+    \item Attack
+    \item Open map
+    \item Use map
+    \item Buy upgrades
+    \item Go home
+    \item Improve home
+    \item Check stats
+\end{itemize}
 \subsection{Non-functional requirements}
 
 \section{Use cases}
@@ -53,6 +62,7 @@ Alternate flow: The player attacks the monster and the monster dies. The level i
     4 & & Health $\le$ 0 \\ \hline
     5 & & Death animation plays \\ \hline 
     6 & & Replace dead monster with new monster \\ \hline
+    7 & Player gets money & \\ \hline
 \end{tabular}\\
 Alternate flow: The player attacks the monster and the monster dies. The level is cleared.\\
 \begin{tabular}{| c | l | l |} \hline
@@ -64,6 +74,49 @@ Alternate flow: The player attacks the monster and the monster dies. The level i
     5 & & Death animation plays \\ \hline 
     6 & & Replace dead monster with new monster \\ \hline
     7 & & The option to change level is made avliable\\ \hline
+    8 & The player gets money & \\ \hline
+\end{tabular}
+
+\subsubsection{Use case: Attack boss}
+Summary: The player is fighting a boss \\
+Priority: High \\
+Extends: Attack\\
+Includes: \\
+Participators: Player \\
+Normal flow of event: The player attacks the boss and defeats it within the time frame \\
+\begin{tabular}{|c|l|l|} \hline
+    & Actor & System \\ \hline
+    1 & Player clicks screen & \\ \hline
+    2 & & Attack animation plays \\ \hline
+    3 & & Calculate new health for boss \\ \hline
+    4 & & Death animation plays \\ \hline
+    5 & & Unlock next level \\ \hline
+    6 & & Replace boss \\ \hline
+    7 & Player gets money & \\ \hline
+\end{tabular}\\
+Normal flow of event: The player attacks the boss and does not defeat it, but is still within the time frame \\
+\begin{tabular}{|c|l|l|} \hline
+    & Actor & System \\ \hline
+    1 & Player clicks screen & \\ \hline
+    2 & & Attack animation plays \\ \hline
+    3 & & Calculate new health for boss \\ \hline
+\end{tabular}\\
+Alternate event: The player does not defeat the boss within the time frame \\
+\begin{tabular}{|c|l|l|} \hline
+    & Actor & System \\ \hline
+    1 & & Replace boss \\ \hline
+\end{tabular}
+\subsubsection{Use case: Run away}
+Summary: The player wants to run away from the fight.\\
+Priority: Medium \\
+Extends: Attack boss\\
+Includes:\\
+Participators: Player\\
+Normal flow of the event: The player clicks the "run away" button.\\
+\begin{tabular}{|c|l|l|} \hline
+    & Actor & System \\ \hline
+    1 & The player clicks the button & \\ \hline
+    2 & & Sends the player to Home \\ \hline
 \end{tabular}
 
 \subsubsection{Use case: Buy upgrade}
