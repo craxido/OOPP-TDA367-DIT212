@@ -3,4 +3,7 @@
 *.fdb_latexmk
 *.fls
 *.log
+*.synctex.gz
 
+# Vim swap files
+*.swp
