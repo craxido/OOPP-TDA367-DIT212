@@ -31,7 +31,110 @@ LOTR: Lord of the Rings.
 
 \section{Use cases}
 \subsection{Use case listings}
+\subsubsection{Use case: Attack}
+Summary: The user clicks the screen and the game calculates new health for the monster.\\
+Priority: High\\
+Extends: undefined\\
+Includes: undefined\\
+Participators: Player\\
+Normal flow of event: The player attacks the monster and the monster survives.
+\begin{tabular}{| c | l | l |} \hline
+    & Actor & System \\ \hline
+    1 & Player clicks screen & \\ \hline
+    2 & & Attack animation plays \\ \hline
+    3 & & Calculate new health for monster\\ \hline
+\end{tabular}\\
+Alternate flow: The player attacks the monster and the monster dies. The level is not cleared.\\
+\begin{tabular}{| c | l | l |} \hline
+    & Actor & System \\ \hline
+    1 & Player clicks screen & \\ \hline
+    2 & & Attack animation plays \\ \hline
+    3 & & Calculate new health for monster\\ \hline
+    4 & & Health $\le$ 0 \\ \hline
+    5 & & Death animation plays \\ \hline 
+    6 & & Replace dead monster with new monster \\ \hline
+\end{tabular}\\
+Alternate flow: The player attacks the monster and the monster dies. The level is cleared.\\
+\begin{tabular}{| c | l | l |} \hline
+    & Actor & System \\ \hline
+    1 & Player clicks screen & \\ \hline
+    2 & & Attack animation plays \\ \hline
+    3 & & Calculate new health for monster\\ \hline
+    4 & & Health $\le$ 0 \\ \hline
+    5 & & Death animation plays \\ \hline 
+    6 & & Replace dead monster with new monster \\ \hline
+    7 & & The option to change level is made avliable\\ \hline
+\end{tabular}
 
+\subsubsection{Use case: Buy upgrade}
+Summary: The user tries to buy an upgrade.\\
+Priority: Medium\\
+Extends: undefined\\
+Includes: undefined\\
+Participators: Player\\
+Normal flow of event: The player clicks on the upgrade and has enough money.\\
+\begin{tabular}{|c|l|l|} \hline
+      & Actor & System \\ \hline
+    1 & Player clicks on the upgrade & \\ \hline
+    2 & & Checks that the player has enough money to buy the upgrade \\ \hline
+    3 & & The upgrade is applied to the player \\ \hline
+\end{tabular}\\ 
+Alternate flow: The player clicks on the upgrade but does not have enough money. \\
+\begin{tabular}{|c|l|l|} \hline
+      & Actor & System \\ \hline
+    1 & Player clicks on the upgrade & \\ \hline
+    2 & & Checks that the player has enough money to buy the upgrade \\ \hline
+\end{tabular} 
+
+\subsubsection{Use case: Open map}
+Summary: The player clicks the button labeled "map"
+Priority: Medium \\
+Extends: undefined\\
+Includes: undefined\\
+Participators: Player \\
+Normal flow of event: The player clicks the button labeled "map"\\
+\begin{tabular}{|c|l|l|} \hline
+      & Actor & System \\ \hline
+    1 & Player clicks on the button & \\ \hline
+    2 & & Displays map page \\ \hline
+\end{tabular} 
+
+\subsubsection{Use case: Use map}
+Summary: The user tries to move to a different level.\\
+Priority: High\\
+Extends: undefined\\
+Includes: undefined\\
+Participators: Player \\
+Normal flow of event: The player clicks on the level they want to move to, the level is unlocked.\\
+\begin{tabular}{|c|l|l|} \hline
+      & Actor & System \\ \hline
+    1 & Player clicks on the level & \\ \hline
+    2 & & Checks that the level is unlocked \\ \hline
+    3 & & Loads new level \\ \hline
+\end{tabular} \\
+Alternate flow of event: The player clicks on the level they want to move to, the level is locked.\\
+\begin{tabular}{|c|l|l|} \hline
+      & Actor & System \\ \hline
+    1 & Player clicks on the level & \\ \hline
+    2 & & Checks that the level is unlocked \\ \hline
+\end{tabular} 
+
+\subsubsection{Use case: Show stats}
+Summary: The use clicks the button labeled "Stats"\\
+Priority: low\\
+Extends: undefined\\
+Includes: undefined\\
+Participators: Player\\
+Normal flow of event: The player clicks the button labled "Stats"\\
+\begin{tabular}{|c|l|l|} \hline
+      & Actor & System \\ \hline
+    1 & Player clicks on the button & \\ \hline
+    2 & & Displays stats page \\ \hline
+\end{tabular} 
+
+
+
+    
 \section{Domain model}
 
 \section{References}
