@@ -132,9 +132,80 @@ Normal flow of event: The player clicks the button labled "Stats"\\
     2 & & Displays stats page \\ \hline
 \end{tabular} 
 
+\subsubsection{Use case: Go home}
+Summary: The user wants to go home\\
+Priority: Low \\
+Extends: undefined\\
+Includes: undefined\\
+Participators: Player \\
+Normal flow of event: The player clicks the button labeled "Home"\\
+\begin{tabular}{|c|l|l|} \hline
+      & Actor & System \\ \hline
+    1 & Player clicks on the button & \\ \hline
+    2 & & Displays the player home screen \\ \hline
+\end{tabular} 
 
+\subsubsection{Use case: Home improvements}
+Summary: The user wants to improve their home\\
+Priority: low \\
+Extends: undefined\\
+Includes: undefined\\
+Participators: Player\\
+Normal flow of event: The player wants to buy an animal, has enough money and enough space.\\
+\begin{tabular}{|c|l|l|} \hline
+      & Actor & System \\ \hline
+    1 & & Checks that player has enough money \\ \hline
+    2 & & Checks that player has enough space \\ \hline
+    3 & & Enables button. \\ \hline
+    4 & Player clicks on a buy animal button & \\ \hline
+    5 & & Deduct money from player \\ \hline
+    6 & & Add animal to home \\ \hline
+\end{tabular}  \\
+Alternate flow: The player wants to buy an animal, does not have enough money 
+\begin{tabular}{|c|l|l|} \hline
+      & Actor & System \\ \hline
+    1 & & Checks that player has enough money \\ \hline
+    2 & & Checks that the player has enough space \\ \hline
+    3 & & Does not enable button \\ \hline
+\end{tabular}  \\
+Alternate flow: The player wants to buy an animal, does not have enough space 
+\begin{tabular}{|c|l|l|} \hline
+      & Actor & System \\ \hline
+    1 & & Checks that player has enough money \\ \hline
+    2 & & Checks that the player has enough space \\ \hline
+    3 & & Does not enable button \\ \hline
+\end{tabular}  \\
+Alternate flow: The player wants to buy more space, has enough money.\\
+\begin{tabular}{|c|l|l|} \hline
+    & Actor & System \\ \hline
+    1 & & Check that the player has enough money \\ \hline
+    2 & & Enables button. \\ \hline
+    3 & Player clicks on button \\ \hline
+    4 & & Deduct money from player \\ \hline
+    5 & & Add more space to player \\ \hline
+\end{tabular}\\
+Alternate flow: The player wants to buy more space, does not have enough money.\\
+\begin{tabular}{|c|l|l|} \hline
+    & Actor & System \\ \hline
+    1 & & Check that the player has enough money \\ \hline
+    2 & & Does not enable button. \\ \hline
+\end{tabular}\\
+Alternate flow: The player wants to sell an animal, has animals.\\
+\begin{tabular}{|c|l|l|} \hline
+    & Actor & System \\ \hline
+    1 & & Checks that player has animals \\ \hline
+    2 & & Enable button \\ \hline
+    3 & Player clicks button & \\ \hline
+    4 & & Remove one animal from player \\ \hline
+    5 & & Add money to player \\ \hline
+\end{tabular}\\
+Alternate flow: The player wants to sell an animal, has no animals.\\
+\begin{tabular}{|c|l|l|} \hline
+    & Actor & System \\ \hline
+    1 & & Checks that player has animals \\ \hline
+    2 & & Does not enable button \\ \hline
+\end{tabular}
 
-    
 \section{Domain model}
 
 \section{References}
