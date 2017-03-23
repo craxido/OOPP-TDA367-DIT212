@@ -1,0 +1,43 @@
+Meeting Agenda
+Date: 2017-03-20
+Chair: Jonatan Källman 
+Participants: Jonatan Källman, Filip Labe, Erik Sjöström, Sarosh Nasir
+1. Objectives (5 min). Resolve any issues preventing the team to
+continue.
+
+We need to do the following:
+Simple GUI preview
+Implement Use cases 
+Construct a domain model
+
+2. Reports (15 min) from previous meeting
+
+We decided on what to do for the project, discussed simple GUI and use cases together. 
+Most of the time went into discussing the project.
+
+3. Discussion items (35 min)
+- Discuss issues from 1 and 2, possibly new or more general issues (very short notes and/or
+keywords)
+
+We decided on making a simple GUI preview, using Adobe Fireworks to make it a bit interactive, 
+as sketching on paper does not really give the same perspective.
+We had issues with the constuction of the domain model as we did not fully understand what we were supposed to do.
+ 
+
+4. Outcomes and assignments (5 min)
+- Outcomes from 3). I.e. write down what's decided and why it was decided? Sync with other
+documentation (add terms to wordbook)
+- From outcomes, 1), 2) and 3) (re)assign each group member issues to solve.
+
+As mentioned, Fireworks was used to structure the GUI preview in a better way.
+Jonatan and Filip did most of the GUI preview as Erik and Sarosh discussed and constructed use cases.
+After the GUI preview was made and some use cases were constructed, we worked all together on constructing a domain model.
+
+
+5. Wrap up
+- Write down unresolved issues for next meeting.
+- Time and location for next meeting
+ 
+For the next meeting, we should do some prototyping, finish the use cases 
+and further develop the domain model.
+Our next meeting takes place on Monday, 2017-03-27.
