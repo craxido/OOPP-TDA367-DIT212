@@ -66,6 +66,27 @@ Alternate flow: The player attacks the monster and the monster dies. The level i
     7 & & The option to change level is made avliable\\ \hline
 \end{tabular}
 
+\subsubsection{Use case: Buy upgrade}
+Summary: The user tries to buy an upgrade.\\
+Priority: Medium\\
+Extends: undefined\\
+Includes: undefined\\
+Participators: Player\\
+Normal flow of event: The player clicks on the upgrade and has enough money.\\
+\begin{tabular}{|c|l|l|} \hline
+      & Actor & System \\ \hline
+    1 & Player clicks on the upgrade & \\ \hline
+    2 & & Checks that the player has enough money to buy the upgrade \\ \hline
+    3 & & The upgrade is applied to the player \\ \hline
+\end{tabular}\\ 
+Alternate flow: The player clicks on the upgrade but does not have enough money. \\
+\begin{tabular}{|c|l|l|} \hline
+      & Actor & System \\ \hline
+    1 & Player clicks on the upgrade & \\ \hline
+    2 & & Checks that the player has enough money to buy the upgrade \\ \hline
+\end{tabular} 
+
+    
 \section{Domain model}
 
 \section{References}
