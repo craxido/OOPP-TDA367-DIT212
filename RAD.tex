@@ -51,14 +51,18 @@ Priority: High\\
 Extends: undefined\\
 Includes: undefined\\
 Participators: Player\\
-Normal flow of event: The player attacks the monster and the monster survives.
+\textbf{Normal flow of event:} The player attacks the monster and the monster survives.
+\vspace
 \begin{tabular}{| c | l | l |} \hline
     & Actor & System \\ \hline
     1 & Player clicks screen & \\ \hline
     2 & & Attack animation plays \\ \hline
     3 & & Calculate new health for monster\\ \hline
 \end{tabular}\\
-Alternate flow: The player attacks the monster and the monster dies. The level is not cleared.\\
+\newpage
+\noindent
+\textbf{Alternate flow:} The player attacks the monster and the monster dies. The level is not cleared.\\
+\vspace
 \begin{tabular}{| c | l | l |} \hline
     & Actor & System \\ \hline
     1 & Player clicks screen & \\ \hline
@@ -69,17 +73,16 @@ Alternate flow: The player attacks the monster and the monster dies. The level i
     6 & & Replace dead monster with new monster \\ \hline
     7 & Player gets money & \\ \hline
 \end{tabular}\\
-Alternate flow: The player attacks the monster and the monster dies. The level is cleared.\\
+\textbf{Alternate flow:} The player attacks the monster and the monster dies. The level is cleared.\\
 \begin{tabular}{| c | l | l |} \hline
     & Actor & System \\ \hline
     1 & Player clicks screen & \\ \hline
     2 & & Attack animation plays \\ \hline
     3 & & Calculate new health for monster\\ \hline
-    4 & & Health $\le$ 0 \\ \hline
-    5 & & Death animation plays \\ \hline 
-    6 & & Replace dead monster with new monster \\ \hline
-    7 & & The option to change level is made avliable\\ \hline
-    8 & The player gets money & \\ \hline
+    4 & & Death animation plays \\ \hline 
+    5 & & Replace dead monster with new monster \\ \hline
+    6 & & The option to change level is made avliable\\ \hline
+    7 & The player gets money & \\ \hline
 \end{tabular}
 
 \subsubsection{Use case: Attack boss}
@@ -106,7 +109,7 @@ Normal flow of event: The player attacks the boss and does not defeat it, but is
     2 & & Attack animation plays \\ \hline
     3 & & Calculate new health for boss \\ \hline
 \end{tabular}\\
-Alternate event: The player does not defeat the boss within the time frame \\
+\textbf{Alternate event:} The player does not defeat the boss within the time frame \\
 \begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
     1 & & Reset boss \\ \hline
