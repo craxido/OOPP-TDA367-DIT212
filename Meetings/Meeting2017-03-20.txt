@@ -1,0 +1,40 @@
+Meeting Agenda
+Date: 2017-03-20
+Chair: Jonatan Källman 
+Participants: Jonatan Källman, Filip Labe, Erik Sjöström, Sarosh Nasir
+1. Objectives (5 min). Resolve any issues preventing the team to
+continue.
+
+Decide on what project.
+When decided - How do we start? 
+What are the primary functions/ use cases of our app?
+
+2. Reports (15 min) from previous meeting
+
+This is the first meeting, there's no previous meeting to discuss. 
+
+3. Discussion items (35 min)
+- Discuss issues from 1 and 2, possibly new or more general issues (very short notes and/or
+keywords)
+
+We threw ideas around making a "clicker" game for Android, which gives the player points for clicking and defeating enemies. 
+We started to sketch some thoughts about the GUI and the app's function.
+
+4. Outcomes and assignments (5 min)
+- Outcomes from 3). I.e. write down what's decided and why it was decided? Sync with other
+documentation (add terms to wordbook)
+- From outcomes, 1), 2) and 3) (re)assign each group member issues to solve.
+
+We decided, after some brainstorming, to make a game for Android with some sort of a "clicker" 
+as well as an offline farm system. As we have not developed actual Android apps before, we 
+decided on doing so to give us a challenge. 
+We are still in the planning phase, so we have not split up any "issues to solve" within the group yet.
+
+5. Wrap up
+- Write down unresolved issues for next meeting.
+- Time and location for next meeting
+
+The structure and the design still needs a lot of work.
+We still have not started making a domain model and/ or discussed any use cases, 
+which is prioritized for the coming week.
+Our next meeting takes place on Thursday, 2017-03-23.

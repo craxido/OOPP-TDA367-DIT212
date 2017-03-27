@@ -1,0 +1,45 @@
+Meeting Agenda
+Date: 2017-03-27
+Chair: Jonatan Källman 
+Participants: Jonatan Källman, Filip Labe, Erik Sjöström, Sarosh Nasir
+1. Objectives (5 min). Resolve any issues preventing the team to
+continue.
+
+We need to do the following:
+Prototyping
+Prepare for seminar
+Start working on class diagram
+
+2. Reports (15 min) from previous meeting
+
+We are pretty much done with constructing the domain model as well as the use cases. 
+
+3. Discussion items (35 min)
+- Discuss issues from 1 and 2, possibly new or more general issues (very short notes and/or
+keywords)
+
+Creating an android app using Android Studio (prototyping).
+Introducing our project at the seminar.
+Start working on class diagram if there is time (design model).
+
+
+4. Outcomes and assignments (5 min)
+- Outcomes from 3). I.e. write down what's decided and why it was decided? Sync with other
+documentation (add terms to wordbook)
+- From outcomes, 1), 2) and 3) (re)assign each group member issues to solve.
+
+We will create our first basic android projects in Android Studio, following the tutorial on the Android Studio website.
+We had a discussion within the group regarding the seminar as well as the class diagram, to get everyone's input.
+
+
+5. Wrap up
+- Write down unresolved issues for next meeting.
+- Time and location for next meeting
+
+Our main issue is working with Android Studio as we have no earlier experience with it.
+
+For the next meeting;
+Everyone should have Android Studio up and running with Gradle (and have created their first project).
+Further prepare for seminar, who's going to say what etc.
+Create an UML class diagram (design model). 
+Our next meeting takes place on Monday, 2017-03-30.
