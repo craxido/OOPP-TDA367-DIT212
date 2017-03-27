@@ -40,7 +40,6 @@ LOTR: Lord of the Rings.
     \item Check stats
 \end{itemize}
 \subsection{Non-functional requirements}
-
 \section{Use cases}
 \subsection{Usability model}
 \fbox{\includegraphics[scale=0.4]{usabilityModel.png}}
@@ -52,28 +51,29 @@ Extends: undefined\\
 Includes: undefined\\
 Participators: Player\\
 \textbf{Normal flow of event:} The player attacks the monster and the monster survives.
-\vspace
-\begin{tabular}{| c | l | l |} \hline
-    & Actor & System \\ \hline
-    1 & Player clicks screen & \\ \hline
-    2 & & Attack animation plays \\ \hline
-    3 & & Calculate new health for monster\\ \hline
+\vspace{1 mm}\\
+\begin{tabular}{|c|l|l|} \hline
+  & Actor & System \\ \hline
+1 & Player clicks screen & \\ \hline
+2 & & Attack animation plays \\ \hline
+3 & & Calculate new health for monster\\ \hline
 \end{tabular}\\
 \newpage
 \noindent
-\textbf{Alternate flow:} The player attacks the monster and the monster dies. The level is not cleared.\\
-\vspace
-\begin{tabular}{| c | l | l |} \hline
+\textbf{Alternate flow:} The player attacks the monster and the monster dies. The level is not cleared.
+\vspace{1 mm}\\
+\begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
     1 & Player clicks screen & \\ \hline
     2 & & Attack animation plays \\ \hline
     3 & & Calculate new health for monster\\ \hline
-    4 & & Health $\le$ 0 \\ \hline
-    5 & & Death animation plays \\ \hline 
-    6 & & Replace dead monster with new monster \\ \hline
-    7 & Player gets money & \\ \hline
-\end{tabular}\\
-\textbf{Alternate flow:} The player attacks the monster and the monster dies. The level is cleared.\\
+    4 & & Death animation plays \\ \hline 
+    5 & & Replace dead monster with new monster \\ \hline
+    6 & Player gets money & \\ \hline
+\end{tabular}
+\vspace{5 mm}\\
+\textbf{Alternate flow:} The player attacks the monster and the monster dies. The level is cleared.
+\vspace{1 mm}\\
 \begin{tabular}{| c | l | l |} \hline
     & Actor & System \\ \hline
     1 & Player clicks screen & \\ \hline
@@ -84,14 +84,15 @@ Participators: Player\\
     6 & & The option to change level is made avliable\\ \hline
     7 & The player gets money & \\ \hline
 \end{tabular}
-
+\\
 \subsubsection{Use case: Attack boss}
 Summary: The player is fighting a boss \\
 Priority: High \\
 Extends: Attack\\
 Includes: \\
 Participators: Player \\
-Normal flow of event: The player attacks the boss and defeats it within the time frame \\
+\textbf{Normal flow of event:} The player attacks the boss and defeats it within the time frame 
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
     1 & Player clicks screen & \\ \hline
@@ -101,26 +102,33 @@ Normal flow of event: The player attacks the boss and defeats it within the time
     5 & & Unlock next level \\ \hline
     6 & & Reset boss \\ \hline
     7 & Player gets money & \\ \hline
-\end{tabular}\\
-Normal flow of event: The player attacks the boss and does not defeat it, but is still within the time frame \\
+\end{tabular}
+\newpage
+\noindent
+\textbf{Normal flow of event:} The player attacks the boss and does not defeat it, but is still within the time frame. 
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
     1 & Player clicks screen & \\ \hline
     2 & & Attack animation plays \\ \hline
     3 & & Calculate new health for boss \\ \hline
-\end{tabular}\\
-\textbf{Alternate event:} The player does not defeat the boss within the time frame \\
+\end{tabular}
+\vspace{5 mm}\\
+\textbf{Alternate event:} The player does not defeat the boss within the time frame 
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
     1 & & Reset boss \\ \hline
 \end{tabular}
+
 \subsubsection{Use case: Run away}
 Summary: The player wants to run away from the fight.\\
 Priority: Medium \\
 Extends: Attack boss\\
 Includes:\\
 Participators: Player\\
-Normal flow of the event: The player clicks the "run away" button.\\
+\textbf{Normal flow of the event:} The player clicks the "run away" button.
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
     1 & The player clicks the button & \\ \hline
@@ -133,14 +141,17 @@ Priority: Medium\\
 Extends: undefined\\
 Includes: undefined\\
 Participators: Player\\
-Normal flow of event: The player clicks on the upgrade and has enough money.\\
+\textbf{Normal flow of event:} The player clicks on the upgrade and has enough money.
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
     1 & Player clicks on the upgrade & \\ \hline
     2 & & Checks that the player has enough money to buy the upgrade \\ \hline
     3 & & The upgrade is applied to the player \\ \hline
-\end{tabular}\\ 
-Alternate flow: The player clicks on the upgrade but does not have enough money. \\
+\end{tabular}
+\vspace{5 mm}\\ 
+Alternate flow: The player clicks on the upgrade but does not have enough money. 
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
     1 & Player clicks on the upgrade & \\ \hline
@@ -153,7 +164,7 @@ Priority: Medium \\
 Extends: undefined\\
 Includes: undefined\\
 Participators: Player \\
-Normal flow of event: The player clicks the button labeled "map"\\
+\textbf{Normal flow of event:} The player clicks the button labeled "map"\\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
     1 & Player clicks on the button & \\ \hline
@@ -166,14 +177,15 @@ Priority: High\\
 Extends: undefined\\
 Includes: undefined\\
 Participators: Player \\
-Normal flow of event: The player clicks on the level they want to move to, the level is unlocked.\\
+\textbf{Normal flow of event:} The player clicks on the level they want to move to, the level is unlocked.\\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
     1 & Player clicks on the level & \\ \hline
     2 & & Checks that the level is unlocked \\ \hline
     3 & & Loads new level \\ \hline
 \end{tabular} \\
-Alternate flow of event: The player clicks on the level they want to move to, the level is locked.\\
+\textbf{Alternate flow of event:} The player clicks on the level they want to move to, the level is locked.
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
     1 & Player clicks on the level & \\ \hline
@@ -186,7 +198,8 @@ Priority: low\\
 Extends: undefined\\
 Includes: undefined\\
 Participators: Player\\
-Normal flow of event: The player clicks the button labled "Stats"\\
+\textbf{Normal flow of event:} The player clicks the button labled "Stats"
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
     1 & Player clicks on the button & \\ \hline
@@ -199,7 +212,8 @@ Priority: Low \\
 Extends: undefined\\
 Includes: undefined\\
 Participators: Player \\
-Normal flow of event: The player clicks the button labeled "Home"\\
+\textbf{Normal flow of event:} The player clicks the button labeled "Home"
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
     1 & Player clicks on the button & \\ \hline
@@ -212,7 +226,8 @@ Priority: low \\
 Extends: undefined\\
 Includes: undefined\\
 Participators: Player\\
-Normal flow of event: The player wants to buy an animal, has enough money and enough space.\\
+\textbf{Normal flow of event:} The player wants to buy an animal, has enough money and enough space.
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
     1 & & Checks that player has enough money \\ \hline
@@ -221,22 +236,28 @@ Normal flow of event: The player wants to buy an animal, has enough money and en
     4 & Player clicks on a buy animal button & \\ \hline
     5 & & Deduct money from player \\ \hline
     6 & & Add animal to home \\ \hline
-\end{tabular}  \\
-Alternate flow: The player wants to buy an animal, does not have enough money 
+\end{tabular}  
+\vspace{5 mm}\\
+\textbf{Alternate flow:} The player wants to buy an animal, does not have enough money. 
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
     1 & & Checks that player has enough money \\ \hline
     2 & & Checks that the player has enough space \\ \hline
     3 & & Does not enable button \\ \hline
-\end{tabular}  \\
-Alternate flow: The player wants to buy an animal, does not have enough space 
+\end{tabular} 
+\vspace{5 mm}\\
+\textbf{Alternate flow:} The player wants to buy an animal, does not have enough space. 
+\vspace{1 mm} \\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
     1 & & Checks that player has enough money \\ \hline
     2 & & Checks that the player has enough space \\ \hline
     3 & & Does not enable button \\ \hline
-\end{tabular}  \\
-Alternate flow: The player wants to buy more space, has enough money.\\
+\end{tabular}  
+\vspace{5 mm}\\
+\textbf{Alternate flow:} The player wants to buy more space, has enough money.
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
     1 & & Check that the player has enough money \\ \hline
@@ -244,14 +265,18 @@ Alternate flow: The player wants to buy more space, has enough money.\\
     3 & Player clicks on button \\ \hline
     4 & & Deduct money from player \\ \hline
     5 & & Add more space to player \\ \hline
-\end{tabular}\\
-Alternate flow: The player wants to buy more space, does not have enough money.\\
+\end{tabular}
+\vspace{5 mm}\\
+\textbf{Alternate flow:} The player wants to buy more space, does not have enough money.
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
     1 & & Check that the player has enough money \\ \hline
     2 & & Does not enable button. \\ \hline
-\end{tabular}\\
-Alternate flow: The player wants to sell an animal, has animals.\\
+\end{tabular}
+\vspace{5 mm}\\
+\textbf{Alternate flow:} The player wants to sell an animal, has animals.
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
     1 & & Checks that player has animals \\ \hline
@@ -259,8 +284,10 @@ Alternate flow: The player wants to sell an animal, has animals.\\
     3 & Player clicks button & \\ \hline
     4 & & Remove one animal from player \\ \hline
     5 & & Add money to player \\ \hline
-\end{tabular}\\
-Alternate flow: The player wants to sell an animal, has no animals.\\
+\end{tabular}
+\vspace{5 mm}\\
+\textbf{Alternate flow:} The player wants to sell an animal, has no animals.
+\vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
     1 & & Checks that player has animals \\ \hline
@@ -290,5 +317,5 @@ An area, has a name, and a list of levels associated with that area.
 \subsubsection{Level}
 Determines how hard the monsters are, and how much money they drop.
 \section{References}
+No references yet.
 \end{document}
-
