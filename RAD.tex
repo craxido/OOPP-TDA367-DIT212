@@ -44,6 +44,21 @@ LOTR: Lord of the Rings.
 \subsection{Usability model}
 \fbox{\includegraphics[scale=0.4]{usabilityModel.png}}
 \subsection{Use case listings}
+\subsubsection{Use case: Open app}
+Summary: The user opens the app\\
+Priority: High\\
+Extends:\\
+Includes:\\
+Participators: User\\
+\textbf{Normal flow of event:} The user opens the app and the game displays the main menu.
+\vspace{1 mm}\\
+\begin{tabular}{|c|l|l|} \hline
+  & Actor & System \\ \hline
+1 & User clicks app icon & \\ \hline
+2 & & Load game \\ \hline
+3 & & Display main menu \\ \hline
+\end{tabular}\\
+\vspace{5 mm}
 \subsubsection{Use case: Attack}
 Summary: The user clicks the screen and the game calculates new health for the monster.\\
 Priority: High\\
@@ -134,30 +149,7 @@ Participators: Player\\
     1 & The player clicks the button & \\ \hline
     2 & & Sends the player to Home \\ \hline
 \end{tabular}
-
-\subsubsection{Use case: Buy upgrade}
-Summary: The user tries to buy an upgrade.\\
-Priority: Medium\\
-Extends: undefined\\
-Includes: undefined\\
-Participators: Player\\
-\textbf{Normal flow of event:} The player clicks on the upgrade and has enough money.
-\vspace{1 mm}\\
-\begin{tabular}{|c|l|l|} \hline
-      & Actor & System \\ \hline
-    1 & Player clicks on the upgrade & \\ \hline
-    2 & & Checks that the player has enough money to buy the upgrade \\ \hline
-    3 & & The upgrade is applied to the player \\ \hline
-\end{tabular}
 \vspace{5 mm}\\ 
-Alternate flow: The player clicks on the upgrade but does not have enough money. 
-\vspace{1 mm}\\
-\begin{tabular}{|c|l|l|} \hline
-      & Actor & System \\ \hline
-    1 & Player clicks on the upgrade & \\ \hline
-    2 & & Checks that the player has enough money to buy the upgrade \\ \hline
-\end{tabular} 
-
 \subsubsection{Use case: Open map}
 Summary: The player clicks the button labeled "map"
 Priority: Medium \\
@@ -230,68 +222,41 @@ Participators: Player\\
 \vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
-    1 & & Checks that player has enough money \\ \hline
-    2 & & Checks that player has enough space \\ \hline
-    3 & & Enables button. \\ \hline
-    4 & Player clicks on a buy animal button & \\ \hline
-    5 & & Deduct money from player \\ \hline
-    6 & & Add animal to home \\ \hline
-\end{tabular}  
-\vspace{5 mm}\\
-\textbf{Alternate flow:} The player wants to buy an animal, does not have enough money. 
-\vspace{1 mm}\\
-\begin{tabular}{|c|l|l|} \hline
-      & Actor & System \\ \hline
-    1 & & Checks that player has enough money \\ \hline
-    2 & & Checks that the player has enough space \\ \hline
-    3 & & Does not enable button \\ \hline
-\end{tabular} 
-\vspace{5 mm}\\
-\textbf{Alternate flow:} The player wants to buy an animal, does not have enough space. 
-\vspace{1 mm} \\
-\begin{tabular}{|c|l|l|} \hline
-      & Actor & System \\ \hline
-    1 & & Checks that player has enough money \\ \hline
-    2 & & Checks that the player has enough space \\ \hline
-    3 & & Does not enable button \\ \hline
+    1 & Player clicks on a buy animal button & \\ \hline
+    2 & & Deduct money from player \\ \hline
+    3 & & Add animal to home \\ \hline
 \end{tabular}  
 \vspace{5 mm}\\
 \textbf{Alternate flow:} The player wants to buy more space, has enough money.
 \vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
-    1 & & Check that the player has enough money \\ \hline
-    2 & & Enables button. \\ \hline
-    3 & Player clicks on button \\ \hline
-    4 & & Deduct money from player \\ \hline
-    5 & & Add more space to player \\ \hline
-\end{tabular}
-\vspace{5 mm}\\
-\textbf{Alternate flow:} The player wants to buy more space, does not have enough money.
-\vspace{1 mm}\\
-\begin{tabular}{|c|l|l|} \hline
-    & Actor & System \\ \hline
-    1 & & Check that the player has enough money \\ \hline
-    2 & & Does not enable button. \\ \hline
+    1 & Player clicks on button \\ \hline
+    2 & & Deduct money from player \\ \hline
+    3 & & Add more space to player \\ \hline
 \end{tabular}
 \vspace{5 mm}\\
 \textbf{Alternate flow:} The player wants to sell an animal, has animals.
 \vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
-    1 & & Checks that player has animals \\ \hline
-    2 & & Enable button \\ \hline
-    3 & Player clicks button & \\ \hline
-    4 & & Remove one animal from player \\ \hline
-    5 & & Add money to player \\ \hline
+    1 & Player clicks button & \\ \hline
+    2 & & Remove one animal from player \\ \hline
+    3 & & Add money to player \\ \hline
 \end{tabular}
-\vspace{5 mm}\\
-\textbf{Alternate flow:} The player wants to sell an animal, has no animals.
+\vspace{5 mm}
+\subsubsection{Use case: Buy upgrade}
+Summary: The user is home and wants to buy an upgrade.\\
+Priority: Medium\\
+Extends: undefined\\
+Includes: undefined\\
+Participators: Player\\
+\textbf{Normal flow of event:} The player clicks on the upgrade and has enough money.
 \vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
-    & Actor & System \\ \hline
-    1 & & Checks that player has animals \\ \hline
-    2 & & Does not enable button \\ \hline
+      & Actor & System \\ \hline
+    1 & Player clicks on the upgrade & \\ \hline
+    2 & & The upgrade is applied to the player \\ \hline
 \end{tabular}
 
 \section{Domain model}
