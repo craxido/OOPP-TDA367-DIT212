@@ -17,27 +17,24 @@
         />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/b_stats"
         android:layout_width="106dp"
         android:layout_height="65dp"
-        android:text="Stats"
-        tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="447dp" />
+        android:text="@string/stats"
+        />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/b_map"
         android:layout_width="106dp"
         android:layout_height="65dp"
-        android:text="Map"
-        tools:layout_editor_absoluteX="247dp"
-        tools:layout_editor_absoluteY="447dp" />
+        android:text="@string/map"
+        />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/b_shop"
         android:layout_width="106dp"
         android:layout_height="65dp"
-        android:text="Shop"
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="447dp" />
+        android:text="@string/shop"
+        />
 
 </LinearLayout>
