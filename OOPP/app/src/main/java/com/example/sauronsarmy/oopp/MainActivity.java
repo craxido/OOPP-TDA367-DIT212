@@ -4,10 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ButtonBarLayout;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,38 +25,32 @@ public class MainActivity extends AppCompatActivity {
         mapButton   = (ImageButton) findViewById(R.id.b_map);
         statsButton = (ImageButton) findViewById(R.id.b_stats);
         shopButton  = (ImageButton) findViewById(R.id.b_shop);
-        homeButton.setOnClickListener(new View.OnClickListener() {
+
+        View.OnClickListener buttonListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context context = MainActivity.this;
-                Intent intent = new Intent(context, HomeActivity.class);
-                startActivity(intent);
+               Context context = MainActivity.this;
+                // Figure out which button was pressed
+                switch (v.getId()) {
+                    case R.id.b_home:
+                        startActivity(new Intent(context, HomeActivity.class));
+                        break;
+                    case R.id.b_map:
+                        startActivity(new Intent(context, MapActivity.class));
+                        break;
+                    case R.id.b_shop:
+                        startActivity(new Intent(context, ShopActivity.class));
+                        break;
+                    case R.id.b_stats:
+                        startActivity(new Intent(context, StatsActivity.class));
+                        break;
+                }
             }
-        });
-        mapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = MainActivity.this;
-                Intent intent = new Intent(context, MapActivity.class);
-                startActivity(intent);
-            }
-        });
-        shopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = MainActivity.this;
-                Intent intent = new Intent(context, ShopActivity.class);
-                startActivity(intent);
-            }
-        });
-        statsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = MainActivity.this;
-                Intent intent = new Intent(context, StatsActivity.class);
-                startActivity(intent);
-            }
-        });
+        };
+        homeButton.setOnClickListener(buttonListener);
+        shopButton.setOnClickListener(buttonListener);
+        mapButton.setOnClickListener(buttonListener);
+        statsButton.setOnClickListener(buttonListener);
     }
 
 }
