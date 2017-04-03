@@ -1,0 +1,36 @@
+Meeting Agenda
+Date: 2017-04-03
+Chair: Sarosh Nasir 
+Participants: Jonatan Källman, Filip Labe, Erik Sjöström, Sarosh Nasir
+1. Objectives (5 min). Resolve any issues preventing the team to
+continue.
+
+We need to have a functioning GUI for thursday and have test cases written
+in code.
+
+2. Reports (15 min) from previous meeting
+
+We have design model and we've decided that the game will be called
+Gem Clicker.
+Everyone has continued to look at android tutorials.
+
+3. Discussion items (35 min)
+
+As mentioned in the objectives, we need to have a functioning GUI to code our test cases
+and have a functioning template for the game.
+Use the information and skill gained from the tutorials to make a simple GUI to write test
+cases in. 
+
+4. Outcomes and assignments (5 min)
+
+We've done some basic designing for the GUI but nothing in code. So what we're really lacking
+at the moment is a GUI to work with. Thus our main objective and assignment right now is to get that
+up and running. Once we have that we can start assigning tasks within the group.
+
+5. Wrap up
+- Write down unresolved issues for next meeting.
+- Time and location for next meeting
+
+We need to have a functioning GUI for thursday with implemented test cases.  
+
+Our next meeting takes place on Thursday, 2017-04-06.
