@@ -6,5 +6,10 @@
     android:layout_height="match_parent"
     tools:context="com.example.sauronsarmy.oopp.MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="THIS IS THE MAIN ACTIVITY"/>
+
     <include layout="@layout/bottom_bar" />
 </RelativeLayout>
