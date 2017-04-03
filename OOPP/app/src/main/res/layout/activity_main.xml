@@ -13,34 +13,34 @@
         android:layout_alignParentBottom="true"
         >
 
-        <Button
+        <ImageButton
             android:id="@+id/b_stats"
-            android:layout_width="106dp"
-            android:layout_height="65dp"
-            android:text="@string/stats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/stats"
             />
 
-        <Button
+        <ImageButton
             android:id="@+id/b_map"
-            android:layout_width="106dp"
-            android:layout_height="65dp"
-            android:text="@string/map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/map"
             android:layout_toRightOf="@id/b_stats"
             />
 
-        <Button
+        <ImageButton
             android:id="@+id/b_shop"
-            android:layout_width="106dp"
-            android:layout_height="65dp"
-            android:text="@string/shop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/shop"
             android:layout_toRightOf="@id/b_map"
             />
 
-        <Button
+        <ImageButton
             android:id="@+id/b_home"
-            android:layout_width="106dp"
-            android:layout_height="65dp"
-            android:text="@string/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/home"
             android:layout_toRightOf="@id/b_shop"
             />
     </RelativeLayout>
