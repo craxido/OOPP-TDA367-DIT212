@@ -21,11 +21,13 @@ public class MainActivity extends AppCompatActivity {
         ImageButton mapButton   = (ImageButton) findViewById(R.id.b_map);
         ImageButton statsButton = (ImageButton) findViewById(R.id.b_stats);
         ImageButton shopButton  = (ImageButton) findViewById(R.id.b_shop);
+        ImageButton mainButton  = (ImageButton) findViewById(R.id.b_main);
 
         homeButton.setOnClickListener(buttonListener);
         shopButton.setOnClickListener(buttonListener);
         mapButton.setOnClickListener(buttonListener);
         statsButton.setOnClickListener(buttonListener);
+        mainButton.setOnClickListener(buttonListener);
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.b_stats:
                     startActivity(new Intent(context, StatsActivity.class));
+                    break;
+                case R.id.b_main:
                     break;
             }
         }

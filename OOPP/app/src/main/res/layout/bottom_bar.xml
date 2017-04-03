@@ -19,12 +19,19 @@
     android:layout_toRightOf="@id/b_stats"
     />
 
+    <ImageButton
+        android:id="@+id/b_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/main"
+        android:layout_toRightOf="@id/b_map"/>
+
 <ImageButton
     android:id="@+id/b_shop"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:src="@mipmap/shop"
-    android:layout_toRightOf="@id/b_map"
+    android:layout_toRightOf="@id/b_main"
     />
 
 <ImageButton
