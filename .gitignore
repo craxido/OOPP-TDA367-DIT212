@@ -7,3 +7,6 @@
 
 # Vim swap files
 *.swp
+
+# Terminal background file output
+nohup.out
