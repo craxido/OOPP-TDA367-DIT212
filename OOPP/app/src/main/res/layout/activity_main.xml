@@ -37,4 +37,11 @@
         android:text="@string/shop"
         />
 
+    <Button
+        android:id="@+id/b_home"
+        android:layout_width="106dp"
+        android:layout_height="65dp"
+        android:text="@string/home"
+        />
+
 </LinearLayout>
