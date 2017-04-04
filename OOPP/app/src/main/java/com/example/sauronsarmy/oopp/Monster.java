@@ -6,7 +6,7 @@ import android.media.Image;
  * Created by Filip on 2017-04-04.
  */
 
-public class Monster {
+ class Monster {
 
     private int health;
     private int gold;
