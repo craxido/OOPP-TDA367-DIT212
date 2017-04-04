@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_home);
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
         appropriate activity.
@@ -33,11 +33,10 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Context context = MainActivity.this;
+            Context context = HomeActivity.this;
             // Figure out which button was pressed
             switch (v.getId()) {
                 case R.id.b_home:
-                    startActivity(new Intent(context, HomeActivity.class));
                     break;
                 case R.id.b_map:
                     startActivity(new Intent(context, MapActivity.class));
@@ -49,8 +48,10 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(context, StatsActivity.class));
                     break;
                 case R.id.b_main:
+                    startActivity(new Intent(context, MainActivity.class));
                     break;
             }
         }
     };
+
 }
