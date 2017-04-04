@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class StatsActivity extends AppCompatActivity {
 
     private TextView damageText;
+    private Player player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +37,13 @@ public class StatsActivity extends AppCompatActivity {
         Get the instance of the player since we need the
         state of the players stats.
          */
+        player = Player.getInstance();
 
         /*
         Setting all the textViews to display the correct stats.
          */
         damageText = (TextView) findViewById(R.id.damageText);
-        damageText.setText();
+        damageText.setText(String.valueOf(player.getDamage()));
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
