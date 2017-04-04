@@ -8,11 +8,11 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class HomeActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
         appropriate activity.
