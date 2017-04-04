@@ -11,6 +11,9 @@ import android.widget.TextView;
 public class StatsActivity extends AppCompatActivity {
 
     private TextView damageText;
+    private TextView dmgMultText;
+    private TextView moneyText;
+    private TextView moneyPerSecText;
     private Player player;
 
     @Override
@@ -42,8 +45,14 @@ public class StatsActivity extends AppCompatActivity {
         /*
         Setting all the textViews to display the correct stats.
          */
-        damageText = (TextView) findViewById(R.id.damageText);
+        damageText      = (TextView) findViewById(R.id.damageText);
+        dmgMultText     = (TextView) findViewById(R.id.dmgMultText);
+        moneyText       = (TextView) findViewById(R.id.moneyText);
+        moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
         damageText.setText(String.valueOf(player.getDamage()));
+        dmgMultText.setText(String.valueOf(player.getDamageMutiplier()));
+        moneyText.setText(String.valueOf(player.getMoney()));
+        moneyPerSecText.setText(String.valueOf(player.getMoneyPerSecond()));
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
