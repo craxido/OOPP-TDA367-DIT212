@@ -6,8 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class StatsActivity extends AppCompatActivity {
+
+    private TextView damageText;
+    private TextView dmgMultText;
+    private TextView moneyText;
+    private TextView moneyPerSecText;
+    private Player player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +35,24 @@ public class StatsActivity extends AppCompatActivity {
         mapButton.setOnClickListener(buttonListener);
         statsButton.setOnClickListener(buttonListener);
         mainButton.setOnClickListener(buttonListener);
+
+        /*
+        Get the instance of the player since we need the
+        state of the players stats.
+         */
+        player = Player.getInstance();
+
+        /*
+        Setting all the textViews to display the correct stats.
+         */
+        damageText      = (TextView) findViewById(R.id.damageText);
+        dmgMultText     = (TextView) findViewById(R.id.dmgMultText);
+        moneyText       = (TextView) findViewById(R.id.moneyText);
+        moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
+        damageText.setText(String.valueOf(player.getDamage()));
+        dmgMultText.setText(String.valueOf(player.getDamageMutiplier()));
+        moneyText.setText(String.valueOf(player.getMoney()));
+        moneyPerSecText.setText(String.valueOf(player.getMoneyPerSecond()));
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
