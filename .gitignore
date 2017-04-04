@@ -10,3 +10,8 @@
 
 # Terminal background file output
 nohup.out
+
+# .idea files that are specific for each user
+OOPP/.idea/modules.xml
+OOPP/.idea/misc.xml
+OOPP/.idea/runConfigurations.xml
