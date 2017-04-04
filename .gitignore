@@ -1,0 +1,17 @@
+# Compilation files for TeX
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+
+# Vim swap files
+*.swp
+
+# Terminal background file output
+nohup.out
+
+# .idea files that are specific for each user
+OOPP/.idea/modules.xml
+OOPP/.idea/misc.xml
+OOPP/.idea/runConfigurations.xml
