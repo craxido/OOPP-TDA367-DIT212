@@ -29,10 +29,11 @@ class Upgrade {
         }
     }
 
+    // if one needs to get the base stats
     protected double getBaseStat(){
         return this.baseStat;
     }
-
+    // mostly what will be used
     protected double getCurrentStat(){
         return this.currentStat;
     }

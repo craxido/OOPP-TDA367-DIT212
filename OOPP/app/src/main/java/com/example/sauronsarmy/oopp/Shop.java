@@ -13,8 +13,8 @@ class Shop {
     private int damageUpgradeCounter = 1;
     private int multiplierUpgradeCounter = 1;
 
-    protected Shop(Player player){
-        this.player = player;
+    protected Shop(){
+        this.player = Player.getInstance();
         this.damageUpgrade = new Upgrade(10, 10);
         this.multiplierUpgrade = new Upgrade(0.1, 10);
     }

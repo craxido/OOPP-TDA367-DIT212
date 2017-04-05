@@ -10,8 +10,8 @@ class Home{
     private Upgrade oilPumpUpgrade;
     private int oilPumpUpgradeCounter = 1;
 
-    protected Home(Player player){
-        this.player = player;
+    protected Home(){
+        this.player = Player.getInstance();
         this.oilPumpUpgrade = new Upgrade(2, 5);
     }
 
