@@ -1,0 +1,51 @@
+Meeting Agenda
+Date: 2017-04-06
+Chair: Jonatan Källman 
+Participants: Jonatan Källman, Filip Labe, Erik Sjöström, Sarosh Nasir
+1. Objectives (5 min). Resolve any issues preventing the team to
+continue.
+
+We have no particular issues, mainly that we need to merge branches to master in git.
+
+2. Reports (15 min) from previous meeting
+Since last meeting, a lot has happened. We have started on a functioning GUI (activites in Android Studio).
+Some of the more simple Use cases are implemented in our program already.
+We have not yet created any tests or such, only simple Java files and a bit of GUI.
+We have also started handling out/ assigning issues (code and etc) to each other on Git.
+
+3. Discussion items (35 min)
+- Discuss issues from 1 and 2, possibly new or more general issues (very short notes and/or
+keywords)
+
+Main things are;
+Start creating tests for our Java classes.
+Start with the SDD (System Design Document).
+Assigning and discussing upcoming issues on Git.
+
+4. Outcomes and assignments (5 min)
+- Outcomes from 3). I.e. write down what's decided and why it was decided? Sync with other
+documentation (add terms to wordbook)
+- From outcomes, 1), 2) and 3) (re)assign each group member issues to solve.
+
+The tests for the Java classes will be posted as issues on Git that will be assigned to members of the group depending on workloads etc.
+The SDD will be constructed in a similar way, different parts of the document will be assigned through git.
+Jonatan was assigned to make the Map, Area and Level classes. 
+Sarosh was assigned to work on the Design model UML and the Shop class.
+Filip was assigned to make the Monster as well as the Monster factory classes.
+Erik was assigned to create the Player class andthe stats layout.
+As for upcoming issues assigned for each member, that is something that happens very much "on the go". 
+
+5. Wrap up
+- Write down unresolved issues for next meeting.
+- Time and location for next meeting
+
+Issues listed on Git:
+Make bossMonster a class.
+Saving player state.
+Creating a chronometer (timer) for bossMonster.
+Updating the player state should be implemented in a clever way.
+
+General issues: 
+See discussion items.
+
+Our next meeting is not decided yet.
