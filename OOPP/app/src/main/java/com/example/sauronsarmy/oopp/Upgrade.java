@@ -8,10 +8,10 @@ class Upgrade {
 
     private double baseStat;
     private double currentStat;
-    private double baseCost;
-    private double currentCost;
+    private int baseCost;
+    private int currentCost;
 
-    protected Upgrade(double baseStat, double baseCost){
+    protected Upgrade(double baseStat, int baseCost){
         this.baseStat = this.currentStat = baseStat;
         this.baseCost = this.currentCost = baseCost;
 
@@ -38,11 +38,11 @@ class Upgrade {
         return this.currentStat;
     }
 
-    protected double getBaseCost(){
+    protected int getBaseCost(){
         return this.baseCost;
     }
 
-    protected double getCurrentCost(){
+    protected int getCurrentCost(){
         return this.currentCost;
     }
 

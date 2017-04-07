@@ -15,8 +15,8 @@ class Shop {
 
     protected Shop(){
         this.player = Player.getInstance();
-        this.damageUpgrade = new Upgrade(10, 10);
-        this.multiplierUpgrade = new Upgrade(0.1, 10);
+        this.damageUpgrade = new Upgrade(5, 5);
+        this.multiplierUpgrade = new Upgrade(0.1, 5);
     }
 
     /** Buy damage upgrade for player.
@@ -24,7 +24,7 @@ class Shop {
      *  updates how many upgrades has been done, and updates the upgrade
      */
     protected void buyDamageUpgrade(){
-        player.setMoney(player.getMoney() - (int)damageUpgrade.getCurrentCost());
+        player.setMoney(player.getMoney() - damageUpgrade.getCurrentCost());
         player.setDamage(player.getDamage() + (int) damageUpgrade.getCurrentStat());
 
         damageUpgradeCounter++;
@@ -37,7 +37,7 @@ class Shop {
      * Similar to above, except this upgrade is a multiplier.
      */
     protected void buyMultiplierUpgrade(){
-        player.setMoney(player.getMoney() - (int) multiplierUpgrade.getCurrentCost());
+        player.setMoney(player.getMoney() - multiplierUpgrade.getCurrentCost());
         player.setDamageMutiplier(player.getDamageMutiplier() + multiplierUpgrade.getCurrentStat());
 
         multiplierUpgradeCounter++;

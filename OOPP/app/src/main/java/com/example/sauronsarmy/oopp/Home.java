@@ -16,7 +16,7 @@ class Home{
     }
 
     protected void buyOilPumpUpgrade(){
-        player.setMoney(player.getMoney() - (int) oilPumpUpgrade.getCurrentCost());
+        player.setMoney(player.getMoney() - oilPumpUpgrade.getCurrentCost());
         player.setMoneyPerSecond(player.getMoneyPerSecond() + (int) oilPumpUpgrade.getCurrentStat());
 
         oilPumpUpgradeCounter++;
