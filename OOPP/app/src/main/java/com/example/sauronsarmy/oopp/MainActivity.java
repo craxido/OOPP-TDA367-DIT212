@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.DrawableContainer;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Temp
-        currentMonster = new Monster(30,30,null,"bluemonster");
+
+        currentMonster = new Monster(30,30,null,"bluemonster",R.drawable.bluemonster);
 
     }
 
@@ -67,21 +69,24 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.b_monster:
                     ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
-
-                    monsterButton.setImageResource(R.drawable.bluemonster);
                     TextView hp = (TextView) findViewById(R.id.hp);
-                    currentMonster.damageMonster(1);
+                    Player p = Player.getInstance();
+
+                    if(currentMonster.damageMonster(p.getDamage())){
+
+                        p.setMoney(p.getMoney()+currentMonster.getGold());
+                        if(mon==0) {
+                            currentMonster=new Monster(currentMonster.getMaxhealth()*1.5,currentMonster.getGold()*2,null,null,R.drawable.bluemonster);
+                            mon++;
+                        }
+                        else {
+                            currentMonster=new Monster(currentMonster.getMaxhealth()*1.5,currentMonster.getGold()*2,null,null,R.drawable.mike);
+                            mon=0;
+                        }
+                    }
 
                     hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
-                    /*if(mon==0) {
-                        monsterButton.setImageResource(R.drawable.bluemonster);
-                        mon++;
-                    }
-                    else {
-
-                        monsterButton.setImageResource(R.drawable.mike);
-                        mon=0;
-                    }*/
+                    monsterButton.setImageResource(currentMonster.getDraw());
                     break;
             }
         }
