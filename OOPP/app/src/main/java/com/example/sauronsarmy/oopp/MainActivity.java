@@ -2,12 +2,18 @@ package com.example.sauronsarmy.oopp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableContainer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    int mon=0;
+    int health=30;
+    Monster currentMonster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +29,20 @@ public class MainActivity extends AppCompatActivity {
         ImageButton statsButton = (ImageButton) findViewById(R.id.b_stats);
         ImageButton shopButton  = (ImageButton) findViewById(R.id.b_shop);
         ImageButton mainButton  = (ImageButton) findViewById(R.id.b_main);
+        ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
+
 
         homeButton.setOnClickListener(buttonListener);
         shopButton.setOnClickListener(buttonListener);
         mapButton.setOnClickListener(buttonListener);
         statsButton.setOnClickListener(buttonListener);
         mainButton.setOnClickListener(buttonListener);
+        monsterButton.setOnClickListener(buttonListener);
+
+
+        //Temp
+        currentMonster = new Monster(30,30,null,"bluemonster");
+
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
@@ -50,6 +64,24 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(context, StatsActivity.class));
                     break;
                 case R.id.b_main:
+                    break;
+                case R.id.b_monster:
+                    ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
+
+                    monsterButton.setImageResource(R.drawable.bluemonster);
+                    TextView hp = (TextView) findViewById(R.id.hp);
+                    currentMonster.damageMonster(1);
+
+                    hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
+                    /*if(mon==0) {
+                        monsterButton.setImageResource(R.drawable.bluemonster);
+                        mon++;
+                    }
+                    else {
+
+                        monsterButton.setImageResource(R.drawable.mike);
+                        mon=0;
+                    }*/
                     break;
             }
         }

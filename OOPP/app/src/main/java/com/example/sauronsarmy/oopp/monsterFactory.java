@@ -15,9 +15,9 @@ class monsterFactory {
 
         switch (type){
 
-            case FOREST: return new Monster(hp, gold,null );
-            case MOUNTAIN:return new Monster(hp, gold,null );
-            case VOLCANO:return new Monster(hp, gold,null );
+            case FOREST: return new Monster(hp, gold,null,null );
+            case MOUNTAIN:return new Monster(hp, gold,null,null );
+            case VOLCANO:return new Monster(hp, gold,null,null );
             default: return null;
 
         }
