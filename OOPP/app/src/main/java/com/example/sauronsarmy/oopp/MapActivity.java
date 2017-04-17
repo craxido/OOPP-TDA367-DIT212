@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class MapActivity extends AppCompatActivity {
 
@@ -28,6 +29,10 @@ public class MapActivity extends AppCompatActivity {
         mapButton.setOnClickListener(buttonListener);
         statsButton.setOnClickListener(buttonListener);
         mainButton.setOnClickListener(buttonListener);
+
+        /* Get the map (there is only one map). */
+        Map map = Map.getInstance();
+
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
