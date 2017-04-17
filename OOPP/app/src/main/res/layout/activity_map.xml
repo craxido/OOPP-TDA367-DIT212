@@ -19,43 +19,40 @@
     <include layout="@layout/bottom_bar"
         android:id="@+id/include" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="47dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginStart="36dp"
+    <ImageButton
+        android:id="@+id/b_area1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:visibility="invisible"
+        android:layout_marginBottom="31dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
         android:layout_above="@+id/include"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:visibility="invisible"
-        />
+        android:layout_alignParentStart="true" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button"
-        android:layout_alignParentEnd="true"
+    <ImageButton
+        android:id="@+id/b_area2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginRight="57dp"
+        android:visibility="invisible"
+        android:layout_marginTop="63dp"
+        android:layout_below="@+id/b_area3"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="111dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginRight="53dp"
-        android:visibility="invisible"
-         />
+        android:layout_alignParentEnd="true" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="68dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button"
+    <ImageButton
+        android:id="@+id/b_area3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="51dp"
         android:visibility="invisible"
-        />
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/b_area1"
+        android:layout_alignStart="@+id/b_area1" />
 
 </RelativeLayout>
