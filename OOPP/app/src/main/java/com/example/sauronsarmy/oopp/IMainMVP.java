@@ -11,7 +11,7 @@ public interface IMainMVP {
 
     /* Presenter -> View */
     interface RequiredViewOps {
-        //methods to be called from View
+        // methods to be called from View
     }
 
     /* View -> Presenter */
@@ -29,4 +29,3 @@ public interface IMainMVP {
         // model methods
     }
 }
-
