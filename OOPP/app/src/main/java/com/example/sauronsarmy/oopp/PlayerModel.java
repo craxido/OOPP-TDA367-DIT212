@@ -11,7 +11,7 @@ class PlayerModel implements  PlayerModelInterface{
     private static final PlayerModel ourInstance = new PlayerModel();
 
     private int damage;
-    private double damageMutiplier;
+    private double damageMultiplier;
     private int money;
     private int moneyPerSecond;
     // This must be assigned when exiting the app.
@@ -27,10 +27,10 @@ class PlayerModel implements  PlayerModelInterface{
     else just gets to talk with this instance.
      */
     private PlayerModel() {
-        damage          = 10;
-        damageMutiplier = 1;
-        money           = 0;
-        moneyPerSecond  = 0;
+        damage           = 10;
+        damageMultiplier = 1.0;
+        money            = 0;
+        moneyPerSecond   = 0;
     }
 
     public long getLastLogOn() {
@@ -42,11 +42,11 @@ class PlayerModel implements  PlayerModelInterface{
     }
 
     public double getDamageMultiplier() {
-        return damageMutiplier;
+        return damageMultiplier;
     }
 
     public void setDamageMultiplier(double damageMultiplier) {
-        this.damageMutiplier = damageMultiplier;
+        this.damageMultiplier = damageMultiplier;
     }
 
     public int getDamage() {
