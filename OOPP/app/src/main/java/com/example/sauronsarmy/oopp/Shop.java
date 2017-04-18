@@ -7,7 +7,7 @@ package com.example.sauronsarmy.oopp;
 class Shop {
 
     // Variables
-    private PlayerModel player;
+    private PlayerModelInterface player;
     private Upgrade damageUpgrade;
     private Upgrade multiplierUpgrade;
     private int damageUpgradeCounter = 1;

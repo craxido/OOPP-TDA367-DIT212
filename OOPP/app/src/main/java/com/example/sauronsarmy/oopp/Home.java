@@ -6,7 +6,7 @@ package com.example.sauronsarmy.oopp;
 
 class Home{
 
-    private PlayerModel player;
+    private PlayerModelInterface player;
     private Upgrade oilPumpUpgrade;
     private int oilPumpUpgradeCounter = 1;
 
