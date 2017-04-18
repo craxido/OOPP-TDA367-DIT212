@@ -6,8 +6,6 @@ package com.example.sauronsarmy.oopp;
 
 public interface PlayerModelInterface {
 
-    PlayerModel getInstance();
-
     void setLastLogOn(long newValue);
     long getLastLogOn();
 

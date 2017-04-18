@@ -9,7 +9,7 @@ public class StatsPresenter implements StatsPresenterInterface {
     private PlayerModelInterface playerModel;
 
     StatsPresenter() {
-        playerModel = playerModel.getInstance();
+        playerModel = PlayerModel.getInstance();
     }
 
     @Override

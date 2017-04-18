@@ -17,11 +17,15 @@ class PlayerModel implements  PlayerModelInterface{
     // This must be assigned when exiting the app.
     private long lastLogOn;
 
-    @Override
-    static PlayerModel getInstance() {
+    public static PlayerModel getInstance() {
         return ourInstance;
     }
 
+    /*
+    Constructor is private since this implemented as a singelton.
+    Only the model itself is allowed to create a new instance. Everyone
+    else just gets to talk with this instance.
+     */
     private PlayerModel() {
         damage          = 10;
         damageMutiplier = 1;
@@ -41,8 +45,8 @@ class PlayerModel implements  PlayerModelInterface{
         return damageMutiplier;
     }
 
-    public void setDamageMultiplier(double damageMutiplier) {
-        this.damageMutiplier = damageMutiplier;
+    public void setDamageMultiplier(double damageMultiplier) {
+        this.damageMutiplier = damageMultiplier;
     }
 
     public int getDamage() {
