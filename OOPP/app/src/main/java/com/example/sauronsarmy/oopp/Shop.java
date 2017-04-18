@@ -38,7 +38,7 @@ class Shop {
      */
     protected void buyMultiplierUpgrade(){
         player.setMoney(player.getMoney() - multiplierUpgrade.getCurrentCost());
-        player.setDamageMutiplier(player.getDamageMutiplier() + multiplierUpgrade.getCurrentStat());
+        player.setDamageMultiplier(player.getDamageMultiplier() + multiplierUpgrade.getCurrentStat());
 
         multiplierUpgradeCounter++;
         multiplierUpgrade.updateStat(multiplierUpgradeCounter);
