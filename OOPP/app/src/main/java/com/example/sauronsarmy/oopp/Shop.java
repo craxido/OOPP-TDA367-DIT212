@@ -7,14 +7,14 @@ package com.example.sauronsarmy.oopp;
 class Shop {
 
     // Variables
-    private Player player;
+    private PlayerModel player;
     private Upgrade damageUpgrade;
     private Upgrade multiplierUpgrade;
     private int damageUpgradeCounter = 1;
     private int multiplierUpgradeCounter = 1;
 
     protected Shop(){
-        this.player = Player.getInstance();
+        this.player = PlayerModel.getInstance();
         this.damageUpgrade = new Upgrade(5, 5);
         this.multiplierUpgrade = new Upgrade(0.1, 5);
     }

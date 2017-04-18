@@ -6,12 +6,12 @@ package com.example.sauronsarmy.oopp;
 
 class Home{
 
-    private Player player;
+    private PlayerModel player;
     private Upgrade oilPumpUpgrade;
     private int oilPumpUpgradeCounter = 1;
 
     protected Home(){
-        this.player = Player.getInstance();
+        this.player = PlayerModel.getInstance();
         this.oilPumpUpgrade = new Upgrade(2, 5);
     }
 

@@ -1,0 +1,16 @@
+package com.example.sauronsarmy.oopp;
+
+/**
+ * Created by Erik on 13/04/17.
+ */
+
+interface StatsPresenterInterface {
+
+    int getPlayerDamage();
+
+    double getPlayerDamageMultiplier();
+
+    int getMoneyAmount();
+
+    int getMoneyPerSecond();
+}
