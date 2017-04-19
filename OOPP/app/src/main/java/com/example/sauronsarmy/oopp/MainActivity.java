@@ -2,9 +2,6 @@ package com.example.sauronsarmy.oopp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.DrawableContainer;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     int mon=0;
     int health=30;
     Monster currentMonster;
+    monsterFactory monFac = new monsterFactory();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +39,15 @@ public class MainActivity extends AppCompatActivity {
         monsterButton.setOnClickListener(buttonListener);
 
 
+        //currentMonster = main.getCurrentMonster;
+
         //Temp
 
-        currentMonster = new Monster(30,30,null,"bluemonster",R.drawable.bluemonster);
+        currentMonster = monFac.getMonster(30,30,areaType.FOREST);
+
+        TextView hp = (TextView) findViewById(R.id.hp);
+        hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
+        monsterButton.setImageResource(currentMonster.getImageRef());
 
     }
 
@@ -76,17 +80,17 @@ public class MainActivity extends AppCompatActivity {
 
                         p.setMoney(p.getMoney()+currentMonster.getGold());
                         if(mon==0) {
-                            currentMonster=new Monster(currentMonster.getMaxhealth()*1.5,currentMonster.getGold()*2,null,null,R.drawable.bluemonster);
+                            currentMonster=monFac.getMonster(currentMonster.getMaxhealth(),currentMonster.getGold(),areaType.MOUNTAIN);
                             mon++;
                         }
                         else {
-                            currentMonster=new Monster(currentMonster.getMaxhealth()*1.5,currentMonster.getGold()*2,null,null,R.drawable.mike);
+                            currentMonster=monFac.getMonster(currentMonster.getMaxhealth(),currentMonster.getGold(),areaType.FOREST);
                             mon=0;
                         }
                     }
 
                     hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
-                    monsterButton.setImageResource(currentMonster.getDraw());
+                    monsterButton.setImageResource(currentMonster.getImageRef());
                     break;
             }
         }

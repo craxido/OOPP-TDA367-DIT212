@@ -13,43 +13,38 @@ class Monster {
     private double health;
     private double maxhealth;
     private int gold;
-    private Image img;
-    private String bild;
-    private int draw;
+    private int imageref;
 
 
-    public Monster(double health,int gold,Image img,String bild,int draw){
+    public Monster(double health,int gold,int imageref){
         this.maxhealth = health;
         this.health = health;
         this.gold = gold;
-        this.img = img;
-        this.bild = bild;
-        this.draw = draw;
-    }
-    //damage a monster, return true if dead
-    public boolean damageMonster(double damage){
-
-        this.health -= damage;
-        return this.health <= 0;
-
+        this.imageref = imageref;
     }
 
     public double getHealth(){
         return this.health;
     }
 
-    public double getMaxhealth(){return this.maxhealth;}
+    public double getMaxhealth(){
+        return this.maxhealth;
+    }
 
-    public String getBild(){return this.bild;}
 
     public int getGold(){
         return this.gold;
     }
 
-    public int getDraw(){return this.draw;}
-
-    public Image getImg(){
-
-        return this.img;
+    public int getImageRef(){
+        return this.imageref;
     }
+
+    //damage a monster, return true if dead
+    public boolean damageMonster(double damage){
+        this.health -= damage;
+        return this.health <= 0;
+    }
+
+
 }
