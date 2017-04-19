@@ -7,16 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class MainActivity extends AppCompatActivity implements MainMVPInterface.RequiredViewOps{
+public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps {
 
-    private MainMVPInterface mainPresenter;
+    private MainMVPInterface.PresenterOps mainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //mainPresenter = new MainPresenter(mainPresenter);
+        mainPresenter = new MainPresenter(this);
 
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the

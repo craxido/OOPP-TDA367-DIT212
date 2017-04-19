@@ -6,20 +6,20 @@ import java.lang.ref.WeakReference;
  * Created by Jonatan on 2017-04-17.
  */
 
-public class MainPresenter implements MainMVPInterface.RequiredPresenterOps, MainMVPInterface.PresenterOps {
+class MainPresenter implements MainMVPInterface.PresenterOps {
 
     // Main Model and View references
-    WeakReference<MainMVPInterface.RequiredViewOps> mView;
+    WeakReference<MainMVPInterface.ViewOps> mView;
     private MainMVPInterface.ModelOps mModel;
     // Configuration state
     private boolean mIsChanging;
 
-    public MainPresenter(MainMVPInterface.RequiredViewOps mView) {
+    public MainPresenter(MainMVPInterface.ViewOps mView) {
         this.mView = new WeakReference<>(mView);
     }
 
     // A configuration changed
-    public void onConfigChange(MainMVPInterface.RequiredViewOps view) {
+    public void onConfigChange(MainMVPInterface.ViewOps view) {
         mView = new WeakReference<>(view);
     }
 }

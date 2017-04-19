@@ -7,25 +7,17 @@ package com.example.sauronsarmy.oopp;
 /* "Umbrella" class containing the interfaces
  * used to communicate between MVP layers.
  */
-public interface MainMVPInterface {
+interface MainMVPInterface {
 
-    /* Presenter -> View */
-    interface RequiredViewOps {
+    interface ViewOps {
         // methods to be called from View
     }
 
-    /* View -> Presenter */
     interface PresenterOps{
         // methods to be called from View
     }
 
-    /* Model -> Presenter */
-    interface RequiredPresenterOps {
-        // methods to be called from Model
-    }
-
-    /* Presenter -> Model */
     interface ModelOps {
-        // model methods
+        // methods to be called from Model
     }
 }
