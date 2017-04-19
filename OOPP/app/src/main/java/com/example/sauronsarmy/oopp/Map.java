@@ -7,10 +7,16 @@ import android.media.Image;
  */
 
 class Map {
+    private static final Map mapInstance = new Map();
+
     private Image img;
     private Area[] areas;
 
-    public Map(Image img, Area[] areas) {
+    static Map getInstance() {
+        return mapInstance;
+    }
+
+    public Map() {
         this.img = img;
         this.areas = areas;
     }

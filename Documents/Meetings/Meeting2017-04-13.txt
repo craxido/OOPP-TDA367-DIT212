@@ -1,0 +1,54 @@
+Meeting Agenda
+Date: 2017-04-13
+Chair: Jonatan Källman 
+Participants: Jonatan Källman, Filip Labe, Erik Sjöström, Sarosh Nasir
+1. Objectives (5 min). Resolve any issues preventing the team to
+continue.
+
+No issues are preventing us from moving forward as it is now.
+
+2. Reports (15 min) from previous meeting
+
+We have not done a lot since the previous meeting as we are currently on a break.
+Main things that have been done are new issues that have been posted to git.
+We are going to start implementing MVP (model - view - presenter) into our program, and issues regarding that have been created.
+We discussed creating tests as well as starting with the SDD and we came to the conclusion that we should 
+finish our code base before we start with these.
+
+3. Discussion items (35 min)
+- Discuss issues from 1 and 2, possibly new or more general issues (very short notes and/or
+keywords)
+
+Main things:
+Connect activites to files (Presenters to views).
+Starting with MVP implementation (interfaces and such).
+Start with tests.
+Start briefly with SDD.
+
+4. Outcomes and assignments (5 min)
+- Outcomes from 3). I.e. write down what's decided and why it was decided? Sync with other
+documentation (add terms to wordbook)
+- From outcomes, 1), 2) and 3) (re)assign each group member issues to solve.
+
+As stated earlier, we have posted issues on Git regarding the first two discussion items. 
+Tests and SDD will be added as well in the near future.
+
+Issues are assigned on Git on the go.
+
+5. Wrap up
+- Write down unresolved issues for next meeting.
+- Time and location for next meeting
+
+Issues listed on Git:
+Implement interface for MVP: Stats and StatsActivity.
+Create Presenter (main) class & implement interface for MVP: Presenter and MainActivity.
+Implement interface for MVP: Home and HomeActivity.
+Implement bottom bar as a fragment.
+Implement interface for MVP: Shop and ShopActivity.
+Implement interface for MVP: Map and MapActivity.
+Map layout to display map.
+
+General issues: 
+See discussion items.
+
+Our next meeting: 2017-04-13

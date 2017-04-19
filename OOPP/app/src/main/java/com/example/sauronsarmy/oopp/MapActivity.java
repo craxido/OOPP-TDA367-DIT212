@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class MapActivity extends AppCompatActivity {
 
@@ -28,6 +29,18 @@ public class MapActivity extends AppCompatActivity {
         mapButton.setOnClickListener(buttonListener);
         statsButton.setOnClickListener(buttonListener);
         mainButton.setOnClickListener(buttonListener);
+
+        /* Area buttons. Clicking on an area should send the user to that area of levels */
+        ImageButton area1Button  = (ImageButton) findViewById(R.id.b_area1);
+        ImageButton area2Button  = (ImageButton) findViewById(R.id.b_area2);
+        ImageButton area3Button  = (ImageButton) findViewById(R.id.b_area3);
+        area1Button.setOnClickListener(buttonListener);
+        area2Button.setOnClickListener(buttonListener);
+        area3Button.setOnClickListener(buttonListener);
+
+        /* Get the map (there is only one map). */
+        Map map = Map.getInstance();
+
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
