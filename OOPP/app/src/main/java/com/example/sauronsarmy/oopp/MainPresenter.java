@@ -19,7 +19,13 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
     }
 
     // A configuration changed
+    @Override
     public void onConfigChange(MainMVPInterface.ViewOps view) {
         mView = new WeakReference<>(view);
     }
+
+    @Override
+    public void onDestroy(boolean isChangingConfig){} //To be implemented
+    @Override
+    public void onError(String msg){} //To be implemented
 }

@@ -22,4 +22,7 @@ class MainModel implements MainMVPInterface.ModelOps {
         //Unsure what values are needed if any.
     }
 
+    @Override
+    public void onDestroy() {} //To be implemented
+
 }

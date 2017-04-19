@@ -12,6 +12,11 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     private MainMVPInterface.PresenterOps mainPresenter;
 
     @Override
+    public void showAlert(String msg){}//To be implemented
+    @Override
+    public void showToast(String msg){}//To be implemented
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

@@ -10,14 +10,20 @@ package com.example.sauronsarmy.oopp;
 interface MainMVPInterface {
 
     interface ViewOps {
+        void showToast(String msg);
+        void showAlert(String msg);
         // methods to be called from View
     }
 
     interface PresenterOps{
-        // methods to be called from View
+        void onConfigChange(ViewOps view);
+        void onDestroy(boolean isChangingConfig);
+        void onError(String errorMsg);
+        // methods to be called from Presenter
     }
 
     interface ModelOps {
+        void onDestroy();
         // methods to be called from Model
     }
 }
