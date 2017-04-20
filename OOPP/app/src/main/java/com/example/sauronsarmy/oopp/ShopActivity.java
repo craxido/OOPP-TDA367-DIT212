@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
@@ -37,31 +38,54 @@ public class ShopActivity extends AppCompatActivity {
 
         /** Objects in the damage upgrade button*/
         ImageButton dmgUpgradeButton = (ImageButton) findViewById(R.id.dmgUpgradeButton);
-        EditText dmgCounter = (EditText) findViewById(R.id.dmgUpgradeCounter);
-        EditText dmgCost = (EditText) findViewById(R.id.dmgUpgradeCost);
 
         /** objects in the multiplier upgrade button */
         ImageButton multiplierUpgradeButton = (ImageButton) findViewById(R.id.mltUpgradeButton);
-        EditText multiplierCounter = (EditText) findViewById(R.id.mltUpgradeCounter);
-        EditText multiplierCost = (EditText) findViewById(R.id.mltUpgradeCost);
-
-
-        /** set the values to the view from the upgrade object*/
-        /* DAMAGE UPGRADE */
-        Upgrade damageUpgrade = shop.getDamageUpgrade();
-      //  ((EditText) findViewById(R.id.dmgUpgradeCounter)).setText(shop.getDamageUpgradeCounter() + "");
-        dmgCost.setText(damageUpgrade.getCurrentCost() + "");
-        dmgCounter.setText(damageUpgrade.getCurrentCost() + " g");
-
-
-        /* MULTIPLIER UPGRADE */
-        Upgrade multiplierUpgrade = shop.getMultiplierUpgrade();
-        multiplierCounter.setText(shop.getMultiplierUpgradeCounter() + "");
-        multiplierCost.setText(multiplierUpgrade.getCurrentCost() + " g ");
 
         /* ADD LISTENERS TO BUTTONS */
         dmgUpgradeButton.setOnClickListener(buttonListener);
         multiplierUpgradeButton.setOnClickListener(buttonListener);
+
+        updateDamageInfo();
+        updateMultiplierInfo();
+
+    }
+
+    void updateDamageInfo(){
+        /** TextView objects */
+        /* DAMAGE */
+        TextView dmgCounter = (TextView) findViewById(R.id.dmgUpgradeCounter);
+        TextView dmgCost = (TextView) findViewById(R.id.dmgUpgradeCost);
+
+        /** Set the values to the view from the upgrade object
+         *  Using String tmp to set text, otherwise it complains about Android resource
+         *  i don't know how to do that yet.
+         * */
+        /* DAMAGE UPGRADE */
+        Upgrade damageUpgrade = shop.getDamageUpgrade();
+        String tmp = damageUpgrade.getCurrentCost() + " g";
+        dmgCost.setText(tmp);
+        tmp = shop.getDamageUpgradeCounter() + "";
+        dmgCounter.setText(tmp);
+
+    }
+
+    void updateMultiplierInfo(){
+        /** TextView objects */
+        /* MULTIPLIER */
+        TextView multiplierCounter = (TextView) findViewById(R.id.mltUpgradeCounter);
+        TextView multiplierCost = (TextView) findViewById(R.id.mltUpgradeCost);
+
+        /** Set the values to the view from the upgrade object
+         *  Using String tmp to set text, otherwise it complains about Android resource
+         *  i don't know how to do that yet.
+         * */
+        /* MULTIPLIER UPGRADE */
+        Upgrade multiplierUpgrade = shop.getMultiplierUpgrade();
+        String tmp = shop.getMultiplierUpgradeCounter() + "";
+        multiplierCounter.setText(tmp);
+        tmp = multiplierUpgrade.getCurrentCost() + " g";
+        multiplierCost.setText(tmp);
 
 
     }
@@ -87,10 +111,14 @@ public class ShopActivity extends AppCompatActivity {
                     startActivity(new Intent(context, MainActivity.class));
                     break;
                 case R.id.dmgUpgradeButton:
-                    shop.buyDamageUpgrade();
+                    if (shop.buyDamageUpgrade()){
+                        updateDamageInfo();
+                    }
                     break;
                 case R.id.mltUpgradeButton:
-                    shop.buyMultiplierUpgrade();
+                    if (shop.buyMultiplierUpgrade()){
+                        updateMultiplierInfo();
+                    }
                     break;
             }
         }

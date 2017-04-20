@@ -21,26 +21,36 @@ class Shop {
      *  adds to player damage, and applies the cost
      *  updates how many upgrades has been done, and updates the upgrade
      */
-    protected void buyDamageUpgrade(){
-        player.setMoney(player.getMoney() - damageUpgrade.getCurrentCost());
-        player.setDamage(player.getDamage() + (int) damageUpgrade.getCurrentStat());
+    protected boolean buyDamageUpgrade(){
+        if(player.getMoney() >= damageUpgrade.getCurrentCost()) {
+            player.setMoney(player.getMoney() - damageUpgrade.getCurrentCost());
+            player.setDamage(player.getDamage() + (int) damageUpgrade.getCurrentStat());
 
-        damageUpgradeCounter++;
-        damageUpgrade.updateStat(damageUpgradeCounter);
-        damageUpgrade.updateCost(damageUpgradeCounter);
+            damageUpgradeCounter++;
+            damageUpgrade.updateStat(damageUpgradeCounter);
+            damageUpgrade.updateCost(damageUpgradeCounter);
+            return true;
+        } else {
+            return false;
+        }
 
     }
 
     /**
      * Similar to above, except this upgrade is a multiplier.
      */
-    protected void buyMultiplierUpgrade(){
-        player.setMoney(player.getMoney() - multiplierUpgrade.getCurrentCost());
-        player.setDamageMutiplier(player.getDamageMutiplier() + multiplierUpgrade.getCurrentStat());
+    protected boolean buyMultiplierUpgrade(){
+        if (player.getMoney() >= multiplierUpgrade.getCurrentCost()) {
+            player.setMoney(player.getMoney() - multiplierUpgrade.getCurrentCost());
+            player.setDamageMutiplier(player.getDamageMutiplier() + multiplierUpgrade.getCurrentStat());
 
-        multiplierUpgradeCounter++;
-        multiplierUpgrade.updateStat(multiplierUpgradeCounter);
-        multiplierUpgrade.updateCost(multiplierUpgradeCounter);
+            multiplierUpgradeCounter++;
+            multiplierUpgrade.updateStat(multiplierUpgradeCounter);
+            multiplierUpgrade.updateCost(multiplierUpgradeCounter);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
