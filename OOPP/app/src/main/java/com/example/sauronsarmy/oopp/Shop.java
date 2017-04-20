@@ -6,18 +6,16 @@ package com.example.sauronsarmy.oopp;
 
 class Shop {
 
+    private static final Shop shopInstance = new Shop();
+
     // Variables
-    private Player player;
-    private Upgrade damageUpgrade;
-    private Upgrade multiplierUpgrade;
+    private Player player = Player.getInstance();
+    private Upgrade damageUpgrade = new Upgrade(5,5);
+    private Upgrade multiplierUpgrade = new Upgrade(0.1,5);
     private int damageUpgradeCounter = 1;
     private int multiplierUpgradeCounter = 1;
 
-    protected Shop(){
-        this.player = Player.getInstance();
-        this.damageUpgrade = new Upgrade(5, 5);
-        this.multiplierUpgrade = new Upgrade(0.1, 5);
-    }
+    static Shop getInstance() { return shopInstance; }
 
     /** Buy damage upgrade for player.
      *  adds to player damage, and applies the cost

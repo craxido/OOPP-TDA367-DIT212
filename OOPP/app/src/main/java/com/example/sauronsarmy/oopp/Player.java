@@ -26,7 +26,7 @@ class Player {
     private Player() {
         damage          = 10;
         damageMutiplier = 1;
-        money           = 0;
+        money           = 10;
         moneyPerSecond  = 0;
     }
 
