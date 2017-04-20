@@ -17,29 +17,13 @@
         android:padding="0dp"
         app:srcCompat="@drawable/shopbg2" />
 
-    <TextView
-        android:id="@+id/ShopTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:inputType="none"
-        android:singleLine="false"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        tools:text="SHOP" />
-
     <RelativeLayout
         android:id="@+id/DamageUpgradeLayout"
         android:layout_width="280dp"
         android:layout_height="100dp"
         android:layout_above="@+id/include2"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="143dp">
+        android:layout_marginBottom="200dp">
 
         <ImageButton
             android:id="@+id/dmgUpgradeButton"
@@ -144,7 +128,7 @@
         android:layout_height="100dp"
         android:layout_above="@+id/include2"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="43dp">
+        android:layout_marginBottom="100dp">
 
         <ImageButton
             android:id="@+id/mltUpgradeButton"
@@ -247,5 +231,18 @@
     <include
         android:id="@+id/include2"
         layout="@layout/bottom_bar" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Player Upgrades"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:layout_marginTop="47dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
