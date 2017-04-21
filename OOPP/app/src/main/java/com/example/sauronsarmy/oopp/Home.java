@@ -8,16 +8,26 @@ class Home{
     private static final Home homeInstance = new Home();
 
     private Player player = Player.getInstance();
-    private Upgrade oilPumpUpgrade = new Upgrade(2, 5);
+    private Upgrade oilPumpUpgrade = new Upgrade(0.5, 10);
     private int oilPumpUpgradeCounter = 1;
 
-    protected void buyOilPumpUpgrade(){
-        player.setMoney(player.getMoney() - oilPumpUpgrade.getCurrentCost());
-        player.setMoneyPerSecond(player.getMoneyPerSecond() + (int) oilPumpUpgrade.getCurrentStat());
+    static Home getInstance() {
+        return homeInstance;
+    }
 
-        oilPumpUpgradeCounter++;
-        oilPumpUpgrade.updateStat(oilPumpUpgradeCounter);
-        oilPumpUpgrade.updateCost(oilPumpUpgradeCounter);
+    protected boolean buyOilPumpUpgrade(){
+        if (player.getMoney() >= oilPumpUpgrade.getCost()) {
+            player.setMoney(player.getMoney() - oilPumpUpgrade.getCost());
+            player.setMoneyPerSecond(player.getMoneyPerSecond() + (int) oilPumpUpgrade.getStat());
+
+            oilPumpUpgradeCounter++;
+            oilPumpUpgrade.updateStat(oilPumpUpgradeCounter);
+            oilPumpUpgrade.updateCost(oilPumpUpgradeCounter);
+
+            return true;
+        } else {
+            return false;
+        }
 
     }
 
