@@ -5,15 +5,11 @@ package com.example.sauronsarmy.oopp;
  */
 
 class Home{
+    private static final Home homeInstance = new Home();
 
-    private Player player;
-    private Upgrade oilPumpUpgrade;
+    private Player player = Player.getInstance();
+    private Upgrade oilPumpUpgrade = new Upgrade(2, 5);
     private int oilPumpUpgradeCounter = 1;
-
-    protected Home(){
-        this.player = Player.getInstance();
-        this.oilPumpUpgrade = new Upgrade(2, 5);
-    }
 
     protected void buyOilPumpUpgrade(){
         player.setMoney(player.getMoney() - oilPumpUpgrade.getCurrentCost());
