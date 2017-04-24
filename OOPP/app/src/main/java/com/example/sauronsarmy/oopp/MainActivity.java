@@ -8,17 +8,18 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps {
     int mon=0;
     int health=30;
     Monster currentMonster;
     monsterFactory monFac = new monsterFactory();
+    private MainMVPInterface.PresenterOps mainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mainPresenter = new MainPresenter(this);
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
         appropriate activity.
