@@ -16,7 +16,7 @@ interface MapMVPInterface {
     }
 
     interface PresenterOps{
-        Image  getBackground();
+        int    getBackgroundRef();
         Area[] getAreas();
         Area   getArea();
         void onError(String errorMsg);
@@ -24,10 +24,10 @@ interface MapMVPInterface {
     }
 
     interface ModelOps {
-        Area  getArea();
-        void  setArea(Area area);
-        Image getBackground();
-        void  setBackground(Image img);
+        Area  getArea(int index);
+        void  setArea(Area area, int index);
+        int   getBackgroundRef();
+        void  setBackgroundRef(int bgRef);
         void  onDestroy();
         // methods to be called from Model
     }
