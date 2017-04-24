@@ -7,7 +7,7 @@ package com.example.sauronsarmy.oopp;
 class Home{
     private static final Home homeInstance = new Home();
 
-    private Player player = Player.getInstance();
+    private PlayerModel player = PlayerModel.getInstance();
     private Upgrade oilPumpUpgrade = new Upgrade(0.5, 10);
     private int oilPumpUpgradeCounter = 1;
 

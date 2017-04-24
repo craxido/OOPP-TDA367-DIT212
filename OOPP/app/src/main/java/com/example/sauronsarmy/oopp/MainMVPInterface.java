@@ -16,6 +16,9 @@ interface MainMVPInterface {
          void onConfigChange(ViewOps view);
          void onDestroy(boolean isChangingConfig);
          void onError(String errorMsg);
+
+        void monsterClicked();
+        public Monster getCurrentMonster();
          // methods to be called from Presenter
         }
 
@@ -23,4 +26,6 @@ interface MainMVPInterface {
          void onDestroy();
        // methods to be called from Model
     }
+
+
 }

@@ -10,6 +10,7 @@ class Area {
     private Image img;
     private areaType areaType;
     private Level[] levels;
+    private Level currentLevel;
 
     public Area(Image img, areaType area, Level[] levels){
         this.img=img;
@@ -33,4 +34,12 @@ class Area {
         return levels;
     }
 
+    public Level getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public void setCurrencLevel(Level level){
+
+        this.currentLevel = level;
+    }
 }
