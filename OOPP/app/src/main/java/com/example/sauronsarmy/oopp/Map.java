@@ -1,7 +1,5 @@
 package com.example.sauronsarmy.oopp;
 
-import android.media.Image;
-
 /**
  * Created by Jonatan on 2017-04-05.
  */
