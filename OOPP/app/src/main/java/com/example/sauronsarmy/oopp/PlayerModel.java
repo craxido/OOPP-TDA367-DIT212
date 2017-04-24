@@ -1,16 +1,14 @@
 package com.example.sauronsarmy.oopp;
 
-import java.util.Date;
-
 /**
  * Created by Erik on 04/04/17.
- * Implemented the Player class using the singleton
+ * Implemented the PlayerModel class using the singleton
  * pattern, since there should only be one instance
  * of a player.
  */
 
-class Player {
-    private static final Player ourInstance = new Player();
+class PlayerModel implements  PlayerModelInterface{
+    private static final PlayerModel ourInstance = new PlayerModel();
 
     private int damage;
     private double damageMutiplier;
@@ -19,11 +17,16 @@ class Player {
     // This must be assigned when exiting the app.
     private long lastLogOn;
 
-    static Player getInstance() {
+    public static PlayerModel getInstance() {
         return ourInstance;
     }
 
-    private Player() {
+    /*
+    Constructor is private since this implemented as a singelton.
+    Only the model itself is allowed to create a new instance. Everyone
+    else just gets to talk with this instance.
+     */
+    private PlayerModel() {
         damage          = 10;
         damageMutiplier = 1;
         money           = 10;
@@ -38,12 +41,12 @@ class Player {
         this.lastLogOn = lastLogOn;
     }
 
-    public double getDamageMutiplier() {
+    public double getDamageMultiplier() {
         return damageMutiplier;
     }
 
-    public void setDamageMutiplier(double damageMutiplier) {
-        this.damageMutiplier = damageMutiplier;
+    public void setDamageMultiplier(double damageMultiplier) {
+        this.damageMutiplier = damageMultiplier;
     }
 
     public int getDamage() {
