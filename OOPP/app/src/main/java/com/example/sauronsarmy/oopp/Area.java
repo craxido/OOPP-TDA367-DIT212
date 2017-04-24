@@ -7,6 +7,10 @@ import android.media.Image;
  */
 
 class Area {
+    private static final Area area1Instance = new Area(int imgref, enum areaType.MOUNTAIN, Level[] area1Levels);
+    private static final Area area2Instance = new Area(int imgref, enum areaType.FOREST, Level[] area2Levels);
+    private static final Area area3Instance = new Area(int imgref, enum areaType.VOLCANO, Level[] area3Levels);
+
     private int imgRef;
     private areaType areaType;
     private Level[] levels;

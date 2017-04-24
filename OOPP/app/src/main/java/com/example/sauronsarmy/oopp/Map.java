@@ -13,7 +13,7 @@ class Map implements MapMVPInterface.ModelOps {
         return mapInstance;
     }
 
-    public Map(int bgRef, Area[] areas) {
+    private Map(int bgRef, Area[] areas) {
         this.bgRef = bgRef;
         this.areas = areas;
     }
