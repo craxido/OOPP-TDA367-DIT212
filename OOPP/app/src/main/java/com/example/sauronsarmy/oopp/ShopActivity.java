@@ -13,7 +13,7 @@ import org.w3c.dom.Text;
 
 public class ShopActivity extends AppCompatActivity {
 
-    Shop shop = Shop.getInstance();
+    Shop shop;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +36,11 @@ public class ShopActivity extends AppCompatActivity {
 
         shop = Shop.getInstance();
 
-        /** Objects in the damage upgrade button*/
+        /**
+         * Get upgrade buttons
+         * Add listeners to buttons
+         */
         ImageButton dmgUpgradeButton = (ImageButton) findViewById(R.id.dmgUpgradeButton);
-
-        /** objects in the multiplier upgrade button */
         ImageButton multiplierUpgradeButton = (ImageButton) findViewById(R.id.mltUpgradeButton);
 
         /* ADD LISTENERS TO BUTTONS */
@@ -63,7 +64,7 @@ public class ShopActivity extends AppCompatActivity {
          * */
         /* DAMAGE UPGRADE */
         Upgrade damageUpgrade = shop.getDamageUpgrade();
-        String tmp = damageUpgrade.getCurrentCost() + " g";
+        String tmp = damageUpgrade.getCost() + " g";
         dmgCost.setText(tmp);
         tmp = shop.getDamageUpgradeCounter() + "";
         dmgCounter.setText(tmp);
@@ -84,7 +85,7 @@ public class ShopActivity extends AppCompatActivity {
         Upgrade multiplierUpgrade = shop.getMultiplierUpgrade();
         String tmp = shop.getMultiplierUpgradeCounter() + "";
         multiplierCounter.setText(tmp);
-        tmp = multiplierUpgrade.getCurrentCost() + " g";
+        tmp = multiplierUpgrade.getCost() + " g";
         multiplierCost.setText(tmp);
 
 

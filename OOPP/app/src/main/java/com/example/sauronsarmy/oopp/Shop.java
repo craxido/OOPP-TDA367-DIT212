@@ -22,9 +22,9 @@ class Shop {
      *  updates how many upgrades has been done, and updates the upgrade
      */
     protected boolean buyDamageUpgrade(){
-        if(player.getMoney() >= damageUpgrade.getCurrentCost()) {
-            player.setMoney(player.getMoney() - damageUpgrade.getCurrentCost());
-            player.setDamage(player.getDamage() + (int) damageUpgrade.getCurrentStat());
+        if(player.getMoney() >= damageUpgrade.getCost()) {
+            player.setMoney(player.getMoney() - damageUpgrade.getCost());
+            player.setDamage(player.getDamage() + (int) damageUpgrade.getStat());
 
             damageUpgradeCounter++;
             damageUpgrade.updateStat(damageUpgradeCounter);
@@ -40,9 +40,9 @@ class Shop {
      * Similar to above, except this upgrade is a multiplier.
      */
     protected boolean buyMultiplierUpgrade(){
-        if (player.getMoney() >= multiplierUpgrade.getCurrentCost()) {
-            player.setMoney(player.getMoney() - multiplierUpgrade.getCurrentCost());
-            player.setDamageMutiplier(player.getDamageMutiplier() + multiplierUpgrade.getCurrentStat());
+        if (player.getMoney() >= multiplierUpgrade.getCost()) {
+            player.setMoney(player.getMoney() - multiplierUpgrade.getCost());
+            player.setDamageMutiplier(player.getDamageMutiplier() + multiplierUpgrade.getStat());
 
             multiplierUpgradeCounter++;
             multiplierUpgrade.updateStat(multiplierUpgradeCounter);
