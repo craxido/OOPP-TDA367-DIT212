@@ -6,8 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import static android.R.attr.format;
 
 public class HomeActivity extends AppCompatActivity {
+
+    Home home;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +33,48 @@ public class HomeActivity extends AppCompatActivity {
         mapButton.setOnClickListener(buttonListener);
         statsButton.setOnClickListener(buttonListener);
         mainButton.setOnClickListener(buttonListener);
+
+        home = Home.getInstance();
+
+        /**
+         * Get upgrade buttons
+         * Add listeners to buttons
+         */
+        ImageButton oilUpgradeButton = (ImageButton) findViewById(R.id.oilUpgradeButton);
+        oilUpgradeButton.setOnClickListener(buttonListener);
+
+        updateOilInfo();
+
+    }
+
+    void updateOilInfo(){
+        /** TextView objects */
+        TextView oilUpgradeCounter = (TextView) findViewById(R.id.oilUpgradeCounter);
+        TextView oilUpgradeCost = (TextView) findViewById(R.id.oilUpgradeCost);
+        TextView currentMps = (TextView) findViewById(R.id.currentMps);
+        TextView newMps = (TextView) findViewById(R.id.newMps);
+
+
+        /** Set the values to the view from the upgrade object
+         *  Using String tmp to set text, otherwise it complains about Android resource
+         *  i don't know how to do that yet.
+         * */
+        Upgrade oilPumpUpgrade = home.getOilPumpUpgrade();
+
+        String tmp = home.getOilPumpUpgradeCounter() + "";
+        oilUpgradeCounter.setText(tmp);
+
+        tmp = oilPumpUpgrade.getCost() + " g";
+        oilUpgradeCost.setText(tmp);
+
+        int mps = Player.getInstance().getMoneyPerSecond();
+        tmp = mps + "";
+        currentMps.setText(tmp);
+
+        int newmps = mps + (int) oilPumpUpgrade.getStat();
+        tmp = newmps + "";
+        newMps.setText(tmp);
+
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
@@ -49,6 +96,11 @@ public class HomeActivity extends AppCompatActivity {
                     break;
                 case R.id.b_main:
                     startActivity(new Intent(context, MainActivity.class));
+                    break;
+                case R.id.oilUpgradeButton:
+                    if (home.buyOilPumpUpgrade()){
+                        updateOilInfo();
+                    }
                     break;
             }
         }

@@ -14,12 +14,15 @@ public class StatsActivity extends AppCompatActivity {
     private TextView dmgMultText;
     private TextView moneyText;
     private TextView moneyPerSecText;
-    private Player player;
+    private StatsPresenterInterface statsPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
+
+        statsPresenter = new StatsPresenter();
+
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
         appropriate activity.
@@ -37,22 +40,16 @@ public class StatsActivity extends AppCompatActivity {
         mainButton.setOnClickListener(buttonListener);
 
         /*
-        Get the instance of the player since we need the
-        state of the players stats.
-         */
-        player = Player.getInstance();
-
-        /*
         Setting all the textViews to display the correct stats.
          */
         damageText      = (TextView) findViewById(R.id.damageText);
         dmgMultText     = (TextView) findViewById(R.id.dmgMultText);
         moneyText       = (TextView) findViewById(R.id.moneyText);
         moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
-        damageText.setText(String.valueOf(player.getDamage()));
-        dmgMultText.setText(String.valueOf(player.getDamageMutiplier()));
-        moneyText.setText(String.valueOf(player.getMoney()));
-        moneyPerSecText.setText(String.valueOf(player.getMoneyPerSecond()));
+        damageText.setText(String.valueOf(statsPresenter.getPlayerDamage()));
+        dmgMultText.setText(String.valueOf(statsPresenter.getPlayerDamageMultiplier()));
+        moneyText.setText(String.valueOf(statsPresenter.getMoneyAmount()));
+        moneyPerSecText.setText(String.valueOf(statsPresenter.getMoneyPerSecond()));
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
