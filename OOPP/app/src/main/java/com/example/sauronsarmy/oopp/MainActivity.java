@@ -6,8 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    int mon=0;
+    int health=30;
+    Monster currentMonster;
+    monsterFactory monFac = new monsterFactory();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +28,27 @@ public class MainActivity extends AppCompatActivity {
         ImageButton statsButton = (ImageButton) findViewById(R.id.b_stats);
         ImageButton shopButton  = (ImageButton) findViewById(R.id.b_shop);
         ImageButton mainButton  = (ImageButton) findViewById(R.id.b_main);
+        ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
+
 
         homeButton.setOnClickListener(buttonListener);
         shopButton.setOnClickListener(buttonListener);
         mapButton.setOnClickListener(buttonListener);
         statsButton.setOnClickListener(buttonListener);
         mainButton.setOnClickListener(buttonListener);
+        monsterButton.setOnClickListener(buttonListener);
+
+
+        //currentMonster = main.getCurrentMonster;
+
+        //Temp
+
+        currentMonster = monFac.getMonster(30,30,areaType.FOREST);
+
+        TextView hp = (TextView) findViewById(R.id.hp);
+        hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
+        monsterButton.setImageResource(currentMonster.getImageRef());
+
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
@@ -50,6 +70,27 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(context, StatsActivity.class));
                     break;
                 case R.id.b_main:
+                    break;
+                case R.id.b_monster:
+                    ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
+                    TextView hp = (TextView) findViewById(R.id.hp);
+                    Player p = Player.getInstance();
+
+                    if(currentMonster.damageMonster(p.getDamage())){
+
+                        p.setMoney(p.getMoney()+currentMonster.getGold());
+                        if(mon==0) {
+                            currentMonster=monFac.getMonster(currentMonster.getMaxhealth(),currentMonster.getGold(),areaType.MOUNTAIN);
+                            mon++;
+                        }
+                        else {
+                            currentMonster=monFac.getMonster(currentMonster.getMaxhealth(),currentMonster.getGold(),areaType.FOREST);
+                            mon=0;
+                        }
+                    }
+
+                    hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
+                    monsterButton.setImageResource(currentMonster.getImageRef());
                     break;
             }
         }
