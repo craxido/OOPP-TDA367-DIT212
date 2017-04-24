@@ -9,17 +9,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps {
-    int mon=0;
-    int health=30;
+
     Monster currentMonster;
     monsterFactory monFac = new monsterFactory();
-    private MainMVPInterface.PresenterOps mainPresenter;
+    private MainPresenter mainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainPresenter = new MainPresenter(this);
+        mainPresenter = MainPresenter.getInstance();
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
         appropriate activity.
@@ -75,20 +74,10 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                 case R.id.b_monster:
                     ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
                     TextView hp = (TextView) findViewById(R.id.hp);
-                    Player p = Player.getInstance();
 
-                    if(currentMonster.damageMonster(p.getDamage())){
 
-                        p.setMoney(p.getMoney()+currentMonster.getGold());
-                        if(mon==0) {
-                            currentMonster=monFac.getMonster(currentMonster.getMaxhealth(),currentMonster.getGold(),areaType.MOUNTAIN);
-                            mon++;
-                        }
-                        else {
-                            currentMonster=monFac.getMonster(currentMonster.getMaxhealth(),currentMonster.getGold(),areaType.FOREST);
-                            mon=0;
-                        }
-                    }
+                    mainPresenter.monsterClicked();
+                    currentMonster = mainPresenter.getCurrentMonster();
 
                     hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
                     monsterButton.setImageResource(currentMonster.getImageRef());
