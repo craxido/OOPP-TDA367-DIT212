@@ -1,14 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.sauronsarmy.oopp.ShopActivity">
 
-    <TextView
+    <ImageView
+        android:id="@+id/ShopBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="THIS IS THE SHOP SCREEN"/>
-    <include layout="@layout/bottom_bar" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:padding="0dp"
+        app:srcCompat="@drawable/shopbg2" />
+
+    <RelativeLayout
+        android:id="@+id/DamageUpgradeLayout"
+        android:layout_width="280dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/include2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="200dp">
+
+        <ImageButton
+            android:id="@+id/dmgUpgradeButton"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/transparent"
+            android:contentDescription=""
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/shopitembutton" />
+
+        <TextView
+            android:id="@+id/dmgCostText"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/dmgUpgradeText"
+            android:layout_alignStart="@+id/dmgUpgradeText"
+            android:layout_below="@+id/dmgUpgradeText"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="start"
+            android:inputType="none"
+            android:text="COST:"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/dmgUpgradeText"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/dmgUpgradeButton"
+            android:layout_alignStart="@+id/dmgUpgradeButton"
+            android:layout_alignTop="@+id/dmgUpgradeButton"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="18dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="start"
+            android:inputType="none"
+            android:text="DAMAGE UPGRADE"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/dmgUpgradeCounter"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/dmgUpgradeText"
+            android:layout_alignBottom="@+id/dmgUpgradeText"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_toEndOf="@+id/dmgUpgradeText"
+            android:layout_toRightOf="@+id/dmgUpgradeText"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="start"
+            android:inputType="none"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/dmgUpgradeCost"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/dmgCostText"
+            android:layout_alignBottom="@+id/dmgCostText"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/dmgCostText"
+            android:layout_toRightOf="@+id/dmgCostText"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="start"
+            android:inputType="none|textPersonName"
+            android:text="5 g"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            tools:text="5 g" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/MultiplierUpgradeLayout"
+        android:layout_width="280dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/include2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp">
+
+        <ImageButton
+            android:id="@+id/mltUpgradeButton"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/transparent"
+            android:contentDescription=""
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/shopitembutton" />
+
+        <TextView
+            android:id="@+id/mltCostText"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/multiplierUpgradeText"
+            android:layout_alignStart="@+id/multiplierUpgradeText"
+            android:layout_below="@+id/multiplierUpgradeText"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="start"
+            android:inputType="none|textPersonName"
+            android:text="COST:"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/multiplierUpgradeText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/mltUpgradeButton"
+            android:layout_alignStart="@+id/mltUpgradeButton"
+            android:layout_alignTop="@+id/mltUpgradeButton"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="18dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="start"
+            android:inputType="none|textPersonName"
+            android:text="MULTIPLIER UPGRADE"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/mltUpgradeCounter"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/multiplierUpgradeText"
+            android:layout_alignBottom="@+id/multiplierUpgradeText"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_toEndOf="@+id/multiplierUpgradeText"
+            android:layout_toRightOf="@+id/multiplierUpgradeText"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="start"
+            android:inputType="none|textPersonName"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/mltUpgradeCost"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/mltCostText"
+            android:layout_alignBottom="@+id/mltCostText"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/mltCostText"
+            android:layout_toRightOf="@+id/mltCostText"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="start"
+            android:inputType="none|textPersonName"
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            tools:text="5 g" />
+    </RelativeLayout>
+
+
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/bottom_bar" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Player Upgrades"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:layout_marginTop="47dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

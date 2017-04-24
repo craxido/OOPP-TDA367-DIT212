@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp;
 
+import android.graphics.drawable.Drawable;
+import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.Image;
 
 /**
@@ -9,35 +11,40 @@ import android.media.Image;
 class Monster {
 
     private double health;
+    private double maxhealth;
     private int gold;
-    private Image img;
+    private int imageref;
 
 
-    public Monster(double health,int gold,Image img){
-
+    public Monster(double health,int gold,int imageref){
+        this.maxhealth = health;
         this.health = health;
         this.gold = gold;
-        this.img = img;
-
-    }
-    //damage a monster, return true if dead
-    public boolean damageMonster(double damage){
-
-        this.health -= damage;
-        return this.health <= 0;
-
+        this.imageref = imageref;
     }
 
     public double getHealth(){
         return this.health;
     }
 
+    public double getMaxhealth(){
+        return this.maxhealth;
+    }
+
+
     public int getGold(){
         return this.gold;
     }
 
-    public Image getImg(){
-
-        return this.img;
+    public int getImageRef(){
+        return this.imageref;
     }
+
+    //damage a monster, return true if dead
+    public boolean damageMonster(double damage){
+        this.health -= damage;
+        return this.health <= 0;
+    }
+
+
 }
