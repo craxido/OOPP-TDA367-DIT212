@@ -7,13 +7,13 @@ package com.example.sauronsarmy.oopp;
  * of a player.
  */
 
-class PlayerModel implements  PlayerModelInterface{
+class PlayerModel implements PlayerModelInterface{
     private static final PlayerModel ourInstance = new PlayerModel();
 
     private int damage;
     private double damageMultiplier;
     private int money;
-    private int moneyPerSecond;
+    private double moneyPerSecond;
     // This must be assigned when exiting the app.
     private long lastLogOn;
 
@@ -29,7 +29,7 @@ class PlayerModel implements  PlayerModelInterface{
     private PlayerModel() {
         damage           = 10;
         damageMultiplier = 1.0;
-        money            = 10;
+        money            = 20;
         moneyPerSecond   = 0;
 
     }
@@ -66,11 +66,11 @@ class PlayerModel implements  PlayerModelInterface{
         this.money = money;
     }
 
-    public int getMoneyPerSecond() {
+    public double getMoneyPerSecond() {
         return moneyPerSecond;
     }
 
-    public void setMoneyPerSecond(int moneyPerSecond) {
+    public void setMoneyPerSecond(double moneyPerSecond) {
         this.moneyPerSecond = moneyPerSecond;
     }
 }

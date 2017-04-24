@@ -61,19 +61,14 @@ public class HomeActivity extends AppCompatActivity {
          * */
         Upgrade oilPumpUpgrade = home.getOilPumpUpgrade();
 
-        String tmp = home.getOilPumpUpgradeCounter() + "";
-        oilUpgradeCounter.setText(tmp);
+        oilUpgradeCounter.setText(String.valueOf(home.getOilPumpUpgradeCounter()));
+        oilUpgradeCost.setText(String.valueOf(oilPumpUpgrade.getCost() + " g"));
 
-        tmp = oilPumpUpgrade.getCost() + " g";
-        oilUpgradeCost.setText(tmp);
+        double mps = PlayerModel.getInstance().getMoneyPerSecond();
+        double newmps = mps + oilPumpUpgrade.getStat();
 
-        int mps = Player.getInstance().getMoneyPerSecond();
-        tmp = mps + "";
-        currentMps.setText(tmp);
-
-        int newmps = mps + (int) oilPumpUpgrade.getStat();
-        tmp = newmps + "";
-        newMps.setText(tmp);
+        currentMps.setText(String.valueOf(mps));
+        newMps.setText(String.valueOf(newmps));
 
     }
 

@@ -12,5 +12,5 @@ interface StatsPresenterInterface {
 
     int getMoneyAmount();
 
-    int getMoneyPerSecond();
+    double getMoneyPerSecond();
 }
