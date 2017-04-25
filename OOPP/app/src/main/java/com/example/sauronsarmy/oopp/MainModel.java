@@ -24,10 +24,22 @@ public class MainModel implements MainMVPInterface.ModelInterface {
     private MainModel() {
     }
 
-    saveState(Context context, Map<String, Object> currentState) {
+    /**
+     * Saves the current state of the player to a SharedPreference file, which
+     * is just a glorified Key-Value storage.
+     * When apply() is called this information is asynchronously written to the
+     * disk so it doesn't block the main execution thread.
+     * @param context Context from which this method was called.
+     * @param currentState the state to be saved.
+     */
+    void saveState(Context context, Map<String, Object> currentState) {
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
         editor = saveState.edit();
-        editor.putInt("damage", (Int) currentState.get("damage"));
-        editor.putFloat()
+        editor.putInt("damage",       (int) currentState.get("damage"));
+        editor.putFloat("damageMult", (float) currentState.get("damageMult"));
+        editor.putInt("money",        (int) currentState.get("money"));
+        editor.putInt("moneyPerSec",  (int) currentState.get("moneyPerSec"));
+        editor.putLong("lastLogOn",   (long) currentState.get("lastLogOn"));
+        editor.apply();
     }
 }
