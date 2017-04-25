@@ -95,9 +95,11 @@ public class ShopActivity extends AppCompatActivity {
         multiplierCost.setText(String.valueOf(multiplierUpgrade.getCost() + " g"));
 
         double mlt = PlayerModel.getInstance().getDamageMultiplier();
+        mlt = Math.round(mlt * 100) / 100.0;
         double nMlt = mlt + multiplierUpgrade.getStat();
+        nMlt = Math.round(nMlt * 100) / 100.0;
         currentMlt.setText(String.valueOf(mlt));
-        newMlt.setText(String.valueOf((double) Math.round(nMlt * 100) / 100.0));
+        newMlt.setText(String.valueOf(nMlt));
 
 
 

@@ -29,7 +29,7 @@ class PlayerModel implements PlayerModelInterface{
     private PlayerModel() {
         damage           = 10;
         damageMultiplier = 1.0;
-        money            = 20;
+        money            = 50;
         moneyPerSecond   = 0;
 
     }
