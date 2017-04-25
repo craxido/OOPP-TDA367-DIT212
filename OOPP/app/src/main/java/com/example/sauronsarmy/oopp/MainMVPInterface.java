@@ -20,7 +20,7 @@ interface MainMVPInterface {
          void onError(String errorMsg);
          // methods to be called from Presenter
         void saveState(Context value1);
-        java.util.Map loadState(Context value1);
+        void loadState(Context value1);
         }
 
     interface ModelInterface {

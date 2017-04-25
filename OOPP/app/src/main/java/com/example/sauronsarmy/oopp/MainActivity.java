@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         setContentView(R.layout.activity_main);
         mainPresenter = new MainPresenter(this);
 
+        // Load previous state
+        mainPresenter.loadState(MainActivity.this);
+
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
         appropriate activity.
@@ -58,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
     @Override
     protected void onDestroy() {
+        // Save current state
+        mainPresenter.saveState(MainActivity.this);
         super.onDestroy();
     }
 

@@ -40,7 +40,7 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
     }
 
     @Override
-    public Map loadState(Context context) {
-        return mainModel.loadState(context);
+    public void loadState(Context context) {
+        playerModel.setState(mainModel.loadState(context));
     }
 }
