@@ -42,7 +42,7 @@ public class PlayerModel implements  PlayerModelInterface{
         this.lastLogOn = lastLogOn;
     }
 
-    public double getDamageMultiplier() {
+    public float getDamageMultiplier() {
         return damageMultiplier;
     }
 

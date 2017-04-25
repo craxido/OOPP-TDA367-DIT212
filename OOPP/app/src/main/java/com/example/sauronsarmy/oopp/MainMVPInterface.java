@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp;
 
+import android.content.Context;
+
 /**
    * Created by Jonatan on 2017-04-17.
    */
@@ -17,10 +19,12 @@ interface MainMVPInterface {
          void onDestroy(boolean isChangingConfig);
          void onError(String errorMsg);
          // methods to be called from Presenter
+        void saveState(Context value1);
+        java.util.Map loadState(Context value1);
         }
 
     interface ModelInterface {
-         //void onDestroy();
-       // methods to be called from Model
+        void saveState(Context value1, java.util.Map value2);
+        java.util.Map loadState(Context value1);
     }
 }

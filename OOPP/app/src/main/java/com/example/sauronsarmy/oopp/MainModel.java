@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.Map;
 
 /**
- * Created by erik on 25/04/17.
+ * @author Sjöström Erik
  */
 
 public class MainModel implements MainMVPInterface.ModelInterface {
@@ -16,13 +16,7 @@ public class MainModel implements MainMVPInterface.ModelInterface {
     private SharedPreferences.Editor editor;
     private Map<String, Object> stateMap;
 
-    private static final MainModel ourInstance = new MainModel();
-
-    public static MainModel getInstance() {
-        return ourInstance;
-    }
-
-    private MainModel() {
+    MainModel() {
     }
 
     /**
@@ -33,7 +27,8 @@ public class MainModel implements MainMVPInterface.ModelInterface {
      * @param context Context from which this method was called.
      * @param currentState the state to be saved.
      */
-    void saveState(Context context, Map<String, Object> currentState) {
+    @Override
+    public void saveState(Context context, Map currentState) {
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
         editor = saveState.edit();
         editor.putInt("damage",       (int) currentState.get("damage"));
@@ -44,7 +39,9 @@ public class MainModel implements MainMVPInterface.ModelInterface {
         editor.apply();
     }
 
-   Map<String, Object> loadState(Context context) {
+    //TODO Docstring it!
+    @Override
+    public Map loadState(Context context) {
        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
        stateMap = new HashMap<String, Object>() {
            {
