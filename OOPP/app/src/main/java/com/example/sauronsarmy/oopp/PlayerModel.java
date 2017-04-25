@@ -7,7 +7,7 @@ package com.example.sauronsarmy.oopp;
  * of a player.
  */
 
-class PlayerModel implements  PlayerModelInterface{
+public class PlayerModel implements  PlayerModelInterface{
     private static final PlayerModel ourInstance = new PlayerModel();
 
     private int damage;
