@@ -33,23 +33,12 @@ class levelFactory {
         int LevelAmount=10;
         Level[] levels = new Level[LevelAmount];
 
-        // Same thing as getLevel.
+        // Uses getLevel().
         // Right now, this only creates one level for each area.
-        switch (type) {
-            case FOREST:
-                levels[0]=new Level(monfac.getMonster(100, 100, type), 1, 1, type);
-                return levels;
+        levels[0]=getLevel(type);
 
-            case MOUNTAIN:
-                levels[0]=new Level(monfac.getMonster(200, 200, type), 1, 1, type);
-                return levels;
 
-            case VOLCANO:
-                levels[0]=new Level(monfac.getMonster(300, 300, type), 1, 1, type);
-                return levels;
+        return levels;
 
-            default:
-                return null;
-        }
     }
 }

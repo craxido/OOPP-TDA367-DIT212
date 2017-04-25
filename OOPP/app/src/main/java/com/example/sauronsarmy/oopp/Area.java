@@ -6,8 +6,6 @@ package com.example.sauronsarmy.oopp;
 
 class Area {
 
-    static levelFactory lvlfac = new levelFactory();
-
     private int imgRef;
     private areaType areaType;
     private Level[] levels;
