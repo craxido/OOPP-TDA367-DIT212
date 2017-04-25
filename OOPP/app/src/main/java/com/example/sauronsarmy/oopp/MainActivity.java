@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.sauronsarmy.oopp.Stats.StatsActivity;
+
 public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps {
 
     Monster currentMonster;
