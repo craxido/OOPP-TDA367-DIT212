@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+
+import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
 public class MapActivity extends AppCompatActivity {
 
