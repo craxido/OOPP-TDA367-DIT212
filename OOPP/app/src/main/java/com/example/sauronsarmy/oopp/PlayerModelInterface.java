@@ -20,4 +20,7 @@ public interface PlayerModelInterface {
 
     void setMoneyPerSecond(int newValue);
     int getMoneyPerSecond();
+
+    void setState(java.util.Map value1);
+    java.util.Map getState();
 }

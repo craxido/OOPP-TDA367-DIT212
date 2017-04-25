@@ -14,7 +14,6 @@ public class MainModel implements MainMVPInterface.ModelInterface {
 
     private SharedPreferences saveState;
     private SharedPreferences.Editor editor;
-    private Map<String, Object> stateMap;
 
     MainModel() {
     }
@@ -43,15 +42,14 @@ public class MainModel implements MainMVPInterface.ModelInterface {
     @Override
     public Map loadState(Context context) {
        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
-       stateMap = new HashMap<String, Object>() {
+       return new HashMap<String, Object>() {
            {
-               put("damage",     saveState.getInt("damage", 10));
-               put("damageMult", saveState.getFloat("damageMult", 1.0f));
-               put("money",      saveState.getInt("money", 10));
+               put("damage",      saveState.getInt("damage", 10));
+               put("damageMult",  saveState.getFloat("damageMult", 1.0f));
+               put("money",       saveState.getInt("money", 10));
                put("moneyPerSec", saveState.getInt("moneyPerSec", 0));
-               put("lastLogOn", saveState.getLong("lastLogOn", -1));
+               put("lastLogOn",   saveState.getLong("lastLogOn", -1));
            }
        };
-       return  stateMap;
    }
 }

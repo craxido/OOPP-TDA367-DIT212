@@ -35,7 +35,7 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
     @Override
     //TODO When Map has its own package, simplify
     public void saveState(Context context) {
-        java.util.Map currentState = null; // Implement get state in PlayerModel
+        java.util.Map currentState = playerModel.getState();
         mainModel.saveState(context, currentState);
     }
 
