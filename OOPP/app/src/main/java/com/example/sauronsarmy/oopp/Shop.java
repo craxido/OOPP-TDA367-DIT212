@@ -9,7 +9,7 @@ class Shop {
     private static final Shop shopInstance = new Shop();
 
     // Variables
-    private Player player = Player.getInstance();
+    private PlayerModelInterface player = PlayerModel.getInstance();
     private Upgrade damageUpgrade = new Upgrade(5,5);
     private Upgrade multiplierUpgrade = new Upgrade(0.1,5);
     private int damageUpgradeCounter = 1;
@@ -42,7 +42,7 @@ class Shop {
     protected boolean buyMultiplierUpgrade(){
         if (player.getMoney() >= multiplierUpgrade.getCost()) {
             player.setMoney(player.getMoney() - multiplierUpgrade.getCost());
-            player.setDamageMutiplier(player.getDamageMutiplier() + multiplierUpgrade.getStat());
+            player.setDamageMultiplier(player.getDamageMultiplier() + multiplierUpgrade.getStat());
 
             multiplierUpgradeCounter++;
             multiplierUpgrade.updateStat(multiplierUpgradeCounter);

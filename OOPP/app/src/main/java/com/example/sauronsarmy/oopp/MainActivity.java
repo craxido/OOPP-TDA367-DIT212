@@ -52,6 +52,11 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -75,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                 case R.id.b_monster:
                     ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
                     TextView hp = (TextView) findViewById(R.id.hp);
-                    Player p = Player.getInstance();
+                    PlayerModelInterface p = PlayerModel.getInstance();
 
                     if(currentMonster.damageMonster(p.getDamage())){
 

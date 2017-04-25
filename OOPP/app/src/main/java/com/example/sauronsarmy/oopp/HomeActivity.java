@@ -67,7 +67,9 @@ public class HomeActivity extends AppCompatActivity {
         tmp = oilPumpUpgrade.getCost() + " g";
         oilUpgradeCost.setText(tmp);
 
-        int mps = Player.getInstance().getMoneyPerSecond();
+        // This is probably unsafe, since it directly communicates
+        // with the model, and not the interface
+        int mps = PlayerModel.getInstance().getMoneyPerSecond();
         tmp = mps + "";
         currentMps.setText(tmp);
 
