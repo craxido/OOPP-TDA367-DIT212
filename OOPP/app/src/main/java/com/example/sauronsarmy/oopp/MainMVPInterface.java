@@ -19,7 +19,7 @@ interface MainMVPInterface {
          // methods to be called from Presenter
         }
 
-    interface ModelOps {
+    interface ModelInterface {
          void onDestroy();
        // methods to be called from Model
     }
