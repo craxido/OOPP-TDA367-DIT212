@@ -7,9 +7,18 @@ import android.media.Image;
  */
 
 class Area {
-    private static final Area area1Instance = new Area(int imgref, enum areaType.MOUNTAIN, Level[] area1Levels);
-    private static final Area area2Instance = new Area(int imgref, enum areaType.FOREST, Level[] area2Levels);
-    private static final Area area3Instance = new Area(int imgref, enum areaType.VOLCANO, Level[] area3Levels);
+
+    static levelFactory lvlfac = new levelFactory();
+
+    //Area 1 (Mountain)
+    private static final Area area1Instance = new Area(R.drawable.mountainArea,
+            com.example.sauronsarmy.oopp.areaType.MOUNTAIN, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.MOUNTAIN));
+    //Area 2 (Forest)
+    private static final Area area2Instance = new Area(R.drawable.forestArea,
+            com.example.sauronsarmy.oopp.areaType.FOREST, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.FOREST));
+    //Area 3 (Volcano)
+    private static final Area area3Instance = new Area(R.drawable.volcanoArea,
+            com.example.sauronsarmy.oopp.areaType.VOLCANO, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.VOLCANO));
 
     private int imgRef;
     private areaType areaType;
