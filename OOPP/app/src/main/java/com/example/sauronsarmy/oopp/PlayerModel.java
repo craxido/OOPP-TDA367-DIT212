@@ -28,7 +28,7 @@ class PlayerModel implements  PlayerModelInterface{
      */
     private PlayerModel() {
         damage           = 10;
-        damageMultiplier = 1.0;
+        damageMultiplier = 1.0f;
         money            = 10;
         moneyPerSecond   = 0;
 
@@ -46,7 +46,7 @@ class PlayerModel implements  PlayerModelInterface{
         return damageMultiplier;
     }
 
-    public void setDamageMultiplier(double damageMultiplier) {
+    public void setDamageMultiplier(float damageMultiplier) {
         this.damageMultiplier = damageMultiplier;
     }
 
