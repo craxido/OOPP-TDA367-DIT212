@@ -4,4 +4,5 @@
     <string name="dmgMult">Damage multiplier:</string>
     <string name="money">Money:</string>
     <string name="moneyPerSec">Money Per Second:</string>
+    <string name="stateIdentifier">com.example.sauronsarmy.STATE_Key</string>
 </resources>

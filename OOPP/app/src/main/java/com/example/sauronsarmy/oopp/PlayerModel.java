@@ -11,7 +11,7 @@ class PlayerModel implements  PlayerModelInterface{
     private static final PlayerModel ourInstance = new PlayerModel();
 
     private int damage;
-    private double damageMultiplier;
+    private float damageMultiplier;
     private int money;
     private int moneyPerSecond;
     // This must be assigned when exiting the app.

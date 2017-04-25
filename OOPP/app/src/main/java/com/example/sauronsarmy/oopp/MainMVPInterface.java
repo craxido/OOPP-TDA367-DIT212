@@ -20,7 +20,7 @@ interface MainMVPInterface {
         }
 
     interface ModelInterface {
-         void onDestroy();
+         //void onDestroy();
        // methods to be called from Model
     }
 }
