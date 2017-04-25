@@ -34,7 +34,6 @@ public class PlayerModel implements  PlayerModelInterface{
         damageMultiplier = 1.0f;
         money            = 10;
         moneyPerSecond   = 0;
-
     }
 
     public long getLastLogOn() {

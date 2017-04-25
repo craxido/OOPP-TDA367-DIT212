@@ -14,8 +14,14 @@ public class MainModel implements MainMVPInterface.ModelInterface {
 
     private SharedPreferences saveState;
     private SharedPreferences.Editor editor;
+    private static boolean hasSaveToLoad = true;
 
     MainModel() {
+    }
+
+    @Override
+    public boolean hasSaveToLoad() {
+        return hasSaveToLoad;
     }
 
     /**
@@ -28,6 +34,9 @@ public class MainModel implements MainMVPInterface.ModelInterface {
      */
     @Override
     public void saveState(Context context, Map currentState) {
+
+        hasSaveToLoad = true;
+
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
         editor = saveState.edit();
         editor.putInt("damage",       (int) currentState.get("damage"));
@@ -41,6 +50,9 @@ public class MainModel implements MainMVPInterface.ModelInterface {
     //TODO Docstring it!
     @Override
     public Map loadState(Context context) {
+
+        hasSaveToLoad = false;
+
        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
        return new HashMap<String, Object>() {
            {

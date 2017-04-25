@@ -1,5 +1,6 @@
 package com.example.sauronsarmy.oopp;
 import android.content.Context;
+import android.util.Log;
 
 import java.lang.ref.WeakReference;
 import java.util.*;
@@ -14,6 +15,7 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
     WeakReference<MainMVPInterface.ViewOps> mView;
     PlayerModelInterface playerModel;
     MainMVPInterface.ModelInterface mainModel;
+    private final static String TAG = "MainPresenter";
 
     public MainPresenter(MainMVPInterface.ViewOps mView) {
                 this.mView = new WeakReference<>(mView);
@@ -41,6 +43,9 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
 
     @Override
     public void loadState(Context context) {
-        playerModel.setState(mainModel.loadState(context));
+        if(mainModel.hasSaveToLoad()) {
+            Log.i(TAG, "Loading previous save.");
+            playerModel.setState(mainModel.loadState(context));
+        }
     }
 }

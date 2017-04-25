@@ -26,5 +26,6 @@ interface MainMVPInterface {
     interface ModelInterface {
         void saveState(Context value1, java.util.Map value2);
         java.util.Map loadState(Context value1);
+        boolean hasSaveToLoad();
     }
 }

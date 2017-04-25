@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -17,14 +18,17 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     Monster currentMonster;
     monsterFactory monFac = new monsterFactory();
     private MainMVPInterface.PresenterOps mainPresenter;
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate() called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainPresenter = new MainPresenter(this);
 
         // Load previous state
+        Log.i(TAG, "Will attempt to load previous state if there is one");
         mainPresenter.loadState(MainActivity.this);
 
         /*
@@ -60,8 +64,16 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause() called");
+    }
+
+    @Override
     protected void onDestroy() {
+        Log.i(TAG, "onDestroy() called");
         // Save current state
+        Log.i(TAG, "Calling saveState() in mainPresenter");
         mainPresenter.saveState(MainActivity.this);
         super.onDestroy();
     }
