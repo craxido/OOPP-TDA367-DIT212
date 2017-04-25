@@ -11,7 +11,7 @@ class Level {
     private double goldMultiplier;
     private areaType areaType;
 
-    public Level(Monster monster, double healthMultiplier, double goldMultiplier, areaType area) {
+    Level(Monster monster, double healthMultiplier, double goldMultiplier, areaType area) {
         this.monster = monster;
         this.healthMultiplier = healthMultiplier;
         this.goldMultiplier = goldMultiplier;
