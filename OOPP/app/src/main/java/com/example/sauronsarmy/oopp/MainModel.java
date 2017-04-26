@@ -3,21 +3,23 @@ package com.example.sauronsarmy.oopp;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import java.util.*;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @author Sjöström Erik
+ * Handles the save game logic.
  */
-
-public class MainModel implements MainMVPInterface.ModelInterface {
+class MainModel implements MainMVPInterface.ModelInterface {
 
     private SharedPreferences saveState;
     private SharedPreferences.Editor editor;
+    /**
+     * Indicates whether there is a previous state to load.
+     */
     private static boolean hasSaveToLoad = true;
 
-    MainModel() {
-    }
+    MainModel() { }
 
     @Override
     public boolean hasSaveToLoad() {
@@ -47,7 +49,12 @@ public class MainModel implements MainMVPInterface.ModelInterface {
         editor.apply();
     }
 
-    //TODO Docstring it!
+    /**
+     * Loads the previous state and packages it up as a HashMap.
+     * If there is no previous state, returns default values.
+     * @param context The context from which this method was called.
+     * @return A HashMap containing the previous state.
+     */
     @Override
     public Map loadState(Context context) {
 
