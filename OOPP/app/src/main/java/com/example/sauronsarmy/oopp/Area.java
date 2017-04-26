@@ -1,33 +1,32 @@
 package com.example.sauronsarmy.oopp;
 
-import android.media.Image;
-
 /**
  * Created by Jonatan on 2017-04-05.
  */
 
 class Area {
-    private Image img;
+
+    private int imgRef;
     private areaType areaType;
     private Level[] levels;
     private Level currentLevel;
 
-    public Area(Image img, areaType area, Level[] levels){
-        this.img=img;
+    public Area(int imgRef, areaType area, Level[] levels){
+        this.imgRef = imgRef;
         this.areaType=area;
         this.levels=levels;
     }
 
-    public areaType getArea(){
+    public areaType getAreaType(){
         return this.areaType;
     }
 
-    public Image getImg() {
-        return img;
+    public int getImgRef() {
+        return imgRef;
     }
 
-    public void setImg(Image img) {
-        this.img = img;
+    public void setImgRef(int imgRef) {
+        this.imgRef = imgRef;
     }
 
     public Level[] getLevels() {

@@ -1,43 +1,65 @@
 package com.example.sauronsarmy.oopp;
 
-import android.media.Image;
-
 /**
  * Created by Jonatan on 2017-04-05.
  */
 
-class Map {
-    private static final Map mapInstance = new Map();
+class Map implements MapMVPInterface.ModelOps {
 
-    private Image img;
-    private Area[] areas;
-    private Area currentArea;
+
+    private static Area[] areas;
+    private static final Map mapInstance = new Map(R.drawable.mapbg, createAreas());
+    private int bgRef;
+
 
     static Map getInstance() {
         return mapInstance;
     }
 
-    public Map() {
-        this.img = img;
-        Level level1 = new Level(30,10,areaType.FOREST);
-        level1.setCurrentMonster(new Monster(30,10,R.drawable.bluemonster));
 
-        Area area1 = new Area(null,areaType.FOREST,new Level[]{level1});
-        area1.setCurrencLevel(level1);
-
-        areas = new Area[]{area1};
-        setCurrentArea(getAreas()[0]);
+    private Map(int bgRef, Area[] areas) {
+        this.bgRef = bgRef;
+        this.areas = areas;
     }
 
-    public Area[] getAreas() {
+    //Creates areas for the mapInstance
+    private static Area[] createAreas(){
+        levelFactory lvlfac = new levelFactory();
+        Area[] areas= new Area[3];
+
+        //Area 1 (Mountain)
+        areas[0]=new Area(R.drawable.mountainArea,
+                com.example.sauronsarmy.oopp.areaType.MOUNTAIN, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.MOUNTAIN));
+        //Area 2 (Forest)
+        areas[1]=new Area(R.drawable.forestArea,
+                com.example.sauronsarmy.oopp.areaType.FOREST, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.FOREST));
+        //Area 3 (Volcano)
+        areas[2]=new Area(R.drawable.volcanoArea,
+                com.example.sauronsarmy.oopp.areaType.VOLCANO, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.VOLCANO));
         return areas;
     }
 
-    public void setCurrentArea(Area currentArea) {
-        this.currentArea = currentArea;
+    @Override
+    public int getBackgroundRef() {
+        return this.bgRef;
     }
 
-    public Area getCurrentArea() {
-        return currentArea;
+    @Override
+    public void setBackgroundRef(int bgRef) {
+        this.bgRef = bgRef;
     }
+
+    @Override
+    public Area getArea(int index) {
+        return this.areas[index];
+    }
+
+    @Override
+    public void setArea(Area area, int index) {
+        this.areas[index] = area;
+    }
+
+    @Override
+    public void onDestroy() {}
+
 }
