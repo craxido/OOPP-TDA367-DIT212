@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                 case R.id.b_monster:
                     ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
                     TextView hp = (TextView) findViewById(R.id.hp);
-                    Player p = Player.getInstance();
+                    PlayerModel p = PlayerModel.getInstance();
 
                     if(currentMonster.damageMonster(p.getDamage())){
 
