@@ -9,7 +9,7 @@ class levelFactory {
 
     monsterFactory monfac = new monsterFactory();
 
-    public Level getLevel(areaType type) {
+    private Level getLevel(areaType type) {
 
         // Level constructor:
         // Level(Monster monster, double healthMultiplier, double goldMultiplier, areaType area)
