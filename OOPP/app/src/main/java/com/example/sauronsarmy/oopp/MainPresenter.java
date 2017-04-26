@@ -3,8 +3,6 @@ import android.content.Context;
 import android.util.Log;
 
 import java.lang.ref.WeakReference;
-import java.util.*;
-import java.util.Map;
 
 /**
  * Created by Jonatan on 24/04/2017.
@@ -34,13 +32,24 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
     @Override
     public void onError(String msg){} //To be implemented
 
+    /**
+     * Asks the PlayerModel for the current state, and sends this
+     * to the MainModel for saving.
+     * @param context The context from which this method was called.
+     */
     @Override
     //TODO When Map has its own package, simplify
     public void saveState(Context context) {
+        Log.i(TAG, "Saving the current state.");
         java.util.Map currentState = playerModel.getState();
         mainModel.saveState(context, currentState);
     }
 
+    /**
+     * If there is a previous saved state, asks the MainModel for this state
+     * and sends this state to the PlayerModel for loading.
+     * @param context The context from which this method was called.
+     */
     @Override
     public void loadState(Context context) {
         if(mainModel.hasSaveToLoad()) {
