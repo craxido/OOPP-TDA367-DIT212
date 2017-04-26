@@ -54,8 +54,10 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
 
     private void setNewMonster(){
 
-        map.getCurrentArea().getCurrentLevel().setCurrentMonster(monFac.getMonster(map.getCurrentArea().getCurrentLevel().getHealthMultiplier(),
-                map.getCurrentArea().getCurrentLevel().getGoldMultiplier(),map.getCurrentArea().getCurrentLevel().getArea()));
+        map.getCurrentArea().getCurrentLevel().setCurrentMonster(monFac.getMonster(
+                map.getCurrentArea().getCurrentLevel().getHealthMultiplier(),
+                map.getCurrentArea().getCurrentLevel().getGoldMultiplier(),
+                map.getCurrentArea().getCurrentLevel().getArea()));
 
     }
 

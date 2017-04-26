@@ -15,8 +15,8 @@ class monsterFactory {
 
             case FOREST:return new Monster(hp, gold,R.drawable.mike );
             case MOUNTAIN:return new Monster(hp, gold,R.drawable.bluemonster);
-            case VOLCANO:return new Monster(hp, gold ,0);
-            default: return null;
+            case VOLCANO:return new Monster(hp, gold ,R.drawable.bluemonster);
+            default: return new Monster(hp, gold,R.drawable.mike );
 
         }
 

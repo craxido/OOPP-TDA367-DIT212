@@ -13,9 +13,8 @@ class Level {
     private areaType areaType;
 
 
-    Level(Monster monster, double healthMultiplier, double goldMultiplier, areaType area) {
+    Level(Monster monster, double healthMultiplier, int goldMultiplier, areaType area) {
         this.monster = monster;
-
         this.healthMultiplier = healthMultiplier;
         this.goldMultiplier = goldMultiplier;
         this.areaType = area;
@@ -46,10 +45,10 @@ class Level {
     }
 
     public Monster getCurrentMonster() {
-        return currentMonster;
+        return monster;
     }
 
     public void setCurrentMonster(Monster currentMonster) {
-        this.currentMonster = currentMonster;
+        this.monster = currentMonster;
     }
 }

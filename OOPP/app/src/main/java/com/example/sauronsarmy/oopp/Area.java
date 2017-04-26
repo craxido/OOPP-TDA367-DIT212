@@ -15,6 +15,7 @@ class Area {
         this.imgRef = imgRef;
         this.areaType=area;
         this.levels=levels;
+        this.currentLevel=levels[0];
     }
 
     public areaType getAreaType(){
