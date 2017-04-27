@@ -2,6 +2,9 @@ package com.example.sauronsarmy.oopp.Stats;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +25,7 @@ public class StatsActivity extends AppCompatActivity {
     private TextView moneyPerSecText;
     private StatsPresenterInterface statsPresenter;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,8 @@ public class StatsActivity extends AppCompatActivity {
         statsButton.setOnClickListener(buttonListener);
         mainButton.setOnClickListener(buttonListener);
 
+        statsButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
+
         /*
         Setting all the textViews to display the correct stats.
          */
@@ -56,6 +62,8 @@ public class StatsActivity extends AppCompatActivity {
         dmgMultText.setText(String.valueOf(statsPresenter.getPlayerDamageMultiplier()));
         moneyText.setText(String.valueOf(statsPresenter.getMoneyAmount()));
         moneyPerSecText.setText(String.valueOf(statsPresenter.getMoneyPerSecond()));
+
+
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
