@@ -4,4 +4,21 @@
     <string name="dmgMult">Damage multiplier:</string>
     <string name="money">Money:</string>
     <string name="moneyPerSec">Money Per Second:</string>
+
+    <string name="stateIdentifier">com.example.sauronsarmy.STATE_Key</string>
+
+    <string name="cost">Cost:</string>
+
+    <string name="dmgUpgradeText">Damage Upgrade</string>
+    <string name="currentDmg">Current damage:</string>
+    <string name="newDmg">New damage:</string>
+
+    <string name="mltUpgradeText">Multiplier Upgrade</string>
+    <string name="currentMultiplier">Current multiplier:</string>
+    <string name="newMultiplier">New multiplier:</string>
+
+    <string name="oilUpgradeText">Oil Pump Upgrade</string>
+    <string name="currentMoneyPerSec">Current money/sec:</string>
+    <string name="newMoneyPerSec">New money/sec:</string>
+
 </resources>

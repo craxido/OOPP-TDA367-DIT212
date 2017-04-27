@@ -1,4 +1,7 @@
 package com.example.sauronsarmy.oopp;
+import android.content.Context;
+import android.util.Log;
+
 import java.lang.ref.WeakReference;
 
 /**
@@ -8,10 +11,10 @@ import java.lang.ref.WeakReference;
 class MainPresenter implements MainMVPInterface.PresenterOps {
     // View reference
 
-    private static final MainPresenter ourInstance = new MainPresenter();
+    private static MainPresenter ourInstance;
 
 
-    PlayerModel player = PlayerModel.getInstance();
+
     Shop shop = Shop.getInstance();
     Map map = Map.getInstance();
 
@@ -20,9 +23,16 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
 
 
     WeakReference<MainMVPInterface.ViewOps> mView;
+    PlayerModelInterface playerModel;
+    MainMVPInterface.ModelInterface mainModel;
+    private final static String TAG = "MainPresenter";
 
-    public MainPresenter() {
 
+    public MainPresenter(MainMVPInterface.ViewOps mView) {
+        this.mView = new WeakReference<>(mView);
+        playerModel = PlayerModel.getInstance();
+        mainModel = new MainModel();
+        ourInstance =this;
 
     }
 
@@ -43,12 +53,13 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
     public void onError(String msg){} //To be implemented
 
 
+
     public void monsterClicked(){
         Monster currentMonster = map.getCurrentArea().getCurrentLevel().getCurrentMonster();
-        boolean temp = currentMonster.damageMonster(player.getDamage());
+        boolean temp = currentMonster.damageMonster(playerModel.getDamage());
         if(temp){
 
-            player.setMoney(player.getMoney()+currentMonster.getGold());
+            playerModel.setMoney(playerModel.getMoney()+currentMonster.getGold());
             setNewMonster();
         }
     }
@@ -62,9 +73,35 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
 
     }
 
-    public Monster getCurrentMonster(){
+    public Monster getCurrentMonster() {
 
 
         return map.getCurrentArea().getCurrentLevel().getCurrentMonster();
+    }
+    /**
+     * Asks the PlayerModel for the current state, and sends this
+     * to the MainModel for saving.
+     * @param context The context from which this method was called.
+     */
+    @Override
+    //TODO When Map has its own package, simplify
+    public void saveState(Context context) {
+        Log.i(TAG, "Saving the current state.");
+        java.util.Map currentState = playerModel.getState();
+        mainModel.saveState(context, currentState);
+    }
+
+    /**
+     * If there is a previous saved state, asks the MainModel for this state
+     * and sends this state to the PlayerModel for loading.
+     * @param context The context from which this method was called.
+     */
+    @Override
+    public void loadState(Context context) {
+        if(mainModel.hasSaveToLoad()) {
+            Log.i(TAG, "Loading previous save.");
+            playerModel.setState(mainModel.loadState(context));
+        }
+
     }
 }
