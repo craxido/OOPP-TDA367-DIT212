@@ -6,17 +6,24 @@ package com.example.sauronsarmy.oopp;
 
 class Map implements MapMVPInterface.ModelOps {
 
+
     private static Area[] areas;
+    private Area currentArea;
     private static final Map mapInstance = new Map();
+
     private int bgRef;
+
 
     static Map getInstance() {
         return mapInstance;
     }
 
+
     private Map() {
         bgRef = R.drawable.mapbg;
         areas = createAreas();
+	currentArea = areas[0];
+
     }
 
     //Creates areas for the mapInstance
@@ -25,14 +32,13 @@ class Map implements MapMVPInterface.ModelOps {
         Area[] areas= new Area[3];
 
         //Area 1 (Mountain)
-        areas[0]=new Area(R.drawable.mountain_area,
-                com.example.sauronsarmy.oopp.areaType.MOUNTAIN, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.MOUNTAIN));
+
+        areas[0]=new Area(R.drawable.mountainarea, areaType.MOUNTAIN, lvlfac.getLevels(areaType.MOUNTAIN));
         //Area 2 (Forest)
-        areas[1]=new Area(R.drawable.forest_area,
-                com.example.sauronsarmy.oopp.areaType.FOREST, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.FOREST));
+        areas[1]=new Area(R.drawable.forestarea, areaType.FOREST, lvlfac.getLevels(areaType.FOREST));
         //Area 3 (Volcano)
-        areas[2]=new Area(R.drawable.volcano_area,
-                com.example.sauronsarmy.oopp.areaType.VOLCANO, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.VOLCANO));
+        areas[2]=new Area(R.drawable.volcanoarea, areaType.VOLCANO, lvlfac.getLevels(areaType.VOLCANO));
+
         return areas;
     }
 
@@ -58,5 +64,10 @@ class Map implements MapMVPInterface.ModelOps {
 
     @Override
     public void onDestroy() {}
+
+    public Area getCurrentArea(){
+
+        return currentArea;
+    }
 
 }

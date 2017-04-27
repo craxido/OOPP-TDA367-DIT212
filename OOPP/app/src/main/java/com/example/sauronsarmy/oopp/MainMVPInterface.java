@@ -18,6 +18,9 @@ interface MainMVPInterface {
          void onConfigChange(ViewOps view);
          void onDestroy(boolean isChangingConfig);
          void onError(String errorMsg);
+
+        void monsterClicked();
+        public Monster getCurrentMonster();
          // methods to be called from Presenter
         void saveState(Context value1);
         void loadState(Context value1);
@@ -28,4 +31,6 @@ interface MainMVPInterface {
         java.util.Map loadState(Context value1);
         boolean hasSaveToLoad();
     }
+
+
 }

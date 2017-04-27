@@ -15,23 +15,26 @@ import android.widget.TextView;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
 public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps {
-    int mon=0;
-    int health=30;
+
     Monster currentMonster;
     monsterFactory monFac = new monsterFactory();
+
     private MainMVPInterface.PresenterOps mainPresenter;
     private static final String TAG = "MainActivity";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate() called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mainPresenter = new MainPresenter(this);
 
         // Load previous state
         Log.i(TAG, "Will attempt to load previous state if there is one");
         mainPresenter.loadState(MainActivity.this);
+
 
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
@@ -57,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         //Temp
 
-        currentMonster = monFac.getMonster(30,30,areaType.FOREST);
+        currentMonster = mainPresenter.getCurrentMonster();
 
         TextView hp = (TextView) findViewById(R.id.hp);
         hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
@@ -103,20 +106,13 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                 case R.id.b_monster:
                     ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
                     TextView hp = (TextView) findViewById(R.id.hp);
-                    PlayerModelInterface p = PlayerModel.getInstance();
 
-                    if(currentMonster.damageMonster(p.getDamage())){
 
-                        p.setMoney(p.getMoney()+currentMonster.getGold());
-                        if(mon==0) {
-                            currentMonster=monFac.getMonster(currentMonster.getMaxhealth(),currentMonster.getGold(),areaType.MOUNTAIN);
-                            mon++;
-                        }
-                        else {
-                            currentMonster=monFac.getMonster(currentMonster.getMaxhealth(),currentMonster.getGold(),areaType.FOREST);
-                            mon=0;
-                        }
-                    }
+                    mainPresenter.monsterClicked();
+
+                    currentMonster = mainPresenter.getCurrentMonster();
+
+
 
                     hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
                     monsterButton.setImageResource(currentMonster.getImageRef());

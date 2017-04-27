@@ -10,21 +10,41 @@ import java.lang.ref.WeakReference;
 
 class MainPresenter implements MainMVPInterface.PresenterOps {
     // View reference
+
+    private static MainPresenter ourInstance;
+
+
+
+    Shop shop = Shop.getInstance();
+    Map map = Map.getInstance();
+
+
+    monsterFactory monFac=new monsterFactory();
+
+
     WeakReference<MainMVPInterface.ViewOps> mView;
     PlayerModelInterface playerModel;
     MainMVPInterface.ModelInterface mainModel;
     private final static String TAG = "MainPresenter";
 
+
     public MainPresenter(MainMVPInterface.ViewOps mView) {
-                this.mView = new WeakReference<>(mView);
+        this.mView = new WeakReference<>(mView);
         playerModel = PlayerModel.getInstance();
         mainModel = new MainModel();
+        ourInstance =this;
+
     }
 
+    public static MainPresenter getInstance(){
+
+        return ourInstance;
+    }
     // A configuration changed
     @Override
     public void onConfigChange(MainMVPInterface.ViewOps view) {
                 mView = new WeakReference<>(view);
+                setNewMonster();
     }
 
     @Override
@@ -32,6 +52,32 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
     @Override
     public void onError(String msg){} //To be implemented
 
+
+
+    public void monsterClicked(){
+        Monster currentMonster = map.getCurrentArea().getCurrentLevel().getCurrentMonster();
+        boolean temp = currentMonster.damageMonster(playerModel.getDamage());
+        if(temp){
+
+            playerModel.setMoney(playerModel.getMoney()+currentMonster.getGold());
+            setNewMonster();
+        }
+    }
+
+    private void setNewMonster(){
+
+        map.getCurrentArea().getCurrentLevel().setCurrentMonster(monFac.getMonster(
+                map.getCurrentArea().getCurrentLevel().getHealthMultiplier()*100,
+                map.getCurrentArea().getCurrentLevel().getGoldMultiplier()*100,
+                map.getCurrentArea().getCurrentLevel().getArea()));
+
+    }
+
+    public Monster getCurrentMonster() {
+
+
+        return map.getCurrentArea().getCurrentLevel().getCurrentMonster();
+    }
     /**
      * Asks the PlayerModel for the current state, and sends this
      * to the MainModel for saving.
@@ -56,5 +102,6 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
             Log.i(TAG, "Loading previous save.");
             playerModel.setState(mainModel.loadState(context));
         }
+
     }
 }

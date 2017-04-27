@@ -6,12 +6,14 @@ package com.example.sauronsarmy.oopp;
 
 
 class Level {
+
     private Monster monster;
     private double healthMultiplier;
-    private double goldMultiplier;
+    private int goldMultiplier;
     private areaType areaType;
 
-    Level(Monster monster, double healthMultiplier, double goldMultiplier, areaType area) {
+
+    Level(Monster monster, double healthMultiplier, int goldMultiplier, areaType area) {
         this.monster = monster;
         this.healthMultiplier = healthMultiplier;
         this.goldMultiplier = goldMultiplier;
@@ -34,13 +36,19 @@ class Level {
         this.healthMultiplier = healthMultiplier;
     }
 
-    public double getGoldMultiplier() {
+    public int getGoldMultiplier() {
         return goldMultiplier;
     }
 
-    public void setGoldMultiplier(double goldMultiplier) {
+    public void setGoldMultiplier(int goldMultiplier) {
         this.goldMultiplier = goldMultiplier;
     }
 
+    public Monster getCurrentMonster() {
+        return monster;
+    }
 
+    public void setCurrentMonster(Monster currentMonster) {
+        this.monster = currentMonster;
+    }
 }

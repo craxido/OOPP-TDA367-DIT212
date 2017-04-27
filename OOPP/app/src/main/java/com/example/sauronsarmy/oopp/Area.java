@@ -9,11 +9,13 @@ class Area {
     private int imgRef;
     private areaType areaType;
     private Level[] levels;
+    private Level currentLevel;
 
     public Area(int imgRef, areaType area, Level[] levels){
         this.imgRef = imgRef;
         this.areaType=area;
         this.levels=levels;
+        this.currentLevel=levels[0];
     }
 
     public areaType getAreaType(){
@@ -32,4 +34,12 @@ class Area {
         return levels;
     }
 
+    public Level getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public void setCurrencLevel(Level level){
+
+        this.currentLevel = level;
+    }
 }
