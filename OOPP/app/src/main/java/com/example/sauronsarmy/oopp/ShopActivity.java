@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
+import org.w3c.dom.Text;
+
 public class ShopActivity extends AppCompatActivity {
 
     Shop shop;
@@ -56,6 +58,7 @@ public class ShopActivity extends AppCompatActivity {
         /* DAMAGE */
         TextView dmgCounter = (TextView) findViewById(R.id.dmgUpgradeCounter);
         TextView dmgCost = (TextView) findViewById(R.id.dmgUpgradeCost);
+        TextView effect = (TextView) findViewById(R.id.effect);
 
         /** Set the values to the view from the upgrade object
          *  Using String tmp to set text, otherwise it complains about Android resource
@@ -67,6 +70,8 @@ public class ShopActivity extends AppCompatActivity {
         dmgCost.setText(tmp);
         tmp = shop.getDamageUpgradeCounter() + "";
         dmgCounter.setText(tmp);
+        tmp =  damageUpgrade.getStat() +"";
+        effect.setText(tmp);
 
     }
 
@@ -75,6 +80,7 @@ public class ShopActivity extends AppCompatActivity {
         /* MULTIPLIER */
         TextView multiplierCounter = (TextView) findViewById(R.id.mltUpgradeCounter);
         TextView multiplierCost = (TextView) findViewById(R.id.mltUpgradeCost);
+        TextView mulEffetc = (TextView) findViewById(R.id.effectml);
 
         /** Set the values to the view from the upgrade object
          *  Using String tmp to set text, otherwise it complains about Android resource
@@ -86,6 +92,8 @@ public class ShopActivity extends AppCompatActivity {
         multiplierCounter.setText(tmp);
         tmp = multiplierUpgrade.getCost() + " g";
         multiplierCost.setText(tmp);
+        tmp =  multiplierUpgrade.getStat() +"";
+        mulEffetc.setText(tmp);
 
 
     }

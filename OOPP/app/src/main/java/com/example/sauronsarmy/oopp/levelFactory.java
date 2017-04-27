@@ -18,9 +18,9 @@ class levelFactory {
             case FOREST:
                 return new Level(monfac.getMonster(100, 100, type), 1, 1, type);
             case MOUNTAIN:
-                return new Level(monfac.getMonster(200, 200, type), 1, 1, type);
+                return new Level(monfac.getMonster(200, 200, type), 2, 2, type);
             case VOLCANO:
-                return new Level(monfac.getMonster(300, 300, type), 1, 1, type);
+                return new Level(monfac.getMonster(300, 300, type), 3, 3, type);
             default:
                 return null;
         }

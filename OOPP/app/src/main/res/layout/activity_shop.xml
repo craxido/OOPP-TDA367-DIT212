@@ -89,6 +89,13 @@
             android:textColor="@android:color/white"
             android:textSize="22sp"
             tools:text="1" />
+        <TextView
+            android:id="@+id/effect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dmgUpgradeText"
+            android:layout_alignLeft="@+id/dmgCostText"
+            android:layout_alignStart="@+id/dmgCostText" />
 
         <TextView
             android:id="@+id/dmgUpgradeCost"
@@ -194,7 +201,13 @@
             android:textColor="@android:color/white"
             android:textSize="22sp"
             tools:text="1" />
-
+        <TextView
+            android:id="@+id/effectml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/multiplierUpgradeText"
+            android:layout_alignLeft="@+id/mltCostText"
+            android:layout_alignStart="@+id/mltCostText" />
         <TextView
             android:id="@+id/mltUpgradeCost"
             android:layout_width="200dp"
@@ -235,5 +248,7 @@
         android:layout_marginTop="47dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+
 
 </RelativeLayout>

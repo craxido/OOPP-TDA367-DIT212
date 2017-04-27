@@ -45,7 +45,8 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
 
     public void monsterClicked(){
         Monster currentMonster = map.getCurrentArea().getCurrentLevel().getCurrentMonster();
-        if(currentMonster.damageMonster(player.getDamage())){
+        boolean temp = currentMonster.damageMonster(player.getDamage());
+        if(temp){
 
             player.setMoney(player.getMoney()+currentMonster.getGold());
             setNewMonster();
@@ -55,8 +56,8 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
     private void setNewMonster(){
 
         map.getCurrentArea().getCurrentLevel().setCurrentMonster(monFac.getMonster(
-                map.getCurrentArea().getCurrentLevel().getHealthMultiplier(),
-                map.getCurrentArea().getCurrentLevel().getGoldMultiplier(),
+                map.getCurrentArea().getCurrentLevel().getHealthMultiplier()*100,
+                map.getCurrentArea().getCurrentLevel().getGoldMultiplier()*100,
                 map.getCurrentArea().getCurrentLevel().getArea()));
 
     }

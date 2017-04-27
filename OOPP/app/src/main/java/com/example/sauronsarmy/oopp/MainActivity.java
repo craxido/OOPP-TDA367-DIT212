@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         //Temp
 
-        currentMonster = monFac.getMonster(30,30,areaType.FOREST);
+        currentMonster = mainPresenter.getCurrentMonster();
 
         TextView hp = (TextView) findViewById(R.id.hp);
         hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                     TextView hp = (TextView) findViewById(R.id.hp);
 
                     mainPresenter.monsterClicked();
+
                     currentMonster = mainPresenter.getCurrentMonster();
 
 

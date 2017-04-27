@@ -13,10 +13,14 @@ class monsterFactory {
 
         switch (type){
 
-            case FOREST:return new Monster(hp, gold,R.drawable.mike );
-            case MOUNTAIN:return new Monster(hp, gold,R.drawable.bluemonster);
-            case VOLCANO:return new Monster(hp, gold ,R.drawable.bluemonster);
-            default: return new Monster(hp, gold,R.drawable.mike );
+            case FOREST:
+                return new Monster(hp, gold,R.drawable.mike );
+            case MOUNTAIN:
+                return new Monster(hp, gold,R.drawable.mike);
+            case VOLCANO:
+                return new Monster(hp, gold ,R.drawable.mike);
+            default:
+                return new Monster(hp, gold,R.drawable.mike );
 
         }
 

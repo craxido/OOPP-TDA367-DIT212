@@ -43,7 +43,8 @@ class Monster {
     //damage a monster, return true if dead
     public boolean damageMonster(double damage){
         this.health -= damage;
-        return this.health <= 0;
+        boolean temp = this.health <= 0;
+        return temp;
     }
 
 
