@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import static android.R.attr.format;
+import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -69,6 +69,7 @@ public class HomeActivity extends AppCompatActivity {
 
         currentMps.setText(String.valueOf(mps));
         newMps.setText(String.valueOf(newmps));
+
 
     }
 

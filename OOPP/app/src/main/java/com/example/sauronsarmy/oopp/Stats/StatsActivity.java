@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Stats;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.example.sauronsarmy.oopp.HomeActivity;
+import com.example.sauronsarmy.oopp.MainActivity;
+import com.example.sauronsarmy.oopp.MapActivity;
+import com.example.sauronsarmy.oopp.R;
+import com.example.sauronsarmy.oopp.ShopActivity;
 
 public class StatsActivity extends AppCompatActivity {
 

@@ -19,20 +19,61 @@
 
 \section{Introduction}
 
+\subsection{Design Goals}
+
+Gem Clicker is a mobile game for Android. So the program must therfore run on Android,
+it must be able to get input from the user, and display the result of these inputs. 
+
 \subsection{Definitions, acronyms, abbriviations}
+\begin{itemize}
+    \item \emph{Gem Clicker} - The name of the project.
+\end{itemize}
 
 \section{System architecture}
 
+Gem Clicker starts when the user opens the application. From there the user has
+the option of visiting several different activities. Each activity presents and
+represents different use cases such as, buying upgrades, viewing the map, attacking monsters, etc. \\ \noindent
+Gem Clicker ends when the user either exits the app or closes it using the android application manager.
+
+\subsection{Programming patterns}
+Gem Clicker, just like any other piece of software relies on different design/architecture patterns, such as:
+\begin{itemize}
+    \item Game Loop \cite{game-loop}
+    \item Model View Presenter \cite{MVP}
+    \item Singelton-pattern
+    \item Factory-pattern
+\end{itemize}
+
+\subsection{Dependencies}
+Gem Clicker is a self contained piece of software, whch means that it does not
+depend on anything but itself. The application contains all the information 
+required to be able to run. \\
+
+\noindent
+Gem Clicker is developed for the Android operating system and is guaranteed to
+run on android phones running 4.0 or later versions of the operating system.  
+
 \section{Subsystem decomposition}
-
-\subsection{"...First software to describe"...}
-
-\subsection{"...Second software to describe"...}
+The application is right now only contained in one package. 
 
 \section{Persistent data management}
+Gem Clicker saves the state of the app when the app is closed. 
+This data is represented as a simple text file, and doesn't take up any noticible space on the users phone.
 
 \section{Access control and security}
+There are no different roles for using this application. The only role is that of the user,
+and the only permission required of the user is to use the storage space of the phone.
 
 \section{References}
+\begin{thebibliography}{9}
+    
+    \bibitem{game-loop}
+        http://gameprogrammingpatterns.com/game-loop.html
+    
+    \bibitem{MVP}
+        https://en.wikipedia.org/wiki/Model–view–presenter
+
+\end{thebibliography}
 
 \end{document}

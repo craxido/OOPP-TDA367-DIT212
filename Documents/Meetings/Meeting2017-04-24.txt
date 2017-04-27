@@ -1,0 +1,54 @@
+Meeting Agenda
+Date: 2017-04-24
+Chair: Jonatan Källman 
+Participants: Jonatan Källman, Filip Labe, Erik Sjöström, Sarosh Nasir
+1. Objectives (5 min). Resolve any issues preventing the team to
+continue.
+
+We have to merge all the branches in Git so that we can create new ones to remain structured.
+Other than that, there are no real issues preventing us to continue working.
+
+2. Reports (15 min) from previous meeting
+
+Since we just came back from a break, we have only been working on some minor stuff.
+We have grabbed a couple of issues on Git, mainly regarding MVP implementations.
+Most of it is finished.
+
+3. Discussion items (35 min)
+- Discuss issues from 1 and 2, possibly new or more general issues (very short notes and/or
+keywords)
+
+Main things:
+Connect remaining activites to files (Presenters to views).
+Finish with MVP implementation (interfaces and such).
+Add more tests.
+Work on SDD.
+
+4. Outcomes and assignments (5 min)
+- Outcomes from 3). I.e. write down what's decided and why it was decided? Sync with other
+documentation (add terms to wordbook)
+- From outcomes, 1), 2) and 3) (re)assign each group member issues to solve.
+
+We have assigned some issues on Git as usual. 
+We have merged the branches so that everything is up to date.
+We decided to make the MainPresenter as a main communicator between views and models as it made more sense.
+
+5. Wrap up
+- Write down unresolved issues for next meeting.
+- Time and location for next meeting
+
+Issues listed on Git:
+Implement MainPresenter as a main communicator between views and models
+Add persistant gold indicator to activities
+Bottom bar activity indicator
+Implement interface for MVP: Home and HomeActivity
+Implement bottom bar as a fragment
+Implement interface for MVP: Shop and ShopActivity
+Implement interface for MVP: Map and MapActivity
+Create class for boss monster
+Save player state when exiting app
+
+General issues: 
+See discussion items.
+
+Our next meeting: 2017-04-27
