@@ -7,6 +7,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -19,12 +20,19 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     Monster currentMonster;
     monsterFactory monFac = new monsterFactory();
     private MainMVPInterface.PresenterOps mainPresenter;
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate() called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainPresenter = new MainPresenter(this);
+
+        // Load previous state
+        Log.i(TAG, "Will attempt to load previous state if there is one");
+        mainPresenter.loadState(MainActivity.this);
+
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
         appropriate activity.
@@ -55,6 +63,21 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
         monsterButton.setImageResource(currentMonster.getImageRef());
 
+    }
+
+    @Override
+    protected void onPause() {
+        Log.i(TAG, "onPause() called");
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.i(TAG, "onDestroy() called");
+        // Save current state
+        Log.i(TAG, "Calling saveState() in mainPresenter");
+        mainPresenter.saveState(MainActivity.this);
+        super.onDestroy();
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
