@@ -1,7 +1,10 @@
 package com.example.sauronsarmy.oopp;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -77,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                 case R.id.b_monster:
                     ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
                     TextView hp = (TextView) findViewById(R.id.hp);
-                    Player p = Player.getInstance();
+                    PlayerModelInterface p = PlayerModel.getInstance();
 
                     if(currentMonster.damageMonster(p.getDamage())){
 

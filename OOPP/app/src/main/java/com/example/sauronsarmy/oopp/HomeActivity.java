@@ -67,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
         tmp = oilPumpUpgrade.getCost() + " g";
         oilUpgradeCost.setText(tmp);
 
-        int mps = Player.getInstance().getMoneyPerSecond();
+        int mps = PlayerModel.getInstance().getMoneyPerSecond();
         tmp = mps + "";
         currentMps.setText(tmp);
 
