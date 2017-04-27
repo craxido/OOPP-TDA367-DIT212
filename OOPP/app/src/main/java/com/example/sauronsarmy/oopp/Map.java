@@ -7,16 +7,16 @@ package com.example.sauronsarmy.oopp;
 class Map implements MapMVPInterface.ModelOps {
 
     private static Area[] areas;
-    private static final Map mapInstance = new Map(R.drawable.mapbg, createAreas());
+    private static final Map mapInstance = new Map();
     private int bgRef;
 
     static Map getInstance() {
         return mapInstance;
     }
 
-    private Map(int bgRef, Area[] areas) {
-        this.bgRef = bgRef;
-        this.areas = areas;
+    private Map() {
+        bgRef = R.drawable.mapbg;
+        areas = createAreas();
     }
 
     //Creates areas for the mapInstance
