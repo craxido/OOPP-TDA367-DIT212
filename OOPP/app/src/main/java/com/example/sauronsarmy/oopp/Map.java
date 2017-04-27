@@ -25,13 +25,13 @@ class Map implements MapMVPInterface.ModelOps {
         Area[] areas= new Area[3];
 
         //Area 1 (Mountain)
-        areas[0]=new Area(R.drawable.mountainarea,
+        areas[0]=new Area(R.drawable.mountain_area,
                 com.example.sauronsarmy.oopp.areaType.MOUNTAIN, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.MOUNTAIN));
         //Area 2 (Forest)
-        areas[1]=new Area(R.drawable.forestarea,
+        areas[1]=new Area(R.drawable.forest_area,
                 com.example.sauronsarmy.oopp.areaType.FOREST, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.FOREST));
         //Area 3 (Volcano)
-        areas[2]=new Area(R.drawable.volcanoarea,
+        areas[2]=new Area(R.drawable.volcano_area,
                 com.example.sauronsarmy.oopp.areaType.VOLCANO, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.VOLCANO));
         return areas;
     }
