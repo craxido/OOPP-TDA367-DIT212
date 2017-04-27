@@ -10,6 +10,11 @@ import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
+/**
+ * Created by Erik on 04/04/17.
+ * Written by bunnyfiscuit
+ */
+
 public class ShopActivity extends AppCompatActivity {
 
     Shop shop;
@@ -99,8 +104,6 @@ public class ShopActivity extends AppCompatActivity {
         nMlt = Math.round(nMlt * 100) / 100.0;
         currentMlt.setText(String.valueOf(mlt));
         newMlt.setText(String.valueOf(nMlt));
-
-
 
     }
 
