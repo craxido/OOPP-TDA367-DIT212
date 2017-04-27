@@ -11,25 +11,26 @@ class Upgrade {
 
     protected Upgrade(double baseStat, int baseCost){
         this.stat = baseStat;
-        this.cost =baseCost;
+        this.cost = baseCost;
 
     }
 
     // Updates current stat upgrade amount with a multiplier
     protected void updateStat(int multiplier){
-        stat *= multiplier;
+        stat += (multiplier/10);
     }
 
     // Updates the cost for the upgrade with multiplier
     protected void updateCost(int multiplier){
         if(multiplier > 1) {
-            cost *= Math.round(multiplier / 2);
+            cost += Math.round(multiplier / 2);
         }
     }
 
     // mostly what will be used
     protected double getStat(){
-        return this.stat;
+        return (Math.round(stat * 100) / 100.0);
+
     }
 
     protected int getCost(){

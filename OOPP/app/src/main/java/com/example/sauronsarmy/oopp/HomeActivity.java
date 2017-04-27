@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
+/**
+ * Created by Erik on 04/04/17.
+ * Written by bunnyfiscuit
+ */
 public class HomeActivity extends AppCompatActivity {
 
     Home home;
@@ -64,19 +67,15 @@ public class HomeActivity extends AppCompatActivity {
          * */
         Upgrade oilPumpUpgrade = home.getOilPumpUpgrade();
 
-        String tmp = home.getOilPumpUpgradeCounter() + "";
-        oilUpgradeCounter.setText(tmp);
+        oilUpgradeCounter.setText(String.valueOf(home.getOilPumpUpgradeCounter()));
+        oilUpgradeCost.setText(String.valueOf(oilPumpUpgrade.getCost() + " g"));
 
-        tmp = oilPumpUpgrade.getCost() + " g";
-        oilUpgradeCost.setText(tmp);
+        double mps = PlayerModel.getInstance().getMoneyPerSecond();
+        double newmps = mps + oilPumpUpgrade.getStat();
 
-        int mps = PlayerModel.getInstance().getMoneyPerSecond();
-        tmp = mps + "";
-        currentMps.setText(tmp);
+        currentMps.setText(String.valueOf(mps));
+        newMps.setText(String.valueOf(newmps));
 
-        int newmps = mps + (int) oilPumpUpgrade.getStat();
-        tmp = newmps + "";
-        newMps.setText(tmp);
 
     }
 

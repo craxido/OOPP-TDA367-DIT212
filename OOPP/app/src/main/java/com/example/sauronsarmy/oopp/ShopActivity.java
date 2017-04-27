@@ -11,6 +11,11 @@ import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
+/**
+ * Created by Erik on 04/04/17.
+ * Written by bunnyfiscuit
+ */
+
 public class ShopActivity extends AppCompatActivity {
 
     Shop shop;
@@ -59,6 +64,8 @@ public class ShopActivity extends AppCompatActivity {
         /* DAMAGE */
         TextView dmgCounter = (TextView) findViewById(R.id.dmgUpgradeCounter);
         TextView dmgCost = (TextView) findViewById(R.id.dmgUpgradeCost);
+        TextView currentDmg = (TextView) findViewById(R.id.currentDmg);
+        TextView newDmg = (TextView) findViewById(R.id.newDmg);
 
         /** Set the values to the view from the upgrade object
          *  Using String tmp to set text, otherwise it complains about Android resource
@@ -66,10 +73,13 @@ public class ShopActivity extends AppCompatActivity {
          * */
         /* DAMAGE UPGRADE */
         Upgrade damageUpgrade = shop.getDamageUpgrade();
-        String tmp = damageUpgrade.getCost() + " g";
-        dmgCost.setText(tmp);
-        tmp = shop.getDamageUpgradeCounter() + "";
-        dmgCounter.setText(tmp);
+        dmgCost.setText(String.valueOf(damageUpgrade.getCost() + " g"));
+        dmgCounter.setText(String.valueOf(shop.getDamageUpgradeCounter()));
+
+        int dmg = PlayerModel.getInstance().getDamage();
+        int newdmg = (int) damageUpgrade.getStat() + dmg;
+        currentDmg.setText(String.valueOf(dmg));
+        newDmg.setText(String.valueOf(newdmg));
 
     }
 
@@ -78,6 +88,8 @@ public class ShopActivity extends AppCompatActivity {
         /* MULTIPLIER */
         TextView multiplierCounter = (TextView) findViewById(R.id.mltUpgradeCounter);
         TextView multiplierCost = (TextView) findViewById(R.id.mltUpgradeCost);
+        TextView currentMlt = (TextView) findViewById(R.id.currentMlt);
+        TextView newMlt = (TextView) findViewById(R.id.newMlt);
 
         /** Set the values to the view from the upgrade object
          *  Using String tmp to set text, otherwise it complains about Android resource
@@ -85,11 +97,16 @@ public class ShopActivity extends AppCompatActivity {
          * */
         /* MULTIPLIER UPGRADE */
         Upgrade multiplierUpgrade = shop.getMultiplierUpgrade();
-        String tmp = shop.getMultiplierUpgradeCounter() + "";
-        multiplierCounter.setText(tmp);
-        tmp = multiplierUpgrade.getCost() + " g";
-        multiplierCost.setText(tmp);
 
+        multiplierCounter.setText(String.valueOf(shop.getMultiplierUpgradeCounter()));
+        multiplierCost.setText(String.valueOf(multiplierUpgrade.getCost() + " g"));
+
+        double mlt = PlayerModel.getInstance().getDamageMultiplier();
+        mlt = Math.round(mlt * 100) / 100.0;
+        double nMlt = mlt + multiplierUpgrade.getStat();
+        nMlt = Math.round(nMlt * 100) / 100.0;
+        currentMlt.setText(String.valueOf(mlt));
+        newMlt.setText(String.valueOf(nMlt));
 
     }
 

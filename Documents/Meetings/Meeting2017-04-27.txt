@@ -1,0 +1,57 @@
+Meeting Agenda
+Date: 2017-04-27
+Chair: Jonatan Källman 
+Participants: Jonatan Källman, Filip Labe, Erik Sjöström, Sarosh Nasir
+1. Objectives (5 min). Resolve any issues preventing the team to
+continue.
+
+We are currently handling minor merge conflicts from branches to master, other than that there are
+no issues preventing us to continue working.
+
+2. Reports (15 min) from previous meeting
+
+Since last meeting we have been working on issues listed on Git and merged most branches.
+We have implemented MVP for our models and written some general stuff on the SDD.
+We have made a test module where there are currently only tests for the PlayerModel, 
+but we plan on adding a lot more tests there.
+
+3. Discussion items (35 min)
+- Discuss issues from 1 and 2, possibly new or more general issues (very short notes and/or
+keywords)
+
+Main things:
+Create more tests.
+System decomposition - Split up files into packages for better structure.
+Prepare for showing our system design at the next meeting with the teacher assistant.
+Work on issues on Git.
+
+4. Outcomes and assignments (5 min)
+- Outcomes from 3). I.e. write down what's decided and why it was decided? Sync with other
+documentation (add terms to wordbook)
+- From outcomes, 1), 2) and 3) (re)assign each group member issues to solve.
+
+We have assigned some issues on Git as usual. 
+We have decided that, since we have worked with at least one model each in the MVP implementation,
+that each of us should write tests for the model that we worked with. 
+We will prepare for showing our system design to the teacher assistant next Monday.
+
+5. Wrap up
+- Write down unresolved issues for next meeting.
+- Time and location for next meeting
+
+Issues listed on Git:
+Implement Map/ Area/ Level tests
+Implement Home and Shop tests
+Separate the code handling the player into its own package
+App icon
+Implement MainPresenter as a main communicator between views and models
+Add persistant gold indicator to activities
+Bottom bar activity indicator
+Implement bottom bar as a fragment
+Create class for boss monster
+Save player state when exiting app
+
+General issues: 
+See discussion items.
+
+Our next meeting: 2017-05-01
