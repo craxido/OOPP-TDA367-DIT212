@@ -7,16 +7,16 @@ package com.example.sauronsarmy.oopp;
 class Map implements MapMVPInterface.ModelOps {
 
     private static Area[] areas;
-    private static final Map mapInstance = new Map(R.drawable.mapbg, createAreas());
+    private static final Map mapInstance = new Map();
     private int bgRef;
 
     static Map getInstance() {
         return mapInstance;
     }
 
-    private Map(int bgRef, Area[] areas) {
-        this.bgRef = bgRef;
-        this.areas = areas;
+    private Map() {
+        bgRef = R.drawable.mapbg;
+        areas = createAreas();
     }
 
     //Creates areas for the mapInstance
@@ -25,13 +25,13 @@ class Map implements MapMVPInterface.ModelOps {
         Area[] areas= new Area[3];
 
         //Area 1 (Mountain)
-        areas[0]=new Area(R.drawable.mountainArea,
+        areas[0]=new Area(R.drawable.mountain_area,
                 com.example.sauronsarmy.oopp.areaType.MOUNTAIN, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.MOUNTAIN));
         //Area 2 (Forest)
-        areas[1]=new Area(R.drawable.forestArea,
+        areas[1]=new Area(R.drawable.forest_area,
                 com.example.sauronsarmy.oopp.areaType.FOREST, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.FOREST));
         //Area 3 (Volcano)
-        areas[2]=new Area(R.drawable.volcanoArea,
+        areas[2]=new Area(R.drawable.volcano_area,
                 com.example.sauronsarmy.oopp.areaType.VOLCANO, lvlfac.getLevels(com.example.sauronsarmy.oopp.areaType.VOLCANO));
         return areas;
     }
@@ -48,12 +48,12 @@ class Map implements MapMVPInterface.ModelOps {
 
     @Override
     public Area getArea(int index) {
-        return this.areas[index];
+        return areas[index];
     }
 
     @Override
     public void setArea(Area area, int index) {
-        this.areas[index] = area;
+        areas[index] = area;
     }
 
     @Override
