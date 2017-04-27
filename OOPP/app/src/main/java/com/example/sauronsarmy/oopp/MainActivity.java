@@ -77,9 +77,9 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                     ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
                     TextView hp = (TextView) findViewById(R.id.hp);
 
-
                     mainPresenter.monsterClicked();
                     currentMonster = mainPresenter.getCurrentMonster();
+
 
                     hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
                     monsterButton.setImageResource(currentMonster.getImageRef());
