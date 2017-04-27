@@ -48,12 +48,12 @@ class Map implements MapMVPInterface.ModelOps {
 
     @Override
     public Area getArea(int index) {
-        return this.areas[index];
+        return areas[index];
     }
 
     @Override
     public void setArea(Area area, int index) {
-        this.areas[index] = area;
+        areas[index] = area;
     }
 
     @Override
