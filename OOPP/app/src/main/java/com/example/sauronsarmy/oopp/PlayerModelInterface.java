@@ -18,6 +18,6 @@ public interface PlayerModelInterface {
     void setMoney(int newValue);
     int getMoney();
 
-    void setMoneyPerSecond(int newValue);
-    int getMoneyPerSecond();
+    void setMoneyPerSecond(double newValue);
+    double getMoneyPerSecond();
 }

@@ -52,8 +52,12 @@ public class StatsActivity extends AppCompatActivity {
         dmgMultText     = (TextView) findViewById(R.id.dmgMultText);
         moneyText       = (TextView) findViewById(R.id.moneyText);
         moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
+
         damageText.setText(String.valueOf(statsPresenter.getPlayerDamage()));
-        dmgMultText.setText(String.valueOf(statsPresenter.getPlayerDamageMultiplier()));
+
+        double mlt = statsPresenter.getPlayerDamageMultiplier();
+        mlt = Math.round(mlt * 100) / 100.0;
+        dmgMultText.setText(String.valueOf(mlt));
         moneyText.setText(String.valueOf(statsPresenter.getMoneyAmount()));
         moneyPerSecText.setText(String.valueOf(statsPresenter.getMoneyPerSecond()));
     }

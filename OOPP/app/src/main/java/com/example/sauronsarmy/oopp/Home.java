@@ -18,8 +18,7 @@ class Home{
     protected boolean buyOilPumpUpgrade(){
         if (player.getMoney() >= oilPumpUpgrade.getCost()) {
             player.setMoney(player.getMoney() - oilPumpUpgrade.getCost());
-            player.setMoneyPerSecond(player.getMoneyPerSecond() + (int) oilPumpUpgrade.getStat());
-
+            player.setMoneyPerSecond(player.getMoneyPerSecond() + oilPumpUpgrade.getStat());
             oilPumpUpgradeCounter++;
             oilPumpUpgrade.updateStat(oilPumpUpgradeCounter);
             oilPumpUpgrade.updateCost(oilPumpUpgradeCounter);
