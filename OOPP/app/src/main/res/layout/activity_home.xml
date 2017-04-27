@@ -41,9 +41,9 @@
             android:layout_marginStart="16dp"
             android:layout_toEndOf="@+id/oilUpgradeText"
             android:layout_toRightOf="@+id/oilUpgradeText"
+            android:gravity="end"
             android:text="1"
             android:textAlignment="textEnd"
-            android:gravity = "end"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -52,13 +52,13 @@
             android:id="@+id/upgradeCostText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/oilUpgradeCost"
-            android:layout_alignRight="@+id/oilUpgradeCost"
-            android:layout_below="@+id/oilUpgradeCounter"
-            android:layout_marginEnd="28dp"
-            android:layout_marginRight="28dp"
-            android:layout_marginTop="46dp"
-            android:text="Cost:"
+            android:layout_alignTop="@+id/newMps"
+            android:layout_marginEnd="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/oilUpgradeCost"
+            android:layout_toStartOf="@+id/oilUpgradeCost"
+            android:text="@string/cost"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="18sp"
@@ -84,52 +84,52 @@
             android:id="@+id/currentMpsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Current money/sec:"
-            android:textColor = "@android:color/black"
-            android:layout_below="@+id/oilUpgradeText"
             android:layout_alignLeft="@+id/oilUpgradeText"
             android:layout_alignStart="@+id/oilUpgradeText"
+            android:layout_below="@+id/oilUpgradeText"
             android:layout_marginTop="8dp"
-            android:textSize = "15sp"/>
+            android:text="@string/currentMoneyPerSec"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/currentMps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0.0"
-            android:textColor = "@android:color/black"
-            android:layout_below="@+id/oilUpgradeText"
             android:layout_alignLeft="@+id/oilUpgradeText"
             android:layout_alignStart="@+id/oilUpgradeText"
+            android:layout_below="@+id/oilUpgradeText"
+            android:layout_marginLeft="140dp"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft = "140dp"
-            android:textSize = "15sp"/>
+            android:text="0"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/newMpsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New money/sec:"
-            android:textColor = "@android:color/black"
-            android:layout_below="@+id/oilUpgradeText"
             android:layout_alignLeft="@+id/oilUpgradeText"
             android:layout_alignStart="@+id/oilUpgradeText"
+            android:layout_below="@+id/oilUpgradeText"
             android:layout_marginTop="30dp"
-            android:textSize = "15sp"/>
+            android:text="@string/newMoneyPerSec"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
 
 
         <TextView
             android:id="@+id/newMps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0.0"
-            android:textColor = "@android:color/black"
-            android:layout_below="@+id/oilUpgradeText"
             android:layout_alignLeft="@+id/oilUpgradeText"
             android:layout_alignStart="@+id/oilUpgradeText"
+            android:layout_below="@+id/oilUpgradeText"
+            android:layout_marginLeft="120dp"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft = "120dp"
-            android:textSize = "15sp"/>
+            android:text="0"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/oilUpgradeCost"
@@ -141,9 +141,9 @@
             android:layout_alignParentRight="true"
             android:layout_marginEnd="22dp"
             android:layout_marginRight="22dp"
-            android:text="5 g"
+            android:gravity="end"
+            android:text="0"
             android:textAlignment="textEnd"
-            android:gravity = "end"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />

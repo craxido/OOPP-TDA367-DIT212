@@ -9,7 +9,8 @@ class Shop {
     private static final Shop shopInstance = new Shop();
 
     // Variables
-    private PlayerModel player = PlayerModel.getInstance();
+    private PlayerModelInterface player = PlayerModel.getInstance();
+
     private Upgrade damageUpgrade = new Upgrade(5,5);
     private Upgrade multiplierUpgrade = new Upgrade(0.1,5);
     private int damageUpgradeCounter = 1;

@@ -7,7 +7,8 @@ package com.example.sauronsarmy.oopp;
 class Home{
     private static final Home homeInstance = new Home();
 
-    private PlayerModel player = PlayerModel.getInstance();
+    private PlayerModelInterface player = PlayerModel.getInstance();
+
     private Upgrade oilPumpUpgrade = new Upgrade(0.5, 10);
     private int oilPumpUpgradeCounter = 1;
 
@@ -18,8 +19,7 @@ class Home{
     protected boolean buyOilPumpUpgrade(){
         if (player.getMoney() >= oilPumpUpgrade.getCost()) {
             player.setMoney(player.getMoney() - oilPumpUpgrade.getCost());
-            player.setMoneyPerSecond(player.getMoneyPerSecond() + (int) oilPumpUpgrade.getStat());
-
+            player.setMoneyPerSecond(player.getMoneyPerSecond() + oilPumpUpgrade.getStat());
             oilPumpUpgradeCounter++;
             oilPumpUpgrade.updateStat(oilPumpUpgradeCounter);
             oilPumpUpgrade.updateCost(oilPumpUpgradeCounter);
