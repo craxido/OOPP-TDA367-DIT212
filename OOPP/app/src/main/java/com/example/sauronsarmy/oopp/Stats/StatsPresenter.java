@@ -16,7 +16,7 @@ public class StatsPresenter implements StatsPresenterInterface {
     }
 
     @Override
-    public int getMoneyPerSecond() {
+    public double getMoneyPerSecond() {
         return playerModel.getMoneyPerSecond();
     }
 
