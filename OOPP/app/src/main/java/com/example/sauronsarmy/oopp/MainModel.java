@@ -41,11 +41,11 @@ class MainModel implements MainMVPInterface.ModelInterface {
 
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
         editor = saveState.edit();
-        editor.putInt("damage",       (int) currentState.get("damage"));
-        editor.putFloat("damageMult", (float) currentState.get("damageMult"));
-        editor.putInt("money",        (int) currentState.get("money"));
-        editor.putInt("moneyPerSec",  (int) currentState.get("moneyPerSec"));
-        editor.putLong("lastLogOn",   (long) currentState.get("lastLogOn"));
+        editor.putInt("damage",        (int) currentState.get("damage"));
+        editor.putLong("damageMult",   doubleToLong((double) currentState.get("damageMult")));
+        editor.putInt("money",         (int) currentState.get("money"));
+        editor.putLong("moneyPerSec",  doubleToLong((double) currentState.get("moneyPerSec")));
+        editor.putLong("lastLogOn",    (long) currentState.get("lastLogOn"));
         editor.apply();
     }
 
@@ -64,11 +64,34 @@ class MainModel implements MainMVPInterface.ModelInterface {
        return new HashMap<String, Object>() {
            {
                put("damage",      saveState.getInt("damage", 10));
-               put("damageMult",  saveState.getFloat("damageMult", 1.0f));
+               put("damageMult",  longToDouble(saveState.getLong("damageMult", doubleToLong(1.0))));
                put("money",       saveState.getInt("money", 10));
-               put("moneyPerSec", saveState.getInt("moneyPerSec", 0));
+               put("moneyPerSec", longToDouble(saveState.getLong("moneyPerSec", 0)));
                put("lastLogOn",   saveState.getLong("lastLogOn", -1));
            }
        };
    }
+
+    /**
+     * SharedPreference is (for some reason) not able to save doubles.
+     * This leaves me with two options, either casting the double to a float,
+     * which is a lossy conversion and widely regarded as a bad move. Or
+     * I could convert the value of the double to it's raw long bits equivalent
+     * and store this as a long instead. I choose the latter.
+     * @param heathen The value to convert
+     * @return The converted value
+     */
+    private long doubleToLong(double heathen) {
+        return Double.doubleToRawLongBits(heathen);
+    }
+
+    /**
+     * Reverts the converted double value to its true form.
+     * @param convert The converted value.
+     * @return The true form
+     */
+    private double longToDouble(long convert) {
+        return Double.longBitsToDouble(convert);
+    }
+
 }

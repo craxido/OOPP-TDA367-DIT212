@@ -15,7 +15,7 @@ public class PlayerModel implements  PlayerModelInterface{
     private static final PlayerModel ourInstance = new PlayerModel();
 
     private int damage;
-    private float damageMultiplier;
+    private double damageMultiplier;
     private int money;
     private double moneyPerSecond;
     // This must be assigned when exiting the app.
@@ -32,9 +32,8 @@ public class PlayerModel implements  PlayerModelInterface{
      */
     private PlayerModel() {
         damage           = 10;
-        damageMultiplier = 1.0f;
+        damageMultiplier = 1.0;
         money            = 50;
-
         moneyPerSecond   = 0;
     }
 
@@ -46,11 +45,11 @@ public class PlayerModel implements  PlayerModelInterface{
         this.lastLogOn = lastLogOn;
     }
 
-    public float getDamageMultiplier() {
+    public double getDamageMultiplier() {
         return damageMultiplier;
     }
 
-    public void setDamageMultiplier(float damageMultiplier) {
+    public void setDamageMultiplier(double damageMultiplier) {
         this.damageMultiplier = damageMultiplier;
     }
 
@@ -80,11 +79,11 @@ public class PlayerModel implements  PlayerModelInterface{
 
     @Override
     public void setState(Map newState) {
-        setDamage((int) newState.get("damage"));
-        setDamageMultiplier((float) newState.get("damageMult"));
-        setMoney((int) newState.get("money"));
-        setMoneyPerSecond((int) newState.get("moneyPerSec"));
-        setLastLogOn((long) newState.get("lastLogOn"));
+        setDamage(          (int) newState.get("damage"));
+        setDamageMultiplier((double) newState.get("damageMult"));
+        setMoney(           (int) newState.get("money"));
+        setMoneyPerSecond(  (double) newState.get("moneyPerSec"));
+        setLastLogOn(       (long) newState.get("lastLogOn"));
     }
 
     @Override

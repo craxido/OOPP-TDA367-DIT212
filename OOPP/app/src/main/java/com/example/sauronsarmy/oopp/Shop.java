@@ -43,7 +43,7 @@ class Shop {
     protected boolean buyMultiplierUpgrade(){
         if (player.getMoney() >= multiplierUpgrade.getCost()) {
             player.setMoney(player.getMoney() - multiplierUpgrade.getCost());
-            player.setDamageMultiplier(player.getDamageMultiplier() + (float) multiplierUpgrade.getStat());
+            player.setDamageMultiplier(player.getDamageMultiplier() + multiplierUpgrade.getStat());
 
             multiplierUpgradeCounter++;
             multiplierUpgrade.updateStat(multiplierUpgradeCounter);
