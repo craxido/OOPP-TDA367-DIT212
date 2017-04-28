@@ -1,5 +1,8 @@
 package com.example.sauronsarmy.oopp;
 
+import com.example.sauronsarmy.oopp.Player.PlayerModel;
+import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
+
 /**
  * Created by bunnyfiscuit on 05/04/17.
  */

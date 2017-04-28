@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Player;
 
 import java.util.*;
 import java.util.Map;

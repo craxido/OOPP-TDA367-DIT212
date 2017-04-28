@@ -2,6 +2,9 @@ package com.example.sauronsarmy.oopp;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.sauronsarmy.oopp.Player.PlayerModel;
+import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
+
 import java.lang.ref.WeakReference;
 
 /**
