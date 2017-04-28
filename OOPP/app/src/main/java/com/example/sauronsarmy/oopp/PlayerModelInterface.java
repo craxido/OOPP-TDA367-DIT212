@@ -1,7 +1,7 @@
 package com.example.sauronsarmy.oopp;
 
 /**
- * Created by Loke on 13/04/17.
+ * Created by Erik on 13/04/17.
  */
 
 public interface PlayerModelInterface {
@@ -9,8 +9,8 @@ public interface PlayerModelInterface {
     void setLastLogOn(long newValue);
     long getLastLogOn();
 
-    void setDamageMultiplier(float newValue);
-    float getDamageMultiplier();
+    void setDamageMultiplier(double newValue);
+    double getDamageMultiplier();
 
     void setDamage(int newValue);
     int getDamage();
