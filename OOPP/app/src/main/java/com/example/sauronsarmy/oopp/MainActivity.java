@@ -3,8 +3,7 @@ package com.example.sauronsarmy.oopp;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -55,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         mainButton.setOnClickListener(buttonListener);
         monsterButton.setOnClickListener(buttonListener);
 
+        mainButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
         //currentMonster = main.getCurrentMonster;
 
