@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
-import com.example.sauronsarmy.oopp.MapActivity;
+import com.example.sauronsarmy.oopp.Map.MapActivity;
 import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.ShopActivity;
 

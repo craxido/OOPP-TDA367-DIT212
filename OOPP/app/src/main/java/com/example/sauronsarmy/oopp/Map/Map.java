@@ -1,7 +1,9 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Map;
+
+import com.example.sauronsarmy.oopp.R;
 
 /**
- * Created by Jonatan on 2017-04-05.
+ * Author: Jonatan Källman
  */
 
 class Map implements MapMVPInterface.ModelOps {

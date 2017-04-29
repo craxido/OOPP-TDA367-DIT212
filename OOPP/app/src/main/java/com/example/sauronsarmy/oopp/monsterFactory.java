@@ -1,11 +1,13 @@
 package com.example.sauronsarmy.oopp;
 
 
+import com.example.sauronsarmy.oopp.Map.areaType;
+
 /**
  * Created by Filip on 2017-04-05.
  */
 
-class monsterFactory {
+public class monsterFactory {
     public monsterFactory(){}
 
     public Monster getMonster(double hp, int gold, areaType type){
