@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Map;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.sauronsarmy.oopp.HomeActivity;
+import com.example.sauronsarmy.oopp.MainActivity;
+import com.example.sauronsarmy.oopp.R;
+import com.example.sauronsarmy.oopp.ShopActivity;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
 public class MapActivity extends AppCompatActivity {

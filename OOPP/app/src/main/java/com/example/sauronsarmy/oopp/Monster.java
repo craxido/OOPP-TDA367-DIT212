@@ -8,7 +8,7 @@ import android.media.Image;
  * Created by Filip on 2017-04-04.
  */
 
-class Monster {
+public class Monster {
 
     private double health;
     private double maxhealth;

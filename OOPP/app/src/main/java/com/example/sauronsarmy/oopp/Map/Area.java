@@ -1,17 +1,17 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Map;
 
 /**
- * Created by Jonatan on 2017-04-05.
+ * Author: Jonatan Källman
  */
 
-class Area {
+public class Area {
 
     private int imgRef;
     private areaType areaType;
     private Level[] levels;
     private Level currentLevel;
 
-    public Area(int imgRef, areaType area, Level[] levels){
+    Area(int imgRef, areaType area, Level[] levels){
         this.imgRef = imgRef;
         this.areaType=area;
         this.levels=levels;
