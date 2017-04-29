@@ -76,7 +76,7 @@ public class PlayerModelTest {
     @Test
     public void setMoneyPerSecond() throws Exception {
         player.setMoneyPerSecond(35);
-        assertEquals(35, player.getMoneyPerSecond());
+        assertEquals(35.0, player.getMoneyPerSecond(),DELTA);
         player.setMoneyPerSecond(0);
     }
 
