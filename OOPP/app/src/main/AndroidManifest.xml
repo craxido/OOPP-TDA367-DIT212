@@ -20,7 +20,7 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".ShopActivity" />
         <activity android:name=".Stats.StatsActivity" />
-        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".Map.MapActivity"></activity>
     </application>
 
 </manifest>
