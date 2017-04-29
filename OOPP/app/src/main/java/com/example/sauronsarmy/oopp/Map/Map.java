@@ -6,7 +6,7 @@ import com.example.sauronsarmy.oopp.R;
  * Author: Jonatan Källman
  */
 
-class Map implements MapMVPInterface.ModelOps {
+public class Map implements MapMVPInterface.ModelOps {
 
 
     private static Area[] areas;
@@ -16,7 +16,7 @@ class Map implements MapMVPInterface.ModelOps {
     private int bgRef;
 
 
-    static Map getInstance() {
+    public static Map getInstance() {
         return mapInstance;
     }
 

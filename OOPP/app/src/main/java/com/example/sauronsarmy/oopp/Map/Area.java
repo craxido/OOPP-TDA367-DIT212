@@ -4,7 +4,7 @@ package com.example.sauronsarmy.oopp.Map;
  * Author: Jonatan Källman
  */
 
-class Area {
+public class Area {
 
     private int imgRef;
     private areaType areaType;

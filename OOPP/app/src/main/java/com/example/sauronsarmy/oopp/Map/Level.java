@@ -6,7 +6,7 @@ import com.example.sauronsarmy.oopp.Monster;
  * Author: Jonatan Källman
  */
 
-class Level {
+public class Level {
 
     private Monster monster;
     private double healthMultiplier;
