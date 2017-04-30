@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     Monster currentMonster;
     monsterFactory monFac = new monsterFactory();
 
-    private MainMVPInterface.PresenterOps mainPresenter;
+    private MainMVPInterface.PresenterOps mainPresenter = MainPresenter.getInstance();
     private static final String TAG = "MainActivity";
 
 

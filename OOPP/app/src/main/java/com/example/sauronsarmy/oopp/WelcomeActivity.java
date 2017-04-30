@@ -1,9 +1,18 @@
 package com.example.sauronsarmy.oopp;
 
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +22,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
+
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
+import java.util.List;
 
 /*
 * Created by Filip Labe 2017-04-30
@@ -81,9 +94,30 @@ public class WelcomeActivity extends AppCompatActivity implements MainMVPInterfa
     }
 
     private void newGame(){
-        Context context = WelcomeActivity.this;
-        startActivity(new Intent(context, MainActivity.class));
+        mainPresenter = new MainPresenter(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(WelcomeActivity.this);
+        builder.setMessage(R.string.new_game)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        Context context = WelcomeActivity.this;
+                        startActivity(new Intent(context, MainActivity.class));
+
+
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+        AlertDialog dia = builder.create();
+        dia.show();
+
 
 
     }
+
+
+
 }
