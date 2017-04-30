@@ -103,10 +103,9 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
                     currentMonster = mainPresenter.getCurrentMonster();
 
-
-
                     hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
                     monsterButton.setImageResource(currentMonster.getImageRef());
+
                     break;
             }
         }
