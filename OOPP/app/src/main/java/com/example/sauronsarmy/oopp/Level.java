@@ -51,4 +51,26 @@ class Level {
     public void setCurrentMonster(Monster currentMonster) {
         this.monster = currentMonster;
     }
+
+    public int damageMonster(double damage){
+
+        int ret =0;
+        if(monster.damageMonster(damage)){
+            ret=monster.getGold();
+            setNewMonster();
+
+        }
+        return ret;
+    }
+
+    public void setNewMonster(){
+
+        monsterFactory monFac=new monsterFactory();
+
+        setCurrentMonster(monFac.getMonster(getHealthMultiplier()*100, getGoldMultiplier()*100, getArea()));
+
+    }
+
+
 }
+
