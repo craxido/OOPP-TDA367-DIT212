@@ -28,12 +28,6 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainPresenter = new MainPresenter(this);
-
-        // Load previous state
-        Log.i(TAG, "Will attempt to load previous state if there is one");
-        mainPresenter.loadState(MainActivity.this);
-
 
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
@@ -56,9 +50,6 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         mainButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
-        //currentMonster = main.getCurrentMonster;
-
-        //Temp
 
         currentMonster = mainPresenter.getCurrentMonster();
 
