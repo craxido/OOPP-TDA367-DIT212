@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Upgrades;
 
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
@@ -7,7 +7,7 @@ import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
  * Created by bunnyfiscuit on 05/04/17.
  */
 
-class Shop {
+public class Shop {
 
     private static final Shop shopInstance = new Shop();
 
@@ -19,7 +19,7 @@ class Shop {
     private int damageUpgradeCounter = 1;
     private int multiplierUpgradeCounter = 1;
 
-    static Shop getInstance() { return shopInstance; }
+    public static Shop getInstance() { return shopInstance; }
 
     /** Buy damage upgrade for player.
      *  adds to player damage, and applies the cost

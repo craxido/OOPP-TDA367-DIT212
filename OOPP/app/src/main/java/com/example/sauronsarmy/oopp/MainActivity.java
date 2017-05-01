@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.Map.MapActivity;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
+import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
+import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
 
 public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps {
 

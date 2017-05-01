@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Upgrades;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.Map.MapActivity;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
+import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
 

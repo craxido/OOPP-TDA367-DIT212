@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.sauronsarmy.oopp.Map.Map;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
+import com.example.sauronsarmy.oopp.Upgrades.Shop;
 
 import java.lang.ref.WeakReference;
 
@@ -17,13 +18,11 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
 
     private static MainPresenter ourInstance;
 
-
-
     Shop shop = Shop.getInstance();
     Map map = Map.getInstance();
 
 
-    monsterFactory monFac=new monsterFactory();
+    monsterFactory monFac = new monsterFactory();
 
 
     WeakReference<MainMVPInterface.ViewOps> mView;

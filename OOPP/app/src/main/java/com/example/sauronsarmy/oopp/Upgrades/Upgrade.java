@@ -1,10 +1,10 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Upgrades;
 
 /**
  * Created by bunnyfiscuit on 05/04/17.
  */
 
-class Upgrade {
+public class Upgrade {
 
     private double stat;
     private int cost;

@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Upgrades;
 
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
@@ -7,7 +7,7 @@ import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
  * Created by bunnyfiscuit on 05/04/17.
  */
 
-class Home{
+public class Home{
     private static final Home homeInstance = new Home();
 
     private PlayerModelInterface player = PlayerModel.getInstance();
