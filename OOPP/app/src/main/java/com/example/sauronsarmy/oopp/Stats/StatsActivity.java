@@ -13,13 +13,11 @@ import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
-import com.example.sauronsarmy.oopp.MainPresenter;
 import com.example.sauronsarmy.oopp.MapActivity;
 import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.ShopActivity;
-import com.example.sauronsarmy.oopp.clock.ClockListener;
 
-public class StatsActivity extends AppCompatActivity implements ClockListener {
+public class StatsActivity extends AppCompatActivity {
 
     private TextView damageText;
     private TextView dmgMultText;
@@ -69,35 +67,7 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
         moneyText.setText(String.valueOf(statsPresenter.getMoneyAmount()));
         moneyPerSecText.setText(String.valueOf(statsPresenter.getMoneyPerSecond()));
 
-        Thread t = new Thread() {
 
-            @Override
-            public void run() {
-                try {
-                    while (!isInterrupted()) {
-                        Thread.sleep(1000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                damageText      = (TextView) findViewById(R.id.damageText);
-                                dmgMultText     = (TextView) findViewById(R.id.dmgMultText);
-                                moneyText       = (TextView) findViewById(R.id.moneyText);
-                                moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
-
-                                damageText.setText(String.valueOf(statsPresenter.getPlayerDamage()));
-
-                                double mlt = statsPresenter.getPlayerDamageMultiplier();
-                                mlt = Math.round(mlt * 100) / 100.0;
-                                dmgMultText.setText(String.valueOf(mlt));
-                                moneyText.setText(String.valueOf(statsPresenter.getMoneyAmount()));
-                                moneyPerSecText.setText(String.valueOf(statsPresenter.getMoneyPerSecond()));
-                        }
-                        });
-                    }
-                } catch (InterruptedException e) {
-                }
-            }
-        };
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
@@ -123,40 +93,4 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
             }
         }
     };
-
-    @Override
-    public void run() {
-
-           /*
-        Setting all the textViews to display the correct stats.
-         */
-        damageText      = (TextView) findViewById(R.id.damageText);
-        dmgMultText     = (TextView) findViewById(R.id.dmgMultText);
-        moneyText       = (TextView) findViewById(R.id.moneyText);
-        moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
-
-        damageText.setText(String.valueOf(statsPresenter.getPlayerDamage()));
-
-        double mlt = statsPresenter.getPlayerDamageMultiplier();
-        mlt = Math.round(mlt * 100) / 100.0;
-        dmgMultText.setText(String.valueOf(mlt));
-        moneyText.setText(String.valueOf(statsPresenter.getMoneyAmount()));
-        moneyPerSecText.setText(String.valueOf(statsPresenter.getMoneyPerSecond()));
-
-
-    }
-
-    @Override
-    protected void onStart(){
-        //MainPresenter.getInstance().getRun().register(this);
-
-        super.onStart();
-    }
-
-    @Override
-    protected void onPause(){
-       // MainPresenter.getInstance().getRun().unregister(this);
-
-        super.onPause();
-    }
 }
