@@ -71,6 +71,7 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
         if((gold =map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamage()) )!=0){
 
             playerModel.setMoney(playerModel.getMoney() +gold);
+
         }
 
     }
