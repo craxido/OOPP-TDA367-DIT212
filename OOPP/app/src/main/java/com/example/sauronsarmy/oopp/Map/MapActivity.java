@@ -76,7 +76,10 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
                 case R.id.b_main:
                     startActivity(new Intent(context, MainActivity.class));
                     break;
-                case R.id.b_area1:
+                /* TODO: Selecting a new area should result in changing the monsters/ levels
+                 * TODO: as well as the background in the MainActivity.
+                    */
+                case R.id.b_area1: 
                     MapPresenter.setBackgroundRef(mapPresenter.getArea(0).getImgRef());
                     break;
                 case R.id.b_area2:
