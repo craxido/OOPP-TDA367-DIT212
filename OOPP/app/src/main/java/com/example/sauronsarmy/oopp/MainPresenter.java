@@ -47,8 +47,8 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
     // A configuration changed
     @Override
     public void onConfigChange(MainMVPInterface.ViewOps view) {
-                mView = new WeakReference<>(view);
-                setNewMonster();
+        mView = new WeakReference<>(view);
+        map.getCurrentArea().getCurrentLevel().setNewMonster();
     }
 
     @Override
@@ -57,25 +57,20 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
     public void onError(String msg){} //To be implemented
 
 
-
+    //Called from MainActivity when a monster is clicked
     public void monsterClicked(){
-        Monster currentMonster = map.getCurrentArea().getCurrentLevel().getCurrentMonster();
-        boolean temp = currentMonster.damageMonster(playerModel.getDamage());
-        if(temp){
 
-            playerModel.setMoney(playerModel.getMoney()+currentMonster.getGold());
-            setNewMonster();
+        int gold;
+        if((gold =map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamage()) )!=0){
+
+            playerModel.setMoney(playerModel.getMoney() +gold);
+
         }
-    }
-
-    private void setNewMonster(){
-
-        map.getCurrentArea().getCurrentLevel().setCurrentMonster(monFac.getMonster(
-                map.getCurrentArea().getCurrentLevel().getHealthMultiplier()*100,
-                map.getCurrentArea().getCurrentLevel().getGoldMultiplier()*100,
-                map.getCurrentArea().getCurrentLevel().getArea()));
 
     }
+
+
+
 
     public Monster getCurrentMonster() {
 

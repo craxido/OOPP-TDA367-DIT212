@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     Monster currentMonster;
     monsterFactory monFac = new monsterFactory();
 
-    private MainMVPInterface.PresenterOps mainPresenter;
+    private MainMVPInterface.PresenterOps mainPresenter = MainPresenter.getInstance();
     private static final String TAG = "MainActivity";
 
 
@@ -27,12 +27,6 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         Log.i(TAG, "onCreate() called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mainPresenter = new MainPresenter(this);
-
-        // Load previous state
-        Log.i(TAG, "Will attempt to load previous state if there is one");
-        mainPresenter.loadState(MainActivity.this);
 
 
         /*
@@ -56,9 +50,6 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         mainButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
-        //currentMonster = main.getCurrentMonster;
-
-        //Temp
 
         currentMonster = mainPresenter.getCurrentMonster();
 
@@ -112,10 +103,9 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
                     currentMonster = mainPresenter.getCurrentMonster();
 
-
-
                     hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
                     monsterButton.setImageResource(currentMonster.getImageRef());
+
                     break;
             }
         }

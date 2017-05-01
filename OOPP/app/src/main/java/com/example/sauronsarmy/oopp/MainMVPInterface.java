@@ -20,7 +20,7 @@ interface MainMVPInterface {
          void onError(String errorMsg);
 
         void monsterClicked();
-        public Monster getCurrentMonster();
+        Monster getCurrentMonster();
          // methods to be called from Presenter
         void saveState(Context value1);
         void loadState(Context value1);
