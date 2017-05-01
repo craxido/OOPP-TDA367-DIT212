@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -17,10 +18,11 @@ import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 public class MapActivity extends AppCompatActivity implements MapMVPInterface.ViewOps {
 
     private MapMVPInterface.PresenterOps mapPresenter = MapPresenter.getInstance();
-
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate() called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         /*
@@ -75,6 +77,7 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
                     startActivity(new Intent(context, MainActivity.class));
                     break;
             }
+
         }
     };
 }

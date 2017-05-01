@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.Map;
 
+import android.util.Log;
+
 import java.lang.ref.WeakReference;
 
 /**
@@ -8,6 +10,7 @@ import java.lang.ref.WeakReference;
 
 public class MapPresenter implements MapMVPInterface.PresenterOps {
 
+    private static final String TAG = "MainActivity";
     private static MapPresenter mapPresenterInstance;
     Map map = Map.getInstance();
     WeakReference<MapMVPInterface.ViewOps> mapView;
@@ -28,6 +31,7 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     }
 
     public void onError(String errorMsg){
+        Log.i(TAG, "Error: " + errorMsg);
     }
 
     public static MapPresenter getInstance(){
