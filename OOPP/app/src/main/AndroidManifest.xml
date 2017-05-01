@@ -14,7 +14,7 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".ShopActivity" />
         <activity android:name=".Stats.StatsActivity" />
-        <activity android:name="Map.MapActivity" />
+        <activity android:name=".Map.MapActivity" />
         <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

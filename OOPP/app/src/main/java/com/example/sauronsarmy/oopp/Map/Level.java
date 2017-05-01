@@ -1,6 +1,7 @@
 package com.example.sauronsarmy.oopp.Map;
 
 import com.example.sauronsarmy.oopp.Monster;
+import com.example.sauronsarmy.oopp.monsterFactory;
 
 /**
  * Author: Jonatan Källman
