@@ -1,7 +1,7 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Map;
 
 /**
- * Created by Jonatan on 24/04/2017.
+ * Author: Jonatan Källman
  */
 
 /* "Umbrella" class containing the interfaces
