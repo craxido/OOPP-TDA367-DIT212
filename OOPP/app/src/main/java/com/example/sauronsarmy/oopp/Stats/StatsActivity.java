@@ -25,6 +25,40 @@ public class StatsActivity extends AppCompatActivity {
     private TextView moneyPerSecText;
     private StatsPresenterInterface statsPresenter;
 
+    Thread  t = new Thread() {
+
+        @Override
+        public void run() {
+            try {
+                while (!isInterrupted()) {
+                    Thread.sleep(1000);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                                    /*
+                                     Setting all the textViews to display the correct stats.
+                                         */
+                            damageText      = (TextView) findViewById(R.id.damageText);
+                            dmgMultText     = (TextView) findViewById(R.id.dmgMultText);
+                            moneyText       = (TextView) findViewById(R.id.moneyText);
+                            moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
+
+                            damageText.setText(String.valueOf(statsPresenter.getPlayerDamage()));
+
+                            double mlt = statsPresenter.getPlayerDamageMultiplier();
+                            mlt = Math.round(mlt * 100) / 100.0;
+                            dmgMultText.setText(String.valueOf(mlt));
+                            moneyText.setText(String.valueOf(statsPresenter.getMoneyAmount()));
+                            moneyPerSecText.setText(String.valueOf(statsPresenter.getMoneyPerSecond()));
+
+                        }
+                    });
+                }
+            } catch (InterruptedException e) {
+            }
+        }
+    };;
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +102,41 @@ public class StatsActivity extends AppCompatActivity {
         moneyPerSecText.setText(String.valueOf(statsPresenter.getMoneyPerSecond()));
 
 
+        t = new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                    /*
+                                     Setting all the textViews to display the correct stats.
+                                         */
+                                damageText      = (TextView) findViewById(R.id.damageText);
+                                dmgMultText     = (TextView) findViewById(R.id.dmgMultText);
+                                moneyText       = (TextView) findViewById(R.id.moneyText);
+                                moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
+
+                                damageText.setText(String.valueOf(statsPresenter.getPlayerDamage()));
+
+                                double mlt = statsPresenter.getPlayerDamageMultiplier();
+                                mlt = Math.round(mlt * 100) / 100.0;
+                                dmgMultText.setText(String.valueOf(mlt));
+                                moneyText.setText(String.valueOf(statsPresenter.getMoneyAmount()));
+                                moneyPerSecText.setText(String.valueOf(statsPresenter.getMoneyPerSecond()));
+
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+
+        t.start();
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
@@ -93,4 +162,11 @@ public class StatsActivity extends AppCompatActivity {
             }
         }
     };
+
+
+    @Override
+    protected void onPause(){
+        t.interrupt();
+        super.onPause();
+    }
 }

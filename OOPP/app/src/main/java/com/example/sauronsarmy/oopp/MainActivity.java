@@ -17,6 +17,28 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
     Monster currentMonster;
     monsterFactory monFac = new monsterFactory();
+    Thread t = new Thread() {
+
+        @Override
+        public void run() {
+            try {
+                while (!isInterrupted()) {
+                    Thread.sleep(1000);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            currentMonster=MainPresenter.getInstance().getCurrentMonster();
+                            ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
+                            TextView hp = (TextView) findViewById(R.id.hp);
+                            hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
+                            monsterButton.setImageResource(currentMonster.getImageRef());
+                        }
+                    });
+                }
+            } catch (InterruptedException e) {
+            }
+        }
+    };
 
     private MainMVPInterface.PresenterOps mainPresenter = MainPresenter.getInstance();
     private static final String TAG = "MainActivity";
@@ -57,11 +79,17 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
         monsterButton.setImageResource(currentMonster.getImageRef());
 
+
+
+        t.start();
+
     }
 
     @Override
     protected void onPause() {
         Log.i(TAG, "onPause() called");
+        t.interrupt();
+
         super.onPause();
     }
 
