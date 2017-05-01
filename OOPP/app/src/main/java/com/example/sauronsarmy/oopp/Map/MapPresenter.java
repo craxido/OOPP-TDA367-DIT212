@@ -12,7 +12,7 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     private static final String TAG = "MainActivity";
     private static MapPresenter mapPresenterInstance;
-    Map map = Map.getInstance();
+    private static Map map = Map.getInstance();
     WeakReference<MapMVPInterface.ViewOps> mapView;
 
     public MapPresenter(MapMVPInterface.ViewOps mapView) {
@@ -21,6 +21,9 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         mapPresenterInstance =this;
     }
 
+    public static void setBackgroundRef(int ref){
+        map.setBackgroundRef(ref);
+    }
 
     public int getBackgroundRef(){
         return map.getBackgroundRef();

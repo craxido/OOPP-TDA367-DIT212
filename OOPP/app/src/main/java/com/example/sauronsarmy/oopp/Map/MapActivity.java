@@ -76,6 +76,16 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
                 case R.id.b_main:
                     startActivity(new Intent(context, MainActivity.class));
                     break;
+                case R.id.b_area1:
+                    MapPresenter.setBackgroundRef(R.drawable.mountainarea);
+                    break;
+                case R.id.b_area2:
+                    MapPresenter.setBackgroundRef(R.drawable.forestarea);
+                    break;
+                case R.id.b_area3:
+                    MapPresenter.setBackgroundRef(R.drawable.volcanoarea);
+                    break;
+
             }
 
         }
