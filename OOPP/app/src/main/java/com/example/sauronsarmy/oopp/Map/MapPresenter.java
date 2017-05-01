@@ -5,7 +5,7 @@ import android.util.Log;
 import java.lang.ref.WeakReference;
 
 /**
- * Created by Jonatan on 2017-05-01.
+ * Author: Jonatan Källman
  */
 
 public class MapPresenter implements MapMVPInterface.PresenterOps {

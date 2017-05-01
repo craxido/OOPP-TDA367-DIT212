@@ -17,7 +17,7 @@ import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
 public class MapActivity extends AppCompatActivity implements MapMVPInterface.ViewOps {
 
-    private MapMVPInterface.PresenterOps mapPresenter = MapPresenter.getInstance();
+    private static MapMVPInterface.PresenterOps mapPresenter = MapPresenter.getInstance();
     private static final String TAG = "MainActivity";
 
     @Override
@@ -77,13 +77,13 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
                     startActivity(new Intent(context, MainActivity.class));
                     break;
                 case R.id.b_area1:
-                    MapPresenter.setBackgroundRef(R.drawable.mountainarea);
+                    MapPresenter.setBackgroundRef(mapPresenter.getArea(0).getImgRef());
                     break;
                 case R.id.b_area2:
-                    MapPresenter.setBackgroundRef(R.drawable.forestarea);
+                    MapPresenter.setBackgroundRef(mapPresenter.getArea(1).getImgRef());
                     break;
                 case R.id.b_area3:
-                    MapPresenter.setBackgroundRef(R.drawable.volcanoarea);
+                    MapPresenter.setBackgroundRef(mapPresenter.getArea(2).getImgRef());
                     break;
 
             }
