@@ -14,7 +14,10 @@ import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.ShopActivity;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends AppCompatActivity implements MapMVPInterface.ViewOps {
+
+    private MapMVPInterface.PresenterOps mapPresenter = MapPresenter.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
