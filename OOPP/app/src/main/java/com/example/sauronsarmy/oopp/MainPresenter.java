@@ -4,23 +4,28 @@ import android.util.Log;
 
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
+import com.example.sauronsarmy.oopp.clock.ClockListener;
+import com.example.sauronsarmy.oopp.clock.Runner;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 /**
  * Created by Jonatan on 24/04/2017.
  */
 
-class MainPresenter implements MainMVPInterface.PresenterOps {
+public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListener {
     // View reference
 
     private static MainPresenter ourInstance;
 
 
 
+
     Shop shop = Shop.getInstance();
     Map map = Map.getInstance();
-
+    private Runner run= new Runner();
+    private ArrayList<ClockListener> clockListeners = new ArrayList<>();
 
     monsterFactory monFac=new monsterFactory();
 
@@ -36,6 +41,9 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
         playerModel = PlayerModel.getInstance();
         mainModel = new MainModel();
         ourInstance =this;
+
+        run.register(this);
+        run.start();
 
     }
 
@@ -101,5 +109,46 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
             playerModel.setState(mainModel.loadState(context));
         }
 
+    }
+
+
+    @Override
+    public void run() {
+
+        applyGPS();
+        applyDPS();
+        for (ClockListener cl:clockListeners){
+            cl.run();
+            System.out.println("Clock");
+        }
+
+    }
+
+    public void applyDPS(){
+
+        int gold;
+        if((gold =map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamage()) )!=0){
+
+            playerModel.setMoney(playerModel.getMoney() +gold);
+        }
+
+    }
+
+    public void applyGPS(){
+        playerModel.setMoney(playerModel.getMoney() + 1);
+
+    }
+
+    public Runner getRun(){ return run;}
+
+
+    public void register(ClockListener c){
+        clockListeners.add(c);
+
+    }
+
+    public void unregister(ClockListener c){
+
+        clockListeners.remove(c);
     }
 }
