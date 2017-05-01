@@ -1,13 +1,15 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Map;
+
+import com.example.sauronsarmy.oopp.monsterFactory;
 
 /**
- * Created by Jonatan on 2017-04-25.
+ * Author: Jonatan Källman
  */
 
 class levelFactory {
-    public levelFactory(){}
+    levelFactory(){}
 
-    monsterFactory monfac = new monsterFactory();
+    private monsterFactory monfac = new monsterFactory();
 
     private Level getLevel(areaType type) {
 
@@ -27,7 +29,7 @@ class levelFactory {
 
     }
 
-    public Level[] getLevels(areaType type) {
+    Level[] getLevels(areaType type) {
 
         // LevelAmount could be set depending on area.
         int LevelAmount=10;

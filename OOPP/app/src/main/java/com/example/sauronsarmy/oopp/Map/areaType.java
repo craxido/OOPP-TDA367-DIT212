@@ -1,7 +1,7 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Map;
 
 /**
- * Created by Jonatan on 2017-04-05.
+ * Author: Jonatan Källman
  */
 
 //Enum for Area types.

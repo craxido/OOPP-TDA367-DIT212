@@ -1,16 +1,18 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Map;
+
+import com.example.sauronsarmy.oopp.Monster;
+import com.example.sauronsarmy.oopp.monsterFactory;
 
 /**
- * Created by Jonatan on 2017-04-05.
+ * Author: Jonatan Källman
  */
 
-
-class Level {
+public class Level {
 
     private Monster monster;
     private double healthMultiplier;
     private int goldMultiplier;
-    private areaType areaType;
+    private com.example.sauronsarmy.oopp.Map.areaType areaType;
 
 
     Level(Monster monster, double healthMultiplier, int goldMultiplier, areaType area) {
