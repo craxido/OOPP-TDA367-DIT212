@@ -45,6 +45,12 @@ class Level {
     }
 
     public Monster getCurrentMonster() {
+
+        if(monster ==null){
+            setNewMonster();
+
+        }
+
         return monster;
     }
 

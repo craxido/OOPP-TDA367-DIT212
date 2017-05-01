@@ -63,6 +63,7 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
         if((gold =map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamage()) )!=0){
 
             playerModel.setMoney(playerModel.getMoney() +gold);
+
         }
 
     }
