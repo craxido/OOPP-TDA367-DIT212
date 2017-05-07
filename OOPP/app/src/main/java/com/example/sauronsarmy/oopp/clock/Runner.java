@@ -1,11 +1,10 @@
 package com.example.sauronsarmy.oopp.clock;
 
-import android.os.Handler;
 
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
+import android.os.Handler;
 /**
  * Created by Filip on 2017-05-01.
  */
@@ -13,19 +12,26 @@ import java.util.TimerTask;
 public class Runner {
 
     Timer t = new Timer();
-
+    Handler handler;
     ArrayList<ClockListener> clockListeners = new ArrayList<>();
 
 
     public void start() {
-
+        handler = new Handler();
         t.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                for (ClockListener cl:clockListeners){
-                    cl.run();
-                    System.out.println("Clock");
-                }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (ClockListener cl:clockListeners){
+                            cl.update();
+
+                        }
+                    }
+                });
+
+                System.out.println("Clock");
             }
         },1000, 1000);
 

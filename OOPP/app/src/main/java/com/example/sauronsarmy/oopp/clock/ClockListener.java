@@ -6,5 +6,5 @@ package com.example.sauronsarmy.oopp.clock;
 
 public interface ClockListener {
 
-    void run();
+    void update();
 }

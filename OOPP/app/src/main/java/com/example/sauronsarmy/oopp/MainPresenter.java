@@ -14,7 +14,7 @@ import java.lang.ref.WeakReference;
  * Created by Jonatan on 24/04/2017.
  */
 
-class MainPresenter implements MainMVPInterface.PresenterOps,ClockListener {
+public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListener {
     // View reference
 
     private static MainPresenter ourInstance;
@@ -23,10 +23,6 @@ class MainPresenter implements MainMVPInterface.PresenterOps,ClockListener {
 
     Shop shop = Shop.getInstance();
     Map map = Map.getInstance();
-
-
-    monsterFactory monFac=new monsterFactory();
-
 
     WeakReference<MainMVPInterface.ViewOps> mView;
     PlayerModelInterface playerModel;
@@ -110,7 +106,7 @@ class MainPresenter implements MainMVPInterface.PresenterOps,ClockListener {
     }
 
     @Override
-    public void run() {
+    public void update() {
 
         applyGPS();
         applyDPS();
@@ -131,6 +127,8 @@ class MainPresenter implements MainMVPInterface.PresenterOps,ClockListener {
         playerModel.setMoney(playerModel.getMoney() + (int)playerModel.getMoneyPerSecond());
 
     }
+
+    public Runner getRun(){return  run;}
 
 
 }
