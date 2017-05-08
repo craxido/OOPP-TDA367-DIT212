@@ -13,17 +13,20 @@ import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
+import com.example.sauronsarmy.oopp.MainPresenter;
 import com.example.sauronsarmy.oopp.Map.MapActivity;
 import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.ShopActivity;
+import com.example.sauronsarmy.oopp.clock.ClockListener;
 
-public class StatsActivity extends AppCompatActivity {
+public class StatsActivity extends AppCompatActivity implements ClockListener {
 
     private TextView damageText;
     private TextView dmgMultText;
     private TextView moneyText;
     private TextView moneyPerSecText;
     private StatsPresenterInterface statsPresenter;
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -48,25 +51,12 @@ public class StatsActivity extends AppCompatActivity {
         mapButton.setOnClickListener(buttonListener);
         statsButton.setOnClickListener(buttonListener);
         mainButton.setOnClickListener(buttonListener);
-
         statsButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
-        /*
-        Setting all the textViews to display the correct stats.
-         */
-        damageText      = (TextView) findViewById(R.id.damageText);
-        dmgMultText     = (TextView) findViewById(R.id.dmgMultText);
-        moneyText       = (TextView) findViewById(R.id.moneyText);
-        moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
 
-        damageText.setText(String.valueOf(statsPresenter.getPlayerDamage()));
+        update();
 
-        double mlt = statsPresenter.getPlayerDamageMultiplier();
-        mlt = Math.round(mlt * 100) / 100.0;
-        dmgMultText.setText(String.valueOf(mlt));
-        moneyText.setText(String.valueOf(statsPresenter.getMoneyAmount()));
-        moneyPerSecText.setText(String.valueOf(statsPresenter.getMoneyPerSecond()));
-
+        MainPresenter.getInstance().getRun().register(this);
 
     }
 
@@ -93,4 +83,43 @@ public class StatsActivity extends AppCompatActivity {
             }
         }
     };
+
+
+    @Override
+    protected void onPause(){
+
+        //Register to clock
+        MainPresenter.getInstance().getRun().unregister(this);
+        super.onPause();
+    }
+
+    @Override
+    protected void onStart(){
+        //Register to clock
+        MainPresenter.getInstance().getRun().register(this);
+
+        super.onStart();
+    }
+
+
+    //Update the fields with current values
+    @Override
+    public void update() {
+           /*
+             Setting all the textViews to display the correct stats.
+            */
+        damageText      = (TextView) findViewById(R.id.damageText);
+        dmgMultText     = (TextView) findViewById(R.id.dmgMultText);
+        moneyText       = (TextView) findViewById(R.id.moneyText);
+        moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
+
+        damageText.setText(String.valueOf(statsPresenter.getPlayerDamage()));
+
+        double mlt = statsPresenter.getPlayerDamageMultiplier();
+        mlt = Math.round(mlt * 100) / 100.0;
+        dmgMultText.setText(String.valueOf(mlt));
+        moneyText.setText(String.valueOf(statsPresenter.getMoneyAmount()));
+        moneyPerSecText.setText(String.valueOf(statsPresenter.getMoneyPerSecond()));
+
+    }
 }

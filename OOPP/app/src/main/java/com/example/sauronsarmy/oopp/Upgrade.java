@@ -6,10 +6,10 @@ package com.example.sauronsarmy.oopp;
 
 class Upgrade {
 
-    private double stat;
+    private int stat;
     private int cost;
 
-    protected Upgrade(double baseStat, int baseCost){
+    protected Upgrade(int baseStat, int baseCost){
         this.stat = baseStat;
         this.cost = baseCost;
 
@@ -28,8 +28,8 @@ class Upgrade {
     }
 
     // mostly what will be used
-    protected double getStat(){
-        return (Math.round(stat * 100) / 100.0);
+    protected int getStat(){
+        return (int) (Math.round(stat * 100) / 100.0);
 
     }
 

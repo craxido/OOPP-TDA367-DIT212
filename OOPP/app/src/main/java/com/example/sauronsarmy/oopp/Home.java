@@ -11,7 +11,7 @@ class Home{
     private static final Home homeInstance = new Home();
 
     private PlayerModelInterface player = PlayerModel.getInstance();
-    private Upgrade oilPumpUpgrade = new Upgrade(0.5, 10);
+    private Upgrade oilPumpUpgrade = new Upgrade(1, 10);
     private int oilPumpUpgradeCounter = 1;
 
     static Home getInstance() {

@@ -9,8 +9,8 @@ public interface PlayerModelInterface {
     void setLastLogOn(long newValue);
     long getLastLogOn();
 
-    void setDamageMultiplier(double newValue);
-    double getDamageMultiplier();
+    void setDamageMultiplier(int newValue);
+    int getDamageMultiplier();
 
     void setDamage(int newValue);
     int getDamage();
@@ -21,6 +21,6 @@ public interface PlayerModelInterface {
     void setState(java.util.Map value1);
     java.util.Map getState();
 
-    void setMoneyPerSecond(double newValue);
-    double getMoneyPerSecond();
+    void setMoneyPerSecond(int newValue);
+    int getMoneyPerSecond();
 }
