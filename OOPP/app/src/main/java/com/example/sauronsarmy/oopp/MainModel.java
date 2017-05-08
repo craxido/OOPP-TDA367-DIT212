@@ -2,6 +2,7 @@ package com.example.sauronsarmy.oopp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +15,7 @@ class MainModel implements MainMVPInterface.ModelInterface {
 
     private SharedPreferences saveState;
     private SharedPreferences.Editor editor;
+    private static String TAG = "MainModel";
     /**
      * Indicates whether there is a previous state to load.
      */
@@ -35,7 +37,7 @@ class MainModel implements MainMVPInterface.ModelInterface {
      * @param currentState the state to be saved.
      */
     @Override
-    public void saveState(Context context, Map currentState) {
+    public void saveState(Context context, Map currentState, Map currentUpgrades) {
 
         hasSaveToLoad = true;
 
@@ -46,6 +48,8 @@ class MainModel implements MainMVPInterface.ModelInterface {
         editor.putInt("money",         (int) currentState.get("money"));
         editor.putLong("moneyPerSec",  doubleToLong((double) currentState.get("moneyPerSec")));
         editor.putLong("lastLogOn",    (long) currentState.get("lastLogOn"));
+        editor.putInt("dmgUpgrade",    (int) currentUpgrades.get("dmgUpgrade"));
+        editor.putInt("multUpgrade",   (int) currentUpgrades.get("multUpgrade"));
         editor.apply();
     }
 
@@ -64,13 +68,27 @@ class MainModel implements MainMVPInterface.ModelInterface {
        return new HashMap<String, Object>() {
            {
                put("damage",      saveState.getInt("damage", 10));
-               put("damageMult",  longToDouble(saveState.getLong("damageMult", doubleToLong(1.0))));
+               Log.i(TAG, Long.toString(saveState.getLong("damageMult", 1)));
+               put("damageMult",  longToDouble(saveState.getLong("damageMult", 1)));
                put("money",       saveState.getInt("money", 10));
                put("moneyPerSec", longToDouble(saveState.getLong("moneyPerSec", 0)));
                put("lastLogOn",   saveState.getLong("lastLogOn", -1));
            }
        };
    }
+
+
+    @Override
+    public Map loadUpgrade(Context context) {
+
+        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
+        return new HashMap<String, Integer>() {
+            {
+                put("dmgUpgrade", saveState.getInt("dmgUpgrade", 1));
+                put("multUpgrade", saveState.getInt("multUpgrade", 1));
+            }
+        };
+    }
 
     /**
      * SharedPreference is (for some reason) not able to save doubles.

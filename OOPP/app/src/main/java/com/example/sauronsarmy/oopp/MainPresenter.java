@@ -87,7 +87,8 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
     public void saveState(Context context) {
         Log.i(TAG, "Saving the current state.");
         java.util.Map currentState = playerModel.getState();
-        mainModel.saveState(context, currentState);
+        java.util.Map currentUpgrade = null; // Shop.getUpgrade ....
+        mainModel.saveState(context, currentState, currentUpgrade);
     }
 
     /**
@@ -100,6 +101,7 @@ class MainPresenter implements MainMVPInterface.PresenterOps {
         if(mainModel.hasSaveToLoad()) {
             Log.i(TAG, "Loading previous save.");
             playerModel.setState(mainModel.loadState(context));
+            // Shop.setUpgrade(mainModel.loadUpgrade(context));
         }
 
     }
