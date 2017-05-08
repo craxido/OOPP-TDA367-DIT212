@@ -40,12 +40,12 @@ public class Runner {
         t.cancel();
 
     }
-
+    //Register to be notified every second
     public void register(ClockListener c){
         clockListeners.add(c);
 
     }
-
+    //Unregister to no longer be notified
     public void unregister(ClockListener c){
 
         clockListeners.remove(c);

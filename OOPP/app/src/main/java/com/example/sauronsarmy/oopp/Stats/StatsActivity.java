@@ -87,12 +87,15 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
 
     @Override
     protected void onPause(){
+
+        //Register to clock
         MainPresenter.getInstance().getRun().unregister(this);
         super.onPause();
     }
 
     @Override
     protected void onStart(){
+        //Register to clock
         MainPresenter.getInstance().getRun().register(this);
 
         super.onStart();

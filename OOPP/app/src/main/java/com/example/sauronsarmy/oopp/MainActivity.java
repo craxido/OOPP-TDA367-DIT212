@@ -58,12 +58,15 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     protected void onPause() {
         Log.i(TAG, "onPause() called");
 
+        //Unregister from clock
         MainPresenter.getInstance().getRun().unregister(this);
         super.onPause();
     }
 
     @Override
     protected void onStart(){
+
+        //Register to clock
         MainPresenter.getInstance().getRun().register(this);
 
         super.onStart();
@@ -77,11 +80,6 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         super.onDestroy();
     }
 
-
-    void updateView(){
-
-
-    }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
