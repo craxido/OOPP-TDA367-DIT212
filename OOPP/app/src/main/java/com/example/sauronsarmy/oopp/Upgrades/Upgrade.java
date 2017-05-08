@@ -1,15 +1,18 @@
 package com.example.sauronsarmy.oopp.Upgrades;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by bunnyfiscuit on 05/04/17.
  */
 
 public class Upgrade {
 
-    private double stat;
+    private int stat;
     private int cost;
 
-    protected Upgrade(double baseStat, int baseCost){
+    protected Upgrade(int baseStat, int baseCost){
         this.stat = baseStat;
         this.cost = baseCost;
 
@@ -28,13 +31,27 @@ public class Upgrade {
     }
 
     // mostly what will be used
-    protected double getStat(){
-        return (Math.round(stat * 100) / 100.0);
+    public int getStat(){
+        return stat;
 
     }
 
-    protected int getCost(){
+    public int getCost(){
         return this.cost;
+    }
+
+    public Map getUpgradeStats(){
+        return new HashMap<String, Object> () {
+            {
+                put("stat", getStat());
+                put("cost", getCost());
+            }
+        };
+    }
+
+    public void setUpgradeStats(Map<String, Integer> map){
+        stat = map.get("stat");
+        cost = map.get("cost");
     }
 
 }
