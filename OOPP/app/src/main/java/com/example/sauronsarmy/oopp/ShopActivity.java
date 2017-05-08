@@ -82,7 +82,7 @@ public class ShopActivity extends AppCompatActivity {
         dmgCounter.setText(String.valueOf(shop.getDamageUpgradeCounter()));
 
         int dmg = PlayerModel.getInstance().getDamage();
-        int newdmg = (int) damageUpgrade.getStat() + dmg;
+        int newdmg =  damageUpgrade.getStat() + dmg;
         currentDmg.setText(String.valueOf(dmg));
         newDmg.setText(String.valueOf(newdmg));
 
@@ -108,10 +108,10 @@ public class ShopActivity extends AppCompatActivity {
         multiplierCounter.setText(String.valueOf(shop.getMultiplierUpgradeCounter()));
         multiplierCost.setText(String.valueOf(multiplierUpgrade.getCost() + " g"));
 
-        double mlt = PlayerModel.getInstance().getDamageMultiplier();
-        mlt = Math.round(mlt * 100) / 100.0;
-        double nMlt = mlt + multiplierUpgrade.getStat();
-        nMlt = Math.round(nMlt * 100) / 100.0;
+        int mlt = PlayerModel.getInstance().getDamageMultiplier();
+        //mlt = Math.round(mlt * 100) / 100.0;
+        int nMlt = mlt + multiplierUpgrade.getStat();
+        //nMlt = Math.round(nMlt * 100) / 100.0;
         currentMlt.setText(String.valueOf(mlt));
         newMlt.setText(String.valueOf(nMlt));
 

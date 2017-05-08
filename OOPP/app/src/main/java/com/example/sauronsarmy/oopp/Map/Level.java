@@ -10,12 +10,12 @@ import com.example.sauronsarmy.oopp.monsterFactory;
 public class Level {
 
     private Monster monster;
-    private double healthMultiplier;
+    private int healthMultiplier;
     private int goldMultiplier;
     private com.example.sauronsarmy.oopp.Map.areaType areaType;
 
 
-    Level(Monster monster, double healthMultiplier, int goldMultiplier, areaType area) {
+    Level(Monster monster, int healthMultiplier, int goldMultiplier, areaType area) {
         this.monster = monster;
         this.healthMultiplier = healthMultiplier;
         this.goldMultiplier = goldMultiplier;
@@ -30,11 +30,11 @@ public class Level {
         this.areaType=areaType;
     }
 
-    public double getHealthMultiplier() {
+    public int getHealthMultiplier() {
         return healthMultiplier;
     }
 
-    public void setHealthMultiplier(double healthMultiplier) {
+    public void setHealthMultiplier(int healthMultiplier) {
         this.healthMultiplier = healthMultiplier;
     }
 
@@ -60,7 +60,7 @@ public class Level {
         this.monster = currentMonster;
     }
 
-    public int damageMonster(double damage){
+    public int damageMonster(int damage){
 
         int ret =0;
         if(monster.damageMonster(damage)){

@@ -10,7 +10,7 @@ import com.example.sauronsarmy.oopp.Map.areaType;
 public class monsterFactory {
     public monsterFactory(){}
 
-    public Monster getMonster(double hp, int gold, areaType type){
+    public Monster getMonster(int hp, int gold, areaType type){
 
 
         switch (type){
