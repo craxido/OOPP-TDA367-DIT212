@@ -140,12 +140,12 @@ public class ShopActivity extends AppCompatActivity {
                     startActivity(new Intent(context, MainActivity.class));
                     break;
                 case R.id.dmgUpgradeButton:
-                    if (shop.upgradeDamage()){
+                    if (shop.buyDamageUpgrade()){
                         updateDamageInfo();
                     }
                     break;
                 case R.id.mltUpgradeButton:
-                    if (shop.upgradeMultiplier()){
+                    if (shop.buyMultiplierUpgrade()){
                         updateMultiplierInfo();
                     }
                     break;

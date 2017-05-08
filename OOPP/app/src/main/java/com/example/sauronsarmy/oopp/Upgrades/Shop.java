@@ -24,27 +24,13 @@ public class Shop {
 
     public static Shop getInstance() { return shopInstance; }
 
-
-
-    protected void makePayment(int i){
-        switch(i){
-            case 0:
-                player.setMoney(player.getMoney() - damageUpgrade.getCost());
-                break;
-            case 1:
-                player.setMoney(player.getMoney() - multiplierUpgrade.getCost());
-                break;
-
-        }
-    }
-
     /** Buy damage upgrade for player.
      *  adds to player damage, and applies the cost
      *  updates how many upgrades has been done, and updates the upgrade
      */
-    protected boolean upgradeDamage(){
+    protected boolean buyDamageUpgrade(){
         if(player.getMoney() >= damageUpgrade.getCost()) {
-            makePayment(0);
+            player.setMoney(player.getMoney() - damageUpgrade.getCost());
             player.setDamage(player.getDamage() + damageUpgrade.getStat());
 
             damageUpgradeCounter++;
@@ -60,9 +46,9 @@ public class Shop {
     /**
      * Similar to above, except this upgrade is a multiplier.
      */
-    protected boolean upgradeMultiplier(){
+    protected boolean buyMultiplierUpgrade(){
         if (player.getMoney() >= multiplierUpgrade.getCost()) {
-            makePayment(1);
+            player.setMoney(player.getMoney() - multiplierUpgrade.getCost());
             player.setDamageMultiplier(player.getDamageMultiplier() + multiplierUpgrade.getStat());
 
             multiplierUpgradeCounter++;

@@ -4,6 +4,7 @@ import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by bunnyfiscuit on 05/04/17.
@@ -49,6 +50,15 @@ public class Home {
 
     void setOilPumpUpgradeCounter(HashMap<String, Integer> map) {
         oilPumpUpgradeCounter = map.get("oil");
+    }
+
+    public Map getUpgradeCounters(){
+        return new HashMap<String, Object> ()
+        {
+            {
+                put("oil", oilPumpUpgradeCounter);
+            }
+        };
     }
 
 
