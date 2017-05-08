@@ -8,7 +8,6 @@ package com.example.sauronsarmy.oopp;
 import com.example.sauronsarmy.oopp.Map.Map;
 import com.example.sauronsarmy.oopp.Map.areaType;
 import com.example.sauronsarmy.oopp.Map.Area;
-import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
@@ -16,7 +15,7 @@ import org.junit.After;
 
 public class MapTest {
     private Map map;
-    Area[] areas = map.getAreas();
+    private Area[] areas = map.getAreas();
 
     @Before
     public void setUp() throws Exception {
@@ -43,4 +42,18 @@ public class MapTest {
             throw new AssertionError();
         }
     }
+
+    @Test
+    public void testAreaTypes(){
+        if(BuildConfig.DEBUG && areas[0].getAreaType()==areaType.MOUNTAIN){
+            throw new AssertionError();
+        }
+        if(BuildConfig.DEBUG && areas[1].getAreaType()==areaType.FOREST) {
+            throw new AssertionError();
+        }
+        if(BuildConfig.DEBUG && areas[2].getAreaType()==areaType.VOLCANO) {
+            throw new AssertionError();
+        }
+    }
+
 }
