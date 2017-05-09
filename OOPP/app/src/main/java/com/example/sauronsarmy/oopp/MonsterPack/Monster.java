@@ -1,8 +1,4 @@
-package com.example.sauronsarmy.oopp;
-
-import android.graphics.drawable.Drawable;
-import android.hardware.camera2.params.StreamConfigurationMap;
-import android.media.Image;
+package com.example.sauronsarmy.oopp.MonsterPack;
 
 /**
  * Created by Filip on 2017-04-04.
