@@ -11,7 +11,7 @@ import com.example.sauronsarmy.oopp.Map.Area;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
-
+import static org.junit.Assert.*;
 
 public class MapTest {
     private Map map;
@@ -37,15 +37,28 @@ public class MapTest {
     }
 
     @Test
-    public void testAreaTypes(){
-        if(!(BuildConfig.DEBUG && areas[0].getAreaType()==areaType.MOUNTAIN)){
-            throw new AssertionError();
+    public void testAreaTypes() throws Exception{
+        for(int i=0;i<areas.length;i++) {
+            switch (areas[i].getAreaType()){
+                case FOREST:
+                    assertEquals(areas[i].getAreaType(), areaType.FOREST);
+                    break;
+                case MOUNTAIN:
+                    assertEquals(areas[i].getAreaType(), areaType.MOUNTAIN);
+                    break;
+                case VOLCANO:
+                    assertEquals(areas[i].getAreaType(), areaType.VOLCANO);
+                    break;
+                default: throw new AssertionError();
+            }
         }
-        if(!(BuildConfig.DEBUG && areas[1].getAreaType()==areaType.FOREST)) {
-            throw new AssertionError();
-        }
-        if(!(BuildConfig.DEBUG && areas[2].getAreaType()==areaType.VOLCANO)) {
-            throw new AssertionError();
+    }
+
+    @Test
+    public void testImageRef() throws Exception{
+        for(int i=0;i<areas.length;i++){
+            assertEquals(areas[i].getImgRef(), R.drawable.forestarea
+                    | R.drawable.mountainarea | R.drawable.volcanoarea);
         }
     }
 
