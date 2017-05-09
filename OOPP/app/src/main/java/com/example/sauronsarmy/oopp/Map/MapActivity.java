@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.sauronsarmy.oopp.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
@@ -79,14 +80,18 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
                 /* TODO: Selecting a new area should result in changing the monsters/ levels
                  * TODO: as well as the background in the MainActivity.
                     */
-                case R.id.b_area1: 
-                    MapPresenter.setBackgroundRef(mapPresenter.getArea(0).getImgRef());
+                case R.id.b_area1:
+
+                    mapPresenter.changeArea(0);
                     break;
                 case R.id.b_area2:
-                    MapPresenter.setBackgroundRef(mapPresenter.getArea(1).getImgRef());
+
+
+                    mapPresenter.changeArea(1);
                     break;
                 case R.id.b_area3:
-                    MapPresenter.setBackgroundRef(mapPresenter.getArea(2).getImgRef());
+
+                    mapPresenter.changeArea(2);
                     break;
 
             }

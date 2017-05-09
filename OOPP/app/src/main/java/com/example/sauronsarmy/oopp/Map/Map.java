@@ -24,7 +24,8 @@ public class Map implements MapMVPInterface.ModelOps {
     private Map() {
         bgRef = R.drawable.mapbg;
         areas = createAreas();
-	currentArea = areas[0];
+	    currentArea = areas[0];
+        bgRef = currentArea.getImgRef();
 
     }
 
@@ -46,7 +47,7 @@ public class Map implements MapMVPInterface.ModelOps {
 
     @Override
     public int getBackgroundRef() {
-        return this.bgRef;
+        return bgRef;
     }
 
     @Override
@@ -71,5 +72,7 @@ public class Map implements MapMVPInterface.ModelOps {
 
         return currentArea;
     }
-
+    public void setCurrentArea(Area a){
+        currentArea = a;
+    }
 }

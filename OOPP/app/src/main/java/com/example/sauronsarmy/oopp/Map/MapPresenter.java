@@ -11,14 +11,13 @@ import java.lang.ref.WeakReference;
 public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     private static final String TAG = "MainActivity";
-    private static MapPresenter mapPresenterInstance;
+    private static final MapPresenter mapPresenterInstance = new MapPresenter();
     private static Map map = Map.getInstance();
     WeakReference<MapMVPInterface.ViewOps> mapView;
 
-    public MapPresenter(MapMVPInterface.ViewOps mapView) {
-        this.mapView = new WeakReference<>(mapView);
+    public MapPresenter() {
+        //this.mapView = new WeakReference<>(mapView);
         map = Map.getInstance();
-        mapPresenterInstance =this;
     }
 
     public static void setBackgroundRef(int ref){
@@ -40,6 +39,14 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     public static MapPresenter getInstance(){
 
         return mapPresenterInstance;
+    }
+
+    public void changeArea(int index){
+        map.setCurrentArea(map.getArea(index));
+        int imgref= map.getArea(index).getImgRef();
+        setBackgroundRef(imgref);
+        map.setBackgroundRef(imgref);
+
     }
 
 }

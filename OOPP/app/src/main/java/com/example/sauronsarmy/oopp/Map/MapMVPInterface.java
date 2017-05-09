@@ -16,6 +16,7 @@ interface MapMVPInterface {
     interface PresenterOps{
         int    getBackgroundRef();
         Area   getArea(int index);
+        void changeArea(int index);
         void onError(String errorMsg);
 
         // methods to be called from Presenter

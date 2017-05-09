@@ -3,6 +3,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.sauronsarmy.oopp.Map.Map;
+import com.example.sauronsarmy.oopp.Map.MapPresenter;
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
@@ -114,7 +115,7 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
 
     }
 
-    public void applyDPS(){
+    private void applyDPS(){
 
         int gold;
         if((gold =map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamageMultiplier()) )!=0){
@@ -124,12 +125,19 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
 
     }
 
-    public void applyGPS(){
+    private void applyGPS(){
         playerModel.setMoney(playerModel.getMoney() + (int)playerModel.getMoneyPerSecond());
 
     }
 
     public Runner getRun(){return  run;}
+
+    public int getBGRef(){
+
+        int bgref = MapPresenter.getInstance().getBackgroundRef();
+
+        return bgref;
+    }
 
 
 }

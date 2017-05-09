@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.Map.MapActivity;
+import com.example.sauronsarmy.oopp.Map.MapPresenter;
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
@@ -121,6 +123,9 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
     @Override
     public void update() {
+        ImageView bg = (ImageView) findViewById(R.id.b_background);
+        bg.setImageResource(MainPresenter.getInstance().getBGRef());
+
         currentMonster=MainPresenter.getInstance().getCurrentMonster();
         ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
         TextView hp = (TextView) findViewById(R.id.hp);
