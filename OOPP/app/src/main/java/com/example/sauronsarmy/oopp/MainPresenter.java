@@ -17,13 +17,12 @@ import java.lang.ref.WeakReference;
 
 public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListener {
     // View reference
-
     private static MainPresenter ourInstance;
-    private Runner run= new Runner();
 
+    private Runner run = new Runner();
 
-    Shop shop = Shop.getInstance();
     Map map = Map.getInstance();
+
 
     WeakReference<MainMVPInterface.ViewOps> mView;
     PlayerModelInterface playerModel;
