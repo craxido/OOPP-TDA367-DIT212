@@ -29,29 +29,22 @@ public class MapTest {
 
     @Test
     public void testCurrentArea() throws Exception {
-        map.setCurrentArea(areas[0]);
-        if(BuildConfig.DEBUG && map.getCurrentArea()==areas[0]){
-            throw new AssertionError();
-        }
-        map.setCurrentArea(areas[1]);
-        if(BuildConfig.DEBUG && map.getCurrentArea()==areas[1]){
-            throw new AssertionError();
-        }
-        map.setCurrentArea(areas[2]);
-        if(BuildConfig.DEBUG && map.getCurrentArea()==areas[2]){
-            throw new AssertionError();
+        for(int i=0;i<areas.length;i++){
+            if(!(BuildConfig.DEBUG && map.getCurrentArea()==areas[i])){
+                throw new AssertionError();
+            }
         }
     }
 
     @Test
     public void testAreaTypes(){
-        if(BuildConfig.DEBUG && areas[0].getAreaType()==areaType.MOUNTAIN){
+        if(!(BuildConfig.DEBUG && areas[0].getAreaType()==areaType.MOUNTAIN)){
             throw new AssertionError();
         }
-        if(BuildConfig.DEBUG && areas[1].getAreaType()==areaType.FOREST) {
+        if(!(BuildConfig.DEBUG && areas[1].getAreaType()==areaType.FOREST)) {
             throw new AssertionError();
         }
-        if(BuildConfig.DEBUG && areas[2].getAreaType()==areaType.VOLCANO) {
+        if(!(BuildConfig.DEBUG && areas[2].getAreaType()==areaType.VOLCANO)) {
             throw new AssertionError();
         }
     }
