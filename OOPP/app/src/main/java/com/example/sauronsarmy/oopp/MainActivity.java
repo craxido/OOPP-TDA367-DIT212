@@ -18,7 +18,6 @@ import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 
-
 public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps,ClockListener {
 
     private Monster currentMonster;
@@ -30,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         Log.i(TAG, "onCreate() called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the

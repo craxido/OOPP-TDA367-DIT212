@@ -4,13 +4,10 @@ import android.util.Log;
 
 import com.example.sauronsarmy.oopp.Map.Map;
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
-import com.example.sauronsarmy.oopp.MonsterPack.monsterFactory;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
-import com.example.sauronsarmy.oopp.Upgrades.Shop;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 import com.example.sauronsarmy.oopp.clock.Runner;
-
 
 import java.lang.ref.WeakReference;
 
@@ -20,15 +17,12 @@ import java.lang.ref.WeakReference;
 
 public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListener {
     // View reference
-
     private static MainPresenter ourInstance;
 
-    private Runner run= new Runner();
+    private Runner run = new Runner();
 
-    Shop shop = Shop.getInstance();
     Map map = Map.getInstance();
 
-    monsterFactory monFac = new monsterFactory();
 
     WeakReference<MainMVPInterface.ViewOps> mView;
     PlayerModelInterface playerModel;
