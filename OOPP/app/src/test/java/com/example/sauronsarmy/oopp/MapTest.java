@@ -62,4 +62,9 @@ public class MapTest {
         }
     }
 
+    @Test
+    public void testGetMapBgRef() throws Exception{
+        assertEquals(map.getBackgroundRef(),R.drawable.mapbg);
+    }
+
 }
