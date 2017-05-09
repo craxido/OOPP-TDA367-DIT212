@@ -38,7 +38,7 @@ public class Area {
         return currentLevel;
     }
 
-    public void setCurrencLevel(Level level){
+    public void setCurrentLevel(Level level){
 
         this.currentLevel = level;
     }
