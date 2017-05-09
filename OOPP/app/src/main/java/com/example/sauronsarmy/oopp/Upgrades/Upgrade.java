@@ -20,13 +20,13 @@ public class Upgrade {
 
     // Updates current stat upgrade amount with a multiplier
     protected void updateStat(int multiplier){
-        stat += (multiplier/10);
+        stat += Math.round( (multiplier*10) / 6);
     }
 
     // Updates the cost for the upgrade with multiplier
     protected void updateCost(int multiplier){
         if(multiplier > 1) {
-            cost += Math.round(multiplier / 2);
+            cost += multiplier*10 ;
         }
     }
 
@@ -41,7 +41,7 @@ public class Upgrade {
     }
 
     public Map getUpgradeStats(){
-        return new HashMap<String, Object> () {
+        return new HashMap<String, Integer> () {
             {
                 put("stat", getStat());
                 put("cost", getCost());

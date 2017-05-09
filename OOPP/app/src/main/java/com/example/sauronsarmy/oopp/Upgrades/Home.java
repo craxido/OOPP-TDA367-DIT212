@@ -53,7 +53,7 @@ public class Home {
     }
 
     public Map getUpgradeCounters(){
-        return new HashMap<String, Object> ()
+        return new HashMap<String, Integer> ()
         {
             {
                 put("oil", oilPumpUpgradeCounter);

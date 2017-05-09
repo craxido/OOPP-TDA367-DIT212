@@ -74,8 +74,7 @@ public class ShopActivity extends AppCompatActivity {
         TextView newDmg = (TextView) findViewById(R.id.newDmg);
 
         /** Set the values to the view from the upgrade object
-         *  Using String tmp to set text, otherwise it complains about Android resource
-         *  i don't know how to do that yet.
+         *
          * */
         /* DAMAGE UPGRADE */
         Upgrade damageUpgrade = shop.getDamageUpgrade();
@@ -84,7 +83,7 @@ public class ShopActivity extends AppCompatActivity {
         dmgCounter.setText(String.valueOf(shop.getDamageUpgradeCounter()));
 
         int dmg = PlayerModel.getInstance().getDamage();
-        int newdmg = (int) damageUpgrade.getStat() + dmg;
+        int newdmg = damageUpgrade.getStat() + dmg;
         currentDmg.setText(String.valueOf(dmg));
         newDmg.setText(String.valueOf(newdmg));
 

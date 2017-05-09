@@ -86,7 +86,7 @@ public class Shop {
     }
 
     public Map getUpgradeCounters(){
-        return new HashMap<String, Object>(){
+        return new HashMap<String, Integer>(){
             {
                 put("damage", getDamageUpgradeCounter());
                 put("multiplier", getMultiplierUpgradeCounter());
