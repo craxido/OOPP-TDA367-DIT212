@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.sauronsarmy.oopp.HomeActivity;
+import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.R;
-import com.example.sauronsarmy.oopp.ShopActivity;
+import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
 public class MapActivity extends AppCompatActivity implements MapMVPInterface.ViewOps {
