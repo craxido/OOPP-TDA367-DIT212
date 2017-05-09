@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.Map.MapActivity;
+import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 

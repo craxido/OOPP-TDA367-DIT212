@@ -30,8 +30,6 @@ public class Runner {
                         }
                     }
                 });
-
-                System.out.println("Clock");
             }
         },1000, 1000);
 
