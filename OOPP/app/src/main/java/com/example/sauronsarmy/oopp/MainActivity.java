@@ -11,18 +11,19 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.Map.MapActivity;
+import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
 import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
+import com.example.sauronsarmy.oopp.clock.ClockListener;
 
-public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps {
 
-    Monster currentMonster;
-    monsterFactory monFac = new monsterFactory();
 
+public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps,ClockListener {
+
+    private Monster currentMonster;
     private MainMVPInterface.PresenterOps mainPresenter = MainPresenter.getInstance();
     private static final String TAG = "MainActivity";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,20 +54,27 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         mainButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
 
-        currentMonster = mainPresenter.getCurrentMonster();
-
-        TextView hp = (TextView) findViewById(R.id.hp);
-        hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
-        monsterButton.setImageResource(currentMonster.getImageRef());
-
+        update();
+        MainPresenter.getInstance().getRun().register(this);
     }
 
     @Override
     protected void onPause() {
         Log.i(TAG, "onPause() called");
+
+        //Unregister from clock
+        MainPresenter.getInstance().getRun().unregister(this);
         super.onPause();
     }
 
+    @Override
+    protected void onStart(){
+
+        //Register to clock
+        MainPresenter.getInstance().getRun().register(this);
+
+        super.onStart();
+    }
     @Override
     protected void onDestroy() {
         Log.i(TAG, "onDestroy() called");
@@ -75,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         mainPresenter.saveState(MainActivity.this);
         super.onDestroy();
     }
+
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
@@ -112,4 +121,13 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
             }
         }
     };
+
+    @Override
+    public void update() {
+        currentMonster=MainPresenter.getInstance().getCurrentMonster();
+        ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
+        TextView hp = (TextView) findViewById(R.id.hp);
+        hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
+        monsterButton.setImageResource(currentMonster.getImageRef());
+    }
 }

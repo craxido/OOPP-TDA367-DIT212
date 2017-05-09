@@ -15,9 +15,9 @@ public class PlayerModel implements  PlayerModelInterface{
     private static final PlayerModel ourInstance = new PlayerModel();
 
     private int damage;
-    private double damageMultiplier;
+    private int damageMultiplier;
     private int money;
-    private double moneyPerSecond;
+    private int moneyPerSecond;
     // This must be assigned when exiting the app.
     private long lastLogOn;
 
@@ -32,7 +32,7 @@ public class PlayerModel implements  PlayerModelInterface{
      */
     private PlayerModel() {
         damage           = 10;
-        damageMultiplier = 1.0;
+        damageMultiplier = 1;
         money            = 50;
         moneyPerSecond   = 0;
     }
@@ -45,11 +45,11 @@ public class PlayerModel implements  PlayerModelInterface{
         this.lastLogOn = lastLogOn;
     }
 
-    public double getDamageMultiplier() {
+    public int getDamageMultiplier() {
         return damageMultiplier;
     }
 
-    public void setDamageMultiplier(double damageMultiplier) {
+    public void setDamageMultiplier(int damageMultiplier) {
         this.damageMultiplier = damageMultiplier;
     }
 
@@ -69,20 +69,20 @@ public class PlayerModel implements  PlayerModelInterface{
         this.money = money;
     }
 
-    public double getMoneyPerSecond() {
+    public int getMoneyPerSecond() {
         return moneyPerSecond;
     }
 
-    public void setMoneyPerSecond(double moneyPerSecond) {
+    public void setMoneyPerSecond(int moneyPerSecond) {
         this.moneyPerSecond = moneyPerSecond;
     }
 
     @Override
     public void setState(Map newState) {
         setDamage(          (int) newState.get("damage"));
-        setDamageMultiplier((double) newState.get("damageMult"));
+        setDamageMultiplier((int) newState.get("damageMult"));
         setMoney(           (int) newState.get("money"));
-        setMoneyPerSecond(  (double) newState.get("moneyPerSec"));
+        setMoneyPerSecond(  (int) newState.get("moneyPerSec"));
         setLastLogOn(       (long) newState.get("lastLogOn"));
     }
 

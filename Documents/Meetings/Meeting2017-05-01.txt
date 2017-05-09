@@ -1,0 +1,54 @@
+Meeting Agenda
+Date: 2017-05-01
+Chair: Jonatan Källman 
+Participants: Jonatan Källman, Filip Labe, Erik Sjöström, Sarosh Nasir
+1. Objectives (5 min). Resolve any issues preventing the team to
+continue.
+
+No issues preventing us to move forward at the moment. 
+All branches are merged to master except those who we are currently working on.
+
+2. Reports (15 min) from previous meeting
+
+We have worked on issues on Git, saving states and program structure (packages etc).
+
+3. Discussion items (35 min)
+- Discuss issues from 1 and 2, possibly new or more general issues (very short notes and/or
+keywords)
+
+Main things:
+Create more tests. (Add tests for all models)
+System decomposition (Not everything is decomposed yet - should be done before Thursday).
+Fixing memory problems.
+Work on issues on Git.
+
+4. Outcomes and assignments (5 min)
+- Outcomes from 3). I.e. write down what's decided and why it was decided? Sync with other
+documentation (add terms to wordbook)
+- From outcomes, 1), 2) and 3) (re)assign each group member issues to solve.
+
+We have assigned some issues on Git as usual. 
+We have decided that, since we have worked with at least one model each in the MVP implementation,
+that each of us should write tests for the model that we worked with.
+We will prepare for showing our system design to the teacher assistant next Monday.
+These assignments still stand as we have been working on system decomposition and saving state. 
+
+5. Wrap up
+- Write down unresolved issues for next meeting.
+- Time and location for next meeting
+
+Issues listed on Git:
+Constant "clock"
+Welcome screen
+Choose area and level from map
+Implement Map/ Area/ Level tests
+Implement Home and Shop tests
+App Icon
+Implement MainPresenter as a main communicator between views and models.
+Add persistant gold indicator to activities
+Implement bottom bar as a fragment
+
+General issues: 
+See discussion items.
+
+Our next meeting: 2017-05-04

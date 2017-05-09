@@ -84,7 +84,7 @@ public class WelcomeActivity extends AppCompatActivity implements MainMVPInterfa
         builder.setMessage(R.string.new_game)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        //Choose new game
+                        //Chose new game
                         Context context = WelcomeActivity.this;
                         startActivity(new Intent(context, MainActivity.class));
 

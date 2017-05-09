@@ -2,6 +2,8 @@ package com.example.sauronsarmy.oopp;
 
 import android.content.Context;
 
+import com.example.sauronsarmy.oopp.MonsterPack.Monster;
+
 /**
    * Created by Jonatan on 2017-04-17.
    */

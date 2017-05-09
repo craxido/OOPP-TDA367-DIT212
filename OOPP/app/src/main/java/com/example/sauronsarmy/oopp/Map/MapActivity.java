@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -14,10 +15,14 @@ import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends AppCompatActivity implements MapMVPInterface.ViewOps {
+
+    private static MapMVPInterface.PresenterOps mapPresenter = MapPresenter.getInstance();
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate() called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         /*
@@ -71,7 +76,21 @@ public class MapActivity extends AppCompatActivity {
                 case R.id.b_main:
                     startActivity(new Intent(context, MainActivity.class));
                     break;
+                /* TODO: Selecting a new area should result in changing the monsters/ levels
+                 * TODO: as well as the background in the MainActivity.
+                    */
+                case R.id.b_area1: 
+                    MapPresenter.setBackgroundRef(mapPresenter.getArea(0).getImgRef());
+                    break;
+                case R.id.b_area2:
+                    MapPresenter.setBackgroundRef(mapPresenter.getArea(1).getImgRef());
+                    break;
+                case R.id.b_area3:
+                    MapPresenter.setBackgroundRef(mapPresenter.getArea(2).getImgRef());
+                    break;
+
             }
+
         }
     };
 }

@@ -4,6 +4,8 @@ package com.example.sauronsarmy.oopp;
  * Created by Filip on 2017-04-29.
  */
 
+        import com.example.sauronsarmy.oopp.MonsterPack.Monster;
+
         import org.junit.Test;
         import org.junit.Before;
         import org.junit.After;
