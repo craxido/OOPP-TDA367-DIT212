@@ -43,11 +43,13 @@ class MainModel implements MainMVPInterface.ModelInterface {
 
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
         editor = saveState.edit();
+        // Player state
         editor.putInt("damage",        (int) currentState.get("damage"));
         editor.putLong("damageMult",   doubleToLong((double) currentState.get("damageMult")));
         editor.putInt("money",         (int) currentState.get("money"));
         editor.putLong("moneyPerSec",  doubleToLong((double) currentState.get("moneyPerSec")));
         editor.putLong("lastLogOn",    (long) currentState.get("lastLogOn"));
+        // Shop state
         editor.putInt("dmgUpgrade",    (int) currentUpgrades.get("dmgUpgrade"));
         editor.putInt("multUpgrade",   (int) currentUpgrades.get("multUpgrade"));
         editor.apply();
@@ -61,14 +63,13 @@ class MainModel implements MainMVPInterface.ModelInterface {
      */
     @Override
     public Map loadState(Context context) {
-
+        Log.i(TAG, "Loading last player state");
         hasSaveToLoad = false;
 
        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
        return new HashMap<String, Object>() {
            {
                put("damage",      saveState.getInt("damage", 10));
-               Log.i(TAG, Long.toString(saveState.getLong("damageMult", 1)));
                put("damageMult",  longToDouble(saveState.getLong("damageMult", 1)));
                put("money",       saveState.getInt("money", 10));
                put("moneyPerSec", longToDouble(saveState.getLong("moneyPerSec", 0)));
@@ -80,7 +81,7 @@ class MainModel implements MainMVPInterface.ModelInterface {
 
     @Override
     public Map loadUpgrade(Context context) {
-
+        Log.i(TAG, "Loading last shop state");
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
         return new HashMap<String, Integer>() {
             {

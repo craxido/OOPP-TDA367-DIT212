@@ -81,8 +81,8 @@ public class Shop {
     }
 
     public void setUpgradeCounters(Map<String, Integer> map){
-        damageUpgradeCounter = map.get("damage");
-        multiplierUpgradeCounter = map.get("multiplier");
+        damageUpgradeCounter = map.get("dmgUpgrade");
+        multiplierUpgradeCounter = map.get("multUpgrade");
     }
 
     public Map getUpgradeCounters(){
