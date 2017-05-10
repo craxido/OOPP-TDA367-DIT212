@@ -1,13 +1,16 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Upgrades;
 
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by bunnyfiscuit on 05/04/17.
  */
 
-class Shop {
+public class Shop {
 
     private static final Shop shopInstance = new Shop();
 
@@ -15,11 +18,11 @@ class Shop {
     private PlayerModelInterface player = PlayerModel.getInstance();
 
     private Upgrade damageUpgrade = new Upgrade(5,5);
-    private Upgrade multiplierUpgrade = new Upgrade(0.1,5);
+    private Upgrade multiplierUpgrade = new Upgrade(1,5);
     private int damageUpgradeCounter = 1;
     private int multiplierUpgradeCounter = 1;
 
-    static Shop getInstance() { return shopInstance; }
+    public static Shop getInstance() { return shopInstance; }
 
     /** Buy damage upgrade for player.
      *  adds to player damage, and applies the cost
@@ -28,7 +31,7 @@ class Shop {
     protected boolean buyDamageUpgrade(){
         if(player.getMoney() >= damageUpgrade.getCost()) {
             player.setMoney(player.getMoney() - damageUpgrade.getCost());
-            player.setDamage(player.getDamage() + (int) damageUpgrade.getStat());
+            player.setDamage(player.getDamage() + damageUpgrade.getStat());
 
             damageUpgradeCounter++;
             damageUpgrade.updateStat(damageUpgradeCounter);
@@ -58,25 +61,37 @@ class Shop {
     }
 
     /**
-     * Getters
-     * @return
+     * Setters & Getters
      */
 
-    protected Upgrade getDamageUpgrade(){
+    public Upgrade getDamageUpgrade(){
         return damageUpgrade;
     }
 
-    protected int getDamageUpgradeCounter(){
+    public int getDamageUpgradeCounter(){
         return damageUpgradeCounter;
     }
 
-    protected Upgrade getMultiplierUpgrade(){
+    public Upgrade getMultiplierUpgrade(){
         return multiplierUpgrade;
     }
 
-    protected int getMultiplierUpgradeCounter(){
+    public int getMultiplierUpgradeCounter(){
         return multiplierUpgradeCounter;
     }
 
+    public void setUpgradeCounters(Map<String, Integer> map){
+        damageUpgradeCounter = map.get("damage");
+        multiplierUpgradeCounter = map.get("multiplier");
+    }
+
+    public Map getUpgradeCounters(){
+        return new HashMap<String, Integer>(){
+            {
+                put("damage", getDamageUpgradeCounter());
+                put("multiplier", getMultiplierUpgradeCounter());
+            }
+        };
+    }
 
 }

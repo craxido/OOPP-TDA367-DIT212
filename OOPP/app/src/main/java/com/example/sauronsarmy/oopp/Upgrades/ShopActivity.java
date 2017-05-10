@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp;
+package com.example.sauronsarmy.oopp.Upgrades;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.Map.MapActivity;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
+import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
 
@@ -72,8 +74,7 @@ public class ShopActivity extends AppCompatActivity {
         TextView newDmg = (TextView) findViewById(R.id.newDmg);
 
         /** Set the values to the view from the upgrade object
-         *  Using String tmp to set text, otherwise it complains about Android resource
-         *  i don't know how to do that yet.
+         *
          * */
         /* DAMAGE UPGRADE */
         Upgrade damageUpgrade = shop.getDamageUpgrade();
@@ -82,7 +83,8 @@ public class ShopActivity extends AppCompatActivity {
         dmgCounter.setText(String.valueOf(shop.getDamageUpgradeCounter()));
 
         int dmg = PlayerModel.getInstance().getDamage();
-        int newdmg = (int) damageUpgrade.getStat() + dmg;
+        int newdmg = damageUpgrade.getStat() + dmg;
+
         currentDmg.setText(String.valueOf(dmg));
         newDmg.setText(String.valueOf(newdmg));
 
@@ -108,10 +110,10 @@ public class ShopActivity extends AppCompatActivity {
         multiplierCounter.setText(String.valueOf(shop.getMultiplierUpgradeCounter()));
         multiplierCost.setText(String.valueOf(multiplierUpgrade.getCost() + " g"));
 
-        double mlt = PlayerModel.getInstance().getDamageMultiplier();
-        mlt = Math.round(mlt * 100) / 100.0;
-        double nMlt = mlt + multiplierUpgrade.getStat();
-        nMlt = Math.round(nMlt * 100) / 100.0;
+        int mlt = PlayerModel.getInstance().getDamageMultiplier();
+        //mlt = Math.round(mlt * 100) / 100.0;
+        int nMlt = mlt + multiplierUpgrade.getStat();
+        //nMlt = Math.round(nMlt * 100) / 100.0;
         currentMlt.setText(String.valueOf(mlt));
         newMlt.setText(String.valueOf(nMlt));
 
