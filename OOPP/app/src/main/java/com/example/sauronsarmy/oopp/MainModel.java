@@ -45,11 +45,13 @@ class MainModel implements MainMVPInterface.ModelInterface {
         editor = saveState.edit();
         // Player state
         editor.putInt("damage",        (int) currentState.get("damage"));
-        editor.putLong("damageMult",   doubleToLong((double) currentState.get("damageMult")));
+        Log.i(TAG, "Saved damage is: " + currentState.get("damage"));
+        editor.putInt("damageMult",   (int) currentState.get("damageMult"));
         editor.putInt("money",         (int) currentState.get("money"));
-        editor.putLong("moneyPerSec",  doubleToLong((double) currentState.get("moneyPerSec")));
+        editor.putInt("moneyPerSec",  (int) currentState.get("moneyPerSec"));
         editor.putLong("lastLogOn",    (long) currentState.get("lastLogOn"));
         // Shop state
+        Log.i(TAG, "upgrademap: " + currentUpgrades.toString());
         editor.putInt("dmgUpgrade",    (int) currentUpgrades.get("dmgUpgrade"));
         editor.putInt("multUpgrade",   (int) currentUpgrades.get("multUpgrade"));
         editor.apply();
@@ -70,9 +72,10 @@ class MainModel implements MainMVPInterface.ModelInterface {
        return new HashMap<String, Object>() {
            {
                put("damage",      saveState.getInt("damage", 10));
-               put("damageMult",  longToDouble(saveState.getLong("damageMult", 1)));
+               Log.i(TAG, "Loaded damage is: " + saveState.getInt("damage", 10));
+               put("damageMult",  saveState.getInt("damageMult", 1));
                put("money",       saveState.getInt("money", 10));
-               put("moneyPerSec", longToDouble(saveState.getLong("moneyPerSec", 0)));
+               put("moneyPerSec", saveState.getInt("moneyPerSec", 0));
                put("lastLogOn",   saveState.getLong("lastLogOn", -1));
            }
        };
@@ -80,12 +83,12 @@ class MainModel implements MainMVPInterface.ModelInterface {
 
 
     @Override
-    public Map loadUpgrade(Context context) {
+    public Map<String, Integer> loadUpgrade(Context context) {
         Log.i(TAG, "Loading last shop state");
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
         return new HashMap<String, Integer>() {
             {
-                put("dmgUpgrade", saveState.getInt("dmgUpgrade", 1));
+                put("dmgUpgrade",  saveState.getInt("dmgUpgrade", 1));
                 put("multUpgrade", saveState.getInt("multUpgrade", 1));
             }
         };

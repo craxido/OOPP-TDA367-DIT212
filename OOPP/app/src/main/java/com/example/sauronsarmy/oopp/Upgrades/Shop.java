@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.Upgrades;
 
+import android.util.Log;
+
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
 
@@ -13,6 +15,7 @@ import java.util.Map;
 public class Shop {
 
     private static final Shop shopInstance = new Shop();
+    private static final String TAG = "Shop";
 
     // Variables
     private PlayerModelInterface player = PlayerModel.getInstance();
@@ -81,6 +84,7 @@ public class Shop {
     }
 
     public void setUpgradeCounters(Map<String, Integer> map){
+        Log.i(TAG, "Loading previous upgrade state");
         damageUpgradeCounter = map.get("dmgUpgrade");
         multiplierUpgradeCounter = map.get("multUpgrade");
     }
@@ -88,8 +92,8 @@ public class Shop {
     public Map getUpgradeCounters(){
         return new HashMap<String, Integer>(){
             {
-                put("damage", getDamageUpgradeCounter());
-                put("multiplier", getMultiplierUpgradeCounter());
+                put("dmgUpgrade", getDamageUpgradeCounter());
+                put("multUpgrade", getMultiplierUpgradeCounter());
             }
         };
     }
