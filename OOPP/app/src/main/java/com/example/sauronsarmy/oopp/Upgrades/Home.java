@@ -17,7 +17,7 @@ public class Home {
     private Upgrade oilPumpUpgrade = new Upgrade(1, 10);
     private int oilPumpUpgradeCounter = 1;
 
-    static Home getInstance() {
+    public static Home getInstance() {
         return homeInstance;
     }
 
@@ -48,7 +48,7 @@ public class Home {
         return oilPumpUpgradeCounter;
     }
 
-    void setOilPumpUpgradeCounter(HashMap<String, Integer> map) {
+    public void setOilPumpUpgradeCounter(Map<String, Integer> map) {
         oilPumpUpgradeCounter = map.get("oil");
     }
 

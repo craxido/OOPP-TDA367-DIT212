@@ -37,7 +37,9 @@ class MainModel implements MainMVPInterface.ModelInterface {
      * @param currentState the state to be saved.
      */
     @Override
-    public void saveState(Context context, Map currentState, Map currentUpgrades) {
+    public void saveState(Context context, Map currentState,
+                                           Map currentShopUpgrade,
+                                           Map currentHomeUpgrade) {
 
         hasSaveToLoad = true;
 
@@ -45,15 +47,15 @@ class MainModel implements MainMVPInterface.ModelInterface {
         editor = saveState.edit();
         // Player state
         editor.putInt("damage",        (int) currentState.get("damage"));
-        Log.i(TAG, "Saved damage is: " + currentState.get("damage"));
         editor.putInt("damageMult",   (int) currentState.get("damageMult"));
         editor.putInt("money",         (int) currentState.get("money"));
         editor.putInt("moneyPerSec",  (int) currentState.get("moneyPerSec"));
         editor.putLong("lastLogOn",    (long) currentState.get("lastLogOn"));
         // Shop state
-        Log.i(TAG, "upgrademap: " + currentUpgrades.toString());
-        editor.putInt("dmgUpgrade",    (int) currentUpgrades.get("dmgUpgrade"));
-        editor.putInt("multUpgrade",   (int) currentUpgrades.get("multUpgrade"));
+        editor.putInt("dmgUpgrade",    (int) currentShopUpgrade.get("dmgUpgrade"));
+        editor.putInt("multUpgrade",   (int) currentShopUpgrade.get("multUpgrade"));
+        // Home state
+        editor.putInt("oil", (int) currentHomeUpgrade.get("oil"));
         editor.apply();
     }
 
@@ -72,7 +74,6 @@ class MainModel implements MainMVPInterface.ModelInterface {
        return new HashMap<String, Object>() {
            {
                put("damage",      saveState.getInt("damage", 10));
-               Log.i(TAG, "Loaded damage is: " + saveState.getInt("damage", 10));
                put("damageMult",  saveState.getInt("damageMult", 1));
                put("money",       saveState.getInt("money", 10));
                put("moneyPerSec", saveState.getInt("moneyPerSec", 0));
@@ -83,7 +84,7 @@ class MainModel implements MainMVPInterface.ModelInterface {
 
 
     @Override
-    public Map<String, Integer> loadUpgrade(Context context) {
+    public Map<String, Integer> loadShopUpgrade(Context context) {
         Log.i(TAG, "Loading last shop state");
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
         return new HashMap<String, Integer>() {
@@ -92,6 +93,18 @@ class MainModel implements MainMVPInterface.ModelInterface {
                 put("multUpgrade", saveState.getInt("multUpgrade", 1));
             }
         };
+    }
+
+    @Override
+    public Map<String, Integer> loadHomeUpgrade(Context context) {
+        Log.i(TAG, "Loading last home state");
+        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
+        return new HashMap<String, Integer>() {
+            {
+                put("oil",  saveState.getInt("oil", 1));
+            }
+        };
+
     }
 
     /**

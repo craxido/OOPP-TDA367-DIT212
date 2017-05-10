@@ -29,9 +29,12 @@ interface MainMVPInterface {
         }
 
     interface ModelInterface {
-        void saveState(Context value1, java.util.Map currentState, java.util.Map currentUpgrade);
+        void saveState(Context value1, java.util.Map currentState,
+                                       java.util.Map currentShopUpgrade,
+                                       java.util.Map currentHomeUpgrade);
         java.util.Map loadState(Context context);
-        java.util.Map loadUpgrade(Context context);
+        java.util.Map loadShopUpgrade(Context context);
+        java.util.Map loadHomeUpgrade(Context context);
         boolean hasSaveToLoad();
     }
 

@@ -6,6 +6,7 @@ import com.example.sauronsarmy.oopp.Map.Map;
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
+import com.example.sauronsarmy.oopp.Upgrades.Home;
 import com.example.sauronsarmy.oopp.Upgrades.Shop;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 import com.example.sauronsarmy.oopp.clock.Runner;
@@ -25,6 +26,7 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     private WeakReference<MainMVPInterface.ViewOps> mView;
     private PlayerModelInterface playerModel;
     private Shop shop;
+    private Home home;
     private MainMVPInterface.ModelInterface mainModel;
     private final static String TAG = "MainPresenter";
 
@@ -33,6 +35,7 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
         this.mView = new WeakReference<>(mView);
         playerModel = PlayerModel.getInstance();
         shop = Shop.getInstance();
+        home = Home.getInstance();
         mainModel = new MainModel();
         ourInstance =this;
 
@@ -75,12 +78,12 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
      * @param context The context from which this method was called.
      */
     @Override
-    //TODO When Map has its own package, simplify
     public void saveState(Context context) {
         Log.i(TAG, "Saving the current state.");
         java.util.Map currentState = playerModel.getState();
-        java.util.Map currentUpgrade = shop.getUpgradeCounters();
-        mainModel.saveState(context, currentState, currentUpgrade);
+        java.util.Map currentShopUpgrade = shop.getUpgradeCounters();
+        java.util.Map currentHomeUpgrade = home.getUpgradeCounters();
+        mainModel.saveState(context, currentState, currentShopUpgrade, currentHomeUpgrade);
     }
 
     /**
@@ -93,7 +96,8 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
         if(mainModel.hasSaveToLoad()) {
             Log.i(TAG, "Loading previous save.");
             playerModel.setState(mainModel.loadState(context));
-            shop.setUpgradeCounters(mainModel.loadUpgrade(context));
+            shop.setUpgradeCounters(mainModel.loadShopUpgrade(context));
+            home.setOilPumpUpgradeCounter(mainModel.loadHomeUpgrade(context));
         }
 
     }
