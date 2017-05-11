@@ -33,6 +33,16 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/b_monster"
         android:layout_centerHorizontal="true"
-        android:background="@android:color/white"/>
+        android:background="@android:color/white"
+        android:textAlignment="viewStart"/>
+
+    <TextView
+        android:id="@+id/goal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/hp"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/white"
+        android:textAlignment="viewStart"/>
 
 </RelativeLayout>

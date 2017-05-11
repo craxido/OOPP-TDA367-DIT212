@@ -105,17 +105,10 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                 case R.id.b_main:
                     break;
                 case R.id.b_monster:
-                    ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
-                    TextView hp = (TextView) findViewById(R.id.hp);
-
 
                     mainPresenter.monsterClicked();
 
-                    currentMonster = mainPresenter.getCurrentMonster();
-
-                    hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
-                    monsterButton.setImageResource(currentMonster.getImageRef());
-
+                    update();
                     break;
             }
         }
@@ -126,10 +119,18 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         ImageView bg = (ImageView) findViewById(R.id.b_background);
         bg.setImageResource(MainPresenter.getInstance().getBGRef());
 
+
         currentMonster=MainPresenter.getInstance().getCurrentMonster();
         ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
+
         TextView hp = (TextView) findViewById(R.id.hp);
-        hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
+        hp.setText("Health: " + currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
+
+        TextView goal = (TextView) findViewById(R.id.goal);
+        int goali = MapPresenter.getInstance().getGoal();
+        int path  = MapPresenter.getInstance().getPathGoal();
+        goal.setText("Goal: " + path +"/" +goali);
+
         monsterButton.setImageResource(currentMonster.getImageRef());
     }
 }

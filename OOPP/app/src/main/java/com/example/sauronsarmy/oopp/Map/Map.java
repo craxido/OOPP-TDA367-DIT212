@@ -25,6 +25,7 @@ public class Map implements MapMVPInterface.ModelOps {
         bgRef = R.drawable.mapbg;
         areas = createAreas();
 	    currentArea = areas[0];
+        currentArea.getCurrentLevel().available = true;
         bgRef = currentArea.getImgRef();
 
     }
@@ -37,6 +38,7 @@ public class Map implements MapMVPInterface.ModelOps {
         //Area 1 (Mountain)
 
         areas[0]=new Area(R.drawable.mountainarea, areaType.MOUNTAIN, lvlfac.getLevels(areaType.MOUNTAIN));
+
         //Area 2 (Forest)
         areas[1]=new Area(R.drawable.forestarea, areaType.FOREST, lvlfac.getLevels(areaType.FOREST));
         //Area 3 (Volcano)
