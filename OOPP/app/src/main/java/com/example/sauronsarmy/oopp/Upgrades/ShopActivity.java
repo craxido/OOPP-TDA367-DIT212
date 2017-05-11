@@ -53,7 +53,6 @@ public class ShopActivity extends AppCompatActivity {
          * Add listeners to buttons
          */
         ImageButton dmgUpgradeButton = (ImageButton) findViewById(R.id.dmgUpgradeButton);
-        ImageButton multiplierUpgradeButton = (ImageButton) findViewById(R.id.mltUpgradeButton);
         ImageButton dpsUpgradeButton = (ImageButton) findViewById(R.id.dpsUpgradeButton);
 
         /* ADD LISTENERS TO BUTTONS */
@@ -108,6 +107,7 @@ public class ShopActivity extends AppCompatActivity {
         dpsCounter.setText(String.valueOf(shopPresenter.getDPSUpgradeCounter()));
         dpsCost.setText(String.valueOf(dpsUpgrade.getCost() + " g"));
 
+        int dps = PlayerModel.getInstance().getDamagePerSecond();
         int nDps = dps + dpsUpgrade.getStat();
 
         currentDPS.setText(String.valueOf(dps));
