@@ -17,6 +17,8 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     private MapPresenter() {
         //this.mapView = new WeakReference<>(mapView);
+        //map = Map.getInstance();
+
     }
 
     public static void setBackgroundRef(int ref){
@@ -30,6 +32,11 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     public Area getArea(int index){
         return map.getArea(index);
     }
+
+    public Area getCurrentArea(){ return map.getCurrentArea();}
+
+    public int getGoal(){return getCurrentArea().getCurrentLevel().getGoal();}
+    public int getPathGoal(){return getCurrentArea().getCurrentLevel().getPathToGoal();}
 
     public void onError(String errorMsg){
         Log.i(TAG, "Error: " + errorMsg);
