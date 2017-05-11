@@ -229,7 +229,7 @@
             android:layout_marginLeft="19dp"
             android:layout_marginStart="19dp"
             android:layout_marginTop="33dp"
-            android:text="@string/mltUpgradeText"
+            android:text="@string/dpsUpgradeText"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="20sp"
@@ -243,7 +243,7 @@
             android:layout_alignBottom="@+id/currentMlt"
             android:layout_alignLeft="@+id/mltUpgradeText"
             android:layout_alignStart="@+id/mltUpgradeText"
-            android:text="@string/currentMultiplier"
+            android:text="@string/currentDPS"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
@@ -251,14 +251,14 @@
             android:id="@+id/currentMlt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/mltUpgradeText"
-            android:layout_alignStart="@+id/mltUpgradeText"
-            android:layout_below="@+id/mltUpgradeText"
-            android:layout_marginLeft="145dp"
-            android:layout_marginTop="8dp"
             android:text="0"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/currentMltText"
+            android:layout_toEndOf="@+id/currentMltText" />
 
         <TextView
             android:id="@+id/newMltText"
@@ -268,7 +268,7 @@
             android:layout_alignStart="@+id/mltUpgradeText"
             android:layout_below="@+id/mltUpgradeText"
             android:layout_marginTop="30dp"
-            android:text="@string/newMultiplier"
+            android:text="@string/newDPS"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
@@ -277,14 +277,13 @@
             android:id="@+id/newMlt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/mltUpgradeText"
-            android:layout_alignStart="@+id/mltUpgradeText"
-            android:layout_below="@+id/mltUpgradeText"
-            android:layout_marginLeft="125dp"
-            android:layout_marginTop="30dp"
             android:text="0"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_alignBaseline="@+id/newMltText"
+            android:layout_alignBottom="@+id/newMltText"
+            android:layout_alignRight="@+id/currentMltText"
+            android:layout_alignEnd="@+id/currentMltText" />
 
 
         <TextView

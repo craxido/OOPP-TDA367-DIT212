@@ -102,15 +102,14 @@ public class ShopActivity extends AppCompatActivity {
 
         // Set the values to the view from the upgrade object
         /* MULTIPLIER UPGRADE */
-        Upgrade multiplierUpgrade = shopPresenter.getMultiplierUpgrade();
+        Upgrade multiplierUpgrade = shopPresenter.getDPSUpgrade();
 
-        multiplierCounter.setText(String.valueOf(shopPresenter.getMultiplierUpgradeCounter()));
+        multiplierCounter.setText(String.valueOf(shopPresenter.getDPSUpgradeCounter()));
         multiplierCost.setText(String.valueOf(multiplierUpgrade.getCost() + " g"));
 
         int mlt = PlayerModel.getInstance().getDamageMultiplier();
-        //mlt = Math.round(mlt * 100) / 100.0;
         int nMlt = mlt + multiplierUpgrade.getStat();
-        //nMlt = Math.round(nMlt * 100) / 100.0;
+
         currentMlt.setText(String.valueOf(mlt));
         newMlt.setText(String.valueOf(nMlt));
 
@@ -142,7 +141,7 @@ public class ShopActivity extends AppCompatActivity {
                     }
                     break;
                 case R.id.mltUpgradeButton:
-                    if (shopPresenter.buyMultiplierUpgrade()){
+                    if (shopPresenter.buyDPSUpgrade()){
                         updateMultiplierInfo();
                     }
                     break;

@@ -21,8 +21,8 @@ class ShopPresenter implements ShopMVPInterface.Presenter {
     }
 
     @Override
-    public boolean buyMultiplierUpgrade() {
-        return shopModel.buyMultiplierUpgrade();
+    public boolean buyDPSUpgrade() {
+        return shopModel.buyDPSUpgrade();
     }
 
     @Override
@@ -31,8 +31,8 @@ class ShopPresenter implements ShopMVPInterface.Presenter {
     }
 
     @Override
-    public Upgrade getMultiplierUpgrade() {
-        return shopModel.getMultiplierUpgrade();
+    public Upgrade getDPSUpgrade() {
+        return shopModel.getDPSUpgrade();
     }
 
     @Override
@@ -41,8 +41,8 @@ class ShopPresenter implements ShopMVPInterface.Presenter {
     }
 
     @Override
-    public int getMultiplierUpgradeCounter() {
-        return shopModel.getMultiplierUpgradeCounter();
+    public int getDPSUpgradeCounter() {
+        return shopModel.getDPSUpgradeCounter();
     }
 
     @Override

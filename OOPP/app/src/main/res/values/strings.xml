@@ -13,15 +13,15 @@
     <string name="currentDmg">Current damage:</string>
     <string name="newDmg">New damage:</string>
 
-    <string name="mltUpgradeText">Multiplier Upgrade</string>
-    <string name="currentMultiplier">Current multiplier:</string>
-    <string name="newMultiplier">New multiplier:</string>
+    <string name="dpsUpgradeText">Damage Per Second Upgrade</string>
+    <string name="currentDPS">Current DPS:</string>
+    <string name="newDPS">New DPS:</string>
 
     <string name="oilUpgradeText">Oil Pump Upgrade</string>
     <string name="currentMoneyPerSec">Current money/sec:</string>
     <string name="newMoneyPerSec">New money/sec:</string>
     <string name="new_game" >This will override any previous saves, continue?</string>
     <string name="ok" >Ok</string>
-    <string name="cancel" >Cancel</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
