@@ -23,7 +23,7 @@ import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 
 public class ShopActivity extends AppCompatActivity {
 
-    Shop shop;
+    private ShopMVPInterface.Presenter shopPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +44,7 @@ public class ShopActivity extends AppCompatActivity {
         statsButton.setOnClickListener(buttonListener);
         mainButton.setOnClickListener(buttonListener);
 
-        shop = Shop.getInstance();
+        shopPresenter = new ShopPresenter();
 
         shopButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
@@ -77,10 +77,10 @@ public class ShopActivity extends AppCompatActivity {
          *
          * */
         /* DAMAGE UPGRADE */
-        Upgrade damageUpgrade = shop.getDamageUpgrade();
+        Upgrade damageUpgrade = shopPresenter.getDamageUpgrade();
 
         dmgCost.setText(String.valueOf(damageUpgrade.getCost() + " g"));
-        dmgCounter.setText(String.valueOf(shop.getDamageUpgradeCounter()));
+        dmgCounter.setText(String.valueOf(shopPresenter.getDamageUpgradeCounter()));
 
         int dmg = PlayerModel.getInstance().getDamage();
         int newdmg = damageUpgrade.getStat() + dmg;
@@ -100,14 +100,11 @@ public class ShopActivity extends AppCompatActivity {
         TextView currentMlt = (TextView) findViewById(R.id.currentMlt);
         TextView newMlt = (TextView) findViewById(R.id.newMlt);
 
-        /** Set the values to the view from the upgrade object
-         *  Using String tmp to set text, otherwise it complains about Android resource
-         *  i don't know how to do that yet.
-         * */
+        // Set the values to the view from the upgrade object
         /* MULTIPLIER UPGRADE */
-        Upgrade multiplierUpgrade = shop.getMultiplierUpgrade();
+        Upgrade multiplierUpgrade = shopPresenter.getMultiplierUpgrade();
 
-        multiplierCounter.setText(String.valueOf(shop.getMultiplierUpgradeCounter()));
+        multiplierCounter.setText(String.valueOf(shopPresenter.getMultiplierUpgradeCounter()));
         multiplierCost.setText(String.valueOf(multiplierUpgrade.getCost() + " g"));
 
         int mlt = PlayerModel.getInstance().getDamageMultiplier();
@@ -140,12 +137,12 @@ public class ShopActivity extends AppCompatActivity {
                     startActivity(new Intent(context, MainActivity.class));
                     break;
                 case R.id.dmgUpgradeButton:
-                    if (shop.buyDamageUpgrade()){
+                    if (shopPresenter.buyDamageUpgrade()){
                         updateDamageInfo();
                     }
                     break;
                 case R.id.mltUpgradeButton:
-                    if (shop.buyMultiplierUpgrade()){
+                    if (shopPresenter.buyMultiplierUpgrade()){
                         updateMultiplierInfo();
                     }
                     break;
