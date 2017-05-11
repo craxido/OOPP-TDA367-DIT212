@@ -11,22 +11,22 @@ interface ShopMVPInterface {
 
     interface Presenter {
         boolean buyDamageUpgrade();
-        boolean buyMultiplierUpgrade();
+        boolean buyDPSUpgrade();
         Upgrade getDamageUpgrade();
-        Upgrade getMultiplierUpgrade();
+        Upgrade getDPSUpgrade();
         int getDamageUpgradeCounter();
-        int getMultiplierUpgradeCounter();
+        int getDPSUpgradeCounter();
         Map getUpgradeCounters();
         void setUpgradeCounters(HashMap<String, Integer> map);
     }
 
     interface Model {
         boolean buyDamageUpgrade();
-        boolean buyMultiplierUpgrade();
+        boolean buyDPSUpgrade();
         Upgrade getDamageUpgrade();
-        Upgrade getMultiplierUpgrade();
+        Upgrade getDPSUpgrade();
         int getDamageUpgradeCounter();
-        int getMultiplierUpgradeCounter();
+        int getDPSUpgradeCounter();
         Map getUpgradeCounters();
         void setUpgradeCounters(HashMap<String, Integer> map);
     }
