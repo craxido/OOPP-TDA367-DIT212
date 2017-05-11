@@ -100,10 +100,7 @@ public class ShopActivity extends AppCompatActivity {
         TextView currentMlt = (TextView) findViewById(R.id.currentMlt);
         TextView newMlt = (TextView) findViewById(R.id.newMlt);
 
-        /** Set the values to the view from the upgrade object
-         *  Using String tmp to set text, otherwise it complains about Android resource
-         *  i don't know how to do that yet.
-         * */
+        // Set the values to the view from the upgrade object
         /* MULTIPLIER UPGRADE */
         Upgrade multiplierUpgrade = shopPresenter.getMultiplierUpgrade();
 

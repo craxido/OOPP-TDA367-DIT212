@@ -66,10 +66,7 @@ public class HomeActivity extends AppCompatActivity {
         TextView newMps = (TextView) findViewById(R.id.newMps);
 
 
-        /** Set the values to the view from the upgrade object
-         *  Using String tmp to set text, otherwise it complains about Android resource
-         *  i don't know how to do that yet.
-         * */
+        // Set the values to the view from the upgrade object
         Upgrade oilPumpUpgrade = homePresenter.getOilPumpUpgrade();
 
         oilUpgradeCounter.setText(String.valueOf(homePresenter.getOilPumpUpgradeCounter()));
