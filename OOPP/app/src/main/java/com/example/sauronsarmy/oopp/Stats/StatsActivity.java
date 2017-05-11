@@ -109,7 +109,7 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
              Setting all the textViews to display the correct stats.
             */
         damageText      = (TextView) findViewById(R.id.damageText);
-        dpsText         = (TextView) findViewById(R.id.dmgMultText);
+        dpsText         = (TextView) findViewById(R.id.dpsText);
         moneyText       = (TextView) findViewById(R.id.moneyText);
         moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
 
