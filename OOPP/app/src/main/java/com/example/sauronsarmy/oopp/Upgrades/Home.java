@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by bunnyfiscuit on 05/04/17.
  */
 
-public class Home implements HomeMVPInterface.Model {
+class Home implements HomeMVPInterface.Model  {
     private static final Home homeInstance = new Home();
 
     private PlayerModelInterface player = PlayerModel.getInstance();
@@ -21,7 +21,7 @@ public class Home implements HomeMVPInterface.Model {
         return homeInstance;
     }
 
-    protected void makePayment() {
+    void makePayment() {
         player.setMoney(player.getMoney() - oilPumpUpgrade.getCost());
     }
 

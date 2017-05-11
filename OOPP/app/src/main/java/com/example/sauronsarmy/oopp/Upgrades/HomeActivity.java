@@ -67,6 +67,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
         // Set the values to the view from the upgrade object
+
         Upgrade oilPumpUpgrade = homePresenter.getOilPumpUpgrade();
 
         oilUpgradeCounter.setText(String.valueOf(homePresenter.getOilPumpUpgradeCounter()));

@@ -7,7 +7,7 @@ import java.util.Map;
  * Created by Sarosh on 2017-05-11.
  */
 
-public class HomePresenter implements HomeMVPInterface.Presenter {
+class HomePresenter implements HomeMVPInterface.Presenter {
 
     private HomeMVPInterface.Model homeModel;
 

@@ -8,7 +8,7 @@ import java.util.Map;
  * Created by Sarosh on 2017-05-11.
  */
 
-public interface HomeMVPInterface {
+interface HomeMVPInterface {
 
     interface Presenter{
         Upgrade getOilPumpUpgrade();

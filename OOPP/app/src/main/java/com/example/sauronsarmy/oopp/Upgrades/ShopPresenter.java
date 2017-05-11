@@ -7,7 +7,7 @@ import java.util.Map;
  * Created by Sarosh on 2017-05-11.
  */
 
-public class ShopPresenter implements ShopMVPInterface.Presenter {
+class ShopPresenter implements ShopMVPInterface.Presenter {
 
     private ShopMVPInterface.Model shopModel;
 

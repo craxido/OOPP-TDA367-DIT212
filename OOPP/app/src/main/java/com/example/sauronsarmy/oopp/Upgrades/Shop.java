@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by bunnyfiscuit on 05/04/17.
  */
 
-public class Shop implements ShopMVPInterface.Model {
+class Shop implements ShopMVPInterface.Model {
 
     private static final Shop shopInstance = new Shop();
 
