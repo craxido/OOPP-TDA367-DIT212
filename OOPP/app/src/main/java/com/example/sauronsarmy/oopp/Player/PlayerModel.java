@@ -15,7 +15,7 @@ public class PlayerModel implements  PlayerModelInterface{
     private static final PlayerModel ourInstance = new PlayerModel();
 
     private int damage;
-    private int damageMultiplier;
+    private int damagePerSecond;
     private int money;
     private int moneyPerSecond;
     // This must be assigned when exiting the app.
@@ -32,7 +32,7 @@ public class PlayerModel implements  PlayerModelInterface{
      */
     private PlayerModel() {
         damage           = 10;
-        damageMultiplier = 1;
+        damagePerSecond  = 0;
         money            = 50;
         moneyPerSecond   = 0;
     }
@@ -45,12 +45,12 @@ public class PlayerModel implements  PlayerModelInterface{
         this.lastLogOn = lastLogOn;
     }
 
-    public int getDamageMultiplier() {
-        return damageMultiplier;
+    public int getDamagePerSecond() {
+        return damagePerSecond;
     }
 
-    public void setDamageMultiplier(int damageMultiplier) {
-        this.damageMultiplier = damageMultiplier;
+    public void setDamagePerSecond(int damagePerSecond) {
+        this.damagePerSecond = damagePerSecond;
     }
 
     public int getDamage() {
@@ -80,7 +80,7 @@ public class PlayerModel implements  PlayerModelInterface{
     @Override
     public void setState(Map newState) {
         setDamage(          (int) newState.get("damage"));
-        setDamageMultiplier((int) newState.get("damageMult"));
+        setDamagePerSecond ((int) newState.get("dps"));
         setMoney(           (int) newState.get("money"));
         setMoneyPerSecond(  (int) newState.get("moneyPerSec"));
         setLastLogOn(       (long) newState.get("lastLogOn"));
@@ -91,7 +91,7 @@ public class PlayerModel implements  PlayerModelInterface{
         return new HashMap<String, Object>() {
             {
                 put("damage",      getDamage());
-                put("damageMult",  getDamageMultiplier());
+                put("dps",  getDamagePerSecond());
                 put("money",       getMoney());
                 put("moneyPerSec", getMoneyPerSecond());
                 put("lastLogOn",   getLastLogOn());

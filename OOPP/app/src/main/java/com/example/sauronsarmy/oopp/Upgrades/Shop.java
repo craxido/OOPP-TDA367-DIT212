@@ -44,12 +44,12 @@ class Shop implements ShopMVPInterface.Model {
     }
 
     /**
-     * Similar to above, except this upgrade is a multiplier.
+     * Similar to above, except this upgrade is for damage per second.
      */
     public boolean buyDPSUpgrade(){
         if (player.getMoney() >= dpsUpgrade.getCost()) {
             player.setMoney(player.getMoney() - dpsUpgrade.getCost());
-            player.setDamageMultiplier(player.getDamageMultiplier() + dpsUpgrade.getStat());
+            player.setDamagePerSecond(player.getDamagePerSecond() + dpsUpgrade.getStat());
 
             dpsUpgradeCounter++;
             dpsUpgrade.updateStat(dpsUpgradeCounter);
