@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
+\usepackage{caption}
 
 \setlength\fboxsep{0pt}
 \setlength\fboxrule{0.5pt}
@@ -51,11 +52,29 @@ depend on anything but itself. The application contains all the information
 required to be able to run. \\
 
 \noindent
+The application is subdivided into several packages:
+\begin{itemize}
+    \item \emph{Player:} this package contains a player model, and an interface for this model. The model contains the state of the player, damage, gold, etc. And methods to access and/or change the state.
+\end{itemize}
+
+\noindent
 Gem Clicker is developed for the Android operating system and is guaranteed to
 run on android phones running 4.0 or later versions of the operating system.  
 
 \section{Subsystem decomposition}
-The application is right now only contained in one package. 
+
+\subsection{Player}
+    This package contains a player model, and an interface for this model. The model contains the state of the player, damage, gold, etc. And methods to access and/or change the state. The interface provides a layer between the model and anyone who wishes to access it, only exposing non-internal methods.
+\newpage
+\subsubsection{Diagrams}
+\begin{center}
+    Sequence diagram of getState()\\
+    \fbox{ \includegraphics[scale=0.3]{seqDiagrams/playerModel.png}}
+\end{center}
+
+\subsubsection{Quality}
+The tests for \emph{PlayerModel} can be found in \emph{/OOPP/app/src/test/\ldots/oopp/PlayerModelTest.java}
+
 
 \section{Persistent data management}
 Gem Clicker saves the state of the app when the app is closed. 
