@@ -12,7 +12,7 @@ public class Map implements MapMVPInterface.ModelOps {
     private static Area[] areas;
     private Area currentArea;
     private static final Map mapInstance = new Map();
-
+    private static levelFactory lvlfac;
     private int bgRef;
 
 
@@ -28,13 +28,13 @@ public class Map implements MapMVPInterface.ModelOps {
         currentArea.getCurrentLevel().available = true;
         bgRef = currentArea.getImgRef();
 
+
     }
 
     //Creates areas for the mapInstance
     private static Area[] createAreas(){
-        levelFactory lvlfac = new levelFactory();
         Area[] areas= new Area[3];
-
+        lvlfac = new levelFactory();
         //Area 1 (Mountain)
 
         areas[0]=new Area(R.drawable.mountainarea, areaType.MOUNTAIN, lvlfac.getLevels(areaType.MOUNTAIN));
@@ -71,10 +71,15 @@ public class Map implements MapMVPInterface.ModelOps {
     public void onDestroy() {}
 
     public Area getCurrentArea(){
-
         return currentArea;
     }
-    public void setCurrentArea(Area a){
-        currentArea = a;
+
+    public void setCurrentArea(Area area){
+        currentArea=area;
     }
+
+    public Area[] getAreas(){
+        return areas;
+    }
+    
 }

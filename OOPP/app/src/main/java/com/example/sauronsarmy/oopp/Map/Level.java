@@ -20,7 +20,7 @@ public class Level {
     boolean available = false;
 
 
-    Level(Monster monster, int healthMultiplier, int goldMultiplier, areaType area) {
+    public Level(Monster monster, int healthMultiplier, int goldMultiplier, areaType area) {
         this.monster = monster;
         this.healthMultiplier = healthMultiplier;
         this.goldMultiplier = goldMultiplier;

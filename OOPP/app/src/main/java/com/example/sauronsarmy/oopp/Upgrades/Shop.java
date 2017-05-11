@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by bunnyfiscuit on 05/04/17.
  */
 
-public class Shop {
+class Shop implements ShopMVPInterface.Model {
 
     private static final Shop shopInstance = new Shop();
 
@@ -18,9 +18,9 @@ public class Shop {
     private PlayerModelInterface player = PlayerModel.getInstance();
 
     private Upgrade damageUpgrade = new Upgrade(5,5);
-    private Upgrade multiplierUpgrade = new Upgrade(1,5);
+    private Upgrade dpsUpgrade = new Upgrade(1,5);
     private int damageUpgradeCounter = 1;
-    private int multiplierUpgradeCounter = 1;
+    private int dpsUpgradeCounter = 1;
 
     public static Shop getInstance() { return shopInstance; }
 
@@ -28,7 +28,7 @@ public class Shop {
      *  adds to player damage, and applies the cost
      *  updates how many upgrades has been done, and updates the upgrade
      */
-    protected boolean buyDamageUpgrade(){
+    public boolean buyDamageUpgrade(){
         if(player.getMoney() >= damageUpgrade.getCost()) {
             player.setMoney(player.getMoney() - damageUpgrade.getCost());
             player.setDamage(player.getDamage() + damageUpgrade.getStat());
@@ -46,14 +46,14 @@ public class Shop {
     /**
      * Similar to above, except this upgrade is a multiplier.
      */
-    protected boolean buyMultiplierUpgrade(){
-        if (player.getMoney() >= multiplierUpgrade.getCost()) {
-            player.setMoney(player.getMoney() - multiplierUpgrade.getCost());
-            player.setDamageMultiplier(player.getDamageMultiplier() + multiplierUpgrade.getStat());
+    public boolean buyDPSUpgrade(){
+        if (player.getMoney() >= dpsUpgrade.getCost()) {
+            player.setMoney(player.getMoney() - dpsUpgrade.getCost());
+            player.setDamageMultiplier(player.getDamageMultiplier() + dpsUpgrade.getStat());
 
-            multiplierUpgradeCounter++;
-            multiplierUpgrade.updateStat(multiplierUpgradeCounter);
-            multiplierUpgrade.updateCost(multiplierUpgradeCounter);
+            dpsUpgradeCounter++;
+            dpsUpgrade.updateStat(dpsUpgradeCounter);
+            dpsUpgrade.updateCost(dpsUpgradeCounter);
             return true;
         } else {
             return false;
@@ -72,24 +72,24 @@ public class Shop {
         return damageUpgradeCounter;
     }
 
-    public Upgrade getMultiplierUpgrade(){
-        return multiplierUpgrade;
+    public Upgrade getDPSUpgrade(){
+        return dpsUpgrade;
     }
 
-    public int getMultiplierUpgradeCounter(){
-        return multiplierUpgradeCounter;
+    public int getDPSUpgradeCounter(){
+        return dpsUpgradeCounter;
     }
 
-    public void setUpgradeCounters(Map<String, Integer> map){
+    public void setUpgradeCounters(HashMap<String, Integer> map){
         damageUpgradeCounter = map.get("damage");
-        multiplierUpgradeCounter = map.get("multiplier");
+        dpsUpgradeCounter = map.get("dps");
     }
 
     public Map getUpgradeCounters(){
         return new HashMap<String, Integer>(){
             {
                 put("damage", getDamageUpgradeCounter());
-                put("multiplier", getMultiplierUpgradeCounter());
+                put("dps", getDPSUpgradeCounter());
             }
         };
     }
