@@ -33,8 +33,8 @@ public class MapTest {
 
     @Test
     public void testGetCurrentArea() throws Exception {
-        for(int i=0;i<areas.length;i++){
-            if(!(BuildConfig.DEBUG && map.getCurrentArea()==areas[i])){
+        for(int i = 0; i<areas.length; i++){
+            if(!(BuildConfig.DEBUG && map.getCurrentArea() == areas[i])){
                 throw new AssertionError();
             }
         }
@@ -42,7 +42,7 @@ public class MapTest {
 
     @Test
     public void testAreaTypes() throws Exception{
-        for(int i=0;i<areas.length;i++) {
+        for(int i = 0; i<areas.length; i++) {
             switch (areas[i].getAreaType()){
                 case FOREST:
                     assertEquals(areas[i].getAreaType(), areaType.FOREST);
@@ -60,7 +60,7 @@ public class MapTest {
 
     @Test
     public void testImageRef() throws Exception{
-        for(int i=0;i<areas.length;i++){
+        for(int i=0; i<areas.length; i++){
             assertEquals(areas[i].getImgRef(), R.drawable.forestarea
                     | R.drawable.mountainarea | R.drawable.volcanoarea);
         }
@@ -93,7 +93,7 @@ public class MapTest {
     @Test
     public void testGoldMultiplier(){
         for (int i = 0; i < areas.length; i++) { //For every area
-            Level[] levels=areas[i].getLevels(); //Get the levels
+            Level[] levels = areas[i].getLevels(); //Get the levels
 
             switch (areas[i].getAreaType()) { //Check the area type
                 case FOREST:
@@ -121,17 +121,32 @@ public class MapTest {
     }
 
     @Test
-    public void testHealthMultiplier(){ //TODO
+    public void testHealthMultiplier(){
         for (int i = 0; i < areas.length; i++) { //For every area
 
-            Level[] levels=areas[i].getLevels();
-            for (int j = 0; i < levels.length; j++){ //For every level in that area
-                levels[j].getHealthMultiplier();
-            }
+            Level[] levels = areas[i].getLevels();
+            switch (areas[i].getAreaType()) { //Check the area type
+                case FOREST:
+                    for (int j = 0; i < levels.length; j++) { //For every level in that area
+                        assertEquals(levels[j].getHealthMultiplier(), 1);
+                    }
+                    break;
 
+                case MOUNTAIN:
+                    for (int j = 0; i < levels.length; j++){ //For every level in that area
+                        assertEquals(levels[j].getHealthMultiplier(),2);
+                    }
+                    break;
+
+                case VOLCANO:
+                    for (int j = 0; i < levels.length; j++){ //For every level in that area
+                        assertEquals(levels[j].getHealthMultiplier(),3);
+                    }
+                    break;
+
+                default: //Not a valid area
+                    throw new AssertionError();
+            }
         }
     }
-
-
-
 }
