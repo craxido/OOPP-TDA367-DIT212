@@ -18,11 +18,12 @@ import java.lang.ref.WeakReference;
 
 public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListener {
     // View reference
-    private static MainPresenter ourInstance;
+    private static final MainPresenter ourInstance = new MainPresenter();
 
     private Runner run = new Runner();
 
     Map map = Map.getInstance();
+    MapPresenter mapPres = MapPresenter.getInstance();
 
 
     WeakReference<MainMVPInterface.ViewOps> mView;
@@ -31,11 +32,11 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     private final static String TAG = "MainPresenter";
 
 
-    public MainPresenter(MainMVPInterface.ViewOps mView) {
-        this.mView = new WeakReference<>(mView);
+    public MainPresenter() {
+        //this.mView = new WeakReference<>(mView);
         playerModel = PlayerModel.getInstance();
         mainModel = new MainModel();
-        ourInstance =this;
+        //ourInstance =this;
 
         run.register(this);
         run.start();
@@ -133,7 +134,7 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
 
     public int getBGRef(){
 
-        int bgref = MapPresenter.getInstance().getBackgroundRef();
+        int bgref = mapPres.getBackgroundRef();
 
         return bgref;
     }

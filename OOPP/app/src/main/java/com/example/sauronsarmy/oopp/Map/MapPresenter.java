@@ -15,9 +15,8 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     private static Map map = Map.getInstance();
     WeakReference<MapMVPInterface.ViewOps> mapView;
 
-    public MapPresenter() {
+    private MapPresenter() {
         //this.mapView = new WeakReference<>(mapView);
-        map = Map.getInstance();
     }
 
     public static void setBackgroundRef(int ref){
