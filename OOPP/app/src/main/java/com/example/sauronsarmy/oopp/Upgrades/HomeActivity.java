@@ -23,8 +23,7 @@ import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 public class HomeActivity extends AppCompatActivity {
 
     private static final String TAG = "HomeActivity";
-
-    Home home;
+    HomeMVPInterface.Presenter homePresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         statsButton.setOnClickListener(buttonListener);
         mainButton.setOnClickListener(buttonListener);
 
-        home = Home.getInstance();
+        homePresenter = new HomePresenter();
 
         homeButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
@@ -69,13 +68,11 @@ public class HomeActivity extends AppCompatActivity {
         TextView newMps = (TextView) findViewById(R.id.newMps);
 
 
-        /** Set the values to the view from the upgrade object
-         *  Using String tmp to set text, otherwise it complains about Android resource
-         *  i don't know how to do that yet.
-         * */
-        Upgrade oilPumpUpgrade = home.getOilPumpUpgrade();
+        // Set the values to the view from the upgrade object
 
-        oilUpgradeCounter.setText(String.valueOf(home.getOilPumpUpgradeCounter()));
+        Upgrade oilPumpUpgrade = homePresenter.getOilPumpUpgrade();
+
+        oilUpgradeCounter.setText(String.valueOf(homePresenter.getOilPumpUpgradeCounter()));
         oilUpgradeCost.setText(String.valueOf(oilPumpUpgrade.getCost() + " g"));
 
         double mps = PlayerModel.getInstance().getMoneyPerSecond();
@@ -108,7 +105,7 @@ public class HomeActivity extends AppCompatActivity {
                     startActivity(new Intent(context, MainActivity.class));
                     break;
                 case R.id.oilUpgradeButton:
-                    if (home.buyOilPumpUpgrade()){
+                    if (homePresenter.buyOilPumpUpgrade()){
                         updateOilInfo();
                     }
                     break;

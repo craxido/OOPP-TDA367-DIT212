@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by bunnyfiscuit on 05/04/17.
  */
 
-public class Home {
+class Home implements HomeMVPInterface.Model  {
     private static final Home homeInstance = new Home();
 
     private PlayerModelInterface player = PlayerModel.getInstance();
@@ -21,11 +21,11 @@ public class Home {
         return homeInstance;
     }
 
-    protected void makePayment() {
+    void makePayment() {
         player.setMoney(player.getMoney() - oilPumpUpgrade.getCost());
     }
 
-    protected boolean buyOilPumpUpgrade() {
+    public boolean buyOilPumpUpgrade() {
         if (player.getMoney() >= oilPumpUpgrade.getCost()) {
             makePayment();
             player.setMoneyPerSecond(player.getMoneyPerSecond() + oilPumpUpgrade.getStat());
@@ -48,7 +48,7 @@ public class Home {
         return oilPumpUpgradeCounter;
     }
 
-    public void setOilPumpUpgradeCounter(Map<String, Integer> map) {
+    public void setOilPumpUpgradeCounter(HashMap<String, Integer> map) {
         oilPumpUpgradeCounter = map.get("oil");
     }
 

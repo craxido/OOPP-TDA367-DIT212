@@ -29,7 +29,7 @@ public class MonsterTest {
     @Test
     public void damageMonsterTest() throws Exception{
         monster.damageMonster(5);
-        assert (monster.getHealth() ==5);
+        assert (monster.getHealth() == 5);
         assert (monster.damageMonster(5));
     }
 
