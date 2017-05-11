@@ -56,6 +56,12 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
 
     }
 
+    @Override
+    protected void onDestroy() {
+        Log.i(TAG, "onDestroy() called");
+        super.onDestroy();
+    }
+
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

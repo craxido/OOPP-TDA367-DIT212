@@ -99,7 +99,6 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
             shop.setUpgradeCounters(mainModel.loadShopUpgrade(context));
             home.setOilPumpUpgradeCounter(mainModel.loadHomeUpgrade(context));
         }
-
     }
 
     @Override
