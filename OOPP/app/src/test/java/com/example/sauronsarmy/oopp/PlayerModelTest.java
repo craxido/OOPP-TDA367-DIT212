@@ -40,7 +40,7 @@ public class PlayerModelTest {
     @Test
     public void setDamageMultiplier() throws Exception {
         player.setDamageMultiplier(3);
-        assertEquals(3.232, player.getDamageMultiplier(), DELTA);
+        assertEquals(3, player.getDamageMultiplier(), DELTA);
         player.setDamageMultiplier(1);
     }
 

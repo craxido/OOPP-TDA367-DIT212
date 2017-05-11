@@ -15,7 +15,7 @@ public class Level {
     private com.example.sauronsarmy.oopp.Map.areaType areaType;
 
 
-    Level(Monster monster, int healthMultiplier, int goldMultiplier, areaType area) {
+    public Level(Monster monster, int healthMultiplier, int goldMultiplier, areaType area) {
         this.monster = monster;
         this.healthMultiplier = healthMultiplier;
         this.goldMultiplier = goldMultiplier;
