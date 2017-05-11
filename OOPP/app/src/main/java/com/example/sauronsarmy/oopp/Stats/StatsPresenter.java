@@ -16,7 +16,7 @@ public class StatsPresenter implements StatsPresenterInterface {
     }
 
     @Override
-    public double getMoneyPerSecond() {
+    public int getMoneyPerSecond() {
         return playerModel.getMoneyPerSecond();
     }
 
@@ -31,7 +31,7 @@ public class StatsPresenter implements StatsPresenterInterface {
     }
 
     @Override
-    public double getPlayerDamageMultiplier() {
-        return playerModel.getDamageMultiplier();
+    public int getPlayerDamagePerSecond() {
+        return playerModel.getDamagePerSecond();
     }
 }

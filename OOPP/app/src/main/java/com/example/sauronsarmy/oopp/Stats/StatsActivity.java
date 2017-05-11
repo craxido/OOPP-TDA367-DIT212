@@ -22,7 +22,7 @@ import com.example.sauronsarmy.oopp.clock.ClockListener;
 public class StatsActivity extends AppCompatActivity implements ClockListener {
 
     private TextView damageText;
-    private TextView dmgMultText;
+    private TextView dpsText;
     private TextView moneyText;
     private TextView moneyPerSecText;
     private StatsPresenterInterface statsPresenter;
@@ -109,15 +109,12 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
              Setting all the textViews to display the correct stats.
             */
         damageText      = (TextView) findViewById(R.id.damageText);
-        dmgMultText     = (TextView) findViewById(R.id.dmgMultText);
+        dpsText         = (TextView) findViewById(R.id.dmgMultText);
         moneyText       = (TextView) findViewById(R.id.moneyText);
         moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
 
         damageText.setText(String.valueOf(statsPresenter.getPlayerDamage()));
-
-        double mlt = statsPresenter.getPlayerDamageMultiplier();
-        mlt = Math.round(mlt * 100) / 100.0;
-        dmgMultText.setText(String.valueOf(mlt));
+        dpsText.setText(String.valueOf(statsPresenter.getPlayerDamagePerSecond()));
         moneyText.setText(String.valueOf(statsPresenter.getMoneyAmount()));
         moneyPerSecText.setText(String.valueOf(statsPresenter.getMoneyPerSecond()));
 
