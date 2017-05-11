@@ -21,7 +21,7 @@ import com.example.sauronsarmy.oopp.Stats.StatsActivity;
  */
 public class HomeActivity extends AppCompatActivity {
 
-    Home home;
+    HomeMVPInterface.Presenter homePresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
         statsButton.setOnClickListener(buttonListener);
         mainButton.setOnClickListener(buttonListener);
 
-        home = Home.getInstance();
+        homePresenter = new HomePresenter();
 
         homeButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
@@ -70,9 +70,9 @@ public class HomeActivity extends AppCompatActivity {
          *  Using String tmp to set text, otherwise it complains about Android resource
          *  i don't know how to do that yet.
          * */
-        Upgrade oilPumpUpgrade = home.getOilPumpUpgrade();
+        Upgrade oilPumpUpgrade = homePresenter.getOilPumpUpgrade();
 
-        oilUpgradeCounter.setText(String.valueOf(home.getOilPumpUpgradeCounter()));
+        oilUpgradeCounter.setText(String.valueOf(homePresenter.getOilPumpUpgradeCounter()));
         oilUpgradeCost.setText(String.valueOf(oilPumpUpgrade.getCost() + " g"));
 
         double mps = PlayerModel.getInstance().getMoneyPerSecond();
@@ -105,7 +105,7 @@ public class HomeActivity extends AppCompatActivity {
                     startActivity(new Intent(context, MainActivity.class));
                     break;
                 case R.id.oilUpgradeButton:
-                    if (home.buyOilPumpUpgrade()){
+                    if (homePresenter.buyOilPumpUpgrade()){
                         updateOilInfo();
                     }
                     break;

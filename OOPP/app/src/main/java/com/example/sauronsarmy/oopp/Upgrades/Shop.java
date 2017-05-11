@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by bunnyfiscuit on 05/04/17.
  */
 
-public class Shop {
+public class Shop implements ShopMVPInterface.Model {
 
     private static final Shop shopInstance = new Shop();
 
@@ -28,7 +28,7 @@ public class Shop {
      *  adds to player damage, and applies the cost
      *  updates how many upgrades has been done, and updates the upgrade
      */
-    protected boolean buyDamageUpgrade(){
+    public boolean buyDamageUpgrade(){
         if(player.getMoney() >= damageUpgrade.getCost()) {
             player.setMoney(player.getMoney() - damageUpgrade.getCost());
             player.setDamage(player.getDamage() + damageUpgrade.getStat());
@@ -46,7 +46,7 @@ public class Shop {
     /**
      * Similar to above, except this upgrade is a multiplier.
      */
-    protected boolean buyMultiplierUpgrade(){
+    public boolean buyMultiplierUpgrade(){
         if (player.getMoney() >= multiplierUpgrade.getCost()) {
             player.setMoney(player.getMoney() - multiplierUpgrade.getCost());
             player.setDamageMultiplier(player.getDamageMultiplier() + multiplierUpgrade.getStat());
@@ -80,7 +80,7 @@ public class Shop {
         return multiplierUpgradeCounter;
     }
 
-    public void setUpgradeCounters(Map<String, Integer> map){
+    public void setUpgradeCounters(HashMap<String, Integer> map){
         damageUpgradeCounter = map.get("damage");
         multiplierUpgradeCounter = map.get("multiplier");
     }
