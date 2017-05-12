@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         mainPresenter.saveState(MainActivity.this);
         super.onStop();
     }
-
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

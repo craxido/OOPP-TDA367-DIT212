@@ -6,8 +6,10 @@ import com.example.sauronsarmy.oopp.Map.Map;
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
-import com.example.sauronsarmy.oopp.Upgrades.Home;
-import com.example.sauronsarmy.oopp.Upgrades.Shop;
+import com.example.sauronsarmy.oopp.Upgrades.HomeMVPInterface;
+import com.example.sauronsarmy.oopp.Upgrades.HomePresenter;
+import com.example.sauronsarmy.oopp.Upgrades.ShopMVPInterface;
+import com.example.sauronsarmy.oopp.Upgrades.ShopPresenter;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 import com.example.sauronsarmy.oopp.clock.Runner;
 
@@ -25,8 +27,8 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     private Map map = Map.getInstance();
     private WeakReference<MainMVPInterface.ViewOps> mView;
     private PlayerModelInterface playerModel;
-    private Shop shop;
-    private Home home;
+    private ShopMVPInterface.Presenter shopPresenter;
+    private HomeMVPInterface.Presenter homePresenter;
     private MainMVPInterface.ModelInterface mainModel;
     private final static String TAG = "MainPresenter";
 
@@ -34,8 +36,8 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     public MainPresenter(MainMVPInterface.ViewOps mView) {
         this.mView = new WeakReference<>(mView);
         playerModel = PlayerModel.getInstance();
-        shop = Shop.getInstance();
-        home = Home.getInstance();
+        shopPresenter = new ShopPresenter();
+        homePresenter = new HomePresenter();
         mainModel = new MainModel();
         ourInstance =this;
 
@@ -81,8 +83,8 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     public void saveState(Context context) {
         Log.i(TAG, "Saving the current state.");
         java.util.Map currentState = playerModel.getState();
-        java.util.Map currentShopUpgrade = shop.getUpgradeCounters();
-        java.util.Map currentHomeUpgrade = home.getUpgradeCounters();
+        java.util.Map currentShopUpgrade = shopPresenter.getUpgradeCounters();
+        java.util.Map currentHomeUpgrade = homePresenter.getUpgradeCounters();
         mainModel.saveState(context, currentState, currentShopUpgrade, currentHomeUpgrade);
     }
 
@@ -96,8 +98,8 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
         if(mainModel.hasSaveToLoad()) {
             Log.i(TAG, "Loading previous save.");
             playerModel.setState(mainModel.loadState(context));
-            shop.setUpgradeCounters(mainModel.loadShopUpgrade(context));
-            home.setOilPumpUpgradeCounter(mainModel.loadHomeUpgrade(context));
+            shopPresenter.setUpgradeCounters(mainModel.loadShopUpgrade(context));
+            homePresenter.setOilPumpUpgradeCounter(mainModel.loadHomeUpgrade(context));
         }
     }
 

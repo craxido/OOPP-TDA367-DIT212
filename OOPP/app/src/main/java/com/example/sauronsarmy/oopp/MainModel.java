@@ -19,9 +19,11 @@ class MainModel implements MainMVPInterface.ModelInterface {
     /**
      * Indicates whether there is a previous state to load.
      */
-    private static boolean hasSaveToLoad = true;
+    private boolean hasSaveToLoad;
 
-    MainModel() { }
+    MainModel() {
+        hasSaveToLoad = true;
+    }
 
     @Override
     public boolean hasSaveToLoad() {
@@ -41,6 +43,7 @@ class MainModel implements MainMVPInterface.ModelInterface {
                                            Map currentShopUpgrade,
                                            Map currentHomeUpgrade) {
 
+        Log.i(TAG, "Saving player state");
         hasSaveToLoad = true;
 
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
@@ -52,8 +55,8 @@ class MainModel implements MainMVPInterface.ModelInterface {
         editor.putInt("moneyPerSec",  (int) currentState.get("moneyPerSec"));
         editor.putLong("lastLogOn",    (long) currentState.get("lastLogOn"));
         // Shop state
-        editor.putInt("dmgUpgrade",    (int) currentShopUpgrade.get("dmgUpgrade"));
-        editor.putInt("multUpgrade",   (int) currentShopUpgrade.get("multUpgrade"));
+        editor.putInt("damage",    (int) currentShopUpgrade.get("damage"));
+        editor.putInt("dps",   (int) currentShopUpgrade.get("dps"));
         // Home state
         editor.putInt("oil", (int) currentHomeUpgrade.get("oil"));
         editor.apply();
@@ -89,8 +92,8 @@ class MainModel implements MainMVPInterface.ModelInterface {
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
         return new HashMap<String, Integer>() {
             {
-                put("dmgUpgrade",  saveState.getInt("dmgUpgrade", 1));
-                put("multUpgrade", saveState.getInt("multUpgrade", 1));
+                put("damage",  saveState.getInt("damage", 0));
+                put("dps", saveState.getInt("dps", 0));
             }
         };
     }

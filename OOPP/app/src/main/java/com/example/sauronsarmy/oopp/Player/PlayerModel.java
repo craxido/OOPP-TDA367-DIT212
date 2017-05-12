@@ -32,8 +32,8 @@ public class PlayerModel implements  PlayerModelInterface{
      */
     private PlayerModel() {
         damage           = 10;
-        damageMultiplier = 1;
-        money            = 50;
+        damageMultiplier = 0;
+        money            = 0;
         moneyPerSecond   = 0;
     }
 

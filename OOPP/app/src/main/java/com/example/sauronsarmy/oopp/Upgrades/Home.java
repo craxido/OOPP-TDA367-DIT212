@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.Upgrades;
 
+import android.util.Log;
+
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
 
@@ -11,6 +13,7 @@ import java.util.Map;
  */
 
 class Home implements HomeMVPInterface.Model  {
+    private static final String TAG = "Home";
     private static final Home homeInstance = new Home();
 
     private PlayerModelInterface player = PlayerModel.getInstance();
@@ -21,7 +24,7 @@ class Home implements HomeMVPInterface.Model  {
         return homeInstance;
     }
 
-    void makePayment() {
+    private void makePayment() {
         player.setMoney(player.getMoney() - oilPumpUpgrade.getCost());
     }
 
@@ -48,7 +51,8 @@ class Home implements HomeMVPInterface.Model  {
         return oilPumpUpgradeCounter;
     }
 
-    public void setOilPumpUpgradeCounter(HashMap<String, Integer> map) {
+    public void setOilPumpUpgradeCounter(Map<String, Integer> map) {
+        Log.i(TAG, "Setting old Home state");
         oilPumpUpgradeCounter = map.get("oil");
     }
 

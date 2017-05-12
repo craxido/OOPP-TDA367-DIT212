@@ -7,11 +7,11 @@ import java.util.Map;
  * Created by Sarosh on 2017-05-11.
  */
 
-class ShopPresenter implements ShopMVPInterface.Presenter {
+public class ShopPresenter implements ShopMVPInterface.Presenter {
 
     private ShopMVPInterface.Model shopModel;
 
-    ShopPresenter() {
+    public ShopPresenter() {
         shopModel = Shop.getInstance();
     }
 
@@ -51,7 +51,7 @@ class ShopPresenter implements ShopMVPInterface.Presenter {
     }
 
     @Override
-    public void setUpgradeCounters(HashMap<String, Integer> map) {
+    public void setUpgradeCounters(Map<String, Integer> map) {
         shopModel.setUpgradeCounters(map);
     }
 }

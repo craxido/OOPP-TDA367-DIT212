@@ -1,5 +1,9 @@
 package com.example.sauronsarmy.oopp.Upgrades;
 
+import android.content.Context;
+
+import com.example.sauronsarmy.oopp.MainPresenter;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,12 +11,14 @@ import java.util.Map;
  * Created by Sarosh on 2017-05-11.
  */
 
-class HomePresenter implements HomeMVPInterface.Presenter {
+public class HomePresenter implements HomeMVPInterface.Presenter {
 
     private HomeMVPInterface.Model homeModel;
+    private MainPresenter mainPresenter;
 
-    HomePresenter() {
+    public HomePresenter() {
         homeModel = Home.getInstance();
+        mainPresenter = MainPresenter.getInstance();
     }
 
     @Override
@@ -26,8 +32,12 @@ class HomePresenter implements HomeMVPInterface.Presenter {
     }
 
     @Override
-    public void setOilPumpUpgradeCounter(HashMap<String, Integer> map) {
+    public void setOilPumpUpgradeCounter(Map<String, Integer> map) {
         homeModel.setOilPumpUpgradeCounter(map);
+    }
+
+    public void saveState(Context context) {
+        mainPresenter.saveState(context);
     }
 
     @Override

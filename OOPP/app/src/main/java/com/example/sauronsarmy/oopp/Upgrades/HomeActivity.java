@@ -84,6 +84,12 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStop() {
+        homePresenter.saveState(HomeActivity.this);
+        super.onStop();
+    }
+
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
