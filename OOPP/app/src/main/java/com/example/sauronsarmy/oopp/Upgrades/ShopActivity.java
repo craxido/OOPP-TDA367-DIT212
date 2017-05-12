@@ -64,6 +64,12 @@ public class ShopActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStop() {
+        shopPresenter.saveState(ShopActivity.this);
+        super.onStop();
+    }
+
     void updateDamageInfo(){
         /** TextView objects */
         /* DAMAGE */

@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.Upgrades;
 
+import android.content.Context;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +20,7 @@ public interface ShopMVPInterface {
         int getDPSUpgradeCounter();
         Map getUpgradeCounters();
         void setUpgradeCounters(Map<String, Integer> map);
+        void saveState(Context context);
     }
 
     interface Model {

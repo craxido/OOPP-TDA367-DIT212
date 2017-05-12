@@ -1,5 +1,9 @@
 package com.example.sauronsarmy.oopp.Upgrades;
 
+import android.content.Context;
+
+import com.example.sauronsarmy.oopp.MainPresenter;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,9 +14,12 @@ import java.util.Map;
 public class ShopPresenter implements ShopMVPInterface.Presenter {
 
     private ShopMVPInterface.Model shopModel;
+    private MainPresenter mainPresenter;
 
     public ShopPresenter() {
         shopModel = Shop.getInstance();
+        // Hey there circular dependency
+        mainPresenter = MainPresenter.getInstance();
     }
 
     @Override
@@ -54,4 +61,10 @@ public class ShopPresenter implements ShopMVPInterface.Presenter {
     public void setUpgradeCounters(Map<String, Integer> map) {
         shopModel.setUpgradeCounters(map);
     }
+
+    @Override
+    public void saveState(Context context) {
+        mainPresenter.saveState(context);
+    }
 }
+
