@@ -1,6 +1,8 @@
 package com.example.sauronsarmy.oopp.Map;
 
+import com.example.sauronsarmy.oopp.MonsterPack.monsterFactory;
 import com.example.sauronsarmy.oopp.R;
+
 
 /**
  * Author: Jonatan Källman
@@ -13,6 +15,7 @@ public class Map implements MapMVPInterface.ModelOps {
     private Area currentArea;
     private static final Map mapInstance = new Map();
     private static levelFactory lvlfac;
+    private monsterFactory monfac;
     private int bgRef;
 
 
@@ -65,7 +68,7 @@ public class Map implements MapMVPInterface.ModelOps {
     @Override
     public void onDestroy() {}
 
-    public Area getCurrentArea(){
+    Area getCurrentArea(){
         return currentArea;
     }
 
@@ -73,8 +76,45 @@ public class Map implements MapMVPInterface.ModelOps {
         currentArea=area;
     }
 
-    public Area[] getAreas(){
+    Area[] getAreas(){
         return areas;
+    }
+
+    Level makeLevel(areaType areaType){
+        switch (areaType){
+            case FOREST:
+                return new Level(monfac.getMonster(100, 100, areaType), 1, 1, areaType);
+            case MOUNTAIN:
+                return new Level(monfac.getMonster(200, 200, areaType), 2, 2, areaType);
+            case VOLCANO:
+                return new Level(monfac.getMonster(300, 300, areaType), 3, 3, areaType);
+            default:
+                return null; //Can this be handled better?
+        }
+    }
+
+    int getGoldMultiplier(){ //TODO if needed
+        return 1;
+    }
+
+    int getHealthMultiplier(){ //TODO if needed
+        return 1;
+    }
+
+    //Gets the GoldMultiplier for the given Level in the given Area.
+    int getLevelGoldMultiplier(Area area, int levelIndex){
+        Level[] levels= area.getLevels();
+        return levels[levelIndex].getGoldMultiplier();
+    }
+
+    //Gets the HealthMultiplier for the given Level in the given Area.
+    int getLevelHealthMultiplier(Area area, int levelIndex){
+        Level[] levels= area.getLevels();
+        return levels[levelIndex].getHealthMultiplier();
+    }
+
+    int getLevelAmount(Area area){
+        return area.getLevels().length;
     }
 
 }

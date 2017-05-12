@@ -5,8 +5,8 @@ package com.example.sauronsarmy.oopp;
  */
 
 //Imports
+import com.example.sauronsarmy.oopp.Map.MapPresenter;
 import com.example.sauronsarmy.oopp.MonsterPack.monsterFactory;
-import com.example.sauronsarmy.oopp.Map.Level;
 import com.example.sauronsarmy.oopp.Map.Map;
 import com.example.sauronsarmy.oopp.Map.areaType;
 import com.example.sauronsarmy.oopp.Map.Area;
@@ -17,13 +17,13 @@ import static org.junit.Assert.*;
 
 //This is a test file for the Map package and its files.
 public class MapTest {
-    private Map map;
+    private MapPresenter map;
     private Area[] areas = map.getAreas();
     private monsterFactory monfac = new monsterFactory();
 
     @Before
     public void setUp() throws Exception {
-        map = Map.getInstance();
+        map = MapPresenter.getInstance();
     }
 
     @After
@@ -76,13 +76,13 @@ public class MapTest {
         for (int i = 0; i < areas.length; i++) {
             switch (areas[i].getAreaType()) {
                 case FOREST:
-                    assertEquals(areas[i].getCurrentLevel(), new Level(monfac.getMonster(100, 100, areaType.FOREST), 1, 1, areaType.FOREST));
+                    assertEquals(areas[i].getCurrentLevel(), map.makeLevel(areaType.FOREST));
                     break;
                 case MOUNTAIN:
-                    assertEquals(areas[i].getCurrentLevel(), new Level(monfac.getMonster(200, 200, areaType.MOUNTAIN), 2, 2, areaType.MOUNTAIN));
+                    assertEquals(areas[i].getCurrentLevel(), map.makeLevel(areaType.MOUNTAIN));
                     break;
                 case VOLCANO:
-                    assertEquals(areas[i].getCurrentLevel(), new Level(monfac.getMonster(300, 300, areaType.VOLCANO), 3, 3, areaType.VOLCANO));
+                    assertEquals(areas[i].getCurrentLevel(), map.makeLevel(areaType.VOLCANO));
                     break;
                 default: //Not a valid area
                     throw new AssertionError();
@@ -93,24 +93,23 @@ public class MapTest {
     @Test
     public void testGoldMultiplier(){
         for (int i = 0; i < areas.length; i++) { //For every area
-            Level[] levels = areas[i].getLevels(); //Get the levels
-
             switch (areas[i].getAreaType()) { //Check the area type
+                //NOTICE: "j" is the index of the level, "i" is the index of the area.
                 case FOREST:
-                    for (int j = 0; i < levels.length; j++) { //For every level in that area
-                        assertEquals(levels[j].getGoldMultiplier(), 1);
+                    for (int j = 0; i < map.getLevelAmount(areas[i]); j++) { //For every level in that area
+                        assertEquals(map.getLevelGoldMultiplier(areas[i],j),1);
                     }
                     break;
 
                 case MOUNTAIN:
-                    for (int j = 0; i < levels.length; j++){ //For every level in that area
-                        assertEquals(levels[j].getGoldMultiplier(),2);
+                    for (int j = 0; i < map.getLevelAmount(areas[i]); j++){ //For every level in that area
+                        assertEquals(map.getLevelGoldMultiplier(areas[i],j),2);
                     }
                     break;
 
                 case VOLCANO:
-                    for (int j = 0; i < levels.length; j++){ //For every level in that area
-                        assertEquals(levels[j].getGoldMultiplier(),3);
+                    for (int j = 0; i < map.getLevelAmount(areas[i]); j++){ //For every level in that area
+                        assertEquals(map.getLevelGoldMultiplier(areas[i],j),3);
                     }
                     break;
 
@@ -123,24 +122,23 @@ public class MapTest {
     @Test
     public void testHealthMultiplier(){
         for (int i = 0; i < areas.length; i++) { //For every area
-
-            Level[] levels = areas[i].getLevels();
             switch (areas[i].getAreaType()) { //Check the area type
+                //NOTICE: "j" is the index of the level, "i" is the index of the area.
                 case FOREST:
-                    for (int j = 0; i < levels.length; j++) { //For every level in that area
-                        assertEquals(levels[j].getHealthMultiplier(), 1);
+                    for (int j = 0; i < map.getLevelAmount(areas[i]); j++) { //For every level in that area
+                        assertEquals(map.getLevelHealthMultiplier(areas[i],j), 1);
                     }
                     break;
 
                 case MOUNTAIN:
-                    for (int j = 0; i < levels.length; j++){ //For every level in that area
-                        assertEquals(levels[j].getHealthMultiplier(),2);
+                    for (int j = 0; i < map.getLevelAmount(areas[i]); j++){ //For every level in that area
+                        assertEquals(map.getLevelHealthMultiplier(areas[i],j), 2);
                     }
                     break;
 
                 case VOLCANO:
-                    for (int j = 0; i < levels.length; j++){ //For every level in that area
-                        assertEquals(levels[j].getHealthMultiplier(),3);
+                    for (int j = 0; i < map.getLevelAmount(areas[i]); j++){ //For every level in that area
+                        assertEquals(map.getLevelHealthMultiplier(areas[i],j), 3);
                     }
                     break;
 

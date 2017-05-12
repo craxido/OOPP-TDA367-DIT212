@@ -115,7 +115,7 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     public void applyDPS(){
 
         int gold;
-        if((gold =map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamagePerSecond()) )!=0){
+        if((gold =map.damageMonster(playerModel.getDamagePerSecond()) )!=0){
 
             playerModel.setMoney(playerModel.getMoney() +gold);
         }
