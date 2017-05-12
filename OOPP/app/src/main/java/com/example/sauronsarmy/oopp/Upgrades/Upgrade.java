@@ -26,7 +26,8 @@ public class Upgrade {
     // Updates the cost for the upgrade with multiplier
     protected void updateCost(int multiplier){
         if(multiplier > 1) {
-            cost += multiplier*10 ;
+            float f = cost * (float) 1.8;
+            cost = Math.round(f);
         }
     }
 
