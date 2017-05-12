@@ -6,6 +6,10 @@ import com.example.sauronsarmy.oopp.Map.Map;
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
+import com.example.sauronsarmy.oopp.Upgrades.HomeMVPInterface;
+import com.example.sauronsarmy.oopp.Upgrades.HomePresenter;
+import com.example.sauronsarmy.oopp.Upgrades.ShopMVPInterface;
+import com.example.sauronsarmy.oopp.Upgrades.ShopPresenter;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 import com.example.sauronsarmy.oopp.clock.Runner;
 
@@ -13,26 +17,27 @@ import java.lang.ref.WeakReference;
 
 /**
  * Created by Jonatan on 24/04/2017.
+ * @author everyone
  */
 
 public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListener {
     // View reference
     private static MainPresenter ourInstance;
-
     private Runner run = new Runner();
-
-    Map map = Map.getInstance();
-
-
-    WeakReference<MainMVPInterface.ViewOps> mView;
-    PlayerModelInterface playerModel;
-    MainMVPInterface.ModelInterface mainModel;
+    private Map map = Map.getInstance();
+    private WeakReference<MainMVPInterface.ViewOps> mView;
+    private PlayerModelInterface playerModel;
+    private ShopMVPInterface.Presenter shopPresenter;
+    private HomeMVPInterface.Presenter homePresenter;
+    private MainMVPInterface.ModelInterface mainModel;
     private final static String TAG = "MainPresenter";
 
 
     public MainPresenter(MainMVPInterface.ViewOps mView) {
         this.mView = new WeakReference<>(mView);
         playerModel = PlayerModel.getInstance();
+        shopPresenter = new ShopPresenter();
+        homePresenter = new HomePresenter();
         mainModel = new MainModel();
         ourInstance =this;
 
@@ -60,22 +65,13 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
 
     //Called from MainActivity when a monster is clicked
     public void monsterClicked(){
-
         int gold;
-        if((gold =map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamage()) )!=0){
-
+        if((gold = map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamage())) != 0){
             playerModel.setMoney(playerModel.getMoney() +gold);
-
         }
-
     }
 
-
-
-
     public Monster getCurrentMonster() {
-
-
         return map.getCurrentArea().getCurrentLevel().getCurrentMonster();
     }
     /**
@@ -84,11 +80,12 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
      * @param context The context from which this method was called.
      */
     @Override
-    //TODO When Map has its own package, simplify
     public void saveState(Context context) {
         Log.i(TAG, "Saving the current state.");
         java.util.Map currentState = playerModel.getState();
-        mainModel.saveState(context, currentState);
+        java.util.Map currentShopUpgrade = shopPresenter.getUpgradeCounters();
+        java.util.Map currentHomeUpgrade = homePresenter.getUpgradeCounters();
+        mainModel.saveState(context, currentState, currentShopUpgrade, currentHomeUpgrade);
     }
 
     /**
@@ -101,8 +98,9 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
         if(mainModel.hasSaveToLoad()) {
             Log.i(TAG, "Loading previous save.");
             playerModel.setState(mainModel.loadState(context));
+            shopPresenter.setUpgradeCounters(mainModel.loadShopUpgrade(context));
+            homePresenter.setOilPumpUpgradeCounter(mainModel.loadHomeUpgrade(context));
         }
-
     }
 
     @Override

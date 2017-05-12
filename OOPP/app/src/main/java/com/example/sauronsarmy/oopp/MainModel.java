@@ -2,6 +2,7 @@ package com.example.sauronsarmy.oopp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,12 +15,15 @@ class MainModel implements MainMVPInterface.ModelInterface {
 
     private SharedPreferences saveState;
     private SharedPreferences.Editor editor;
+    private static String TAG = "MainModel";
     /**
      * Indicates whether there is a previous state to load.
      */
-    private static boolean hasSaveToLoad = true;
+    private boolean hasSaveToLoad;
 
-    MainModel() { }
+    MainModel() {
+        hasSaveToLoad = true;
+    }
 
     @Override
     public boolean hasSaveToLoad() {
@@ -35,17 +39,26 @@ class MainModel implements MainMVPInterface.ModelInterface {
      * @param currentState the state to be saved.
      */
     @Override
-    public void saveState(Context context, Map currentState) {
+    public void saveState(Context context, Map currentState,
+                                           Map currentShopUpgrade,
+                                           Map currentHomeUpgrade) {
 
+        Log.i(TAG, "Saving player state");
         hasSaveToLoad = true;
 
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
         editor = saveState.edit();
+        // Player state
         editor.putInt("damage",        (int) currentState.get("damage"));
-        editor.putLong("damageMult",   doubleToLong((double) currentState.get("damageMult")));
+        editor.putInt("dps",           (int) currentState.get("dps"));
         editor.putInt("money",         (int) currentState.get("money"));
-        editor.putLong("moneyPerSec",  doubleToLong((double) currentState.get("moneyPerSec")));
+        editor.putInt("moneyPerSec",  (int) currentState.get("moneyPerSec"));
         editor.putLong("lastLogOn",    (long) currentState.get("lastLogOn"));
+        // Shop state
+        editor.putInt("damageUpgrade",    (int) currentShopUpgrade.get("damageUpgrade"));
+        editor.putInt("dpsUpgrade",   (int) currentShopUpgrade.get("dpsUpgrade"));
+        // Home state
+        editor.putInt("oil", (int) currentHomeUpgrade.get("oil"));
         editor.apply();
     }
 
@@ -57,20 +70,45 @@ class MainModel implements MainMVPInterface.ModelInterface {
      */
     @Override
     public Map loadState(Context context) {
-
+        Log.i(TAG, "Loading last player state");
         hasSaveToLoad = false;
 
        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
        return new HashMap<String, Object>() {
            {
                put("damage",      saveState.getInt("damage", 10));
-               put("damageMult",  longToDouble(saveState.getLong("damageMult", doubleToLong(1.0))));
-               put("money",       saveState.getInt("money", 10));
-               put("moneyPerSec", longToDouble(saveState.getLong("moneyPerSec", 0)));
+               put("dps",         saveState.getInt("dps", 0));
+               put("money",       saveState.getInt("money", 0));
+               put("moneyPerSec", saveState.getInt("moneyPerSec", 0));
                put("lastLogOn",   saveState.getLong("lastLogOn", -1));
            }
        };
    }
+
+
+    @Override
+    public Map<String, Integer> loadShopUpgrade(Context context) {
+        Log.i(TAG, "Loading last shop state");
+        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
+        return new HashMap<String, Integer>() {
+            {
+                put("damageUpgrade",  saveState.getInt("damageUpgrade", 0));
+                put("dpsUpgrade", saveState.getInt("dpsUpgrade", 0));
+            }
+        };
+    }
+
+    @Override
+    public Map<String, Integer> loadHomeUpgrade(Context context) {
+        Log.i(TAG, "Loading last home state");
+        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
+        return new HashMap<String, Integer>() {
+            {
+                put("oil",  saveState.getInt("oil", 1));
+            }
+        };
+
+    }
 
     /**
      * SharedPreference is (for some reason) not able to save doubles.

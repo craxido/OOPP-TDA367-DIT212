@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.Upgrades;
 
+import android.util.Log;
+
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
 
@@ -13,6 +15,7 @@ import java.util.Map;
 class Shop implements ShopMVPInterface.Model {
 
     private static final Shop shopInstance = new Shop();
+    private static final String TAG = "Shop";
 
     // Variables
     private PlayerModelInterface player = PlayerModel.getInstance();
@@ -80,16 +83,16 @@ class Shop implements ShopMVPInterface.Model {
         return dpsUpgradeCounter;
     }
 
-    public void setUpgradeCounters(HashMap<String, Integer> map){
-        damageUpgradeCounter = map.get("damage");
-        dpsUpgradeCounter = map.get("dps");
+    public void setUpgradeCounters(Map<String, Integer> map){
+        damageUpgradeCounter = map.get("damageUpgrade");
+        dpsUpgradeCounter = map.get("dpsUpgrade");
     }
 
     public Map getUpgradeCounters(){
         return new HashMap<String, Integer>(){
             {
-                put("damage", getDamageUpgradeCounter());
-                put("dps", getDPSUpgradeCounter());
+                put("damageUpgrade", getDamageUpgradeCounter());
+                put("dpsUpgrade", getDPSUpgradeCounter());
             }
         };
     }

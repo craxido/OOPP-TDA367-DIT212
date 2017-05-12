@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.Upgrades;
 
+import android.content.Context;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,7 +9,7 @@ import java.util.Map;
  * Created by Sarosh on 2017-05-11.
  */
 
-interface ShopMVPInterface {
+public interface ShopMVPInterface {
 
     interface Presenter {
         boolean buyDamageUpgrade();
@@ -17,7 +19,8 @@ interface ShopMVPInterface {
         int getDamageUpgradeCounter();
         int getDPSUpgradeCounter();
         Map getUpgradeCounters();
-        void setUpgradeCounters(HashMap<String, Integer> map);
+        void setUpgradeCounters(Map<String, Integer> map);
+        void saveState(Context context);
     }
 
     interface Model {
@@ -28,6 +31,6 @@ interface ShopMVPInterface {
         int getDamageUpgradeCounter();
         int getDPSUpgradeCounter();
         Map getUpgradeCounters();
-        void setUpgradeCounters(HashMap<String, Integer> map);
+        void setUpgradeCounters(Map<String, Integer> map);
     }
 }
