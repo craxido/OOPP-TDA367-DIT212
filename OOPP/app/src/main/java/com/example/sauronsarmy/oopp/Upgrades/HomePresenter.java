@@ -18,6 +18,7 @@ public class HomePresenter implements HomeMVPInterface.Presenter {
 
     public HomePresenter() {
         homeModel = Home.getInstance();
+        // Hey there circular dependency
         mainPresenter = MainPresenter.getInstance();
     }
 

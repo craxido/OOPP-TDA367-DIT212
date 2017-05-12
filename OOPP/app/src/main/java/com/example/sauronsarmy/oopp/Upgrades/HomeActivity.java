@@ -45,7 +45,6 @@ public class HomeActivity extends AppCompatActivity {
         statsButton.setOnClickListener(buttonListener);
         mainButton.setOnClickListener(buttonListener);
 
-        // Hey there circular dependency
         homePresenter = new HomePresenter();
 
         homeButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
