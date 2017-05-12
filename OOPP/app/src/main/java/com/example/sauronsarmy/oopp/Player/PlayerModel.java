@@ -91,7 +91,7 @@ public class PlayerModel implements  PlayerModelInterface{
         return new HashMap<String, Object>() {
             {
                 put("damage",      getDamage());
-                put("dps",  getDamagePerSecond());
+                put("dps",         getDamagePerSecond());
                 put("money",       getMoney());
                 put("moneyPerSec", getMoneyPerSecond());
                 put("lastLogOn",   getLastLogOn());

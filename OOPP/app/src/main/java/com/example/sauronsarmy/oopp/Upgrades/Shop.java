@@ -84,15 +84,15 @@ class Shop implements ShopMVPInterface.Model {
     }
 
     public void setUpgradeCounters(Map<String, Integer> map){
-        damageUpgradeCounter = map.get("damage");
-        dpsUpgradeCounter = map.get("dps");
+        damageUpgradeCounter = map.get("damageUpgrade");
+        dpsUpgradeCounter = map.get("dpsUpgrade");
     }
 
     public Map getUpgradeCounters(){
         return new HashMap<String, Integer>(){
             {
-                put("damage", getDamageUpgradeCounter());
-                put("dps", getDPSUpgradeCounter());
+                put("damageUpgrade", getDamageUpgradeCounter());
+                put("dpsUpgrade", getDPSUpgradeCounter());
             }
         };
     }

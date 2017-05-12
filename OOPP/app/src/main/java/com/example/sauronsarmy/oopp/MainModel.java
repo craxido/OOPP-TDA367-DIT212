@@ -50,13 +50,13 @@ class MainModel implements MainMVPInterface.ModelInterface {
         editor = saveState.edit();
         // Player state
         editor.putInt("damage",        (int) currentState.get("damage"));
-        editor.putInt("damageMult",   (int) currentState.get("damageMult"));
+        editor.putInt("dps",           (int) currentState.get("dps"));
         editor.putInt("money",         (int) currentState.get("money"));
         editor.putInt("moneyPerSec",  (int) currentState.get("moneyPerSec"));
         editor.putLong("lastLogOn",    (long) currentState.get("lastLogOn"));
         // Shop state
-        editor.putInt("damage",    (int) currentShopUpgrade.get("damage"));
-        editor.putInt("dps",   (int) currentShopUpgrade.get("dps"));
+        editor.putInt("damageUpgrade",    (int) currentShopUpgrade.get("damageUpgrade"));
+        editor.putInt("dpsUpgrade",   (int) currentShopUpgrade.get("dpsUpgrade"));
         // Home state
         editor.putInt("oil", (int) currentHomeUpgrade.get("oil"));
         editor.apply();
@@ -77,8 +77,8 @@ class MainModel implements MainMVPInterface.ModelInterface {
        return new HashMap<String, Object>() {
            {
                put("damage",      saveState.getInt("damage", 10));
-               put("damageMult",  saveState.getInt("damageMult", 1));
-               put("money",       saveState.getInt("money", 10));
+               put("dps",         saveState.getInt("dps", 0));
+               put("money",       saveState.getInt("money", 0));
                put("moneyPerSec", saveState.getInt("moneyPerSec", 0));
                put("lastLogOn",   saveState.getLong("lastLogOn", -1));
            }
@@ -92,8 +92,8 @@ class MainModel implements MainMVPInterface.ModelInterface {
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
         return new HashMap<String, Integer>() {
             {
-                put("damage",  saveState.getInt("damage", 0));
-                put("dps", saveState.getInt("dps", 0));
+                put("damageUpgrade",  saveState.getInt("damageUpgrade", 0));
+                put("dpsUpgrade", saveState.getInt("dpsUpgrade", 0));
             }
         };
     }
