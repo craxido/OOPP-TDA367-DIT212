@@ -275,13 +275,13 @@
             android:id="@+id/newDPS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/newDPSText"
-            android:layout_alignBottom="@+id/newDPSText"
-            android:layout_toEndOf="@+id/currentDPSText"
-            android:layout_toRightOf="@+id/currentDPSText"
             android:text="0"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_alignBaseline="@+id/newDPSText"
+            android:layout_alignBottom="@+id/newDPSText"
+            android:layout_alignRight="@+id/currentDPSText"
+            android:layout_alignEnd="@+id/currentDPSText" />
 
 
         <TextView
