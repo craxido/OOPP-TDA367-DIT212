@@ -17,7 +17,7 @@ class Home implements HomeMVPInterface.Model  {
     private static final Home homeInstance = new Home();
 
     private PlayerModelInterface player = PlayerModel.getInstance();
-    private Upgrade oilPumpUpgrade = new Upgrade(1, 10);
+    private Upgrade oilPumpUpgrade = new Upgrade(1, 100);
     private int oilPumpUpgradeCounter = 1;
 
     public static Home getInstance() {
