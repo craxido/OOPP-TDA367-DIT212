@@ -64,7 +64,6 @@ public class Upgrade {
         cost = Math.round(f);
     }
 
-    // mostly what will be used
     public int getStat(){
         return stat;
 
