@@ -5,7 +5,7 @@ package com.example.sauronsarmy.oopp;
  */
 
 //Imports
-import com.example.sauronsarmy.oopp.monsterFactory;
+import com.example.sauronsarmy.oopp.MonsterPack.monsterFactory;
 import com.example.sauronsarmy.oopp.Map.Level;
 import com.example.sauronsarmy.oopp.Map.Map;
 import com.example.sauronsarmy.oopp.Map.areaType;

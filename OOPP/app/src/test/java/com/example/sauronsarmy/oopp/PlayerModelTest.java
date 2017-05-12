@@ -34,14 +34,14 @@ public class PlayerModelTest {
 
     @Test
     public void getDamageMultiplier() throws Exception {
-        assertEquals(1.0, player.getDamageMultiplier(), DELTA);
+        assertEquals(1.0, player.getDamagePerSecond(), DELTA);
     }
 
     @Test
     public void setDamageMultiplier() throws Exception {
-        player.setDamageMultiplier(3);
-        assertEquals(3, player.getDamageMultiplier(), DELTA);
-        player.setDamageMultiplier(1);
+        player.setDamagePerSecond(3);
+        assertEquals(3, player.getDamagePerSecond(), DELTA);
+        player.setDamagePerSecond(1);
     }
 
     @Test

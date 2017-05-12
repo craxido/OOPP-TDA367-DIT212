@@ -9,8 +9,8 @@ public interface PlayerModelInterface {
     void setLastLogOn(long newValue);
     long getLastLogOn();
 
-    void setDamageMultiplier(int newValue);
-    int getDamageMultiplier();
+    void setDamagePerSecond(int newValue);
+    int getDamagePerSecond();
 
     void setDamage(int newValue);
     int getDamage();
