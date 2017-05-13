@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import com.example.sauronsarmy.oopp.Stats.StatsActivity;
  */
 public class HomeActivity extends AppCompatActivity {
 
+    private static final String TAG = "HomeActivity";
     HomeMVPInterface.Presenter homePresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +82,12 @@ public class HomeActivity extends AppCompatActivity {
         newMps.setText(String.valueOf(newmps));
 
 
+    }
+
+    @Override
+    protected void onStop() {
+        homePresenter.saveState(HomeActivity.this);
+        super.onStop();
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {

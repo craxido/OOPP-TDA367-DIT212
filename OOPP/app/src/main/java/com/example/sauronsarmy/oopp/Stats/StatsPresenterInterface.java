@@ -8,9 +8,9 @@ interface StatsPresenterInterface {
 
     int getPlayerDamage();
 
-    double getPlayerDamageMultiplier();
+    int getPlayerDamagePerSecond();
 
     int getMoneyAmount();
 
-    double getMoneyPerSecond();
+    int getMoneyPerSecond();
 }

@@ -53,15 +53,21 @@ public class ShopActivity extends AppCompatActivity {
          * Add listeners to buttons
          */
         ImageButton dmgUpgradeButton = (ImageButton) findViewById(R.id.dmgUpgradeButton);
-        ImageButton multiplierUpgradeButton = (ImageButton) findViewById(R.id.mltUpgradeButton);
+        ImageButton dpsUpgradeButton = (ImageButton) findViewById(R.id.dpsUpgradeButton);
 
         /* ADD LISTENERS TO BUTTONS */
         dmgUpgradeButton.setOnClickListener(buttonListener);
-        multiplierUpgradeButton.setOnClickListener(buttonListener);
+        dpsUpgradeButton.setOnClickListener(buttonListener);
 
         updateDamageInfo();
-        updateMultiplierInfo();
+        updateDPSInfo();
 
+    }
+
+    @Override
+    protected void onStop() {
+        shopPresenter.saveState(ShopActivity.this);
+        super.onStop();
     }
 
     void updateDamageInfo(){
@@ -91,27 +97,27 @@ public class ShopActivity extends AppCompatActivity {
 
     }
 
-    void updateMultiplierInfo(){
+    void updateDPSInfo(){
         /** TextView objects */
-        /* MULTIPLIER */
-        TextView multiplierCounter = (TextView) findViewById(R.id.mltUpgradeCounter);
-        TextView multiplierCost = (TextView) findViewById(R.id.mltUpgradeCost);
+        /* DAMAGE PER SECOND */
+        TextView dpsCounter = (TextView) findViewById(R.id.dpsUpgradeCounter);
+        TextView dpsCost = (TextView) findViewById(R.id.dpsUpgradeCost);
 
-        TextView currentMlt = (TextView) findViewById(R.id.currentMlt);
-        TextView newMlt = (TextView) findViewById(R.id.newMlt);
+        TextView currentDPS = (TextView) findViewById(R.id.currentDPS);
+        TextView newDPS = (TextView) findViewById(R.id.newDPS);
 
         // Set the values to the view from the upgrade object
-        /* MULTIPLIER UPGRADE */
-        Upgrade multiplierUpgrade = shopPresenter.getDPSUpgrade();
+        /* DPS UPGRADE */
+        Upgrade dpsUpgrade = shopPresenter.getDPSUpgrade();
 
-        multiplierCounter.setText(String.valueOf(shopPresenter.getDPSUpgradeCounter()));
-        multiplierCost.setText(String.valueOf(multiplierUpgrade.getCost() + " g"));
+        dpsCounter.setText(String.valueOf(shopPresenter.getDPSUpgradeCounter()));
+        dpsCost.setText(String.valueOf(dpsUpgrade.getCost() + " g"));
 
-        int mlt = PlayerModel.getInstance().getDamageMultiplier();
-        int nMlt = mlt + multiplierUpgrade.getStat();
+        int dps = PlayerModel.getInstance().getDamagePerSecond();
+        int nDps = dps + dpsUpgrade.getStat();
 
-        currentMlt.setText(String.valueOf(mlt));
-        newMlt.setText(String.valueOf(nMlt));
+        currentDPS.setText(String.valueOf(dps));
+        newDPS.setText(String.valueOf(nDps));
 
     }
 
@@ -140,9 +146,9 @@ public class ShopActivity extends AppCompatActivity {
                         updateDamageInfo();
                     }
                     break;
-                case R.id.mltUpgradeButton:
+                case R.id.dpsUpgradeButton:
                     if (shopPresenter.buyDPSUpgrade()){
-                        updateMultiplierInfo();
+                        updateDPSInfo();
                     }
                     break;
             }

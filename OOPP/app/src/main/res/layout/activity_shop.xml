@@ -176,7 +176,7 @@
         android:layout_alignParentStart="true">
 
         <ImageButton
-            android:id="@+id/mltUpgradeButton"
+            android:id="@+id/dpsUpgradeButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
@@ -188,29 +188,29 @@
             app:srcCompat="@drawable/shopitembutton" />
 
         <TextView
-            android:id="@+id/mltUpgradeCounter"
+            android:id="@+id/dpsUpgradeCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/mltUpgradeText"
+            android:layout_alignEnd="@+id/dpsCostText"
+            android:layout_alignRight="@+id/dpsCostText"
+            android:layout_alignTop="@+id/dpsUpgradeText"
             android:gravity="end"
             android:text="1"
             android:textAlignment="textEnd"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_alignRight="@+id/mltCostText"
-            android:layout_alignEnd="@+id/mltCostText" />
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/mltCostText"
+            android:id="@+id/dpsCostText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/newMlt"
+            android:layout_alignTop="@+id/newDPS"
             android:layout_marginEnd="6dp"
             android:layout_marginRight="6dp"
             android:layout_marginTop="10dp"
-            android:layout_toLeftOf="@+id/mltUpgradeCost"
-            android:layout_toStartOf="@+id/mltUpgradeCost"
+            android:layout_toLeftOf="@+id/dpsUpgradeCost"
+            android:layout_toStartOf="@+id/dpsUpgradeCost"
             android:text="@string/cost"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
@@ -218,12 +218,12 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/mltUpgradeText"
+            android:id="@+id/dpsUpgradeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/mltUpgradeButton"
-            android:layout_alignStart="@+id/mltUpgradeButton"
-            android:layout_alignTop="@+id/mltUpgradeButton"
+            android:layout_alignLeft="@+id/dpsUpgradeButton"
+            android:layout_alignStart="@+id/dpsUpgradeButton"
+            android:layout_alignTop="@+id/dpsUpgradeButton"
             android:layout_marginLeft="19dp"
             android:layout_marginStart="19dp"
             android:layout_marginTop="33dp"
@@ -235,18 +235,18 @@
 
         <TextView
 
-            android:id="@+id/currentMltText"
+            android:id="@+id/currentDPSText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/currentMlt"
-            android:layout_alignLeft="@+id/mltUpgradeText"
-            android:layout_alignStart="@+id/mltUpgradeText"
+            android:layout_alignBottom="@+id/currentDPS"
+            android:layout_alignLeft="@+id/dpsUpgradeText"
+            android:layout_alignStart="@+id/dpsUpgradeText"
             android:text="@string/currentDPS"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/currentMlt"
+            android:id="@+id/currentDPS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
@@ -255,16 +255,16 @@
             android:layout_marginLeft="11dp"
             android:layout_marginStart="11dp"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/currentMltText"
-            android:layout_toEndOf="@+id/currentMltText" />
+            android:layout_toRightOf="@+id/currentDPSText"
+            android:layout_toEndOf="@+id/currentDPSText" />
 
         <TextView
-            android:id="@+id/newMltText"
+            android:id="@+id/newDPSText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/mltUpgradeText"
-            android:layout_alignStart="@+id/mltUpgradeText"
-            android:layout_below="@+id/mltUpgradeText"
+            android:layout_alignLeft="@+id/dpsUpgradeText"
+            android:layout_alignStart="@+id/dpsUpgradeText"
+            android:layout_below="@+id/dpsUpgradeText"
             android:layout_marginTop="30dp"
             android:text="@string/newDPS"
             android:textColor="@android:color/black"
@@ -272,24 +272,24 @@
 
 
         <TextView
-            android:id="@+id/newMlt"
+            android:id="@+id/newDPS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/newDPSText"
+            android:layout_alignBottom="@+id/newDPSText"
+            android:layout_toEndOf="@+id/currentDPSText"
+            android:layout_toRightOf="@+id/currentDPSText"
             android:text="0"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:layout_alignBaseline="@+id/newMltText"
-            android:layout_alignBottom="@+id/newMltText"
-            android:layout_alignRight="@+id/currentMltText"
-            android:layout_alignEnd="@+id/currentMltText" />
+            android:textSize="18sp" />
 
 
         <TextView
-            android:id="@+id/mltUpgradeCost"
+            android:id="@+id/dpsUpgradeCost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/mltCostText"
-            android:layout_alignBottom="@+id/mltCostText"
+            android:layout_alignBaseline="@+id/dpsCostText"
+            android:layout_alignBottom="@+id/dpsCostText"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="22dp"

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Gem Clicker</string>
     <string name="dmg">Damage:</string>
-    <string name="dmgMult">Damage multiplier:</string>
+    <string name="dpsText">Damage per second:</string>
     <string name="money">Money:</string>
     <string name="moneyPerSec">Money Per Second:</string>
 

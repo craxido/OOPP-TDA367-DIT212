@@ -3,10 +3,15 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.sauronsarmy.oopp.Map.Map;
+import com.example.sauronsarmy.oopp.Map.MapMVPInterface;
 import com.example.sauronsarmy.oopp.Map.MapPresenter;
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
+import com.example.sauronsarmy.oopp.Upgrades.HomeMVPInterface;
+import com.example.sauronsarmy.oopp.Upgrades.HomePresenter;
+import com.example.sauronsarmy.oopp.Upgrades.ShopMVPInterface;
+import com.example.sauronsarmy.oopp.Upgrades.ShopPresenter;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 import com.example.sauronsarmy.oopp.clock.Runner;
 
@@ -14,28 +19,31 @@ import java.lang.ref.WeakReference;
 
 /**
  * Created by Jonatan on 24/04/2017.
+ * @author everyone
  */
 
  public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListener {
     // View reference
-    private static final MainPresenter ourInstance = new MainPresenter();
 
+    private static MainPresenter ourInstance = new MainPresenter();
     private Runner run = new Runner();
-
-    Map map = Map.getInstance();
-    MapPresenter mapPres = MapPresenter.getInstance();
-
-
-    WeakReference<MainMVPInterface.ViewOps> mView;
-    PlayerModelInterface playerModel;
-    MainMVPInterface.ModelInterface mainModel;
+    private Map map = Map.getInstance();
+    private WeakReference<MainMVPInterface.ViewOps> mView;
+    private PlayerModelInterface playerModel;
+    private ShopMVPInterface.Presenter shopPresenter;
+    private HomeMVPInterface.Presenter homePresenter;
+    private MainMVPInterface.ModelInterface mainModel;
+    private MapMVPInterface.PresenterOps mapPres;
     private final static String TAG = "MainPresenter";
 
 
     public MainPresenter() {
         //this.mView = new WeakReference<>(mView);
         playerModel = PlayerModel.getInstance();
+        shopPresenter = new ShopPresenter();
+        homePresenter = new HomePresenter();
         mainModel = new MainModel();
+        mapPres = MapPresenter.getInstance();
         //ourInstance =this;
 
         run.register(this);
@@ -62,23 +70,15 @@ import java.lang.ref.WeakReference;
 
     //Called from MainActivity when a monster is clicked
     public void monsterClicked(){
-
         int gold;
         gold =map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamage());
         if(gold !=0){
 
             playerModel.setMoney(playerModel.getMoney() +gold);
-
         }
-
     }
 
-
-
-
     public Monster getCurrentMonster() {
-
-
         return map.getCurrentArea().getCurrentLevel().getCurrentMonster();
     }
     /**
@@ -87,11 +87,12 @@ import java.lang.ref.WeakReference;
      * @param context The context from which this method was called.
      */
     @Override
-    //TODO When Map has its own package, simplify
     public void saveState(Context context) {
         Log.i(TAG, "Saving the current state.");
         java.util.Map currentState = playerModel.getState();
-        mainModel.saveState(context, currentState);
+        java.util.Map currentShopUpgrade = shopPresenter.getUpgradeCounters();
+        java.util.Map currentHomeUpgrade = homePresenter.getUpgradeCounters();
+        mainModel.saveState(context, currentState, currentShopUpgrade, currentHomeUpgrade);
     }
 
     /**
@@ -104,8 +105,9 @@ import java.lang.ref.WeakReference;
         if(mainModel.hasSaveToLoad()) {
             Log.i(TAG, "Loading previous save.");
             playerModel.setState(mainModel.loadState(context));
+            shopPresenter.setUpgradeCounters(mainModel.loadShopUpgrade(context));
+            homePresenter.setOilPumpUpgradeCounter(mainModel.loadHomeUpgrade(context));
         }
-
     }
 
     @Override
@@ -119,14 +121,14 @@ import java.lang.ref.WeakReference;
     private void applyDPS(){
 
         int gold;
-        if((gold =map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamageMultiplier()) )!=0){
+        if((gold =map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamagePerSecond()) )!=0){
 
             playerModel.setMoney(playerModel.getMoney() +gold);
         }
 
     }
-
     private void applyGPS(){
+
         playerModel.setMoney(playerModel.getMoney() + playerModel.getMoneyPerSecond());
 
     }

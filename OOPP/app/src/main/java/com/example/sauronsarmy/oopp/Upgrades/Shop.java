@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.Upgrades;
 
+import android.util.Log;
+
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
 
@@ -13,12 +15,13 @@ import java.util.Map;
 class Shop implements ShopMVPInterface.Model {
 
     private static final Shop shopInstance = new Shop();
+    private static final String TAG = "Shop";
 
     // Variables
     private PlayerModelInterface player = PlayerModel.getInstance();
 
-    private Upgrade damageUpgrade = new Upgrade(5,5);
-    private Upgrade dpsUpgrade = new Upgrade(1,5);
+    private Upgrade damageUpgrade = new Upgrade(5,10);
+    private Upgrade dpsUpgrade = new Upgrade(1,10);
     private int damageUpgradeCounter = 1;
     private int dpsUpgradeCounter = 1;
 
@@ -44,12 +47,12 @@ class Shop implements ShopMVPInterface.Model {
     }
 
     /**
-     * Similar to above, except this upgrade is a multiplier.
+     * Similar to above, except this upgrade is for damage per second.
      */
     public boolean buyDPSUpgrade(){
         if (player.getMoney() >= dpsUpgrade.getCost()) {
             player.setMoney(player.getMoney() - dpsUpgrade.getCost());
-            player.setDamageMultiplier(player.getDamageMultiplier() + dpsUpgrade.getStat());
+            player.setDamagePerSecond(player.getDamagePerSecond() + dpsUpgrade.getStat());
 
             dpsUpgradeCounter++;
             dpsUpgrade.updateStat(dpsUpgradeCounter);
@@ -80,16 +83,16 @@ class Shop implements ShopMVPInterface.Model {
         return dpsUpgradeCounter;
     }
 
-    public void setUpgradeCounters(HashMap<String, Integer> map){
-        damageUpgradeCounter = map.get("damage");
-        dpsUpgradeCounter = map.get("dps");
+    public void setUpgradeCounters(Map<String, Integer> map){
+        damageUpgradeCounter = map.get("damageUpgrade");
+        dpsUpgradeCounter = map.get("dpsUpgrade");
     }
 
     public Map getUpgradeCounters(){
         return new HashMap<String, Integer>(){
             {
-                put("damage", getDamageUpgradeCounter());
-                put("dps", getDPSUpgradeCounter());
+                put("damageUpgrade", getDamageUpgradeCounter());
+                put("dpsUpgrade", getDPSUpgradeCounter());
             }
         };
     }

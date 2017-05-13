@@ -68,6 +68,12 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     }
 
     @Override
+    protected void onResume() {
+        Log.i(TAG, "onResume() called");
+        super.onResume();
+    }
+
+    @Override
     protected void onStart(){
 
         //Register to clock
@@ -78,13 +84,17 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     @Override
     protected void onDestroy() {
         Log.i(TAG, "onDestroy() called");
-        // Save current state
-        Log.i(TAG, "Calling saveState() in mainPresenter");
         mainPresenter.saveState(MainActivity.this);
         super.onDestroy();
     }
 
-
+    @Override
+    protected void onStop() {
+        Log.i(TAG, "onStop called");
+        Log.i(TAG, "Calling saveState() in mainPresenter");
+        mainPresenter.saveState(MainActivity.this);
+        super.onStop();
+    }
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

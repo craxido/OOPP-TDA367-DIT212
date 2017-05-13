@@ -7,7 +7,7 @@ package com.example.sauronsarmy.oopp.Map;
 /* "Umbrella" class containing the interfaces
   * used to communicate between MVP layers.
   */
-interface MapMVPInterface {
+public interface MapMVPInterface {
 
     interface ViewOps {
         // methods to be called from View

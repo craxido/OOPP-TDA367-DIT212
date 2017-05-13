@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.sauronsarmy.oopp.MainPresenter;
 import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.R;
@@ -19,7 +20,7 @@ import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 public class MapActivity extends AppCompatActivity implements MapMVPInterface.ViewOps {
 
     private static MapMVPInterface.PresenterOps mapPresenter = MapPresenter.getInstance();
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "MapActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,18 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
         /* Get the map (there is only one map). */
         Map map = Map.getInstance();
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.i(TAG, "onDestroy() called");
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.i(TAG, "onStop() called");
+        super.onStop();
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
