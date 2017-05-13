@@ -3,14 +3,13 @@ package com.example.sauronsarmy.oopp.Map;
 import com.example.sauronsarmy.oopp.MonsterPack.monsterFactory;
 
 /**
- * Author: Jonatan Källman
+ * @author Jonatan Källman
  */
 
 class levelFactory {
     levelFactory(){}
 
     private monsterFactory monfac = new monsterFactory();
-
     private Level getLevel(areaType type) {
 
         // Level constructor:
@@ -30,7 +29,6 @@ class levelFactory {
     }
 
     Level[] getLevels(areaType type) {
-
         // LevelAmount could be set depending on area.
         int LevelAmount=10;
         Level[] levels = new Level[LevelAmount];
@@ -38,9 +36,6 @@ class levelFactory {
         // Uses getLevel().
         // Right now, this only creates one level for each area.
         levels[0]=getLevel(type);
-
-
         return levels;
-
     }
 }

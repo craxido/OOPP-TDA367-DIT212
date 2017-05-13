@@ -4,7 +4,7 @@ import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.MonsterPack.monsterFactory;
 
 /**
- * Author: Jonatan Källman
+ * @author Jonatan Källman
  */
 
 class Level {
@@ -78,7 +78,4 @@ class Level {
         setCurrentMonster(monFac.getMonster(getHealthMultiplier()*100, getGoldMultiplier()*100, getArea()));
 
     }
-
-
 }
-

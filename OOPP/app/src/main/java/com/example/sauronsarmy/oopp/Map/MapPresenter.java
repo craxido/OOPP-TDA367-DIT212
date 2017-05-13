@@ -3,15 +3,12 @@ package com.example.sauronsarmy.oopp.Map;
 import android.util.Log;
 
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
-import com.example.sauronsarmy.oopp.Player.PlayerModel;
-import com.example.sauronsarmy.oopp.MainPresenter;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
-import com.example.sauronsarmy.oopp.MonsterPack.monsterFactory;
 
 import java.lang.ref.WeakReference;
 
 /**
- * Author: Jonatan Källman
+ * @author Jonatan Källman
  */
 
 public class MapPresenter implements MapMVPInterface.PresenterOps {
@@ -20,13 +17,12 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     private static MapPresenter mapPresenterInstance;
     private static Map map = Map.getInstance();
     WeakReference<MapMVPInterface.ViewOps> mapView;
-    private levelFactory lvlfac;
     private PlayerModelInterface playerModel;
 
     public MapPresenter(MapMVPInterface.ViewOps mapView) {
         this.mapView = new WeakReference<>(mapView);
         map = Map.getInstance();
-        mapPresenterInstance=this;
+        mapPresenterInstance = this;
     }
 
     public static void setBackgroundRef(int ref) {
@@ -54,8 +50,8 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         return map.getCurrentArea();
     }
 
-    public void getCurrentLevel() {
-        map.getCurrentArea().getCurrentLevel();
+    public Level getCurrentLevel() {
+        return map.getCurrentLevel();
     }
 
     public void setNewMonster() {
@@ -70,24 +66,40 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         return map.getCurrentArea().getCurrentLevel().getCurrentMonster();
     }
 
-    public Level makeLevel(areaType areaType){
-        return map.makeLevel(areaType);
+    public Level makeLevel(areaType areaType) {
+        return map.createLevel(areaType);
     }
 
-    public Area[] getAreas(){
+    public Area[] getAreas() {
         return map.getAreas();
     }
 
-    public int getLevelGoldMultiplier(Area area, int levelIndex){
-        return map.getLevelGoldMultiplier(area, levelIndex);
+    public int getLevelGoldMultiplier(int areaIndex, int levelIndex){
+        return map.getLevelGoldMultiplier(areaIndex, levelIndex);
     }
 
-    public int getLevelHealthMultiplier(Area area, int levelIndex){
-        return map.getLevelHealthMultiplier(area, levelIndex);
+    public int getLevelHealthMultiplier(int areaIndex, int levelIndex) {
+        return map.getLevelHealthMultiplier(areaIndex, levelIndex);
     }
 
-    public int getLevelAmount(Area area){
-        return map.getLevelAmount(area);
+    public int getLevelAmount(int areaIndex) {
+        return map.getLevelAmount(areaIndex);
+    }
+
+    public int getAreaAmount() {
+        return map.getAreaAmount();
+    }
+
+    public Area createArea(int areaIndex) {
+        return map.createArea(areaIndex);
+    }
+
+    public areaType getAreaType(int areaIndex) {
+        return map.getAreaType(areaIndex);
+    }
+
+    public int getAreaBgRef(int areaIndex) {
+        return map.getAreaBgRef(areaIndex);
     }
 
 }
