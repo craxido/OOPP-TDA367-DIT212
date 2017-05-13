@@ -21,6 +21,7 @@ class Shop implements ShopMVPInterface.Model {
     // Variables
     private PlayerModelInterface player = PlayerModel.getInstance();
 
+    private Upgrade damageUpgrade = new Upgrade(2,50);
     private Upgrade dpsUpgrade = new Upgrade(1,100);
     private int damageUpgradeCounter = 1;
     private int dpsUpgradeCounter = 1;
