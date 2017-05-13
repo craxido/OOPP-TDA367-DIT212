@@ -7,7 +7,7 @@ import com.example.sauronsarmy.oopp.R;
  * @author Jonatan Källman
  */
 
-public class Map implements MapMVPInterface.ModelOps {
+class Map implements MapMVPInterface.ModelOps {
 
     private static Area[] areas;
     private Area currentArea;
@@ -16,7 +16,7 @@ public class Map implements MapMVPInterface.ModelOps {
     private monsterFactory monfac;
     private int bgRef;
 
-    public static Map getInstance() {
+    static Map getInstance() {
         return mapInstance;
     }
 
@@ -69,7 +69,7 @@ public class Map implements MapMVPInterface.ModelOps {
         return currentArea;
     }
 
-    public void setCurrentArea(Area area){
+    void setCurrentArea(Area area){
         currentArea=area;
     }
 

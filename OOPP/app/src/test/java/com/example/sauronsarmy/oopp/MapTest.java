@@ -6,7 +6,6 @@ package com.example.sauronsarmy.oopp;
 
 //Imports
 import com.example.sauronsarmy.oopp.Map.MapPresenter;
-import com.example.sauronsarmy.oopp.MonsterPack.monsterFactory;
 import com.example.sauronsarmy.oopp.Map.areaType;
 import org.junit.Test;
 import org.junit.Before;
@@ -16,8 +15,6 @@ import static org.junit.Assert.*;
 //This is a test file for the Map package and its files.
 public class MapTest {
     private MapPresenter map;
-    //private Area[] areas = map.getAreas();
-    private monsterFactory monfac = new monsterFactory();
 
     @Before
     public void setUp() throws Exception {
