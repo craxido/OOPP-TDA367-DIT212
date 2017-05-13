@@ -41,19 +41,19 @@ public class Upgrade {
         if(multiplier > 1) {
             f = cost * 1.5f;
         }else if (multiplier > 10){
-            f = cost * 1.6f;
-        }else if (multiplier > 20){
             f = cost * 1.7f;
-        }else if (multiplier > 40){
-            f = cost * 1.8f;
-        }else if (multiplier > 60){
+        }else if (multiplier > 20){
             f = cost * 1.9f;
-        }else if (multiplier > 80){
-            f = cost * 2.0f;
-        }else if (multiplier > 90){
+        }else if (multiplier > 40){
             f = cost * 2.1f;
+        }else if (multiplier > 60){
+            f = cost * 2.3f;
+        }else if (multiplier > 80){
+            f = cost * 2.5f;
+        }else if (multiplier > 90){
+            f = cost * 2.7f;
         }else if (multiplier > 100){
-            f = cost * 2.2f;
+            f = cost * 2.9f;
         }
         cost = Math.round(f);
     }
