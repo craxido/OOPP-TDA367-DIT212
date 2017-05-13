@@ -10,6 +10,7 @@ public class Area {
     private areaType areaType;
     private Level[] levels;
     private Level currentLevel;
+    private boolean finished=false;
 
     Area(int imgRef, areaType area, Level[] levels){
         this.imgRef = imgRef;
@@ -41,5 +42,21 @@ public class Area {
     public void setCurrentLevel(Level level){
 
         this.currentLevel = level;
+    }
+
+    void checkComplete(){
+        boolean test = true;
+        //Check if all levels in an area is complete
+        for (Level lvl :levels){
+            if(lvl !=null) {
+                test &= lvl.getComplete();
+            }
+        }
+        finished=test;
+
+    }
+
+    public boolean getComplete(){
+        return finished;
     }
 }

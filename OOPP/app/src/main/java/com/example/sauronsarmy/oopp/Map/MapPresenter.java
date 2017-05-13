@@ -14,21 +14,22 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     private static final String TAG = "MainActivity";
     private static final MapPresenter mapPresenterInstance = new MapPresenter();
-    private static Map map = Map.getInstance();
+    private static Map map;
     WeakReference<MapMVPInterface.ViewOps> mapView;
+    private static int bgref;
 
     private MapPresenter() {
         //this.mapView = new WeakReference<>(mapView);
-        //map = Map.getInstance();
-
+        map = Map.getInstance();
+        setBackgroundRef(map.getCurrentArea().getImgRef());
     }
 
     public static void setBackgroundRef(int ref){
-        map.setBackgroundRef(ref);
+        bgref = ref;
     }
 
     public int getBackgroundRef(){
-        return map.getBackgroundRef();
+        return bgref;
     }
 
     public Area getArea(int index){
@@ -53,8 +54,19 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         map.setCurrentArea(map.getArea(index));
         int imgref= map.getArea(index).getImgRef();
         setBackgroundRef(imgref);
-        map.setBackgroundRef(imgref);
+    }
 
+    public int damageMonster(int damage){
+        int ret = map.getCurrentArea().getCurrentLevel().damageMonster(damage);
+        if (ret >0){
+            map.getCurrentArea().checkComplete();
+        }
+        return ret;
+
+    }
+
+    public Area getCrn(){
+        return map.getCurrentArea();
     }
 
 }

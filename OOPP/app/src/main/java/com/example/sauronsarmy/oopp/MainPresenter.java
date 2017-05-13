@@ -71,7 +71,7 @@ import java.lang.ref.WeakReference;
     //Called from MainActivity when a monster is clicked
     public void monsterClicked(){
         int gold;
-        gold =map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamage());
+        gold =mapPres.damageMonster(playerModel.getDamage());
         if(gold !=0){
 
             playerModel.setMoney(playerModel.getMoney() +gold);
@@ -120,8 +120,8 @@ import java.lang.ref.WeakReference;
 
     private void applyDPS(){
 
-        int gold;
-        if((gold =map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamagePerSecond()) )!=0){
+        int gold =mapPres.damageMonster(playerModel.getDamagePerSecond());
+        if(gold  > 0){
 
             playerModel.setMoney(playerModel.getMoney() +gold);
         }
@@ -141,6 +141,10 @@ import java.lang.ref.WeakReference;
 
         return bgref;
     }
-
-
+    public boolean getLvlCmp(){
+        return mapPres.getCrn().getCurrentLevel().getComplete();
+    }
+    public boolean getAreaCmp(){
+        return mapPres.getCrn().getComplete();
+    }
 }

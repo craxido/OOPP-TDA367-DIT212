@@ -1,5 +1,6 @@
 package com.example.sauronsarmy.oopp.Map;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
@@ -94,16 +95,16 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
                  * TODO: as well as the background in the MainActivity.
                     */
                 case R.id.b_area1:
-
+                    showDialog();
                     mapPresenter.changeArea(0);
                     break;
                 case R.id.b_area2:
 
-
+                    showDialog();
                     mapPresenter.changeArea(1);
                     break;
                 case R.id.b_area3:
-
+                    showDialog();
                     mapPresenter.changeArea(2);
                     break;
 
@@ -111,4 +112,17 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
 
         }
     };
+
+    private void showDialog(){
+
+        final Dialog lvlDialog = new Dialog(this);
+
+        //Set title of dialog
+        lvlDialog.setTitle("Choose a level in current area");
+
+        //Set layout
+
+
+        lvlDialog.show();
+    }
 }

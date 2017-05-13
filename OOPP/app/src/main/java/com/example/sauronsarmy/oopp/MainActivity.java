@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.Map.MapActivity;
@@ -127,9 +128,9 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
     @Override
     public void update() {
-        ImageView bg = (ImageView) findViewById(R.id.b_background);
-        bg.setImageResource(MainPresenter.getInstance().getBGRef());
 
+        RelativeLayout bg = (RelativeLayout) findViewById(R.id.b_mainActivity);
+        bg.setBackgroundResource(MainPresenter.getInstance().getBGRef());
 
         currentMonster=MainPresenter.getInstance().getCurrentMonster();
         ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
@@ -143,5 +144,6 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         goal.setText("Goal: " + path +"/" +goali);
 
         monsterButton.setImageResource(currentMonster.getImageRef());
+
     }
 }

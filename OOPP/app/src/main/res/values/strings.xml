@@ -20,8 +20,11 @@
     <string name="oilUpgradeText">Oil Pump Upgrade</string>
     <string name="currentMoneyPerSec">Current money/sec:</string>
     <string name="newMoneyPerSec">New money/sec:</string>
-    <string name="new_game" >This will override any previous saves, continue?</string>
-    <string name="ok" >Ok</string>
+    <string name="new_game">This will override any previous saves, continue?</string>
+    <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

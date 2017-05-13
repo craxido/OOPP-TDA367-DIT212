@@ -67,7 +67,7 @@ public class Level {
 
     public int damageMonster(int damage){
 
-        int ret =0;
+        int ret =-1;
         if(monster.damageMonster(damage)){
             ret=monster.getGold();
             pathToGoal++;

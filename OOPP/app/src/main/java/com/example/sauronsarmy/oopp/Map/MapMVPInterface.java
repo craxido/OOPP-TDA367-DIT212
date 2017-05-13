@@ -18,6 +18,8 @@ public interface MapMVPInterface {
         Area   getArea(int index);
         void changeArea(int index);
         void onError(String errorMsg);
+        int damageMonster(int damage);
+        Area getCrn();
 
         // methods to be called from Presenter
     }

@@ -79,5 +79,6 @@ public class Map implements MapMVPInterface.ModelOps {
     public Area[] getAreas(){
         return areas;
     }
-    
+
+
 }
