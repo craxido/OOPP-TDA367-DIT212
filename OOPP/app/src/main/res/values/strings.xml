@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Gem Clicker</string>
+    <string name="app_name">Monster Clicker</string>
     <string name="dmg">Damage:</string>
     <string name="dpsText">Damage per second:</string>
     <string name="money">Money:</string>

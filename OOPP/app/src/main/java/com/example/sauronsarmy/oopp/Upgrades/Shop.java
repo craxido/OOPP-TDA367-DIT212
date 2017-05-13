@@ -10,6 +10,7 @@ import java.util.Map;
 
 /**
  * Created by bunnyfiscuit on 05/04/17.
+ *
  */
 
 class Shop implements ShopMVPInterface.Model {
@@ -20,8 +21,7 @@ class Shop implements ShopMVPInterface.Model {
     // Variables
     private PlayerModelInterface player = PlayerModel.getInstance();
 
-    private Upgrade damageUpgrade = new Upgrade(5,50);
-    private Upgrade dpsUpgrade = new Upgrade(1,25);
+    private Upgrade dpsUpgrade = new Upgrade(1,100);
     private int damageUpgradeCounter = 1;
     private int dpsUpgradeCounter = 1;
 
@@ -84,6 +84,7 @@ class Shop implements ShopMVPInterface.Model {
     }
 
     public void setUpgradeCounters(Map<String, Integer> map){
+        Log.i(TAG, "Setting old Shop state");
         damageUpgradeCounter = map.get("damageUpgrade");
         dpsUpgradeCounter = map.get("dpsUpgrade");
     }
