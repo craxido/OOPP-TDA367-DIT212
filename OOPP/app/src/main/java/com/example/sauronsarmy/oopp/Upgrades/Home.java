@@ -56,6 +56,11 @@ class Home implements HomeMVPInterface.Model  {
         oilPumpUpgradeCounter = map.get("oil");
     }
 
+    //for tests
+    public void setOilCounter(int i){
+        oilPumpUpgradeCounter = i;
+    }
+
     public Map getUpgradeCounters(){
         return new HashMap<String, Integer> ()
         {
