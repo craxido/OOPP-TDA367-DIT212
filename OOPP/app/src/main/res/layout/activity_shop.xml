@@ -51,17 +51,15 @@
             android:id="@+id/dmgUpgradeCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/dmgUpgradeText"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_toEndOf="@+id/dmgUpgradeText"
-            android:layout_toRightOf="@+id/dmgUpgradeText"
             android:gravity="end"
             android:text="1"
             android:textAlignment="textEnd"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_alignTop="@+id/dmgUpgradeText"
+            android:layout_alignRight="@+id/dmgUpgradeCost"
+            android:layout_alignEnd="@+id/dmgUpgradeCost" />
 
         <TextView
             android:id="@+id/upgradeCostText"
@@ -191,15 +189,15 @@
             android:id="@+id/dpsUpgradeCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/dpsCostText"
-            android:layout_alignRight="@+id/dpsCostText"
-            android:layout_alignTop="@+id/dpsUpgradeText"
             android:gravity="end"
             android:text="1"
             android:textAlignment="textEnd"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_alignTop="@+id/dpsUpgradeText"
+            android:layout_alignRight="@+id/dpsUpgradeCost"
+            android:layout_alignEnd="@+id/dpsUpgradeCost" />
 
         <TextView
             android:id="@+id/dpsCostText"
@@ -230,7 +228,7 @@
             android:text="@string/dpsUpgradeText"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
+            android:textSize="19sp"
             android:textStyle="bold" />
 
         <TextView
