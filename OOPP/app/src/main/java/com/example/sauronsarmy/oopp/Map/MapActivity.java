@@ -132,6 +132,7 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
 
     @Override
     public void onclick(int level, int area) {
+        //Log the selected level and area
         Log.i("LvlArea",level + " "+ area);
         mapPresenter.trChangeAreaLevel(level,area);
     }

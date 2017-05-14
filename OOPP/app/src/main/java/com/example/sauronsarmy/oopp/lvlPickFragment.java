@@ -2,6 +2,7 @@ package com.example.sauronsarmy.oopp;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -16,8 +17,7 @@ public class lvlPickFragment extends DialogFragment {
 
     //Interface for users of this fragment
     public interface ClickListener{
-
-        public void onclick(int level, int area);
+        void onclick(int level, int area);
     }
     //The area that was passed as an argument
     private int area;
@@ -25,16 +25,17 @@ public class lvlPickFragment extends DialogFragment {
     ClickListener clickListener;
 
     @Override
-    public void onAttach(Activity activity){
-
-        super.onAttach(activity);
+    public void onAttach(Context context){
+        super.onAttach(context);
         // Verify that the host activity implements the callback interface
         try {
+
+            Activity activity = (Activity) context;
             // Instantiate the ClickListener so we can send events to the host
             clickListener = (ClickListener) activity;
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException(activity.toString()
+            throw new ClassCastException(context.toString()
                     + " must implement NoticeDialogListener");
         }
 
@@ -46,12 +47,10 @@ public class lvlPickFragment extends DialogFragment {
         //Get the argument
         area = getArguments().getInt("area");
 
-        String[] lvlList = getResources().getStringArray(R.array.lvl);
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         builder.setTitle("Select a level")
-                .setItems(lvlList,new DialogInterface.OnClickListener(){
+                .setItems(R.array.lvl,new DialogInterface.OnClickListener(){
 
 
                     @Override
