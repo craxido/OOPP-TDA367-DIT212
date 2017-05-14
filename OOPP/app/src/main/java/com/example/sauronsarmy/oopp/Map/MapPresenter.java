@@ -11,12 +11,11 @@ import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     private static final String TAG = "MainActivity";
-    private static MapPresenter mapPresenterInstance;
+    private static MapPresenter mapPresenterInstance = new MapPresenter();
     private static Map map;
 
     public MapPresenter() {
         map = Map.getInstance();
-        mapPresenterInstance = new MapPresenter();
     }
 
     public static void setBackgroundRef(int ref) {
@@ -59,7 +58,7 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         return map.getCurrentArea().getCurrentLevel().getCurrentMonster();
     }
 
-    public Level makeLevel(areaType areaType) {
+    public Level createLevel(areaType areaType) {
         return map.createLevel(areaType);
     }
 

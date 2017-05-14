@@ -28,9 +28,7 @@ public class MapTest {
 
     @Test
     public void testGetCurrentArea() throws Exception {
-        if(!(BuildConfig.DEBUG && map.getCurrentArea() == map.createArea(0))){
-            throw new AssertionError();
-        }
+        assertEquals(map.getCurrentArea(), map.createArea(0));
     }
 
     @Test
@@ -54,8 +52,17 @@ public class MapTest {
     @Test
     public void testImageRef() throws Exception{
         for(int i=0; i < map.getAreaAmount(); i++){
-            assertEquals(map.getAreaBgRef(i), R.drawable.forestarea
-                    | R.drawable.mountainarea | R.drawable.volcanoarea);
+            switch (map.getAreaType(i)) {
+                case MOUNTAIN:
+                    assertEquals(map.getAreaBgRef(i), R.drawable.mountainarea);
+                    break;
+                case FOREST:
+                    assertEquals(map.getAreaBgRef(i), R.drawable.forestarea);
+                    break;
+                case VOLCANO:
+                    assertEquals(map.getAreaBgRef(i), R.drawable.volcanoarea);
+                    break;
+            }
         }
     }
 
@@ -69,13 +76,13 @@ public class MapTest {
         for (int i = 0; i < map.getAreaAmount(); i++) {
             switch (map.getAreaType(i)) {
                 case FOREST:
-                    assertEquals(map.getCurrentLevel(), map.makeLevel(areaType.FOREST));
+                    assertEquals(map.getCurrentLevel(), map.createLevel(areaType.FOREST));
                     break;
                 case MOUNTAIN:
-                    assertEquals(map.getCurrentLevel(), map.makeLevel(areaType.MOUNTAIN));
+                    assertEquals(map.getCurrentLevel(), map.createLevel(areaType.MOUNTAIN));
                     break;
                 case VOLCANO:
-                    assertEquals(map.getCurrentLevel(), map.makeLevel(areaType.VOLCANO));
+                    assertEquals(map.getCurrentLevel(), map.createLevel(areaType.VOLCANO));
                     break;
                 default: //Not a valid area
                     throw new AssertionError();
