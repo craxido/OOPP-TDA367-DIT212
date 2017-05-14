@@ -21,7 +21,7 @@
     <string name="currentMoneyPerSec">Current money/sec:</string>
     <string name="newMoneyPerSec">New money/sec:</string>
     <string name="new_game" >This will override any previous saves, continue?</string>
-    <string name="ok" >Ok</string>
+    <string name="ok" >OK</string>
     <string name="cancel">Cancel</string>
 
 </resources>
