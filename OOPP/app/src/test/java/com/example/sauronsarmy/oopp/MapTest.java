@@ -28,10 +28,8 @@ public class MapTest {
 
     @Test
     public void testGetCurrentArea() throws Exception {
-        for(int i = 0; i < map.getAreaAmount(); i++){
-            if(!(BuildConfig.DEBUG && map.getCurrentArea() == map.createArea(i))){
-                throw new AssertionError();
-            }
+        if(!(BuildConfig.DEBUG && map.getCurrentArea() == map.createArea(0))){
+            throw new AssertionError();
         }
     }
 
