@@ -17,13 +17,8 @@ interface MainMVPInterface {
              }
 
     interface PresenterOps{
-         void onConfigChange(ViewOps view);
-         void onDestroy(boolean isChangingConfig);
-         void onError(String errorMsg);
-
         void monsterClicked();
         Monster getCurrentMonster();
-         // methods to be called from Presenter
         void saveState(Context value1);
         void loadState(Context value1);
         }

@@ -15,7 +15,7 @@ public interface PlayerModelInterface {
     void setDamage(int newValue);
     int getDamage();
 
-    void setMoney(int newValue);
+    void addMoney(int money);
     int getMoney();
 
     void setState(java.util.Map value1);

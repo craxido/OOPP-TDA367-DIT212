@@ -65,8 +65,12 @@ public class PlayerModel implements  PlayerModelInterface{
         return money;
     }
 
-    public void setMoney(int money) {
+    private void setMoney(int money) {
         this.money = money;
+    }
+
+    public void addMoney(int money) {
+        this.money += money;
     }
 
     public int getMoneyPerSecond() {

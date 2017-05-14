@@ -25,7 +25,6 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     private static MainPresenter ourInstance;
     private Runner run = new Runner();
     private Map map = Map.getInstance();
-    private WeakReference<MainMVPInterface.ViewOps> mView;
     private PlayerModelInterface playerModel;
     private ShopMVPInterface.Presenter shopPresenter;
     private HomeMVPInterface.Presenter homePresenter;
@@ -33,8 +32,7 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     private final static String TAG = "MainPresenter";
 
 
-    public MainPresenter(MainMVPInterface.ViewOps mView) {
-        this.mView = new WeakReference<>(mView);
+    private MainPresenter() {
         playerModel = PlayerModel.getInstance();
         shopPresenter = new ShopPresenter();
         homePresenter = new HomePresenter();
@@ -47,27 +45,14 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     }
 
     public static MainPresenter getInstance(){
-
         return ourInstance;
     }
-    // A configuration changed
-    @Override
-    public void onConfigChange(MainMVPInterface.ViewOps view) {
-        mView = new WeakReference<>(view);
-        map.getCurrentArea().getCurrentLevel().setNewMonster();
-    }
-
-    @Override
-    public void onDestroy(boolean isChangingConfig){} //To be implemented
-    @Override
-    public void onError(String msg){} //To be implemented
-
 
     //Called from MainActivity when a monster is clicked
     public void monsterClicked(){
-        int gold;
-        if((gold = map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamage())) != 0){
-            playerModel.setMoney(playerModel.getMoney() +gold);
+        int gold = map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamage());
+        if (gold != 0) {
+            playerModel.addMoney(gold);
         }
     }
 
@@ -82,7 +67,7 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     @Override
     public void saveState(Context context) {
         Log.i(TAG, "Saving the current state.");
-        java.util.Map currentState = playerModel.getState();
+        java.util.Map currentState       = playerModel.getState();
         java.util.Map currentShopUpgrade = shopPresenter.getUpgradeCounters();
         java.util.Map currentHomeUpgrade = homePresenter.getUpgradeCounters();
         mainModel.saveState(context, currentState, currentShopUpgrade, currentHomeUpgrade);
@@ -105,25 +90,20 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
 
     @Override
     public void update() {
-
         applyGPS();
         applyDPS();
-
     }
 
-    public void applyDPS(){
-
-        int gold;
-        if((gold =map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamagePerSecond()) )!=0){
-
-            playerModel.setMoney(playerModel.getMoney() +gold);
+    private void applyDPS(){
+        int gold = map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamagePerSecond());
+        if(gold != 0){
+            playerModel.addMoney(gold);
         }
 
     }
 
-    public void applyGPS(){
-        playerModel.setMoney(playerModel.getMoney() + playerModel.getMoneyPerSecond());
-
+    private void applyGPS(){
+        playerModel.addMoney(playerModel.getMoneyPerSecond());
     }
 
     public Runner getRun(){return  run;}
