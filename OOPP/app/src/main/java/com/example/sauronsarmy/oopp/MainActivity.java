@@ -10,11 +10,11 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.sauronsarmy.oopp.Map.MapActivity;
-import com.example.sauronsarmy.oopp.MonsterPack.Monster;
-import com.example.sauronsarmy.oopp.Stats.StatsActivity;
-import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
-import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
+import com.example.sauronsarmy.oopp.map.MapActivity;
+import com.example.sauronsarmy.oopp.monsterPack.Monster;
+import com.example.sauronsarmy.oopp.stats.StatsActivity;
+import com.example.sauronsarmy.oopp.upgrades.HomeActivity;
+import com.example.sauronsarmy.oopp.upgrades.ShopActivity;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 

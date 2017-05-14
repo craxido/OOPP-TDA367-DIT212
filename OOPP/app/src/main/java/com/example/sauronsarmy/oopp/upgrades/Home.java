@@ -1,9 +1,9 @@
-package com.example.sauronsarmy.oopp.Upgrades;
+package com.example.sauronsarmy.oopp.upgrades;
 
 import android.util.Log;
 
-import com.example.sauronsarmy.oopp.Player.PlayerModel;
-import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
+import com.example.sauronsarmy.oopp.player.PlayerModel;
+import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
 import java.util.HashMap;
 import java.util.Map;

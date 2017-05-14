@@ -2,14 +2,14 @@ package com.example.sauronsarmy.oopp;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.sauronsarmy.oopp.Map.Map;
-import com.example.sauronsarmy.oopp.MonsterPack.Monster;
-import com.example.sauronsarmy.oopp.Player.PlayerModel;
-import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
-import com.example.sauronsarmy.oopp.Upgrades.HomeMVPInterface;
-import com.example.sauronsarmy.oopp.Upgrades.HomePresenter;
-import com.example.sauronsarmy.oopp.Upgrades.ShopMVPInterface;
-import com.example.sauronsarmy.oopp.Upgrades.ShopPresenter;
+import com.example.sauronsarmy.oopp.map.Map;
+import com.example.sauronsarmy.oopp.monsterPack.Monster;
+import com.example.sauronsarmy.oopp.player.PlayerModel;
+import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
+import com.example.sauronsarmy.oopp.upgrades.HomeMVPInterface;
+import com.example.sauronsarmy.oopp.upgrades.HomePresenter;
+import com.example.sauronsarmy.oopp.upgrades.ShopMVPInterface;
+import com.example.sauronsarmy.oopp.upgrades.ShopPresenter;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 import com.example.sauronsarmy.oopp.clock.Runner;
 

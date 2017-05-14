@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp.Map;
+package com.example.sauronsarmy.oopp.map;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,12 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.sauronsarmy.oopp.MainPresenter;
-import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
+import com.example.sauronsarmy.oopp.upgrades.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.R;
-import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
-import com.example.sauronsarmy.oopp.Stats.StatsActivity;
+import com.example.sauronsarmy.oopp.upgrades.ShopActivity;
+import com.example.sauronsarmy.oopp.stats.StatsActivity;
 
 public class MapActivity extends AppCompatActivity implements MapMVPInterface.ViewOps {
 

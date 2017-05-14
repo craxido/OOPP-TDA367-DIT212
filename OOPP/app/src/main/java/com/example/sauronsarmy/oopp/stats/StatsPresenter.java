@@ -1,7 +1,7 @@
-package com.example.sauronsarmy.oopp.Stats;
+package com.example.sauronsarmy.oopp.stats;
 
-import com.example.sauronsarmy.oopp.Player.PlayerModel;
-import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
+import com.example.sauronsarmy.oopp.player.PlayerModel;
+import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
 /**
  * Created by Erik on 13/04/17.

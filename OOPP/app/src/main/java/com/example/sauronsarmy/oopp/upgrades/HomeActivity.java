@@ -1,20 +1,19 @@
-package com.example.sauronsarmy.oopp.Upgrades;
+package com.example.sauronsarmy.oopp.upgrades;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.MainActivity;
-import com.example.sauronsarmy.oopp.Map.MapActivity;
-import com.example.sauronsarmy.oopp.Player.PlayerModel;
+import com.example.sauronsarmy.oopp.map.MapActivity;
+import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.R;
-import com.example.sauronsarmy.oopp.Stats.StatsActivity;
+import com.example.sauronsarmy.oopp.stats.StatsActivity;
 
 /**
  * Created by Erik on 04/04/17.

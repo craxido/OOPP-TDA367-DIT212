@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp.Map;
+package com.example.sauronsarmy.oopp.map;
 
 import com.example.sauronsarmy.oopp.R;
 

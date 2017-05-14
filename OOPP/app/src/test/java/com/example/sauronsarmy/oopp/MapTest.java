@@ -5,11 +5,11 @@ package com.example.sauronsarmy.oopp;
  */
 
 //Imports
-import com.example.sauronsarmy.oopp.MonsterPack.monsterFactory;
-import com.example.sauronsarmy.oopp.Map.Level;
-import com.example.sauronsarmy.oopp.Map.Map;
-import com.example.sauronsarmy.oopp.Map.areaType;
-import com.example.sauronsarmy.oopp.Map.Area;
+import com.example.sauronsarmy.oopp.monsterPack.monsterFactory;
+import com.example.sauronsarmy.oopp.map.Level;
+import com.example.sauronsarmy.oopp.map.Map;
+import com.example.sauronsarmy.oopp.map.areaType;
+import com.example.sauronsarmy.oopp.map.Area;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;

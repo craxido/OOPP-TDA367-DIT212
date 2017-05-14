@@ -1,7 +1,7 @@
-package com.example.sauronsarmy.oopp.MonsterPack;
+package com.example.sauronsarmy.oopp.monsterPack;
 
 
-import com.example.sauronsarmy.oopp.Map.areaType;
+import com.example.sauronsarmy.oopp.map.areaType;
 import com.example.sauronsarmy.oopp.R;
 
 /**

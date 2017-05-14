@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp.Stats;
+package com.example.sauronsarmy.oopp.stats;
 
 /**
  * Created by Erik on 13/04/17.

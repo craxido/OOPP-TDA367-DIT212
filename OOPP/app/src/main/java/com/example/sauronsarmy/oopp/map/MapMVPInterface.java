@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp.Map;
+package com.example.sauronsarmy.oopp.map;
 
 /**
  * Author: Jonatan Källman

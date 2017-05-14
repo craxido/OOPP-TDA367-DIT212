@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp.Player;
+package com.example.sauronsarmy.oopp.player;
 
 /**
  * Created by Erik on 13/04/17.

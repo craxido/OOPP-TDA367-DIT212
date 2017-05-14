@@ -1,9 +1,8 @@
-package com.example.sauronsarmy.oopp.Upgrades;
+package com.example.sauronsarmy.oopp.upgrades;
 
 
 import android.content.Context;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**

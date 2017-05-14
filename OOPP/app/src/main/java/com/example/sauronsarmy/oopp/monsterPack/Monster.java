@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp.MonsterPack;
+package com.example.sauronsarmy.oopp.monsterPack;
 
 /**
  * Created by Filip on 2017-04-04.

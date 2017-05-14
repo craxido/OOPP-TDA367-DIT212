@@ -11,10 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"/>
-        <activity android:name=".Upgrades.HomeActivity" />
-        <activity android:name=".Upgrades.ShopActivity" />
-        <activity android:name=".Stats.StatsActivity" />
-        <activity android:name=".Map.MapActivity" />
+        <activity android:name=".upgrades.HomeActivity" />
+        <activity android:name=".upgrades.ShopActivity" />
+        <activity android:name=".stats.StatsActivity" />
+        <activity android:name=".map.MapActivity" />
         <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

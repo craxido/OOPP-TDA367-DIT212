@@ -1,8 +1,6 @@
-package com.example.sauronsarmy.oopp.Map;
+package com.example.sauronsarmy.oopp.map;
 
 import android.util.Log;
-
-import com.example.sauronsarmy.oopp.MainPresenter;
 
 import java.lang.ref.WeakReference;
 
