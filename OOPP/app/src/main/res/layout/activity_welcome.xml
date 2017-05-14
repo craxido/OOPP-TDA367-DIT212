@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Gem Clicker!"
+        android:text="@string/welcome_to_gem_clicker"
         tools:layout_editor_absoluteY="84dp"
         android:id="@+id/textView"
         android:layout_marginRight="8dp"
@@ -22,7 +22,7 @@
         android:layout_width="195dp"
         android:layout_height="119dp"
         android:id="@+id/newGame"
-        android:text="New Game"
+        android:text="@string/new_game"
 
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -35,7 +35,7 @@
         android:layout_width="194dp"
         android:layout_height="117dp"
         android:id="@+id/loadGame"
-        android:text="Load Game"
+        android:text="@string/_continue"
 
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"

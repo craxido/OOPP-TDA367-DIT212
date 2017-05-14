@@ -81,7 +81,7 @@ public class WelcomeActivity extends AppCompatActivity implements MainMVPInterfa
 
         //Creata a dialog, asking if the player wants to override any previous save
         AlertDialog.Builder builder = new AlertDialog.Builder(WelcomeActivity.this);
-        builder.setMessage(R.string.new_game)
+        builder.setMessage(R.string.new_game_prompt)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         //Chose new game

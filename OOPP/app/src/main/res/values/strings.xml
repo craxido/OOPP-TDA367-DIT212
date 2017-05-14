@@ -20,8 +20,13 @@
     <string name="oilUpgradeText">Oil Pump Upgrade</string>
     <string name="currentMoneyPerSec">Current money/sec:</string>
     <string name="newMoneyPerSec">New money/sec:</string>
-    <string name="new_game" >This will override any previous saves, continue?</string>
+    <string name="new_game_prompt" >This will override any previous saves, continue?</string>
     <string name="ok" >OK</string>
     <string name="cancel">Cancel</string>
+    <string name="oil_pump_upgrade">oil pump upgrade</string>
+    <string name="damage_upgrade">damage upgrade</string>
+    <string name="welcome_to_gem_clicker">Welcome to Gem Clicker!</string>
+    <string name="new_game">New Game</string>
+    <string name="_continue">Continue</string>
 
 </resources>
