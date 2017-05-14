@@ -51,9 +51,6 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
 
         mapButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
-        /* Get the map (there is only one map). */
-        Map map = Map.getInstance();
-
     }
 
     @Override
