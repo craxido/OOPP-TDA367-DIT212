@@ -25,7 +25,7 @@ class Map implements MapMVPInterface.ModelOps {
         bgRef = R.drawable.mapbg;
         areas = createAreas();
 	    currentArea = areas[0];
-
+        monfac = new monsterFactory();
     }
 
     //Creates areas for the mapInstance
