@@ -1,7 +1,7 @@
 package com.example.sauronsarmy.oopp.map;
 
 /**
- * Author: Jonatan Källman
+ * @author Jonatan Källman
  */
 
 //Enum for Area types.

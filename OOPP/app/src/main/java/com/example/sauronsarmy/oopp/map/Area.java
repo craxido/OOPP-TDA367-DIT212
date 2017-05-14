@@ -1,45 +1,51 @@
 package com.example.sauronsarmy.oopp.map;
 
 /**
- * Author: Jonatan Källman
+ * @author Jonatan Källman
  */
 
-public class Area {
+class Area {
 
     private int imgRef;
     private areaType areaType;
     private Level[] levels;
     private Level currentLevel;
+    private int areaIndex;
+    private MapPresenter map;
 
-    Area(int imgRef, areaType area, Level[] levels){
+    Area(int imgRef, areaType area, Level[] levels, int areaIndex){
         this.imgRef = imgRef;
         this.areaType=area;
         this.levels=levels;
         this.currentLevel=levels[0];
+        this.areaIndex=areaIndex;
     }
 
-    public areaType getAreaType(){
+    areaType getAreaType(){
         return this.areaType;
     }
 
-    public int getImgRef() {
+    int getImgRef() {
         return imgRef;
     }
 
-    public void setImgRef(int imgRef) {
+    void setImgRef(int imgRef) {
         this.imgRef = imgRef;
     }
 
-    public Level[] getLevels() {
+    Level[] getLevels() {
         return levels;
     }
 
-    public Level getCurrentLevel() {
+    Level getCurrentLevel() {
         return currentLevel;
     }
 
-    public void setCurrentLevel(Level level){
-
+    void setCurrentLevel(Level level){
         this.currentLevel = level;
+    }
+
+    int getAreaIndex(Area area){
+        return area.areaIndex;
     }
 }

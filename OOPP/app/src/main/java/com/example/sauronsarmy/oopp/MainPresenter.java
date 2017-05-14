@@ -2,7 +2,6 @@ package com.example.sauronsarmy.oopp;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.sauronsarmy.oopp.map.Map;
 import com.example.sauronsarmy.oopp.monsterPack.Monster;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
@@ -10,10 +9,9 @@ import com.example.sauronsarmy.oopp.upgrades.HomeMVPInterface;
 import com.example.sauronsarmy.oopp.upgrades.HomePresenter;
 import com.example.sauronsarmy.oopp.upgrades.ShopMVPInterface;
 import com.example.sauronsarmy.oopp.upgrades.ShopPresenter;
+import com.example.sauronsarmy.oopp.map.MapPresenter;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 import com.example.sauronsarmy.oopp.clock.Runner;
-
-import java.lang.ref.WeakReference;
 
 /**
  * Created by Jonatan on 24/04/2017.
@@ -24,7 +22,7 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     // View reference
     private static MainPresenter ourInstance;
     private Runner run = new Runner();
-    private Map map = Map.getInstance();
+    private MapPresenter map = MapPresenter.getInstance();
     private PlayerModelInterface playerModel;
     private ShopMVPInterface.Presenter shopPresenter;
     private HomeMVPInterface.Presenter homePresenter;
@@ -50,14 +48,14 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
 
     //Called from MainActivity when a monster is clicked
     public void monsterClicked(){
-        int gold = map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamage());
+        int gold = map.damageMonster(playerModel.getDamage());
         if (gold != 0) {
             playerModel.addMoney(gold);
         }
     }
 
     public Monster getCurrentMonster() {
-        return map.getCurrentArea().getCurrentLevel().getCurrentMonster();
+        return map.getCurrentMonster();
     }
     /**
      * Asks the PlayerModel for the current state, and sends this
@@ -95,11 +93,10 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     }
 
     private void applyDPS(){
-        int gold = map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamagePerSecond());
+        int gold = map.damageMonster(playerModel.getDamagePerSecond());
         if(gold != 0){
             playerModel.addMoney(gold);
         }
-
     }
 
     private void applyGPS(){
