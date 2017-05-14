@@ -74,7 +74,7 @@ public class HomeActivity extends AppCompatActivity {
         oilUpgradeCounter.setText(String.valueOf(homePresenter.getOilPumpUpgradeCounter()));
         oilUpgradeCost.setText(String.valueOf(oilPumpUpgrade.getCost() + " g"));
 
-        double mps = PlayerModel.getInstance().getMoneyPerSecond();
+        double mps = homePresenter.getPlayerMoneyPerSec();
         double newmps = mps + oilPumpUpgrade.getStat();
 
         currentMps.setText(String.valueOf(mps));

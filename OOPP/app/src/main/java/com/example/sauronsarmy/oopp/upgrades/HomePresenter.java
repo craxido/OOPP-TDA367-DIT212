@@ -36,6 +36,11 @@ public class HomePresenter implements HomeMVPInterface.Presenter {
         homeModel.setOilPumpUpgradeCounter(map);
     }
 
+    @Override
+    public int getPlayerMoneyPerSec(){
+        return homeModel.getPlayerMoneyPerSec();
+    }
+
     public void saveState(Context context) {
         mainPresenter.saveState(context);
     }
