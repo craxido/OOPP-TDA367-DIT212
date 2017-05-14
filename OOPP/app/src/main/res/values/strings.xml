@@ -28,5 +28,7 @@
     <string name="welcome_to_gem_clicker">Welcome to Gem Clicker!</string>
     <string name="new_game">New Game</string>
     <string name="_continue">Continue</string>
+    <string name="button_for_oil_upgrade">Button for oil upgrade</string>
+    <string name="picture_of_monster">Picture of monster</string>
 
 </resources>

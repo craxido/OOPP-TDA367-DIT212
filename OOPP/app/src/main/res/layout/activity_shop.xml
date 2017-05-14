@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ContentDescription"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.sauronsarmy.oopp.upgrades.ShopActivity"
@@ -42,7 +43,6 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:background="@android:color/transparent"
-            android:contentDescription=""
             android:padding="0dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/shopitembutton" />
@@ -178,7 +178,6 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:background="@android:color/transparent"
-            android:contentDescription=""
             android:padding="0dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/shopitembutton" />

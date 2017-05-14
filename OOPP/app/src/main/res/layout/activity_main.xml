@@ -15,6 +15,7 @@
 
     <ImageButton
         android:id="@+id/b_monster"
+        android:contentDescription="@string/picture_of_monster"
         android:layout_width="@android:dimen/thumbnail_height"
         android:layout_height="@android:dimen/thumbnail_width"
         android:layout_centerHorizontal="true"
