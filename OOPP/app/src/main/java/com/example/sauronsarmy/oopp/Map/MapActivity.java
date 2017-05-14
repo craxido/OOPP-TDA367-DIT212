@@ -4,10 +4,13 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -17,8 +20,9 @@ import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
+import com.example.sauronsarmy.oopp.lvlPickFragment;
 
-public class MapActivity extends AppCompatActivity implements MapMVPInterface.ViewOps {
+public class MapActivity extends AppCompatActivity implements MapMVPInterface.ViewOps,lvlPickFragment.ClickListener {
 
     private static MapMVPInterface.PresenterOps mapPresenter = MapPresenter.getInstance();
     private static final String TAG = "MapActivity";
@@ -95,16 +99,16 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
                  * TODO: as well as the background in the MainActivity.
                     */
                 case R.id.b_area1:
-                    showDialog();
+                    showDia(1);
                     mapPresenter.changeArea(0);
                     break;
                 case R.id.b_area2:
 
-                    showDialog();
+                    showDia(2);
                     mapPresenter.changeArea(1);
                     break;
                 case R.id.b_area3:
-                    showDialog();
+                    showDia(3);
                     mapPresenter.changeArea(2);
                     break;
 
@@ -113,17 +117,22 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
         }
     };
 
-    private void showDialog(){
+    public void showDia(int area){
+        //Create a new fragment
+        lvlPickFragment lvlpck=new lvlPickFragment();
+        //Pass the area as a argument
+        Bundle args = new Bundle();
+        args.putInt("area",area);
+        lvlpck.setArguments(args);
 
-        final Dialog lvlDialog = new Dialog(this);
+        //Show the fragment
+        lvlpck.show(getSupportFragmentManager(),"Lvlpick fragment");
 
-        //Set title of dialog
-        lvlDialog.setTitle("Choose a level in current area");
-
-        //Set layout
-
-        lvlDialog.setContentView(R.layout.selectlvl_dialofragment);
-
-        lvlDialog.show();
     }
+
+    @Override
+    public void onclick(int level, int area) {
+        mapPresenter.trChangeAreaLevel(level,area);
+    }
+
 }

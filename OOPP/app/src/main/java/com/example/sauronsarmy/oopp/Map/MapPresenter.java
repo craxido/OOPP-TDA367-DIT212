@@ -69,4 +69,15 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         return map.getCurrentArea();
     }
 
+    @Override
+    public void trChangeAreaLevel(int level, int area) {
+
+    }
+
+    public void changeLvl(int index){
+
+        getCurrentArea().setCurrentLevel(getCurrentArea().getLevels()[index]);
+
+    }
+
 }

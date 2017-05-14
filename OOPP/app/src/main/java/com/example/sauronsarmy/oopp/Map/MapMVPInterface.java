@@ -20,6 +20,7 @@ public interface MapMVPInterface {
         void onError(String errorMsg);
         int damageMonster(int damage);
         Area getCrn();
+        void trChangeAreaLevel(int level, int area);
 
         // methods to be called from Presenter
     }
