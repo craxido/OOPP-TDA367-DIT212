@@ -99,16 +99,16 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
                  * TODO: as well as the background in the MainActivity.
                     */
                 case R.id.b_area1:
-                    showDia(1);
+                    showDia(0);
                     mapPresenter.changeArea(0);
                     break;
                 case R.id.b_area2:
 
-                    showDia(2);
+                    showDia(1);
                     mapPresenter.changeArea(1);
                     break;
                 case R.id.b_area3:
-                    showDia(3);
+                    showDia(2);
                     mapPresenter.changeArea(2);
                     break;
 
@@ -132,6 +132,7 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
 
     @Override
     public void onclick(int level, int area) {
+        Log.i("LvlArea",level + " "+ area);
         mapPresenter.trChangeAreaLevel(level,area);
     }
 
