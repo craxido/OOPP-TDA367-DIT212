@@ -122,6 +122,7 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
 
         //Set layout
 
+        lvlDialog.setContentView(R.layout.selectlvl_dialofragment);
 
         lvlDialog.show();
     }
