@@ -3,10 +3,6 @@ package com.example.sauronsarmy.oopp.Map;
 import android.util.Log;
 
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
-import com.example.sauronsarmy.oopp.Player.PlayerModel;
-import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
-
-import java.lang.ref.WeakReference;
 
 /**
  * @author Jonatan Källman
@@ -15,16 +11,12 @@ import java.lang.ref.WeakReference;
 public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     private static final String TAG = "MainActivity";
-    private static MapPresenter mapPresenterInstance = MapPresenter.getInstance();
-    private static Map map = Map.getInstance();
-    WeakReference<MapMVPInterface.ViewOps> mapView;
-    private PlayerModelInterface playerModel;
+    private static MapPresenter mapPresenterInstance;
+    private static Map map;
 
-    public MapPresenter(MapMVPInterface.ViewOps mapView) {
-        this.mapView = new WeakReference<>(mapView);
+    public MapPresenter() {
         map = Map.getInstance();
-        mapPresenterInstance = this;
-        playerModel = PlayerModel.getInstance();
+        mapPresenterInstance = new MapPresenter();
     }
 
     public static void setBackgroundRef(int ref) {
