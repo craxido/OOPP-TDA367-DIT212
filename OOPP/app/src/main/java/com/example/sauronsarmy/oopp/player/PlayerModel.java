@@ -1,6 +1,6 @@
 package com.example.sauronsarmy.oopp.player;
 
-import java.util.*;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
