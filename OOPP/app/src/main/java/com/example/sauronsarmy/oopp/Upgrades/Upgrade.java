@@ -20,25 +20,19 @@ public class Upgrade {
 
     // Updates current stat upgrade amount with a multiplier
     protected void updateStat(int multiplier){
-        float f = 1.2f;
+        double f = 1.7;
         if(multiplier > 1) {
-            f = stat * 1.2f;
+            f = stat * (f);
         }else if (multiplier > 10){
-            f = stat * 1.3f;
-        }else if (multiplier > 20){
-            f = stat * 1.4f;
-        }else if (multiplier > 40){
-            f = stat * 1.5f;
-        }else if (multiplier > 60){
-            f = stat * 1.6f;
-        }else if (multiplier > 80){
-            f = stat * 1.7f;
-        }else if (multiplier > 90){
-            f = stat * 1.8f;
+            f = stat * (f + 0.1); //1.8
+        }else if (multiplier > 25){
+            f = stat * (f + 0.2); //1.9
+        }else if (multiplier > 50){
+            f = stat * (f + 0.3); //2.0
         }else if (multiplier > 100){
-            f = stat * 1.9f;
+            f = stat * (f + 0.5); //2.2
         }
-        stat = Math.round(f);
+        stat = (int) Math.ceil(f);
     }
 
     // Updates the cost for the upgrade with multiplier
@@ -47,19 +41,19 @@ public class Upgrade {
         if(multiplier > 1) {
             f = cost * 1.5f;
         }else if (multiplier > 10){
-            f = cost * 1.6f;
-        }else if (multiplier > 20){
             f = cost * 1.7f;
-        }else if (multiplier > 40){
-            f = cost * 1.8f;
-        }else if (multiplier > 60){
+        }else if (multiplier > 20){
             f = cost * 1.9f;
-        }else if (multiplier > 80){
-            f = cost * 2.0f;
-        }else if (multiplier > 90){
+        }else if (multiplier > 40){
             f = cost * 2.1f;
+        }else if (multiplier > 60){
+            f = cost * 2.3f;
+        }else if (multiplier > 80){
+            f = cost * 2.5f;
+        }else if (multiplier > 90){
+            f = cost * 2.7f;
         }else if (multiplier > 100){
-            f = cost * 2.2f;
+            f = cost * 2.9f;
         }
         cost = Math.round(f);
     }
