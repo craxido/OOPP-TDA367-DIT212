@@ -2,8 +2,10 @@ package com.example.sauronsarmy.oopp;
 import android.content.Context;
 import android.util.Log;
 
+
 import com.example.sauronsarmy.oopp.Map.Map;
 import com.example.sauronsarmy.oopp.Map.MapMVPInterface;
+
 import com.example.sauronsarmy.oopp.Map.MapPresenter;
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
@@ -27,7 +29,7 @@ import java.lang.ref.WeakReference;
 
     private static MainPresenter ourInstance = new MainPresenter();
     private Runner run = new Runner();
-    private Map map = Map.getInstance();
+    private MapPresenter map = MapPresenter.getInstance();
     private WeakReference<MainMVPInterface.ViewOps> mView;
     private PlayerModelInterface playerModel;
     private ShopMVPInterface.Presenter shopPresenter;
@@ -59,7 +61,7 @@ import java.lang.ref.WeakReference;
     @Override
     public void onConfigChange(MainMVPInterface.ViewOps view) {
         mView = new WeakReference<>(view);
-        map.getCurrentArea().getCurrentLevel().setNewMonster();
+        map.setNewMonster();
     }
 
     @Override
@@ -79,7 +81,7 @@ import java.lang.ref.WeakReference;
     }
 
     public Monster getCurrentMonster() {
-        return map.getCurrentArea().getCurrentLevel().getCurrentMonster();
+        return map.getCurrentMonster();
     }
     /**
      * Asks the PlayerModel for the current state, and sends this
@@ -123,6 +125,7 @@ import java.lang.ref.WeakReference;
         int gold =mapPres.damageMonster(playerModel.getDamagePerSecond());
         if(gold  > 0){
 
+
             playerModel.setMoney(playerModel.getMoney() +gold);
         }
 
@@ -142,9 +145,9 @@ import java.lang.ref.WeakReference;
         return bgref;
     }
     public boolean getLvlCmp(){
-        return mapPres.getCrn().getCurrentLevel().getComplete();
+        return mapPres.getCurrentArea().getCurrentLevel().getComplete();
     }
     public boolean getAreaCmp(){
-        return mapPres.getCrn().getComplete();
+        return mapPres.getCurrentArea().getComplete();
     }
 }

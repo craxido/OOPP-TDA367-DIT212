@@ -1,7 +1,7 @@
 package com.example.sauronsarmy.oopp.Map;
-
+import java.util.Arrays;
 /**
- * Author: Jonatan Källman
+ * @author Jonatan Källman
  */
 
 public class Area {
@@ -11,23 +11,44 @@ public class Area {
     private Level[] levels;
     private Level currentLevel;
     private boolean finished=false;
+    private int areaIndex;
+    private MapPresenter map;
 
-    Area(int imgRef, areaType area, Level[] levels){
+
+    Area(int imgRef, areaType area, Level[] levels, int areaIndex){
         this.imgRef = imgRef;
         this.areaType=area;
         this.levels=levels;
         this.currentLevel=levels[0];
+        this.areaIndex=areaIndex;
     }
 
-    public areaType getAreaType(){
+    boolean equals(Area other){
+        return (this.imgRef==other.imgRef && this.areaType==other.areaType
+                && this.levelsEquals(other.levels) && this.currentLevel.equals(other.currentLevel)
+                && this.areaIndex == other.areaIndex);
+        }
+
+    private boolean levelsEquals(Level[] otherLevels){
+        boolean isEqual=true;
+        for (int i=0; i < this.levels.length; i++){
+            if(!this.levels[i].equals(otherLevels[i])){
+                isEqual=false;
+                break;
+            }
+        }
+        return isEqual;
+    }
+
+    areaType getAreaType(){
         return this.areaType;
     }
 
-    public int getImgRef() {
+    int getImgRef() {
         return imgRef;
     }
 
-    public void setImgRef(int imgRef) {
+    void setImgRef(int imgRef) {
         this.imgRef = imgRef;
     }
 
@@ -39,8 +60,7 @@ public class Area {
         return currentLevel;
     }
 
-    public void setCurrentLevel(Level level){
-
+    void setCurrentLevel(Level level){
         this.currentLevel = level;
     }
 
@@ -60,12 +80,17 @@ public class Area {
         return finished;
     }
 
-    public Level getLevel(int index){
-        if (index <levels.length){
+    public Level getLevel(int index) {
+        if (index < levels.length) {
 
             return levels[index];
         }
 
         return null;
+    }
+
+    int getAreaIndex(Area area){
+        return area.areaIndex;
+
     }
 }

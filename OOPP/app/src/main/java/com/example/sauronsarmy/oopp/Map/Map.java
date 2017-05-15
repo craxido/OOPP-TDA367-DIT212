@@ -1,22 +1,22 @@
 package com.example.sauronsarmy.oopp.Map;
 
+import com.example.sauronsarmy.oopp.MonsterPack.monsterFactory;
 import com.example.sauronsarmy.oopp.R;
 
 /**
- * Author: Jonatan Källman
+ * @author Jonatan Källman
  */
 
 public class Map implements MapMVPInterface.ModelOps {
-
 
     private static Area[] areas;
     private Area currentArea;
     private static final Map mapInstance = new Map();
     private static levelFactory lvlfac;
+    private monsterFactory monfac;
     private int bgRef;
 
-
-    public static Map getInstance() {
+    static Map getInstance() {
         return mapInstance;
     }
 
@@ -27,8 +27,7 @@ public class Map implements MapMVPInterface.ModelOps {
 	    currentArea = areas[0];
         currentArea.getCurrentLevel().available = true;
         bgRef = currentArea.getImgRef();
-
-
+        monfac = new monsterFactory();
     }
 
     //Creates areas for the mapInstance
@@ -36,11 +35,11 @@ public class Map implements MapMVPInterface.ModelOps {
         Area[] areas= new Area[3];
         lvlfac = new levelFactory();
         //Area 1 (Mountain)
-        areas[0] = new Area(R.drawable.mountainarea, areaType.MOUNTAIN, lvlfac.getLevels(areaType.MOUNTAIN));
+        areas[0] = new Area(R.drawable.mountainarea, areaType.MOUNTAIN, lvlfac.getLevels(areaType.MOUNTAIN), 0);
         //Area 2 (Forest)
-        areas[1] = new Area(R.drawable.forestarea, areaType.FOREST, lvlfac.getLevels(areaType.FOREST));
+        areas[1] = new Area(R.drawable.forestarea, areaType.FOREST, lvlfac.getLevels(areaType.FOREST), 1);
         //Area 3 (Volcano)
-        areas[2] = new Area(R.drawable.volcanoarea, areaType.VOLCANO, lvlfac.getLevels(areaType.VOLCANO));
+        areas[2] = new Area(R.drawable.volcanoarea, areaType.VOLCANO, lvlfac.getLevels(areaType.VOLCANO), 2);
 
         return areas;
     }
@@ -68,16 +67,92 @@ public class Map implements MapMVPInterface.ModelOps {
     @Override
     public void onDestroy() {}
 
-    public Area getCurrentArea(){
+    Area getCurrentArea(){
         return currentArea;
     }
 
-    public void setCurrentArea(Area area){
+    void setCurrentArea(Area area){
         currentArea=area;
     }
 
-    public Area[] getAreas(){
+    Area[] getAreas(){
         return areas;
+    }
+
+    Level createLevel(areaType areaType){
+        switch (areaType){
+            case MOUNTAIN:
+                return new Level(monfac.getMonster(100, 100, areaType), 1, 1, areaType);
+            case FOREST:
+                return new Level(monfac.getMonster(200, 200, areaType), 2, 2, areaType);
+            case VOLCANO:
+                return new Level(monfac.getMonster(300, 300, areaType), 3, 3, areaType);
+            default:
+                return null; //Can this be handled better?
+        }
+    }
+
+    //Gets the GoldMultiplier for the given Level in the given Area.
+    int getLevelGoldMultiplier(int areaIndex, int levelIndex){
+        Level level= areas[areaIndex].getLevels()[levelIndex];
+        return level.getGoldMultiplier();
+    }
+
+    //Gets the HealthMultiplier for the given Level in the given Area.
+    int getLevelHealthMultiplier(int areaIndex, int levelIndex){
+        Level[] levels= areas[areaIndex].getLevels();
+        return levels[levelIndex].getHealthMultiplier();
+    }
+
+    int getLevelAmount(int areaIndex){
+        return areas[areaIndex].getLevels().length;
+    }
+
+    int getAreaAmount(){
+        return areas.length;
+    }
+
+    Area createArea(int areaIndex){
+        switch (areaIndex){
+            case 0:
+                return new Area(R.drawable.mountainarea, areaType.MOUNTAIN, lvlfac.getLevels(areaType.MOUNTAIN), 0);
+            case 1:
+                return new Area(R.drawable.forestarea, areaType.FOREST, lvlfac.getLevels(areaType.FOREST), 1);
+            case 2:
+                return new Area(R.drawable.volcanoarea, areaType.VOLCANO, lvlfac.getLevels(areaType.VOLCANO), 2);
+            default: //Not a valid (or yet listed) area.
+                 return null;
+        }
+    }
+
+    areaType getAreaType(int areaIndex) {
+        switch (areaIndex) {
+            case 0:
+                return areaType.MOUNTAIN;
+            case 1:
+                return areaType.FOREST;
+            case 2:
+                return areaType.VOLCANO;
+            default: //Not a valid (or yet listed) area.
+                return null;
+        }
+    }
+
+    int getAreaBgRef(int areaIndex){
+        switch (areaIndex) {
+            case 0:
+                return R.drawable.mountainarea;
+            case 1:
+                return R.drawable.forestarea;
+            case 2:
+                return R.drawable.volcanoarea;
+            default: //Not a valid (or yet listed) area.
+                return -1;
+        }
+    }
+
+    Level getCurrentLevel(){
+        return getCurrentArea().getCurrentLevel();
     }
 
 

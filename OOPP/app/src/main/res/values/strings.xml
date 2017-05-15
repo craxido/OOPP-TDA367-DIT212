@@ -18,10 +18,13 @@
     <string name="newDPS">New DPS:</string>
 
     <string name="oilUpgradeText">Money / Sec Upgrade</string>
-    <string name="currentMoneyPerSec">Current money/sec:</string>
-    <string name="newMoneyPerSec">New money/sec:</string>
-    <string name="new_game">This will override any previous saves, continue?</string>
-    <string name="ok">Ok</string>
+
+    <string name="currentMoneyPerSec">Current MPS:</string>
+    <string name="newMoneyPerSec">New MPS:</string>
+
+    <string name="new_game" >This will override any previous saves, continue?</string>
+    <string name="ok" >Ok</string>
+
     <string name="cancel">Cancel</string>
 
     <!-- TODO: Remove or change this placeholder text -->

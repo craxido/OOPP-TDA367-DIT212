@@ -11,6 +11,7 @@
     <include
         android:id="@+id/include2"
         layout="@layout/bottom_bar" />
+
     <include layout="@layout/top_bar" />
 
     <!--
@@ -137,14 +138,13 @@
             android:id="@+id/newDmg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/dmgUpgradeText"
-            android:layout_alignStart="@+id/dmgUpgradeText"
-            android:layout_below="@+id/dmgUpgradeText"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="30dp"
             android:text="0"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_alignBaseline="@+id/newDmgText"
+            android:layout_alignBottom="@+id/newDmgText"
+            android:layout_alignRight="@+id/currentDmgText"
+            android:layout_alignEnd="@+id/currentDmgText" />
 
 
         <TextView
@@ -205,17 +205,15 @@
             android:id="@+id/dpsCostText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/newDPS"
-            android:layout_marginEnd="6dp"
-            android:layout_marginRight="6dp"
-            android:layout_marginTop="10dp"
-            android:layout_toLeftOf="@+id/dpsUpgradeCost"
-            android:layout_toStartOf="@+id/dpsUpgradeCost"
             android:text="@string/cost"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_alignTop="@+id/newDPS"
+            android:layout_toLeftOf="@+id/dpsUpgradeCounter"
+            android:layout_toStartOf="@+id/dpsUpgradeCounter"
+            android:layout_marginTop="10dp" />
 
         <TextView
             android:id="@+id/dpsUpgradeText"
@@ -275,13 +273,13 @@
             android:id="@+id/newDPS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/newDPSText"
-            android:layout_alignBottom="@+id/newDPSText"
-            android:layout_toEndOf="@+id/currentDPSText"
-            android:layout_toRightOf="@+id/currentDPSText"
             android:text="0"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_alignBaseline="@+id/newDPSText"
+            android:layout_alignBottom="@+id/newDPSText"
+            android:layout_toLeftOf="@+id/currentDPS"
+            android:layout_toStartOf="@+id/currentDPS" />
 
 
         <TextView
