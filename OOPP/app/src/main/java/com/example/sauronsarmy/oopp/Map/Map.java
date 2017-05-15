@@ -90,18 +90,10 @@ class Map implements MapMVPInterface.ModelOps {
         }
     }
 
-    int getGoldMultiplier(){ //TODO if needed
-        return 1;
-    }
-
-    int getHealthMultiplier(){ //TODO if needed
-        return 1;
-    }
-
     //Gets the GoldMultiplier for the given Level in the given Area.
     int getLevelGoldMultiplier(int areaIndex, int levelIndex){
-        Level[] levels= areas[areaIndex].getLevels();
-        return levels[levelIndex].getGoldMultiplier();
+        Level level= areas[areaIndex].getLevels()[levelIndex];
+        return level.getGoldMultiplier();
     }
 
     //Gets the HealthMultiplier for the given Level in the given Area.

@@ -22,6 +22,11 @@ class Level {
         this.areaType = area;
     }
 
+    public boolean equals(Level other){
+        return this.monster.equals(other.monster) && this.healthMultiplier == other.healthMultiplier
+                && this.goldMultiplier == other.goldMultiplier && this.areaType == other.areaType;
+    }
+
     areaType getArea(){
         return this.areaType;
     }

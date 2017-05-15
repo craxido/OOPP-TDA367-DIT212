@@ -94,4 +94,12 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         return map.getAreaBgRef(areaIndex);
     }
 
+    public boolean compareLevels(Level a, Level b){
+        return a.equals(b);
+    }
+
+    public boolean compareAreas(Area a, Area b){
+        return a.equals(b);
+    }
+
 }

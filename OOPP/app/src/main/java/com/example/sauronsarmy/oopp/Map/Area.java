@@ -1,5 +1,5 @@
 package com.example.sauronsarmy.oopp.Map;
-
+import java.util.Arrays;
 /**
  * @author Jonatan Källman
  */
@@ -19,6 +19,23 @@ class Area {
         this.levels=levels;
         this.currentLevel=levels[0];
         this.areaIndex=areaIndex;
+    }
+
+    boolean equals(Area other){
+        return (this.imgRef==other.imgRef && this.areaType==other.areaType
+                && this.levelsEquals(other.levels) && this.currentLevel.equals(other.currentLevel)
+                && this.areaIndex == other.areaIndex);
+        }
+
+    private boolean levelsEquals(Level[] otherLevels){
+        boolean isEqual=true;
+        for (int i=0; i < this.levels.length; i++){
+            if(!this.levels[i].equals(otherLevels[i])){
+                isEqual=false;
+                break;
+            }
+        }
+        return isEqual;
     }
 
     areaType getAreaType(){

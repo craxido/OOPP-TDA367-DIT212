@@ -28,7 +28,7 @@ public class MapTest {
 
     @Test
     public void testGetCurrentArea() throws Exception {
-        assertEquals(map.getCurrentArea(), map.createArea(0));
+        map.compareAreas(map.getCurrentArea(), map.createArea(0));
     }
 
     @Test
@@ -75,18 +75,19 @@ public class MapTest {
     public void testCurrentLevel() throws Exception { //Will have to be updated as more levels are added.
         for (int i = 0; i < map.getAreaAmount(); i++) {
             switch (map.getAreaType(i)) {
-                case FOREST:
-                    assertEquals(map.getCurrentLevel(), map.createLevel(areaType.FOREST));
-                    break;
                 case MOUNTAIN:
-                    assertEquals(map.getCurrentLevel(), map.createLevel(areaType.MOUNTAIN));
+                    assertTrue(map.compareLevels(map.getCurrentLevel(), map.createLevel(areaType.MOUNTAIN)));
+                    break;
+                case FOREST:
+                    assertTrue(map.compareLevels(map.getCurrentLevel(), map.createLevel(areaType.FOREST)));
                     break;
                 case VOLCANO:
-                    assertEquals(map.getCurrentLevel(), map.createLevel(areaType.VOLCANO));
+                    assertTrue(map.compareLevels(map.getCurrentLevel(), map.createLevel(areaType.VOLCANO)));
                     break;
                 default: //Not a valid area
                     throw new AssertionError();
             }
+            break;
         }
     }
 
@@ -95,20 +96,21 @@ public class MapTest {
         for (int i = 0; i < map.getAreaAmount(); i++) { //For every area
             switch (map.getAreaType(i)) { //Check the area type
                 //NOTICE: "j" is the index of the level, "i" is the index of the area.
-                case FOREST:
-                    for (int j = 0; i < map.getLevelAmount(i); j++) { //For every level in that area
+
+                case MOUNTAIN:
+                    for (int j = 0; j < map.getLevelAmount(i); j++){ //For every level in that area
                         assertEquals(map.getLevelGoldMultiplier(i,j),1);
                     }
                     break;
 
-                case MOUNTAIN:
-                    for (int j = 0; i < map.getLevelAmount(i); j++){ //For every level in that area
+                case FOREST:
+                    for (int j = 0; j < map.getLevelAmount(i); j++) { //For every level in that area
                         assertEquals(map.getLevelGoldMultiplier(i,j),2);
                     }
                     break;
 
                 case VOLCANO:
-                    for (int j = 0; i < map.getLevelAmount(i); j++){ //For every level in that area
+                    for (int j = 0; j < map.getLevelAmount(i); j++){ //For every level in that area
                         assertEquals(map.getLevelGoldMultiplier(i,j),3);
                     }
                     break;
@@ -124,20 +126,21 @@ public class MapTest {
         for (int i = 0; i < map.getAreaAmount(); i++) { //For every area
             switch (map.getAreaType(i)) { //Check the area type
                 //NOTICE: "j" is the index of the level, "i" is the index of the area.
-                case FOREST:
-                    for (int j = 0; i < map.getLevelAmount(i); j++) { //For every level in that area
+
+                case MOUNTAIN:
+                    for (int j = 0; j < map.getLevelAmount(i); j++){ //For every level in that area
                         assertEquals(map.getLevelHealthMultiplier(i,j), 1);
                     }
                     break;
 
-                case MOUNTAIN:
-                    for (int j = 0; i < map.getLevelAmount(i); j++){ //For every level in that area
+                case FOREST:
+                    for (int j = 0; j < map.getLevelAmount(i); j++) { //For every level in that area
                         assertEquals(map.getLevelHealthMultiplier(i,j), 2);
                     }
                     break;
 
                 case VOLCANO:
-                    for (int j = 0; i < map.getLevelAmount(i); j++){ //For every level in that area
+                    for (int j = 0; j < map.getLevelAmount(i); j++){ //For every level in that area
                         assertEquals(map.getLevelHealthMultiplier(i,j), 3);
                     }
                     break;
