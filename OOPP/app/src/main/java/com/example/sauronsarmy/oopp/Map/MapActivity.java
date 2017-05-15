@@ -9,14 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.sauronsarmy.oopp.MainPresenter;
 import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
+import com.example.sauronsarmy.oopp.lvlPickFragment;
 
-public class MapActivity extends AppCompatActivity implements MapMVPInterface.ViewOps {
+public class MapActivity extends AppCompatActivity implements MapMVPInterface.ViewOps,lvlPickFragment.ClickListener {
 
     private static MapMVPInterface.PresenterOps mapPresenter = MapPresenter.getInstance();
     private static final String TAG = "MapActivity";
@@ -92,18 +92,42 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
                 /* TODO: Selecting a new area should result in changing the monsters/ levels
                  * TODO: as well as the background in the MainActivity.
                     */
-                case R.id.b_area1: 
-                    MapPresenter.setBackgroundRef(mapPresenter.getArea(0).getImgRef());
+                case R.id.b_area1:
+
+                    showDia(0);
                     break;
                 case R.id.b_area2:
-                    MapPresenter.setBackgroundRef(mapPresenter.getArea(1).getImgRef());
+
+                    showDia(1);
                     break;
                 case R.id.b_area3:
-                    MapPresenter.setBackgroundRef(mapPresenter.getArea(2).getImgRef());
+
+                    showDia(2);
                     break;
 
             }
 
         }
     };
+
+    public void showDia(int area){
+        //Create a new fragment
+        lvlPickFragment lvlpck=new lvlPickFragment();
+        //Pass the area as a argument
+        Bundle args = new Bundle();
+        args.putInt("area",area);
+        lvlpck.setArguments(args);
+
+        //Show the fragment
+        lvlpck.show(getSupportFragmentManager(),"Lvlpick fragment");
+
+    }
+
+    @Override
+    public void onclick(int level, int area) {
+        //Log the selected level and area
+        Log.i("LvlArea",level + " "+ area);
+        mapPresenter.tryChangeAreaLevel(level,area);
+    }
+
 }

@@ -4,14 +4,16 @@ import java.util.Arrays;
  * @author Jonatan Källman
  */
 
-class Area {
+public class Area {
 
     private int imgRef;
     private areaType areaType;
     private Level[] levels;
     private Level currentLevel;
+    private boolean finished=false;
     private int areaIndex;
     private MapPresenter map;
+
 
     Area(int imgRef, areaType area, Level[] levels, int areaIndex){
         this.imgRef = imgRef;
@@ -50,11 +52,11 @@ class Area {
         this.imgRef = imgRef;
     }
 
-    Level[] getLevels() {
+    public Level[] getLevels() {
         return levels;
     }
 
-    Level getCurrentLevel() {
+    public Level getCurrentLevel() {
         return currentLevel;
     }
 
@@ -62,7 +64,33 @@ class Area {
         this.currentLevel = level;
     }
 
+    void checkComplete(){
+        boolean test = true;
+        //Check if all levels in an area is complete
+        for (Level lvl :levels){
+            if(lvl !=null) {
+                test &= lvl.getComplete();
+            }
+        }
+        finished=test;
+
+    }
+
+    public boolean getComplete(){
+        return finished;
+    }
+
+    public Level getLevel(int index) {
+        if (index < levels.length) {
+
+            return levels[index];
+        }
+
+        return null;
+    }
+
     int getAreaIndex(Area area){
         return area.areaIndex;
+
     }
 }
