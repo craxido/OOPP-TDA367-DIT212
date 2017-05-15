@@ -29,7 +29,7 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     }
 
     public int getBackgroundRef() {
-        return map.getBackgroundRef();
+        return map.getCurrentArea().getImgRef();
 
     }
 
@@ -85,7 +85,7 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
                 if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
                     changeLvl(level);
                 }
-                return;
+
             }
         }
         else {
@@ -103,11 +103,8 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
                     return;
                 }
             }
-            return;
+
         }
-
-
-
 
 
     }
