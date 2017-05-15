@@ -11,6 +11,9 @@
     <include
         android:id="@+id/include2"
         layout="@layout/bottom_bar" />
+
+    <include layout="@layout/top_bar" />
+
     <!--
         <TextView
             android:id="@+id/textView"

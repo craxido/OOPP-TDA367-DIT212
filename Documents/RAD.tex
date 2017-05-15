@@ -18,14 +18,15 @@
 \maketitle
 
 \section{Introduction}
-We have indentified a huge gap in the world of clicker games, namely 
-Lord of the Rings based clicker games. Our project aims to fill that gap. \\
-This game will simulate the adventure of Frodo and friends on their quest to
-destroy the one ring, and will benifit anyone who likes both LOTR and clickers.\\
-This game might be useful on the bus, to pass the time when moving between locataions, or when sitting on the toilet. 
+Our project is a game about defeating monsters. You do this by clicking \\
+on the monsters with your finger. When defeated the monsters drop gold \\
+which can be used to buy upgrades. There are three upgrades that can be \\
+bought, upgrades to your damage, upgrades which provide damage every second \\
+or upgrades which provide gold every second. When the player has defeated enough \\
+monsters the player can progress to a new area and defeat monsters in a different \\
+scenery. 
 
 \subsection{Definitions, acronyms, abbriviations}
-LOTR: Lord of the Rings.
 
 \section{Requirements}
 \subsection{User interface}
@@ -79,8 +80,7 @@ Participators: Player\\
 \begin{tabular}{|c|l|l|} \hline
   & Actor & System \\ \hline
 1 & Player clicks screen & \\ \hline
-2 & & Attack animation plays \\ \hline
-3 & & Calculate new health for monster\\ \hline
+2 & & Calculate new health for monster\\ \hline
 \end{tabular}\\
 \newpage
 \noindent
@@ -89,11 +89,9 @@ Participators: Player\\
 \begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
     1 & Player clicks screen & \\ \hline
-    2 & & Attack animation plays \\ \hline
-    3 & & Calculate new health for monster\\ \hline
-    4 & & Death animation plays \\ \hline 
-    5 & & Replace dead monster with new monster \\ \hline
-    6 & Player gets money & \\ \hline
+    2 & & Calculate new health for monster\\ \hline
+    3 & & Replace dead monster with new monster \\ \hline
+    4 & Player gets money & \\ \hline
 \end{tabular}
 \vspace{5 mm}\\
 \textbf{Alternate flow:} The player attacks the monster and the monster dies. The level is cleared.
@@ -101,12 +99,10 @@ Participators: Player\\
 \begin{tabular}{| c | l | l |} \hline
     & Actor & System \\ \hline
     1 & Player clicks screen & \\ \hline
-    2 & & Attack animation plays \\ \hline
-    3 & & Calculate new health for monster\\ \hline
-    4 & & Death animation plays \\ \hline 
-    5 & & Replace dead monster with new monster \\ \hline
-    6 & & The option to change level is made avliable\\ \hline
-    7 & The player gets money & \\ \hline
+    2 & & Calculate new health for monster\\ \hline
+    3 & & Replace dead monster with new monster \\ \hline
+    4 & & The option to change level is made avliable\\ \hline
+    5 & The player gets money & \\ \hline
 \end{tabular}
 \\
 \subsubsection{Use case: Attack boss}
@@ -120,12 +116,10 @@ Participators: Player \\
 \begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
     1 & Player clicks screen & \\ \hline
-    2 & & Attack animation plays \\ \hline
-    3 & & Calculate new health for boss \\ \hline
-    4 & & Death animation plays \\ \hline
-    5 & & Unlock next level \\ \hline
-    6 & & Reset boss \\ \hline
-    7 & Player gets money & \\ \hline
+    2 & & Calculate new health for boss \\ \hline
+    3 & & Unlock next level \\ \hline
+    4 & & Reset boss \\ \hline
+    5 & Player gets money & \\ \hline
 \end{tabular}
 \newpage
 \noindent
@@ -134,8 +128,7 @@ Participators: Player \\
 \begin{tabular}{|c|l|l|} \hline
     & Actor & System \\ \hline
     1 & Player clicks screen & \\ \hline
-    2 & & Attack animation plays \\ \hline
-    3 & & Calculate new health for boss \\ \hline
+    2 & & Calculate new health for boss \\ \hline
 \end{tabular}
 \vspace{5 mm}\\
 \textbf{Alternate event:} The player does not defeat the boss within the time frame 
@@ -145,27 +138,14 @@ Participators: Player \\
     1 & & Reset boss \\ \hline
 \end{tabular}
 
-\subsubsection{Use case: Run away}
-Summary: The player wants to run away from the fight.\\
-Priority: Medium \\
-Extends: Attack boss\\
-Includes:\\
-Participators: Player\\
-\textbf{Normal flow of the event:} The player clicks the "run away" button.
-\vspace{1 mm}\\
-\begin{tabular}{|c|l|l|} \hline
-    & Actor & System \\ \hline
-    1 & The player clicks the button & \\ \hline
-    2 & & Sends the player to Home \\ \hline
-\end{tabular}
 \vspace{5 mm}\\ 
 \subsubsection{Use case: Open map}
-Summary: The player clicks the button labeled "map"
+Summary: The player clicks the map button
 Priority: Medium \\
 Extends: undefined\\
 Includes: undefined\\
 Participators: Player \\
-\textbf{Normal flow of event:} The player clicks the button labeled "map"\\
+\textbf{Normal flow of event:} The player clicks the map button\\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
     1 & Player clicks on the button & \\ \hline
@@ -194,68 +174,50 @@ Participators: Player \\
 \end{tabular} 
 
 \subsubsection{Use case: Show stats}
-Summary: The use clicks the button labeled "Stats"\\
+Summary: The use clicks the stats button\\
 Priority: low\\
 Extends: undefined\\
 Includes: undefined\\
 Participators: Player\\
-\textbf{Normal flow of event:} The player clicks the button labled "Stats"
+\textbf{Normal flow of event:} The player clicks the stats button
 \vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
     1 & Player clicks on the button & \\ \hline
     2 & & Displays stats page \\ \hline
 \end{tabular} 
-
+\vspace{5 mm}
 \subsubsection{Use case: Go home}
 Summary: The user wants to go home\\
 Priority: Low \\
 Extends: undefined\\
 Includes: undefined\\
 Participators: Player \\
-\textbf{Normal flow of event:} The player clicks the button labeled "Home"
+\textbf{Normal flow of event:} The player clicks the home button
 \vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
     1 & Player clicks on the button & \\ \hline
     2 & & Displays the player home screen \\ \hline
 \end{tabular} 
-
+\vspace{5 mm}
 \subsubsection{Use case: Home improvements}
 Summary: The user wants to improve their home\\
 Priority: low \\
 Extends: undefined\\
 Includes: undefined\\
 Participators: Player\\
-\textbf{Normal flow of event:} The player wants to buy an animal, has enough money and enough space.
+\textbf{Normal flow of event:} The player wants to buy an upgrade, has enough money.
 \vspace{1 mm}\\
 \begin{tabular}{|c|l|l|} \hline
       & Actor & System \\ \hline
-    1 & Player clicks on a buy animal button & \\ \hline
+    1 & Player clicks on a buy upgrade button & \\ \hline
     2 & & Deduct money from player \\ \hline
-    3 & & Add animal to home \\ \hline
+    3 & & Apply upgrade to player \\ \hline
 \end{tabular}  
-\vspace{5 mm}\\
-\textbf{Alternate flow:} The player wants to buy more space, has enough money.
-\vspace{1 mm}\\
-\begin{tabular}{|c|l|l|} \hline
-    & Actor & System \\ \hline
-    1 & Player clicks on button \\ \hline
-    2 & & Deduct money from player \\ \hline
-    3 & & Add more space to player \\ \hline
-\end{tabular}
-\vspace{5 mm}\\
-\textbf{Alternate flow:} The player wants to sell an animal, has animals.
-\vspace{1 mm}\\
-\begin{tabular}{|c|l|l|} \hline
-    & Actor & System \\ \hline
-    1 & Player clicks button & \\ \hline
-    2 & & Remove one animal from player \\ \hline
-    3 & & Add money to player \\ \hline
-\end{tabular}
 \vspace{5 mm}
 \subsubsection{Use case: Buy upgrade}
-Summary: The user is home and wants to buy an upgrade.\\
+Summary: The user is at the shop and wants to buy an upgrade.\\
 Priority: Medium\\
 Extends: undefined\\
 Includes: undefined\\
@@ -275,17 +237,17 @@ Participators: Player\\
 \subsubsection{Game screen}
 Combines all other classes into one unified interface.
 \subsubsection{Player}
-The actual player. Has money, animals, space, and an amount of damage.
+The actual player. Has money, an amount of damage, an amount of damage per second and an amount of money per second.
 \subsubsection{Monster}
 A bad guy. Has health points, and an amount of money to drop.
 \subsubsection{Stats}
 A view for the players stats.
 \subsubsection{Map}
-A view for a map over the levels that a player can travel to.
+A view for a map over the areas that a player can travel to.
 \subsubsection{Upgrades}
 A view over the upgrades that a player can buy.
 \subsubsection{Home}
-The players home. Here the player can buy animals which earn passive money. 
+The players home. Here the player can upgrades which earn passive money. 
 \subsubsection{Area}
 An area, has a name, and a list of levels associated with that area.
 \subsubsection{Level}

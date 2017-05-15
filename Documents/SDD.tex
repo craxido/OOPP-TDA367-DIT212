@@ -22,23 +22,23 @@
 
 \subsection{Design Goals}
 
-Gem Clicker is a mobile game for Android. So the program must therfore run on Android,
+Monster Clicker is a mobile game for Android. So the program must therfore run on Android,
 it must be able to get input from the user, and display the result of these inputs. 
 
 \subsection{Definitions, acronyms, abbriviations}
 \begin{itemize}
-    \item \emph{Gem Clicker} - The name of the project.
+    \item \emph{Monster Clicker} - The name of the project.
 \end{itemize}
 
 \section{System architecture}
 
-Gem Clicker starts when the user opens the application. From there the user has
+Monster Clicker starts when the user opens the application. From there the user has
 the option of visiting several different activities. Each activity presents and
 represents different use cases such as, buying upgrades, viewing the map, attacking monsters, etc. \\ \noindent
-Gem Clicker ends when the user either exits the app or closes it using the android application manager.
+Monster Clicker ends when the user either exits the app or closes it using the android application manager.
 
 \subsection{Programming patterns}
-Gem Clicker, just like any other piece of software relies on different design/architecture patterns, such as:
+Monster Clicker, just like any other piece of software relies on different design/architecture patterns, such as:
 \begin{itemize}
     \item Game Loop \cite{game-loop}
     \item Model View Presenter \cite{MVP}
@@ -47,7 +47,7 @@ Gem Clicker, just like any other piece of software relies on different design/ar
 \end{itemize}
 
 \subsection{Dependencies}
-Gem Clicker is a self contained piece of software, whch means that it does not
+Monster Clicker is a self contained piece of software, whch means that it does not
 depend on anything but itself. The application contains all the information 
 required to be able to run. \\
 
@@ -55,6 +55,11 @@ required to be able to run. \\
 The application is subdivided into several packages:
 \begin{itemize}
     \item \emph{Player:} this package contains a player model, and an interface for this model. The model contains the state of the player, damage, gold, etc. And methods to access and/or change the state.
+    \item \emph{Monster Pack}
+    \item \emph{Map}
+    \item \emph{Stats}
+    \item \emph{Upgrades}
+    \item \emph{Clock}
 \end{itemize}
 
 \noindent
@@ -64,7 +69,7 @@ run on android phones running 4.0 or later versions of the operating system.
 \section{Subsystem decomposition}
 
 \subsection{Player}
-    This package contains a player model, and an interface for this model. The model contains the state of the player, damage, gold, etc. And methods to access and/or change the state. The interface provides a layer between the model and anyone who wishes to access it, only exposing non-internal methods.
+This package contains a player model, and an interface for this model. The model contains the state of the player, damage, gold, etc. And methods to access and/or change the state. The interface provides a layer between the model and anyone who wishes to access it, only exposing non-internal methods.
 \newpage
 \subsubsection{Diagrams}
 \begin{center}
@@ -75,6 +80,17 @@ run on android phones running 4.0 or later versions of the operating system.
 \subsubsection{Quality}
 The tests for \emph{PlayerModel} can be found in \emph{/OOPP/app/src/test/\ldots/oopp/PlayerModelTest.java}
 
+\subsection{Monster Pack}
+This package contains a monster model, and a monster factory. The model contains the state of the monster, gold, health, etc. A constructor to set the state and methods
+to modify the state. The factory handles the creation of monsters in a simplified way.
+
+\subsection{Map}
+
+\subsection{Stats}
+
+\subsection{Upgrades}
+
+\subsection{Clock}
 
 \section{Persistent data management}
 Gem Clicker saves the state of the app when the app is closed. 
