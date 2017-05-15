@@ -62,23 +62,25 @@
             android:textStyle="bold"
             android:layout_alignTop="@+id/dmgUpgradeText"
             android:layout_alignRight="@+id/dmgUpgradeCost"
-            android:layout_alignEnd="@+id/dmgUpgradeCost" />
+            android:layout_alignEnd="@+id/dmgUpgradeCost"
+            android:layout_toRightOf="@+id/dmgUpgradeText"
+            android:layout_toEndOf="@+id/dmgUpgradeText" />
 
         <TextView
             android:id="@+id/upgradeCostText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/newDmg"
-            android:layout_marginEnd="6dp"
-            android:layout_marginRight="6dp"
             android:layout_marginTop="10dp"
-            android:layout_toLeftOf="@+id/dmgUpgradeCost"
-            android:layout_toStartOf="@+id/dmgUpgradeCost"
             android:text="@string/cost"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_alignTop="@+id/newDmg"
+            android:layout_toLeftOf="@+id/dmgUpgradeCost"
+            android:layout_toStartOf="@+id/dmgUpgradeCost"
+            android:layout_marginRight="11dp"
+            android:layout_marginEnd="11dp" />
 
         <TextView
             android:id="@+id/dmgUpgradeText"
@@ -141,28 +143,29 @@
             android:text="0"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            android:layout_alignBaseline="@+id/newDmgText"
-            android:layout_alignBottom="@+id/newDmgText"
-            android:layout_alignRight="@+id/currentDmgText"
-            android:layout_alignEnd="@+id/currentDmgText" />
+            android:layout_below="@+id/currentDmg"
+            android:layout_alignRight="@+id/currentDmg"
+            android:layout_alignEnd="@+id/currentDmg"
+            android:layout_alignLeft="@+id/currentDmg"
+            android:layout_alignStart="@+id/currentDmg" />
 
 
         <TextView
             android:id="@+id/dmgUpgradeCost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/upgradeCostText"
-            android:layout_alignBottom="@+id/upgradeCostText"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="22dp"
-            android:layout_marginRight="22dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginRight="25dp"
             android:gravity="end"
             android:text="0"
             android:textAlignment="textEnd"
             android:textColor="@android:color/white"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/upgradeCostText"
+            android:layout_alignBottom="@+id/upgradeCostText" />
 
 
     </RelativeLayout>
@@ -199,7 +202,9 @@
             android:textStyle="bold"
             android:layout_alignTop="@+id/dpsUpgradeText"
             android:layout_alignRight="@+id/dpsUpgradeCost"
-            android:layout_alignEnd="@+id/dpsUpgradeCost" />
+            android:layout_alignEnd="@+id/dpsUpgradeCost"
+            android:layout_toRightOf="@+id/dpsUpgradeText"
+            android:layout_toEndOf="@+id/dpsUpgradeText" />
 
         <TextView
             android:id="@+id/dpsCostText"
@@ -210,10 +215,12 @@
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_alignTop="@+id/newDPS"
-            android:layout_toLeftOf="@+id/dpsUpgradeCounter"
-            android:layout_toStartOf="@+id/dpsUpgradeCounter"
-            android:layout_marginTop="10dp" />
+            android:layout_alignBaseline="@+id/newDPS"
+            android:layout_alignBottom="@+id/newDPS"
+            android:layout_toLeftOf="@+id/dpsUpgradeCost"
+            android:layout_toStartOf="@+id/dpsUpgradeCost"
+            android:layout_marginRight="11dp"
+            android:layout_marginEnd="11dp" />
 
         <TextView
             android:id="@+id/dpsUpgradeText"
@@ -278,8 +285,8 @@
             android:textSize="18sp"
             android:layout_alignBaseline="@+id/newDPSText"
             android:layout_alignBottom="@+id/newDPSText"
-            android:layout_toLeftOf="@+id/currentDPS"
-            android:layout_toStartOf="@+id/currentDPS" />
+            android:layout_alignLeft="@+id/currentDPS"
+            android:layout_alignStart="@+id/currentDPS" />
 
 
         <TextView
