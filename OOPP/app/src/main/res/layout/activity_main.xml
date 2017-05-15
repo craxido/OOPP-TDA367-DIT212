@@ -9,6 +9,7 @@
     android:id="@+id/b_mainActivity">
 
     <include layout="@layout/bottom_bar" />
+    <include layout="@layout/top_bar" />
 
     <ImageButton
         android:id="@+id/b_monster"
