@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.example.sauronsarmy.oopp.Map.MapActivity;
 import com.example.sauronsarmy.oopp.Map.MapPresenter;
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
+import com.example.sauronsarmy.oopp.Player.PlayerModel;
+import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
 import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
@@ -26,13 +28,14 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     private Monster currentMonster;
     private MainMVPInterface.PresenterOps mainPresenter = MainPresenter.getInstance();
     private static final String TAG = "MainActivity";
+    private PlayerModelInterface player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate() called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        player = PlayerModel.getInstance();
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
         appropriate activity.
@@ -144,6 +147,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         goal.setText("Goal: " + path +"/" +goali);
 
         monsterButton.setImageResource(currentMonster.getImageRef());
+        TextView moneyIndicator = (TextView) findViewById(R.id.moneyIndicator);
+        moneyIndicator.setText(String.valueOf(player.getMoney()));
 
     }
 }

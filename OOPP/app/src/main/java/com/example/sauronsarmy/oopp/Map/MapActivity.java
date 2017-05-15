@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
@@ -18,7 +19,8 @@ import com.example.sauronsarmy.oopp.lvlPickFragment;
 
 public class MapActivity extends AppCompatActivity implements MapMVPInterface.ViewOps,lvlPickFragment.ClickListener {
 
-    private static MapMVPInterface.PresenterOps mapPresenter = MapPresenter.getInstance();
+
+    private MapMVPInterface.PresenterOps mapPresenter;
     private static final String TAG = "MapActivity";
 
     @Override
@@ -53,7 +55,10 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
         mapButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
         /* Get the map (there is only one map). */
-        Map map = Map.getInstance();
+        mapPresenter = new MapPresenter();
+        MainPresenter.getInstance().getRun().register(this);
+        TextView moneyIndi = (TextView) findViewById(R.id.moneyIndicator);
+        moneyIndi.setText(String.valueOf(mapPresenter.getPlayerMoney()));
 
     }
 
@@ -67,6 +72,12 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
     protected void onStop() {
         Log.i(TAG, "onStop() called");
         super.onStop();
+    }
+
+    @Override
+    public void update(){
+        TextView moneyIndi = (TextView) findViewById(R.id.moneyIndicator);
+        moneyIndi.setText(String.valueOf(mapPresenter.getPlayerMoney()));
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {

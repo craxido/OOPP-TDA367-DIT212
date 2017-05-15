@@ -12,10 +12,13 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     private static final String TAG = "MainActivity";
 
-    private static MapPresenter mapPresenterInstance = new MapPresenter();
-    private static Map map;
+    private MapPresenter mapPresenterInstance;
+    private static MapMVPInterface.ModelOps map;
+    private MainPresenter mainPresenter;
 
     public MapPresenter() {
+        mainPresenter = MainPresenter.getInstance();
+        mapPresenterInstance = this;
         map = Map.getInstance();
     }
 
@@ -40,6 +43,11 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     public void onError(String errorMsg){
 
         Log.i(TAG, "Error: " + errorMsg);
+    }
+
+
+    public int getPlayerMoney(){
+        return map.getPlayerMoney();
     }
 
     public static MapPresenter getInstance() {
