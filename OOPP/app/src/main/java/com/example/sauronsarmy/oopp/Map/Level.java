@@ -4,10 +4,10 @@ import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.MonsterPack.monsterFactory;
 
 /**
- * Author: Jonatan Källman
+ * @author Jonatan Källman
  */
 
-public class Level {
+class Level {
 
     private Monster monster;
     private int healthMultiplier;
@@ -15,38 +15,43 @@ public class Level {
     private com.example.sauronsarmy.oopp.Map.areaType areaType;
 
 
-    public Level(Monster monster, int healthMultiplier, int goldMultiplier, areaType area) {
+    Level(Monster monster, int healthMultiplier, int goldMultiplier, areaType area) {
         this.monster = monster;
         this.healthMultiplier = healthMultiplier;
         this.goldMultiplier = goldMultiplier;
         this.areaType = area;
     }
 
-    public areaType getArea(){
+    public boolean equals(Level other){
+        return this.monster.equals(other.monster) && this.healthMultiplier == other.healthMultiplier
+                && this.goldMultiplier == other.goldMultiplier && this.areaType == other.areaType;
+    }
+
+    areaType getArea(){
         return this.areaType;
     }
 
-    public void setArea(areaType areaType){
+    void setArea(areaType areaType){
         this.areaType=areaType;
     }
 
-    public int getHealthMultiplier() {
+    int getHealthMultiplier() {
         return healthMultiplier;
     }
 
-    public void setHealthMultiplier(int healthMultiplier) {
+    void setHealthMultiplier(int healthMultiplier) {
         this.healthMultiplier = healthMultiplier;
     }
 
-    public int getGoldMultiplier() {
+    int getGoldMultiplier() {
         return goldMultiplier;
     }
 
-    public void setGoldMultiplier(int goldMultiplier) {
+    void setGoldMultiplier(int goldMultiplier) {
         this.goldMultiplier = goldMultiplier;
     }
 
-    public Monster getCurrentMonster() {
+    Monster getCurrentMonster() {
 
         if(monster ==null){
             setNewMonster();
@@ -56,11 +61,11 @@ public class Level {
         return monster;
     }
 
-    public void setCurrentMonster(Monster currentMonster) {
+    void setCurrentMonster(Monster currentMonster) {
         this.monster = currentMonster;
     }
 
-    public int damageMonster(int damage){
+    int damageMonster(int damage){
 
         int ret =0;
         if(monster.damageMonster(damage)){
@@ -71,14 +76,11 @@ public class Level {
         return ret;
     }
 
-    public void setNewMonster(){
+    void setNewMonster(){
 
         monsterFactory monFac=new monsterFactory();
 
         setCurrentMonster(monFac.getMonster(getHealthMultiplier()*100, getGoldMultiplier()*100, getArea()));
 
     }
-
-
 }
-
