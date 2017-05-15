@@ -5,12 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sauronsarmy.oopp.MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="THIS IS THE MAIN ACTIVITY"/>
+    tools:context="com.example.sauronsarmy.oopp.MainActivity"
+    android:id="@+id/b_mainActivity">
 
     <include layout="@layout/bottom_bar" />
     <include layout="@layout/top_bar" />
@@ -33,6 +29,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/b_monster"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/white"
+        android:textAlignment="viewStart"/>
+
+    <TextView
+        android:id="@+id/goal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/hp"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/white"
+        android:textAlignment="viewStart"/>
 
 </RelativeLayout>

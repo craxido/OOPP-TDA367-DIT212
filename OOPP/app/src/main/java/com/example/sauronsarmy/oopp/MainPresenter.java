@@ -2,6 +2,10 @@ package com.example.sauronsarmy.oopp;
 import android.content.Context;
 import android.util.Log;
 
+
+import com.example.sauronsarmy.oopp.Map.Map;
+import com.example.sauronsarmy.oopp.Map.MapMVPInterface;
+
 import com.example.sauronsarmy.oopp.Map.MapPresenter;
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
@@ -20,9 +24,10 @@ import java.lang.ref.WeakReference;
  * @author everyone
  */
 
-public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListener {
+ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListener {
     // View reference
-    private static MainPresenter ourInstance;
+
+    private static MainPresenter ourInstance = new MainPresenter();
     private Runner run = new Runner();
     private MapPresenter map = MapPresenter.getInstance();
     private WeakReference<MainMVPInterface.ViewOps> mView;
@@ -30,16 +35,18 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     private ShopMVPInterface.Presenter shopPresenter;
     private HomeMVPInterface.Presenter homePresenter;
     private MainMVPInterface.ModelInterface mainModel;
+    private MapMVPInterface.PresenterOps mapPres;
     private final static String TAG = "MainPresenter";
 
 
-    public MainPresenter(MainMVPInterface.ViewOps mView) {
-        this.mView = new WeakReference<>(mView);
+    public MainPresenter() {
+        //this.mView = new WeakReference<>(mView);
         playerModel = PlayerModel.getInstance();
         shopPresenter = new ShopPresenter();
         homePresenter = new HomePresenter();
         mainModel = new MainModel();
-        ourInstance =this;
+        mapPres = MapPresenter.getInstance();
+        //ourInstance =this;
 
         run.register(this);
         run.start();
@@ -66,7 +73,9 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     //Called from MainActivity when a monster is clicked
     public void monsterClicked(){
         int gold;
-        if((gold = map.damageMonster(playerModel.getDamage())) != 0){
+        gold =mapPres.damageMonster(playerModel.getDamage());
+        if(gold !=0){
+
             playerModel.setMoney(playerModel.getMoney() +gold);
         }
     }
@@ -111,22 +120,34 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
 
     }
 
-    public void applyDPS(){
+    private void applyDPS(){
 
-        int gold;
-        if((gold =map.damageMonster(playerModel.getDamagePerSecond()) )!=0){
+        int gold =mapPres.damageMonster(playerModel.getDamagePerSecond());
+        if(gold  > 0){
+
 
             playerModel.setMoney(playerModel.getMoney() +gold);
         }
 
     }
+    private void applyGPS(){
 
-    public void applyGPS(){
         playerModel.setMoney(playerModel.getMoney() + playerModel.getMoneyPerSecond());
 
     }
 
     public Runner getRun(){return  run;}
 
+    public int getBGRef(){
 
+        int bgref = mapPres.getBackgroundRef();
+
+        return bgref;
+    }
+    public boolean getLvlCmp(){
+        return mapPres.getCurrentArea().getCurrentLevel().getComplete();
+    }
+    public boolean getAreaCmp(){
+        return mapPres.getCurrentArea().getComplete();
+    }
 }

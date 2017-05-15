@@ -33,9 +33,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="42dp"
         app:layout_constraintHorizontal_bias="0.51" />
 
 
@@ -68,16 +66,5 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintVertical_bias="0.175" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="321dp"
-        android:layout_height="123dp"
-        app:srcCompat="@drawable/monsterclicker_t"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="42dp"
-        app:layout_constraintHorizontal_bias="0.51" />
+
 </android.support.constraint.ConstraintLayout>

@@ -16,10 +16,11 @@ class levelFactory {
         // Level(Monster monster, double healthMultiplier, double goldMultiplier, areaType area)
         // I just added some random values for health/ gold/ multipliers for now.
         switch (type) {
-            case MOUNTAIN:
-                return new Level(monfac.getMonster(100, 100, type), 1, 1, type);
+
             case FOREST:
                 return new Level(monfac.getMonster(200, 200, type), 2, 2, type);
+            case MOUNTAIN:
+                return new Level(monfac.getMonster(100, 100, type), 1, 1, type);
             case VOLCANO:
                 return new Level(monfac.getMonster(300, 300, type), 3, 3, type);
             default:
@@ -30,7 +31,7 @@ class levelFactory {
 
     Level[] getLevels(areaType type) {
         // LevelAmount could be set depending on area.
-        int LevelAmount=10;
+        int LevelAmount=1;
         Level[] levels = new Level[LevelAmount];
         for(int i=0; i < LevelAmount; i++){
             levels[i]=getLevel(type);

@@ -11,7 +11,7 @@ import com.example.sauronsarmy.oopp.R;
  * @author Jonatan Källman
  */
 
-class Map implements MapMVPInterface.ModelOps {
+public class Map implements MapMVPInterface.ModelOps {
 
     private static Area[] areas;
     private Area currentArea;
@@ -31,6 +31,8 @@ class Map implements MapMVPInterface.ModelOps {
         bgRef = R.drawable.mapbg;
         areas = createAreas();
 	      currentArea = areas[0];
+        currentArea.getCurrentLevel().available = true;
+        bgRef = currentArea.getImgRef();
         monfac = new monsterFactory();
     }
 
@@ -50,7 +52,7 @@ class Map implements MapMVPInterface.ModelOps {
 
     @Override
     public int getBackgroundRef() {
-        return this.bgRef;
+        return bgRef;
     }
 
     @Override
@@ -163,5 +165,6 @@ class Map implements MapMVPInterface.ModelOps {
     Level getCurrentLevel(){
         return getCurrentArea().getCurrentLevel();
     }
+
 
 }
