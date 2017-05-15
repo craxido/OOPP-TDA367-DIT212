@@ -2,7 +2,7 @@ package com.example.sauronsarmy.oopp;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.sauronsarmy.oopp.Map.Map;
+import com.example.sauronsarmy.oopp.Map.MapPresenter;
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
@@ -24,7 +24,7 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     // View reference
     private static MainPresenter ourInstance;
     private Runner run = new Runner();
-    private Map map = Map.getInstance();
+    private MapPresenter map = MapPresenter.getInstance();
     private WeakReference<MainMVPInterface.ViewOps> mView;
     private PlayerModelInterface playerModel;
     private ShopMVPInterface.Presenter shopPresenter;
@@ -54,7 +54,7 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     @Override
     public void onConfigChange(MainMVPInterface.ViewOps view) {
         mView = new WeakReference<>(view);
-        map.getCurrentArea().getCurrentLevel().setNewMonster();
+        map.setNewMonster();
     }
 
     @Override
@@ -66,13 +66,13 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     //Called from MainActivity when a monster is clicked
     public void monsterClicked(){
         int gold;
-        if((gold = map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamage())) != 0){
+        if((gold = map.damageMonster(playerModel.getDamage())) != 0){
             playerModel.setMoney(playerModel.getMoney() +gold);
         }
     }
 
     public Monster getCurrentMonster() {
-        return map.getCurrentArea().getCurrentLevel().getCurrentMonster();
+        return map.getCurrentMonster();
     }
     /**
      * Asks the PlayerModel for the current state, and sends this
@@ -114,7 +114,7 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     public void applyDPS(){
 
         int gold;
-        if((gold =map.getCurrentArea().getCurrentLevel().damageMonster(playerModel.getDamagePerSecond()) )!=0){
+        if((gold =map.damageMonster(playerModel.getDamagePerSecond()) )!=0){
 
             playerModel.setMoney(playerModel.getMoney() +gold);
         }
