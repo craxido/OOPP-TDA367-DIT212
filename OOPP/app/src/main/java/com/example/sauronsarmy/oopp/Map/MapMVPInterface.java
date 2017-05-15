@@ -18,6 +18,7 @@ public interface MapMVPInterface {
         Area   getArea(int index);
         void changeArea(int index);
         void onError(String errorMsg);
+        int  getPlayerMoney();
         int damageMonster(int damage);
         Area getCurrentArea();
         void tryChangeAreaLevel(int level, int area);
@@ -31,6 +32,8 @@ public interface MapMVPInterface {
         int   getBackgroundRef();
         void  setBackgroundRef(int bgRef);
         void  onDestroy();
+        int  getPlayerMoney();
+
         // methods to be called from Model
     }
 }

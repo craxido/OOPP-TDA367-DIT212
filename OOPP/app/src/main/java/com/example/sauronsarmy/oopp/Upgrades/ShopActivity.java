@@ -10,10 +10,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.MainActivity;
+import com.example.sauronsarmy.oopp.MainPresenter;
 import com.example.sauronsarmy.oopp.Map.MapActivity;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
+import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 
 /**
@@ -21,7 +23,7 @@ import com.example.sauronsarmy.oopp.Stats.StatsActivity;
  * Written by bunnyfiscuit
  */
 
-public class ShopActivity extends AppCompatActivity {
+public class ShopActivity extends AppCompatActivity implements ClockListener {
 
     private ShopMVPInterface.Presenter shopPresenter;
     @Override
@@ -45,6 +47,7 @@ public class ShopActivity extends AppCompatActivity {
         mainButton.setOnClickListener(buttonListener);
 
         shopPresenter = new ShopPresenter();
+        MainPresenter.getInstance().getRun().register(this);
 
         shopButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
@@ -59,6 +62,8 @@ public class ShopActivity extends AppCompatActivity {
         dmgUpgradeButton.setOnClickListener(buttonListener);
         dpsUpgradeButton.setOnClickListener(buttonListener);
 
+        TextView moneyIndi = (TextView) findViewById(R.id.moneyIndicator);
+        moneyIndi.setText(String.valueOf(shopPresenter.getPlayerMoney()));
         updateDamageInfo();
         updateDPSInfo();
 
@@ -119,6 +124,12 @@ public class ShopActivity extends AppCompatActivity {
         currentDPS.setText(String.valueOf(dps));
         newDPS.setText(String.valueOf(nDps));
 
+    }
+
+    @Override
+    public void update(){
+        TextView moneyIndi = (TextView) findViewById(R.id.moneyIndicator);
+        moneyIndi.setText(String.valueOf(shopPresenter.getPlayerMoney()));
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {

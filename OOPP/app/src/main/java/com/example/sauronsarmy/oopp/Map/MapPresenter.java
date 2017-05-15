@@ -2,6 +2,7 @@ package com.example.sauronsarmy.oopp.Map;
 
 import android.util.Log;
 
+import com.example.sauronsarmy.oopp.MainPresenter;
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 
 /**
@@ -14,9 +15,13 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     private static MapPresenter mapPresenterInstance = new MapPresenter();
     private static Map map;
+    private MainPresenter mainPresenter;
 
     public MapPresenter() {
+        mainPresenter = MainPresenter.getInstance();
+        mapPresenterInstance = this;
         map = Map.getInstance();
+
     }
 
     public static void setBackgroundRef(int ref) {
@@ -24,7 +29,7 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     }
 
     public int getBackgroundRef() {
-        return map.getBackgroundRef();
+        return map.getCurrentArea().getImgRef();
 
     }
 
@@ -40,6 +45,11 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     public void onError(String errorMsg){
 
         Log.i(TAG, "Error: " + errorMsg);
+    }
+
+
+    public int getPlayerMoney(){
+        return map.getPlayerMoney();
     }
 
     public static MapPresenter getInstance() {
@@ -75,7 +85,7 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
                 if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
                     changeLvl(level);
                 }
-                return;
+
             }
         }
         else {
@@ -93,11 +103,8 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
                     return;
                 }
             }
-            return;
+
         }
-
-
-
 
 
     }
