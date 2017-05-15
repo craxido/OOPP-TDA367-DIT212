@@ -12,7 +12,7 @@ public class Level {
     private Monster monster;
     private int healthMultiplier;
     private int goldMultiplier;
-    private com.example.sauronsarmy.oopp.Map.areaType areaType;
+    private areaType areaType;
 
     private int goal=10;
     private int pathToGoal=0;
@@ -68,8 +68,11 @@ public class Level {
     public int damageMonster(int damage){
 
         int ret =-1;
+        //If the monster died, update pathToGoal, the return value and set a new monster
         if(monster.damageMonster(damage)){
+
             ret=monster.getGold();
+
             pathToGoal++;
             if(pathToGoal>=goal){
                 completed=true;

@@ -56,13 +56,16 @@ public class lvlPickFragment extends DialogFragment {
 
         Area areas = MapPresenter.getInstance().getArea(area);
 
-        List<String> elements = new ArrayList<>();
+        //Make a list and add all the levels from the selected area
+        List<String> levelElements = new ArrayList<>();
 
         for( int i =0;i <areas.getLevels().length ;i++){
 
-            elements.add("Lvl"+(i+1));
+            levelElements.add("Lvl"+(i+1));
         }
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_expandable_list_item_1,elements);
+
+        //Make an adapter and pass the list as argument
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_expandable_list_item_1,levelElements);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -77,17 +80,6 @@ public class lvlPickFragment extends DialogFragment {
                     }
                 });
 
-
-                /*.setItems(R.array.lvl,new DialogInterface.OnClickListener(){
-
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //Call method in caller, pass area and clicked level
-                        clickListener.onclick(which, area);
-                    }
-                }
-        );*/
 
         return builder.create();
 
