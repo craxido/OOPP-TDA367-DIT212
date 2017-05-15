@@ -70,7 +70,42 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     }
 
     @Override
-    public void trChangeAreaLevel(int level, int area) {
+    public void tryChangeAreaLevel(int level, int area) {
+
+        if(area ==0){
+            changeArea(area);
+            if(level ==0){
+                changeLvl(level);
+            }
+            else {
+
+                if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
+                    changeLvl(level);
+                }
+                return;
+            }
+        }
+        else {
+
+            if(getArea(area-1).getComplete() && map.getAreas().length>area){
+                changeArea(area);
+                if(level ==0){
+                    changeLvl(level);
+                }
+                else {
+
+                    if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
+                        changeLvl(level);
+                    }
+                    return;
+                }
+            }
+            return;
+        }
+
+
+
+
 
     }
 

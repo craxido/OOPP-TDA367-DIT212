@@ -1,20 +1,14 @@
 package com.example.sauronsarmy.oopp.Map;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
-import com.example.sauronsarmy.oopp.MainPresenter;
 import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.R;
@@ -99,17 +93,16 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
                  * TODO: as well as the background in the MainActivity.
                     */
                 case R.id.b_area1:
+
                     showDia(0);
-                    mapPresenter.changeArea(0);
                     break;
                 case R.id.b_area2:
 
                     showDia(1);
-                    mapPresenter.changeArea(1);
                     break;
                 case R.id.b_area3:
+
                     showDia(2);
-                    mapPresenter.changeArea(2);
                     break;
 
             }
@@ -134,7 +127,7 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
     public void onclick(int level, int area) {
         //Log the selected level and area
         Log.i("LvlArea",level + " "+ area);
-        mapPresenter.trChangeAreaLevel(level,area);
+        mapPresenter.tryChangeAreaLevel(level,area);
     }
 
 }

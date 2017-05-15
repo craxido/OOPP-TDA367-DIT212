@@ -7,6 +7,13 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.widget.ArrayAdapter;
+
+import com.example.sauronsarmy.oopp.Map.Area;
+import com.example.sauronsarmy.oopp.Map.MapPresenter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Filip on 2017-05-14.
@@ -47,10 +54,31 @@ public class lvlPickFragment extends DialogFragment {
         //Get the argument
         area = getArguments().getInt("area");
 
+        Area areas = MapPresenter.getInstance().getArea(area);
+
+        List<String> elements = new ArrayList<>();
+
+        for( int i =0;i <areas.getLevels().length ;i++){
+
+            elements.add("Lvl"+(i+1));
+        }
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_expandable_list_item_1,elements);
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        builder.setTitle("Select a level")
-                .setItems(R.array.lvl,new DialogInterface.OnClickListener(){
+        builder.setTitle("Select a level from area" +(area +1))
+                .setAdapter(adapter,new DialogInterface.OnClickListener(){
+
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Call method in caller, pass area and clicked level
+                        clickListener.onclick(which, area);
+                    }
+                });
+
+
+                /*.setItems(R.array.lvl,new DialogInterface.OnClickListener(){
 
 
                     @Override
@@ -59,7 +87,7 @@ public class lvlPickFragment extends DialogFragment {
                         clickListener.onclick(which, area);
                     }
                 }
-        );
+        );*/
 
         return builder.create();
 

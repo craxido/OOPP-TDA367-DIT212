@@ -32,7 +32,7 @@ class levelFactory {
     Level[] getLevels(areaType type) {
 
         // LevelAmount could be set depending on area.
-        int LevelAmount=10;
+        int LevelAmount=1;
         Level[] levels = new Level[LevelAmount];
 
         // Uses getLevel().

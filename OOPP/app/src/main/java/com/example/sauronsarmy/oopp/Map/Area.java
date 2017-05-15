@@ -59,4 +59,13 @@ public class Area {
     public boolean getComplete(){
         return finished;
     }
+
+    public Level getLevel(int index){
+        if (index <levels.length){
+
+            return levels[index];
+        }
+
+        return null;
+    }
 }
