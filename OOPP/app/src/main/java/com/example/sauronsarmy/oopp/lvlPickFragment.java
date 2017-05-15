@@ -24,7 +24,7 @@ public class lvlPickFragment extends DialogFragment {
 
     //Interface for users of this fragment
     public interface ClickListener{
-        void onclick(int level, int area);
+        void onClick(int level, int area);
     }
     //The area that was passed as an argument
     private int area;
@@ -76,7 +76,7 @@ public class lvlPickFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Call method in caller, pass area and clicked level
-                        clickListener.onclick(which, area);
+                        clickListener.onClick(which, area);
                     }
                 });
 

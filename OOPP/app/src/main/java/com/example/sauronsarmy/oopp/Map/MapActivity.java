@@ -10,14 +10,17 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.sauronsarmy.oopp.MainPresenter;
 import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
+import com.example.sauronsarmy.oopp.clock.ClockListener;
 import com.example.sauronsarmy.oopp.lvlPickFragment;
 
-public class MapActivity extends AppCompatActivity implements MapMVPInterface.ViewOps,lvlPickFragment.ClickListener {
+public class MapActivity extends AppCompatActivity
+        implements MapMVPInterface.ViewOps,lvlPickFragment.ClickListener, ClockListener {
 
 
     private MapMVPInterface.PresenterOps mapPresenter;
@@ -123,7 +126,7 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
 
     public void showDia(int area){
         //Create a new fragment
-        lvlPickFragment lvlpck=new lvlPickFragment();
+        lvlPickFragment lvlpck = new lvlPickFragment();
         //Pass the area as a argument
         Bundle args = new Bundle();
         args.putInt("area",area);
@@ -135,7 +138,7 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
     }
 
     @Override
-    public void onclick(int level, int area) {
+    public void onClick(int level, int area) {
         //Log the selected level and area
         Log.i("LvlArea",level + " "+ area);
         mapPresenter.tryChangeAreaLevel(level,area);

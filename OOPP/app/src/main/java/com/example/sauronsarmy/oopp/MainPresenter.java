@@ -3,7 +3,6 @@ import android.content.Context;
 import android.util.Log;
 
 
-import com.example.sauronsarmy.oopp.Map.Map;
 import com.example.sauronsarmy.oopp.Map.MapMVPInterface;
 
 import com.example.sauronsarmy.oopp.Map.MapPresenter;
@@ -73,10 +72,9 @@ import java.lang.ref.WeakReference;
     //Called from MainActivity when a monster is clicked
     public void monsterClicked(){
         int gold;
-        gold =mapPres.damageMonster(playerModel.getDamage());
-        if(gold !=0){
-
-            playerModel.setMoney(playerModel.getMoney() +gold);
+        gold = mapPres.damageMonster(playerModel.getDamage());
+        if(gold != 0){
+            playerModel.setMoney(playerModel.getMoney() + gold);
         }
     }
 

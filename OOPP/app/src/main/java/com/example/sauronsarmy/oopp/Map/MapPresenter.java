@@ -2,6 +2,7 @@ package com.example.sauronsarmy.oopp.Map;
 
 import android.util.Log;
 
+import com.example.sauronsarmy.oopp.MainPresenter;
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 
 /**
@@ -12,14 +13,15 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     private static final String TAG = "MainActivity";
 
-    private MapPresenter mapPresenterInstance;
-    private static MapMVPInterface.ModelOps map;
+    private static MapPresenter mapPresenterInstance = new MapPresenter();
+    private static Map map;
     private MainPresenter mainPresenter;
 
     public MapPresenter() {
         mainPresenter = MainPresenter.getInstance();
         mapPresenterInstance = this;
         map = Map.getInstance();
+
     }
 
     public static void setBackgroundRef(int ref) {
