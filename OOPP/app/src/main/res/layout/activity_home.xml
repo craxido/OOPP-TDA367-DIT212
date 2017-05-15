@@ -11,6 +11,9 @@
     <include layout="@layout/bottom_bar"
         android:id="@+id/include3" />
 
+    <include layout="@layout/top_bar"
+        android:id="@+id/goldBar" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
