@@ -69,5 +69,8 @@ class Home implements HomeMVPInterface.Model  {
         return player.getMoneyPerSecond();
     }
 
+    public int getPlayerMoney(){
+        return player.getMoney();
+    }
 
 }

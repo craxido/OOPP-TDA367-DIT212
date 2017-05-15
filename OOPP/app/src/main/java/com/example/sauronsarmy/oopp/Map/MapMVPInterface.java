@@ -17,6 +17,7 @@ interface MapMVPInterface {
         int    getBackgroundRef();
         Area   getArea(int index);
         void onError(String errorMsg);
+        int  getPlayerMoney();
 
         // methods to be called from Presenter
     }
@@ -27,6 +28,8 @@ interface MapMVPInterface {
         int   getBackgroundRef();
         void  setBackgroundRef(int bgRef);
         void  onDestroy();
+        int  getPlayerMoney();
+
         // methods to be called from Model
     }
 }

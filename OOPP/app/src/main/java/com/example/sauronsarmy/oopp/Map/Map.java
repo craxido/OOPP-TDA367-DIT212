@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.Map;
 
+import com.example.sauronsarmy.oopp.Player.PlayerModel;
+import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
 import com.example.sauronsarmy.oopp.R;
 
 /**
@@ -14,7 +16,7 @@ public class Map implements MapMVPInterface.ModelOps {
     private static final Map mapInstance = new Map();
     private static levelFactory lvlfac;
     private int bgRef;
-
+    private static PlayerModelInterface player = PlayerModel.getInstance();
 
     public static Map getInstance() {
         return mapInstance;
@@ -25,7 +27,6 @@ public class Map implements MapMVPInterface.ModelOps {
         bgRef = R.drawable.mapbg;
         areas = createAreas();
 	    currentArea = areas[0];
-
     }
 
     //Creates areas for the mapInstance
@@ -75,6 +76,10 @@ public class Map implements MapMVPInterface.ModelOps {
 
     public Area[] getAreas(){
         return areas;
+    }
+
+    public int getPlayerMoney(){
+        return player.getMoney();
     }
 
 }

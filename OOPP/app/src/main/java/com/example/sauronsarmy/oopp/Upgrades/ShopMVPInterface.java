@@ -18,6 +18,7 @@ public interface ShopMVPInterface {
         Upgrade getDPSUpgrade();
         int getDamageUpgradeCounter();
         int getDPSUpgradeCounter();
+        int getPlayerMoney();
         Map getUpgradeCounters();
         void setUpgradeCounters(Map<String, Integer> map);
         void saveState(Context context);
@@ -30,7 +31,9 @@ public interface ShopMVPInterface {
         Upgrade getDPSUpgrade();
         int getDamageUpgradeCounter();
         int getDPSUpgradeCounter();
+        int getPlayerMoney();
         Map getUpgradeCounters();
         void setUpgradeCounters(Map<String, Integer> map);
+
     }
 }
