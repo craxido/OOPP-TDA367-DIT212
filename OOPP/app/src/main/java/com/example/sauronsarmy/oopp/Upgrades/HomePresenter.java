@@ -42,6 +42,11 @@ public class HomePresenter implements HomeMVPInterface.Presenter {
         homeModel.setOilCounter(i);
     }
 
+    @Override
+    public void testOilPumpUpgradeCounter(Map<String, Integer> map) {
+        homeModel.testOilPumpUpgradeCounter(map);
+    }
+
     public void saveState(Context context) {
         mainPresenter.saveState(context);
     }

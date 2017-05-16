@@ -22,6 +22,7 @@ public interface HomeMVPInterface {
 
         //for testing
         void setOilCounter(int counter);
+        void testOilPumpUpgradeCounter(Map<String, Integer> map);
     }
 
     interface Model {
@@ -33,6 +34,7 @@ public interface HomeMVPInterface {
 
         //for testing
         void setOilCounter(int counter);
+        void testOilPumpUpgradeCounter(Map<String, Integer> map);
     }
 
 }
