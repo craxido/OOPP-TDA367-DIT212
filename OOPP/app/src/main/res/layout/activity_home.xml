@@ -126,10 +126,11 @@
             android:text="0"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            android:layout_alignBaseline="@+id/newMpsText"
-            android:layout_alignBottom="@+id/newMpsText"
-            android:layout_alignRight="@+id/currentMpsText"
-            android:layout_alignEnd="@+id/currentMpsText" />
+            android:layout_below="@+id/currentMpsText"
+            android:layout_toRightOf="@+id/newMpsText"
+            android:layout_toStartOf="@+id/currentMps"
+            android:layout_alignRight="@+id/currentMps"
+            android:layout_alignEnd="@+id/currentMps" />
 
         <TextView
             android:id="@+id/oilUpgradeCost"
