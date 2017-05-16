@@ -175,4 +175,16 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     }
 
+
+
+    public void nextLevel(){
+
+
+    }
+
+    public void previousLevel(){
+
+        
+    }
+
 }

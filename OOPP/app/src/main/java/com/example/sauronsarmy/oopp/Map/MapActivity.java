@@ -142,6 +142,8 @@ public class MapActivity extends AppCompatActivity
         //Log the selected level and area
         Log.i("LvlArea",level + " "+ area);
         mapPresenter.tryChangeAreaLevel(level,area);
+
+        startActivity(new Intent(this,MainActivity.class));
     }
 
 }
