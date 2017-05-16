@@ -20,7 +20,6 @@ import com.example.sauronsarmy.oopp.clock.Runner;
 
 public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListener {
     // View reference
-    private static MainPresenter ourInstance;
     private Runner run = new Runner();
     private MapPresenter map = MapPresenter.getInstance();
     private PlayerModelInterface playerModel;
@@ -30,20 +29,13 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     private final static String TAG = "MainPresenter";
 
 
-    private MainPresenter() {
+    public MainPresenter() {
         playerModel = PlayerModel.getInstance();
         shopPresenter = new ShopPresenter();
         homePresenter = new HomePresenter();
         mainModel = new MainModel();
-        ourInstance =this;
-
         run.register(this);
         run.start();
-
-    }
-
-    public static MainPresenter getInstance(){
-        return ourInstance;
     }
 
     //Called from MainActivity when a monster is clicked
@@ -57,6 +49,7 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     public Monster getCurrentMonster() {
         return map.getCurrentMonster();
     }
+
     /**
      * Asks the PlayerModel for the current state, and sends this
      * to the MainModel for saving.
@@ -104,6 +97,4 @@ public class MainPresenter implements MainMVPInterface.PresenterOps,ClockListene
     }
 
     public Runner getRun(){return  run;}
-
-
 }

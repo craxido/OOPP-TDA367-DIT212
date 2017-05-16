@@ -25,7 +25,7 @@ class Home implements HomeMVPInterface.Model  {
     }
 
     private void makePayment() {
-        player.setMoney(player.getMoney() - oilPumpUpgrade.getCost());
+        player.removeMoney(oilPumpUpgrade.getCost());
     }
 
     public boolean buyOilPumpUpgrade() {

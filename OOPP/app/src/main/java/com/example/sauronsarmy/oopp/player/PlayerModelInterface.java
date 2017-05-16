@@ -15,6 +15,7 @@ public interface PlayerModelInterface {
     void setDamage(int newValue);
     int getDamage();
 
+    void removeMoney(int money);
     void addMoney(int money);
     int getMoney();
 

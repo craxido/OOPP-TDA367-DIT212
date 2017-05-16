@@ -64,7 +64,7 @@ public class WelcomeActivity extends AppCompatActivity implements MainMVPInterfa
 
     // Load a previous game
     private void loadGame(){
-        mainPresenter = new MainPresenter(this);
+        mainPresenter = new MainPresenter();
 
         // Load previous state
         Log.i(TAG, "Will attempt to load previous state if there is one");
@@ -77,7 +77,7 @@ public class WelcomeActivity extends AppCompatActivity implements MainMVPInterfa
     }
     // Create a new game
     private void newGame(){
-        mainPresenter = new MainPresenter(this);
+        mainPresenter = new MainPresenter();
 
         //Creata a dialog, asking if the player wants to override any previous save
         AlertDialog.Builder builder = new AlertDialog.Builder(WelcomeActivity.this);

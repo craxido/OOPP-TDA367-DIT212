@@ -2,6 +2,7 @@ package com.example.sauronsarmy.oopp.upgrades;
 
 import android.content.Context;
 
+import com.example.sauronsarmy.oopp.MainMVPInterface;
 import com.example.sauronsarmy.oopp.MainPresenter;
 
 import java.util.Map;
@@ -13,12 +14,12 @@ import java.util.Map;
 public class HomePresenter implements HomeMVPInterface.Presenter {
 
     private HomeMVPInterface.Model homeModel;
-    private MainPresenter mainPresenter;
+    private MainMVPInterface.PresenterOps mainPresenter;
 
     public HomePresenter() {
         homeModel = Home.getInstance();
         // Hey there circular dependency
-        mainPresenter = MainPresenter.getInstance();
+        mainPresenter = new MainPresenter();
     }
 
     @Override

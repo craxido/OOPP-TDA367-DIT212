@@ -31,7 +31,7 @@ class Shop implements ShopMVPInterface.Model {
      */
     public boolean buyDamageUpgrade(){
         if(player.getMoney() >= damageUpgrade.getCost()) {
-            player.setMoney(player.getMoney() - damageUpgrade.getCost());
+            player.removeMoney(damageUpgrade.getCost());
             player.setDamage(player.getDamage() + damageUpgrade.getStat());
 
             damageUpgradeCounter++;
@@ -49,7 +49,7 @@ class Shop implements ShopMVPInterface.Model {
      */
     public boolean buyDPSUpgrade(){
         if (player.getMoney() >= dpsUpgrade.getCost()) {
-            player.setMoney(player.getMoney() - dpsUpgrade.getCost());
+            player.removeMoney(dpsUpgrade.getCost());
             player.setDamagePerSecond(player.getDamagePerSecond() + dpsUpgrade.getStat());
 
             dpsUpgradeCounter++;

@@ -2,6 +2,7 @@ package com.example.sauronsarmy.oopp.upgrades;
 
 import android.content.Context;
 
+import com.example.sauronsarmy.oopp.MainMVPInterface;
 import com.example.sauronsarmy.oopp.MainPresenter;
 
 import java.util.Map;
@@ -13,12 +14,12 @@ import java.util.Map;
 public class ShopPresenter implements ShopMVPInterface.Presenter {
 
     private ShopMVPInterface.Model shopModel;
-    private MainPresenter mainPresenter;
+    private MainMVPInterface.PresenterOps mainPresenter;
 
     public ShopPresenter() {
         shopModel = Shop.getInstance();
         // Hey there circular dependency
-        mainPresenter = MainPresenter.getInstance();
+        mainPresenter = new MainPresenter();
     }
 
     @Override

@@ -10,7 +10,7 @@ import com.example.sauronsarmy.oopp.monsterPack.Monster;
 /* "Umbrella" class containing the interfaces
   * used to communicate between MVP layers.
   */
-interface MainMVPInterface {
+public interface MainMVPInterface {
 
     interface ViewOps {
          // methods to be called from View
