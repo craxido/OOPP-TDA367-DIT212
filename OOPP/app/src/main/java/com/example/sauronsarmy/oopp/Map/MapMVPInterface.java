@@ -22,6 +22,8 @@ public interface MapMVPInterface {
         int damageMonster(int damage);
         Area getCurrentArea();
         boolean tryChangeAreaLevel(int level, int area);
+        void nextLevel();
+        void previousLevel();
 
         // methods to be called from Presenter
     }
