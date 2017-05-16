@@ -73,17 +73,19 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     }
 
     @Override
-    public void tryChangeAreaLevel(int level, int area) {
+    public boolean tryChangeAreaLevel(int level, int area) {
 
         if(area ==0){
             changeArea(area);
             if(level ==0){
                 changeLvl(level);
+                return true;
             }
             else {
 
                 if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
                     changeLvl(level);
+                    return true;
                 }
 
             }
@@ -94,19 +96,18 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
                 changeArea(area);
                 if(level ==0){
                     changeLvl(level);
+                    return true;
                 }
                 else {
 
                     if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
                         changeLvl(level);
+                        return true;
                     }
-                    return;
                 }
             }
-
         }
-
-
+        return false;
     }
 
     public void changeLvl(int index) {
@@ -184,7 +185,7 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     public void previousLevel(){
 
-        
+
     }
 
 }
