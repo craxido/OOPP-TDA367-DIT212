@@ -11,16 +11,19 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.MainActivity;
+import com.example.sauronsarmy.oopp.MainPresenter;
 import com.example.sauronsarmy.oopp.Map.MapActivity;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
+import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
 import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
+import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 /**
  * Created by Erik on 04/04/17.
  * Written by bunnyfiscuit
  */
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements ClockListener {
 
     private static final String TAG = "HomeActivity";
     HomeMVPInterface.Presenter homePresenter;
@@ -55,7 +58,10 @@ public class HomeActivity extends AppCompatActivity {
          */
         ImageButton oilUpgradeButton = (ImageButton) findViewById(R.id.oilUpgradeButton);
         oilUpgradeButton.setOnClickListener(buttonListener);
+        MainPresenter.getInstance().getRun().register(this);
 
+        TextView moneyIndi = (TextView) findViewById(R.id.moneyIndicator);
+        moneyIndi.setText(String.valueOf(homePresenter.getPlayerMoney()));
         updateOilInfo();
 
     }
@@ -75,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
         oilUpgradeCounter.setText(String.valueOf(homePresenter.getOilPumpUpgradeCounter()));
         oilUpgradeCost.setText(String.valueOf(oilPumpUpgrade.getCost() + " g"));
 
-        double mps = PlayerModel.getInstance().getMoneyPerSecond();
+        double mps = homePresenter.getPlayerMoneyPerSec();
         double newmps = mps + oilPumpUpgrade.getStat();
 
         currentMps.setText(String.valueOf(mps));
@@ -119,4 +125,9 @@ public class HomeActivity extends AppCompatActivity {
         }
     };
 
+    @Override
+    public void update() {
+        TextView moneyIndicator = (TextView) findViewById(R.id.moneyIndicator);
+        moneyIndicator.setText(String.valueOf(homePresenter.getPlayerMoney()));
+    }
 }

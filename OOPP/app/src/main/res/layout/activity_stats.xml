@@ -84,4 +84,5 @@
     </LinearLayout>
 
 <include layout="@layout/bottom_bar" />
+
 </RelativeLayout>

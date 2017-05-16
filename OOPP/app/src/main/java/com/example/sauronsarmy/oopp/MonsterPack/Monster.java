@@ -19,6 +19,11 @@ public class Monster {
         this.imageref = imageref;
     }
 
+    public boolean equals(Monster other){
+        return this.maxhealth == other.maxhealth && this.health == other.health
+                && this.gold == other.gold && this.imageref == other.imageref;
+    }
+
     public int getHealth(){
         return this.health;
     }

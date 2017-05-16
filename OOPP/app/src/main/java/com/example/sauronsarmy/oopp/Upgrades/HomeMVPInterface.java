@@ -19,10 +19,13 @@ public interface HomeMVPInterface {
         Map getUpgradeCounters();
         boolean buyOilPumpUpgrade();
         void saveState(Context context);
-
+        int getPlayerMoneyPerSec();
+        int getPlayerMoney();
+      
         //for testing
         void setOilCounter(int counter);
         void testOilPumpUpgradeCounter(Map<String, Integer> map);
+      
     }
 
     interface Model {
@@ -31,10 +34,13 @@ public interface HomeMVPInterface {
         Map getUpgradeCounters();
         boolean buyOilPumpUpgrade();
         void setOilPumpUpgradeCounter(Map<String, Integer> map);
-
+        int getPlayerMoneyPerSec();
+        int getPlayerMoney();
+      
         //for testing
         void setOilCounter(int counter);
         void testOilPumpUpgradeCounter(Map<String, Integer> map);
+      
     }
 
 }

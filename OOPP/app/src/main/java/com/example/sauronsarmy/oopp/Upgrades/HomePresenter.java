@@ -45,6 +45,9 @@ public class HomePresenter implements HomeMVPInterface.Presenter {
     @Override
     public void testOilPumpUpgradeCounter(Map<String, Integer> map) {
         homeModel.testOilPumpUpgradeCounter(map);
+
+    public int getPlayerMoneyPerSec(){
+        return homeModel.getPlayerMoneyPerSec();
     }
 
     public void saveState(Context context) {
@@ -60,4 +63,10 @@ public class HomePresenter implements HomeMVPInterface.Presenter {
     public boolean buyOilPumpUpgrade() {
         return homeModel.buyOilPumpUpgrade();
     }
+
+    @Override
+    public int getPlayerMoney(){
+        return homeModel.getPlayerMoney();
+    }
+
 }
