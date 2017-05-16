@@ -21,7 +21,7 @@ import com.example.sauronsarmy.oopp.clock.ClockListener;
 public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps,ClockListener {
 
     private Monster currentMonster;
-    private MainMVPInterface.PresenterOps mainPresenter = MainPresenter.getInstance();
+    private MainMVPInterface.PresenterOps mainPresenter = new MainPresenter();
     private static final String TAG = "MainActivity";
 
     @Override
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
 
         update();
-        MainPresenter.getInstance().getRun().register(this);
+        mainPresenter.getRun().register(this);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         Log.i(TAG, "onPause() called");
 
         //Unregister from clock
-        MainPresenter.getInstance().getRun().unregister(this);
+        mainPresenter.getRun().unregister(this);
         super.onPause();
     }
 
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     protected void onStart(){
 
         //Register to clock
-        MainPresenter.getInstance().getRun().register(this);
+        mainPresenter.getRun().register(this);
 
         super.onStart();
     }
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
     @Override
     public void update() {
-        currentMonster=MainPresenter.getInstance().getCurrentMonster();
+        currentMonster = mainPresenter.getCurrentMonster();
         ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
         TextView hp = (TextView) findViewById(R.id.hp);
         hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());

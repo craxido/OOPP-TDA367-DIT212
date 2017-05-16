@@ -2,6 +2,7 @@ package com.example.sauronsarmy.oopp;
 
 import android.content.Context;
 
+import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.monsterPack.Monster;
 
 /**
@@ -21,6 +22,7 @@ public interface MainMVPInterface {
         Monster getCurrentMonster();
         void saveState(Context value1);
         void loadState(Context value1);
+        Runner getRun();
         }
 
     interface ModelInterface {

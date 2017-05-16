@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.sauronsarmy.oopp.MainMVPInterface;
 import com.example.sauronsarmy.oopp.upgrades.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.MainPresenter;
@@ -25,7 +26,7 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
     private TextView dpsText;
     private TextView moneyText;
     private TextView moneyPerSecText;
-    private StatsPresenterInterface statsPresenter;
+    private StatsInterface.Presenter statsPresenter = new StatsPresenter();
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -33,8 +34,6 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
-
-        statsPresenter = new StatsPresenter();
 
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
@@ -56,7 +55,7 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
 
         update();
 
-        MainPresenter.getInstance().getRun().register(this);
+        statsPresenter.getRun().register(this);
 
     }
 
@@ -89,14 +88,14 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
     protected void onPause(){
 
         //Register to clock
-        MainPresenter.getInstance().getRun().unregister(this);
+        statsPresenter.getRun().unregister(this);
         super.onPause();
     }
 
     @Override
     protected void onStart(){
         //Register to clock
-        MainPresenter.getInstance().getRun().register(this);
+        statsPresenter.getRun().register(this);
 
         super.onStart();
     }
