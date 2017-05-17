@@ -12,10 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sauronsarmy.oopp.MainPresenter;
-import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
+import com.example.sauronsarmy.oopp.Home.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.R;
-import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
+import com.example.sauronsarmy.oopp.Shop.ShopActivity;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 import com.example.sauronsarmy.oopp.lvlPickFragment;

@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp.Upgrades;
+package com.example.sauronsarmy.oopp.Upgrade;
 
 import java.util.HashMap;
 import java.util.Map;
