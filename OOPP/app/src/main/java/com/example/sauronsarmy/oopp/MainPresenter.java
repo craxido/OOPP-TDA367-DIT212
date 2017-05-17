@@ -7,18 +7,15 @@ import com.example.sauronsarmy.oopp.monsterPack.Monster;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 import com.example.sauronsarmy.oopp.map.MapPresenter;
-import com.example.sauronsarmy.oopp.clock.ClockListener;
-import com.example.sauronsarmy.oopp.clock.Runner;
 
 /**
  * Created by Jonatan on 24/04/2017.
  * @author everyone
  */
 
- public class MainPresenter implements MainMVPInterface.PresenterOps, ClockListener {
+ public class MainPresenter implements MainMVPInterface.PresenterOps {
     // View reference
 
-    private Runner run = Runner.getInstance();
     private PlayerModelInterface playerModel;
     private MainMVPInterface.ModelInterface mainModel;
     private MapMVPInterface.PresenterOps mapPresenter;
@@ -29,8 +26,6 @@ import com.example.sauronsarmy.oopp.clock.Runner;
         playerModel = PlayerModel.getInstance();
         mainModel = new MainModel();
         mapPresenter = new MapPresenter();
-        run.register(this);
-        run.start();
     }
 
     //Called from MainActivity when a monster is clicked
@@ -86,8 +81,6 @@ import com.example.sauronsarmy.oopp.clock.Runner;
         playerModel.addMoney(playerModel.getMoneyPerSecond());
     }
 
-    public Runner getRun(){return  run;}
-
     @Override
     public int getGoal() {
         return mapPresenter.getGoal();
@@ -110,6 +103,11 @@ import com.example.sauronsarmy.oopp.clock.Runner;
     @Override
     public void previousLevel() {
         mapPresenter.previousLevel();
+    }
+
+    @Override
+    public int getPlayerMoney() {
+        return playerModel.getMoney();
     }
 
     public boolean getLvlCmp(){

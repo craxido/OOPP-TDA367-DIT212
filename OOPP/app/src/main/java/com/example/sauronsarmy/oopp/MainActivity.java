@@ -1,6 +1,5 @@
 package com.example.sauronsarmy.oopp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.clock.Runner;
-import com.example.sauronsarmy.oopp.map.MapMVPInterface;
 import com.example.sauronsarmy.oopp.monsterPack.Monster;
-import com.example.sauronsarmy.oopp.player.PlayerModel;
-import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 
@@ -24,8 +20,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
     private MainMVPInterface.PresenterOps mainPresenter = new MainPresenter();
     private static final String TAG = "MainActivity";
-    private PlayerModelInterface player = PlayerModel.getInstance();
-    private Runner run = mainPresenter.getRun();
+    //TODO: va fan
+    private Runner run = Runner.getInstance();
     private Intent intent = new Intent();
 
     @Override
@@ -68,9 +64,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     @Override
     protected void onPause() {
         Log.i(TAG, "onPause() called");
-
         //Unregister from clock
-        run.unregister(this);
+        //run.unregister(this);
         super.onPause();
     }
 
@@ -92,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         Log.i(TAG, "onStop called");
         Log.i(TAG, "Calling saveState() in mainPresenter");
         mainPresenter.saveState(MainActivity.this);
+        run.unregister(this);
         super.onStop();
     }
     View.OnClickListener buttonListener = new View.OnClickListener() {
@@ -156,7 +152,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         monsterButton.setImageResource(currentMonster.getImageRef());
         TextView moneyIndicator = (TextView) findViewById(R.id.moneyIndicator);
-        moneyIndicator.setText(String.valueOf(player.getMoney()));
+        moneyIndicator.setText(String.valueOf(mainPresenter.getPlayerMoney()));
 
+        mainPresenter.update();
     }
 }

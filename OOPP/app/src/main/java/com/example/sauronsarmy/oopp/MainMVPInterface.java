@@ -24,12 +24,13 @@ public interface MainMVPInterface {
         Monster getCurrentMonster();
         void saveState(Context value1);
         void loadState(Context value1);
-        Runner getRun();
         int getGoal();
         int getPathGoal();
         int getBGRef();
         void nextLevel();
         void previousLevel();
+        int getPlayerMoney();
+        void update();
         }
 
     interface ModelInterface {

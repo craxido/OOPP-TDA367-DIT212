@@ -21,6 +21,8 @@ public interface ShopMVPInterface {
         void saveState(Context context);
         void loadState(Context context);
         int getPlayerMoney();
+        int getPlayerDamage();
+        int getPlayerDamagePerSecond();
     }
 
     interface Model {

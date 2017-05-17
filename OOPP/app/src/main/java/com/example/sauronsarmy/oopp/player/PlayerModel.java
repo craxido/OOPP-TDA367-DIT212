@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.player;
 
+import com.example.sauronsarmy.oopp.clock.ClockListener;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +12,7 @@ import java.util.Map;
  * of a player.
  */
 
-public class PlayerModel implements  PlayerModelInterface{
+public class PlayerModel implements PlayerModelInterface {
 
     private static final PlayerModel ourInstance = new PlayerModel();
 

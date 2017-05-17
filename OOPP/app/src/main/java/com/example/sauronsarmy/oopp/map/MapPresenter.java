@@ -2,9 +2,7 @@ package com.example.sauronsarmy.oopp.map;
 
 import android.util.Log;
 
-import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.monsterPack.Monster;
-import com.example.sauronsarmy.oopp.MainPresenter;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 

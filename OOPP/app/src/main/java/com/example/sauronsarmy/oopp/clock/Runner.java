@@ -21,14 +21,15 @@ public class Runner {
     private Runner() {
         clockListeners = new ArrayList<>();
         t = new Timer();
+        start();
     }
 
     public static Runner getInstance() {
         return runnerInstance;
     }
 
-
-    public void start() {
+    private void start() {
+        Log.i("Runner", "Start called");
         handler = new Handler();
         t.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -52,9 +53,9 @@ public class Runner {
 
     }
     //Register to be notified every second
-    public void register(ClockListener c){
-        clockListeners.add(c);
-
+    public void register(ClockListener c) {
+        if (! clockListeners.contains(c))
+            clockListeners.add(c);
     }
     //Unregister to no longer be notified
     public void unregister(ClockListener c){

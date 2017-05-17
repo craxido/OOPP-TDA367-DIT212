@@ -1,6 +1,5 @@
 package com.example.sauronsarmy.oopp.upgrades;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +9,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.clock.Runner;
-import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 
@@ -72,6 +70,7 @@ public class ShopActivity extends AppCompatActivity implements ClockListener {
     @Override
     protected void onStop() {
         shopPresenter.saveState(ShopActivity.this);
+        run.unregister(this);
         super.onStop();
     }
 
@@ -93,7 +92,7 @@ public class ShopActivity extends AppCompatActivity implements ClockListener {
         dmgCost.setText(String.valueOf(damageUpgrade.getCost() + " g"));
         dmgCounter.setText(String.valueOf(shopPresenter.getDamageUpgradeCounter()));
 
-        int dmg = PlayerModel.getInstance().getDamage();
+        int dmg = shopPresenter.getPlayerDamage();
         int newdmg = damageUpgrade.getStat() + dmg;
 
         currentDmg.setText(String.valueOf(dmg));
@@ -118,7 +117,7 @@ public class ShopActivity extends AppCompatActivity implements ClockListener {
         dpsCounter.setText(String.valueOf(shopPresenter.getDPSUpgradeCounter()));
         dpsCost.setText(String.valueOf(dpsUpgrade.getCost() + " g"));
 
-        int dps = PlayerModel.getInstance().getDamagePerSecond();
+        int dps = shopPresenter.getPlayerDamagePerSecond();
         int nDps = dps + dpsUpgrade.getStat();
 
         currentDPS.setText(String.valueOf(dps));

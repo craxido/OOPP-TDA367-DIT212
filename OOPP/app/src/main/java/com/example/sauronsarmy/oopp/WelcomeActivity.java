@@ -3,6 +3,7 @@ package com.example.sauronsarmy.oopp;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,9 +20,7 @@ import android.widget.Button;
 
 public class WelcomeActivity extends AppCompatActivity implements MainMVPInterface.ViewOps{
     private static final String TAG ="WelcomeActivity";
-    private MainMVPInterface.PresenterOps mainPresenter;
-
-
+    private SharedPreferences saveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,40 +54,28 @@ public class WelcomeActivity extends AppCompatActivity implements MainMVPInterfa
                     loadGame();
                     break;
             }
-
-
-
         }
     };
 
 
     // Load a previous game
     private void loadGame(){
-        mainPresenter = new MainPresenter();
-
-        // Load previous state
-        Log.i(TAG, "Will attempt to load previous state if there is one");
-        mainPresenter.loadState(WelcomeActivity.this);
-
-        Context context = WelcomeActivity.this;
-        startActivity(new Intent(context, MainActivity.class));
-
-
+        startActivity(new Intent().setAction("android.intent.action.MAINSCREEN"));
     }
     // Create a new game
     private void newGame(){
-        mainPresenter = new MainPresenter();
+        final Context context = WelcomeActivity.this;
 
-        //Creata a dialog, asking if the player wants to override any previous save
+        //Create a dialog, asking if the player wants to override any previous save
         AlertDialog.Builder builder = new AlertDialog.Builder(WelcomeActivity.this);
         builder.setMessage(R.string.new_game_prompt)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        // Clear all saved data
+                        saveData = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
+                        saveData.edit().clear().apply();
                         //Chose new game
-                        Context context = WelcomeActivity.this;
-                        startActivity(new Intent(context, MainActivity.class));
-
-
+                        startActivity(new Intent().setAction("android.intent.action.MAINSCREEN"));
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -99,11 +86,5 @@ public class WelcomeActivity extends AppCompatActivity implements MainMVPInterfa
 
         AlertDialog dia = builder.create();
         dia.show();
-
-
-
     }
-
-
-
 }

@@ -55,6 +55,16 @@ class ShopPresenter implements ShopMVPInterface.Presenter {
     }
 
     @Override
+    public int getPlayerDamage() {
+        return playerModel.getDamage();
+    }
+
+    @Override
+    public int getPlayerDamagePerSecond() {
+        return playerModel.getDamagePerSecond();
+    }
+
+    @Override
     public int getDamageUpgradeCounter() {
         return shopModel.getDamageUpgradeCounter();
     }

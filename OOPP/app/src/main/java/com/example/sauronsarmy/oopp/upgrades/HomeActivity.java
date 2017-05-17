@@ -1,6 +1,5 @@
 package com.example.sauronsarmy.oopp.upgrades;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -22,12 +21,12 @@ public class HomeActivity extends AppCompatActivity implements ClockListener {
     private static final String TAG = "HomeActivity";
     private Intent intent = new Intent();
     HomeMVPInterface.Presenter homePresenter;
+    Runner run = Runner.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         homePresenter = new HomePresenter();
         homePresenter.loadState(HomeActivity.this);
-        Runner runner = Runner.getInstance();
         setContentView(R.layout.activity_home);
 
         /*
@@ -55,7 +54,7 @@ public class HomeActivity extends AppCompatActivity implements ClockListener {
          */
         ImageButton oilUpgradeButton = (ImageButton) findViewById(R.id.oilUpgradeButton);
         oilUpgradeButton.setOnClickListener(buttonListener);
-        runner.register(this);
+        run.register(this);
 
         TextView moneyIndi = (TextView) findViewById(R.id.moneyIndicator);
         moneyIndi.setText(String.valueOf(homePresenter.getPlayerMoney()));
@@ -90,6 +89,7 @@ public class HomeActivity extends AppCompatActivity implements ClockListener {
     @Override
     protected void onStop() {
         homePresenter.saveState(HomeActivity.this);
+        run.unregister(this);
         super.onStop();
     }
 

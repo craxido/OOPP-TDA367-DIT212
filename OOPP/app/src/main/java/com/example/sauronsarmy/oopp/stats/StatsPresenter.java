@@ -1,8 +1,5 @@
 package com.example.sauronsarmy.oopp.stats;
 
-import com.example.sauronsarmy.oopp.MainMVPInterface;
-import com.example.sauronsarmy.oopp.MainPresenter;
-import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
