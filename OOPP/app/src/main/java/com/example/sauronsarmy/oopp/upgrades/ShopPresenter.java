@@ -2,23 +2,16 @@ package com.example.sauronsarmy.oopp.upgrades;
 
 import android.content.Context;
 
-import com.example.sauronsarmy.oopp.MainMVPInterface;
-import com.example.sauronsarmy.oopp.MainPresenter;
-
 /**
  * Created by Sarosh on 2017-05-11.
  */
 
-public class ShopPresenter implements ShopMVPInterface.Presenter {
+class ShopPresenter implements ShopMVPInterface.Presenter {
 
     private ShopMVPInterface.Model shopModel;
-    private final static MainMVPInterface.PresenterOps mainPresenter = new MainPresenter();
 
-    public ShopPresenter() {
+    ShopPresenter() {
         shopModel = Shop.getInstance();
-        //mainModel = mainModel.getInstance();
-        // Hey there circular dependency
-        //mainPresenter = new MainPresenter();
     }
 
     @Override
