@@ -43,4 +43,23 @@
         android:background="@android:color/white"
         android:textAlignment="viewStart"/>
 
+    <Button
+        android:id="@+id/prevLvl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/b_monster"
+        android:layout_toStartOf="@+id/b_monster"
+        android:text="@string/leftarrow" />
+
+    <Button
+        android:id="@+id/nextLvl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rightarrow"
+        android:layout_alignBaseline="@+id/prevLvl"
+        android:layout_alignBottom="@+id/prevLvl"
+        android:layout_toRightOf="@+id/b_monster"
+        android:layout_toEndOf="@+id/b_monster" />
+
 </RelativeLayout>

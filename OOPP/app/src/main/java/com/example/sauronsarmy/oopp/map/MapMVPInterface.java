@@ -24,10 +24,14 @@ public interface MapMVPInterface {
         int  getPlayerMoney();
         int damageMonster(int damage);
         Area getCurrentArea();
-        void tryChangeAreaLevel(int level, int area);
         int getGoal();
         int getPathGoal();
         Monster getCurrentMonster();
+        boolean tryChangeAreaLevel(int level, int area);
+        void nextLevel();
+        void previousLevel();
+
+        // methods to be called from Presenter
     }
 
     interface ModelOps {

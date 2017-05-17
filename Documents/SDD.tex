@@ -22,8 +22,7 @@
 
 \subsection{Design Goals}
 
-Monster Clicker is a mobile game for Android. So the program must therfore run on Android,
-it must be able to get input from the user, and display the result of these inputs. 
+Monster Clicker is a mobile game for Android. So the program must therfore run on Android, it must be able to get input from the user, and display the result of these inputs. 
 
 \subsection{Definitions, acronyms, abbriviations}
 \begin{itemize}
@@ -44,6 +43,7 @@ Monster Clicker, just like any other piece of software relies on different desig
     \item Model View Presenter \cite{MVP}
     \item Singelton-pattern
     \item Factory-pattern
+    \item Observer-pattern
 \end{itemize}
 
 \subsection{Dependencies}
@@ -54,7 +54,7 @@ required to be able to run. \\
 \noindent
 The application is subdivided into several packages:
 \begin{itemize}
-    \item \emph{Player:} this package contains a player model, and an interface for this model. The model contains the state of the player, damage, gold, etc. And methods to access and/or change the state.
+    \item \emph{Player} 
     \item \emph{Monster Pack}
     \item \emph{Map}
     \item \emph{Stats}
@@ -74,7 +74,7 @@ This package contains a player model, and an interface for this model. The model
 \subsubsection{Diagrams}
 \begin{center}
     Sequence diagram of getState()\\
-    \fbox{ \includegraphics[scale=0.3]{seqDiagrams/playerModel.png}}
+    %\fbox{ \includegraphics[scale=0.3]{seqDiagrams/playerModel.png}}
 \end{center}
 
 \subsubsection{Quality}
@@ -84,17 +84,66 @@ The tests for \emph{PlayerModel} can be found in \emph{/OOPP/app/src/test/\ldots
 This package contains a monster model, and a monster factory. The model contains the state of the monster, gold, health, etc. A constructor to set the state and methods
 to modify the state. The factory handles the creation of monsters in a simplified way.
 
+\subsection{Diagrams}
+\begin{center}
+    Sequence diagram of what happens when a monster is clicked.\\
+    % \fbox{\includegraphics[scale=0.2]{seqDiagrams/monsterClicked.png}}
+\end{center}
+
+\subsubsection{Quality}
+
 \subsection{Map}
+The package which represents the map activity in the app. From here the player can change area. Takes care of the area, level and map instantiation.
+The map package consists of the files:
+\begin{itemize}
+    \item Area: Container class for Levels.
+    \item Level: A class which contains information about the monster and which methods can be used to act on the monster. Plays a significant role as it contains the monster which you are fighting in the main activity.
+    \item Map: The model.
+    \item MapActivity: The view.
+    \item MapPresenter: The presenter.
+    \item areaType: A simple enum type.
+    \item levelFactory: Produces levels.
+    \item MapMVPInterface: The interfaces which regulate how the classes communicate internally and how other packages can communicate with the the presenter.
+\end{itemize}
+
+\subsubsection{Diagrams}
 
 \subsection{Stats}
+The stats package presents the state stored in the PlayerModel in a readable way.\\
+The stats package consists of the files:
+\begin{itemize}
+    \item StatsActivity: The view.
+    \item StatsPresenter: The presenter.
+\end{itemize}
 
-\subsection{Upgrades}
+\subsection{Home}
+The home package represents the home activity in the app. It consists of the files:
+\begin{itemize}
+    \item Home: The model
+    \item HomePresenter: The presenter
+    \item HomeActivity: The view
+    \item HomeMVPInterface: The interface which regulates how the presenter communicates with the model and the view, and how everyone else can communicate with the presenter.
+\end{itemize}
+
+\subsection{Shop}
+The shop package represents the shop activity in the app. It consits of the files:
+\begin{itemize}
+    \item Shop: The model
+    \item ShopPresenter: The presenter
+    \item ShopActivity: The view
+    \item ShopMVPInterface: The interface which regulates how the presenter communicates with the model and the view, and how everyone else can communicate with the presenter.
+\end{itemize}
 
 \subsection{Clock}
+The clock package is the implementation of the game-loop. The Runner class is implemented as a singelton so that everone that wants to register to the loop can get an instance of the runner. 
+
+\subsubsection{Diagrams}
+
+\subsubsection{Quality}
 
 \section{Persistent data management}
 Gem Clicker saves the state of the app when the app is closed. 
-This data is represented as a simple text file, and doesn't take up any noticible space on the users phone.
+The data is represented as a simple key-value storage, which is handled by android internaly.
 
 \section{Access control and security}
 There are no different roles for using this application. The only role is that of the user,

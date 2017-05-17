@@ -56,6 +56,30 @@ class Home implements HomeMVPInterface.Model  {
         return oilPumpUpgradeCounter;
     }
 
+    public void setOilPumpUpgradeCounter(Map<String, Integer> map) {
+        Log.i(TAG, "Setting old Home state");
+        oilPumpUpgradeCounter = map.get("oil");
+    }
+
+    //same as above except without Log. for tests
+    public void testOilPumpUpgradeCounter(Map<String, Integer> map){
+        oilPumpUpgradeCounter = map.get("oil");
+    }
+
+    //for tests
+    public void setOilCounter(int i){
+        oilPumpUpgradeCounter = i;
+    }
+
+    public Map getUpgradeCounters(){
+        return new HashMap<String, Integer> ()
+        {
+            {
+                put("oil", oilPumpUpgradeCounter);
+            }
+        };
+    }
+
     public int getPlayerMoneyPerSec(){
         return player.getMoneyPerSecond();
     }

@@ -17,8 +17,6 @@ public class Level {
     private int goal=10;
     private int pathToGoal=0;
     private boolean completed=false;
-    boolean available = false;
-
 
     Level(Monster monster, int healthMultiplier, int goldMultiplier, areaType area) {
         this.monster = monster;

@@ -18,12 +18,12 @@
 \maketitle
 
 \section{Introduction}
-Our project is a game about defeating monsters. You do this by clicking \\
-on the monsters with your finger. When defeated the monsters drop gold \\
-which can be used to buy upgrades. There are three upgrades that can be \\
-bought, upgrades to your damage, upgrades which provide damage every second \\
-or upgrades which provide gold every second. When the player has defeated enough \\
-monsters the player can progress to a new area and defeat monsters in a different \\
+Our project is a game about defeating monsters. You do this by clicking 
+on the monsters with your finger. When defeated the monsters drop gold 
+which can be used to buy upgrades. There are three upgrades that can be 
+bought, upgrades to your damage, upgrades which provide damage every second 
+or upgrades which provide gold every second. When the player has defeated enough 
+monsters the player can progress to a new area and defeat monsters in a different 
 scenery. 
 
 \subsection{Definitions, acronyms, abbriviations}
@@ -91,7 +91,7 @@ Participators: Player\\
     1 & Player clicks screen & \\ \hline
     2 & & Calculate new health for monster\\ \hline
     3 & & Replace dead monster with new monster \\ \hline
-    4 & Player gets money & \\ \hline
+    4 & & Player gets money \\ \hline
 \end{tabular}
 \vspace{5 mm}\\
 \textbf{Alternate flow:} The player attacks the monster and the monster dies. The level is cleared.
@@ -102,7 +102,7 @@ Participators: Player\\
     2 & & Calculate new health for monster\\ \hline
     3 & & Replace dead monster with new monster \\ \hline
     4 & & The option to change level is made avliable\\ \hline
-    5 & The player gets money & \\ \hline
+    5 & & The player gets money \\ \hline
 \end{tabular}
 \\
 \subsubsection{Use case: Attack boss}
@@ -118,8 +118,7 @@ Participators: Player \\
     1 & Player clicks screen & \\ \hline
     2 & & Calculate new health for boss \\ \hline
     3 & & Unlock next level \\ \hline
-    4 & & Reset boss \\ \hline
-    5 & Player gets money & \\ \hline
+    4 & & Player gets money \\ \hline
 \end{tabular}
 \newpage
 \noindent
@@ -249,7 +248,7 @@ A view over the upgrades that a player can buy.
 \subsubsection{Home}
 The players home. Here the player can upgrades which earn passive money. 
 \subsubsection{Area}
-An area, has a name, and a list of levels associated with that area.
+An area, has a type, and a list of levels associated with that area.
 \subsubsection{Level}
 Determines how hard the monsters are, and how much money they drop.
 \section{References}

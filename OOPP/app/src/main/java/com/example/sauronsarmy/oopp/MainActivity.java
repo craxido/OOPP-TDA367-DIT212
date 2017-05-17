@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -44,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         ImageButton mainButton  = (ImageButton) findViewById(R.id.b_main);
         ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
 
+        Button nxtLvl = (Button) findViewById(R.id.nextLvl);
+        Button prvLvl = (Button) findViewById(R.id.prevLvl);
+
 
         homeButton.setOnClickListener(buttonListener);
         shopButton.setOnClickListener(buttonListener);
@@ -51,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         statsButton.setOnClickListener(buttonListener);
         mainButton.setOnClickListener(buttonListener);
         monsterButton.setOnClickListener(buttonListener);
+
+        nxtLvl.setOnClickListener(buttonListener);
+        prvLvl.setOnClickListener(buttonListener);
 
         mainButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
@@ -124,6 +131,16 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                     mainPresenter.monsterClicked();
 
                     update();
+                    break;
+                case R.id.nextLvl:
+                    MapPresenter.getInstance().nextLevel();
+                    update();
+
+                    break;
+                case R.id.prevLvl:
+                    MapPresenter.getInstance().previousLevel();
+                    update();
+
                     break;
             }
         }

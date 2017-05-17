@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.upgrades.HomeActivity;
@@ -130,7 +131,15 @@ public class MapActivity extends AppCompatActivity
     public void onClick(int level, int area) {
         //Log the selected level and area
         Log.i("LvlArea",level + " "+ area);
-        mapPresenter.tryChangeAreaLevel(level,area);
+        if(mapPresenter.tryChangeAreaLevel(level,area)) {
+
+            startActivity(new Intent(this, MainActivity.class));
+        }
+        else {
+
+            Toast toast = Toast.makeText(this,"You have not unlocked this level yet",Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
 }

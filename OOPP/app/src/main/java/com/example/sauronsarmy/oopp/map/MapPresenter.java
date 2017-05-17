@@ -64,17 +64,19 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     }
 
     @Override
-    public void tryChangeAreaLevel(int level, int area) {
+    public boolean tryChangeAreaLevel(int level, int area) {
 
         if(area ==0){
             changeArea(area);
             if(level ==0){
                 changeLvl(level);
+                return true;
             }
             else {
 
                 if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
                     changeLvl(level);
+                    return true;
                 }
 
             }
@@ -85,19 +87,18 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
                 changeArea(area);
                 if(level ==0){
                     changeLvl(level);
+                    return true;
                 }
                 else {
 
                     if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
                         changeLvl(level);
+                        return true;
                     }
-                    return;
                 }
             }
-
         }
-
-
+        return false;
     }
 
     public void changeLvl(int index) {
@@ -164,6 +165,71 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     public boolean compareAreas(Area a, Area b){
         return a.equals(b);
 
+    }
+
+
+
+    public void nextLevel(){
+
+        int lvlpos = getLevelIndex() +1;
+        if(lvlpos >= getCurrentArea().getLevels().length){
+            if(getAreaIndex()+1 < getAreas().length){
+
+                tryChangeAreaLevel(0,getAreaIndex()+1);
+            }
+
+        }
+        else{
+            tryChangeAreaLevel(lvlpos,getAreaIndex());
+        }
+    }
+
+    public void previousLevel(){
+        int lvlpos = getLevelIndex() -1;
+        if(lvlpos <0){
+            if(getAreaIndex()-1 >=0){
+
+                tryChangeAreaLevel(getArea(getAreaIndex()-1).getLevels().length -1 ,getAreaIndex()-1);
+            }
+
+        }
+        else{
+            tryChangeAreaLevel(lvlpos,getAreaIndex());
+        }
+
+    }
+
+    private int getLevelIndex(){
+
+        int pos =0;
+        Level curLvl = getCurrentLevel();
+        Level[] lvls = getCurrentArea().getLevels();
+
+        for(int i =0; i< lvls.length ; i++){
+            if(lvls[i].equals(curLvl)){
+                pos =i;
+                break;
+
+            }
+        }
+        return pos;
+    }
+
+
+    private int getAreaIndex(){
+
+        int pos =0;
+        Area currentArea = getCurrentArea();
+        Area[] areas = getAreas();
+
+        for(int i =0; i< areas.length ; i++){
+            if(areas[i].equals(currentArea)){
+                pos =i;
+                break;
+
+            }
+        }
+        return pos;
     }
 
 }
