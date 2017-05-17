@@ -20,6 +20,9 @@
     <include layout="@layout/bottom_bar"
         android:id="@+id/include" />
 
+    <include layout="@layout/top_bar" />
+
+
     <ImageButton
         android:id="@+id/b_area1"
         android:layout_width="80dp"

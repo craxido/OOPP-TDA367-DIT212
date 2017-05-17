@@ -13,6 +13,7 @@
         android:text="THIS IS THE MAIN ACTIVITY"/>
 
     <include layout="@layout/bottom_bar" />
+    <include layout="@layout/top_bar" />
 
     <ImageButton
         android:id="@+id/b_monster"
