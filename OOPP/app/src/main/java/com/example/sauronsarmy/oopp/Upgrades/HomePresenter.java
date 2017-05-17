@@ -38,6 +38,14 @@ public class HomePresenter implements HomeMVPInterface.Presenter {
     }
 
     @Override
+    public void setOilCounter(int i){
+        homeModel.setOilCounter(i);
+    }
+
+    @Override
+    public void testOilPumpUpgradeCounter(Map<String, Integer> map) {
+        homeModel.testOilPumpUpgradeCounter(map);
+
     public int getPlayerMoneyPerSec(){
         return homeModel.getPlayerMoneyPerSec();
     }
