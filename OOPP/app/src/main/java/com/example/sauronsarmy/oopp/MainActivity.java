@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,8 +18,8 @@ import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
 import com.example.sauronsarmy.oopp.Stats.StatsActivity;
-import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
-import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
+import com.example.sauronsarmy.oopp.Home.HomeActivity;
+import com.example.sauronsarmy.oopp.Shop.ShopActivity;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 

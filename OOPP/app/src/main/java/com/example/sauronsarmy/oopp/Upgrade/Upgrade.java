@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp.Upgrades;
+package com.example.sauronsarmy.oopp.Upgrade;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,14 +12,14 @@ public class Upgrade {
     private int stat;
     private int cost;
 
-    protected Upgrade(int baseStat, int baseCost){
+    public Upgrade(int baseStat, int baseCost){
         this.stat = baseStat;
         this.cost = baseCost;
 
     }
 
     // Updates current stat upgrade amount with a multiplier
-    protected void updateStat(int multiplier){
+     public void updateStat(int multiplier){
         double f = 1.7;
         if(multiplier > 1) {
             f = stat * (f);
@@ -36,7 +36,7 @@ public class Upgrade {
     }
 
     // Updates the cost for the upgrade with multiplier
-    protected void updateCost(int multiplier){
+    public void updateCost(int multiplier){
         float f = 1.5f;
         if(multiplier > 1) {
             f = cost * 1.5f;

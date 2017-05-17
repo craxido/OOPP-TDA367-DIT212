@@ -11,12 +11,12 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
+import com.example.sauronsarmy.oopp.Home.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.MainPresenter;
 import com.example.sauronsarmy.oopp.Map.MapActivity;
 import com.example.sauronsarmy.oopp.R;
-import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
+import com.example.sauronsarmy.oopp.Shop.ShopActivity;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 public class StatsActivity extends AppCompatActivity implements ClockListener {

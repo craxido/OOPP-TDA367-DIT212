@@ -11,8 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"/>
-        <activity android:name=".Upgrades.HomeActivity" />
-        <activity android:name=".Upgrades.ShopActivity" />
+        <activity android:name=".Home.HomeActivity" />
+        <activity android:name=".Shop.ShopActivity" />
         <activity android:name=".Stats.StatsActivity" />
         <activity android:name=".Map.MapActivity" />
         <activity android:name=".WelcomeActivity">
