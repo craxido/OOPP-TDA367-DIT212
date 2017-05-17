@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
     private MainMVPInterface.PresenterOps mainPresenter = new MainPresenter();
     private static final String TAG = "MainActivity";
-    private PlayerModelInterface player;
+    private PlayerModelInterface player = PlayerModel.getInstance();
     private Runner run = mainPresenter.getRun();
     private Intent intent = new Intent();
 
@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         Log.i(TAG, "onCreate() called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        player = PlayerModel.getInstance();
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
         appropriate activity.
@@ -76,17 +75,9 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     }
 
     @Override
-    protected void onResume() {
-        Log.i(TAG, "onResume() called");
-        super.onResume();
-    }
-
-    @Override
     protected void onStart(){
-
         //Register to clock
         run.register(this);
-
         super.onStart();
     }
     @Override

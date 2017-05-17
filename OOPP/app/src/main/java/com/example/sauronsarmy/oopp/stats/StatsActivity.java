@@ -12,11 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.clock.Runner;
-import com.example.sauronsarmy.oopp.upgrades.HomeActivity;
-import com.example.sauronsarmy.oopp.MainActivity;
-import com.example.sauronsarmy.oopp.map.MapActivity;
 import com.example.sauronsarmy.oopp.R;
-import com.example.sauronsarmy.oopp.upgrades.ShopActivity;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 public class StatsActivity extends AppCompatActivity implements ClockListener {
@@ -53,17 +49,14 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
         mainButton.setOnClickListener(buttonListener);
         statsButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
-
         update();
 
         run.register(this);
-
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Context context = StatsActivity.this;
             // Figure out which button was pressed
             switch (v.getId()) {
                 case R.id.b_home:
@@ -91,7 +84,6 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
 
     @Override
     protected void onPause(){
-
         //Register to clock
         run.unregister(this);
         super.onPause();
@@ -101,7 +93,6 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
     protected void onStart(){
         //Register to clock
         run.register(this);
-
         super.onStart();
     }
 

@@ -21,7 +21,7 @@ public class PlayerModel implements  PlayerModelInterface{
     // This must be assigned when exiting the app.
     private long lastLogOn;
 
-    public static PlayerModel getInstance() {
+    public static PlayerModelInterface getInstance() {
         return ourInstance;
     }
 

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import android.os.Handler;
+import android.util.Log;
+
 /**
  * Created by Filip on 2017-05-01.
  */
@@ -34,9 +36,10 @@ public class Runner {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
+                        Log.i("Runner", "=================");
                         for (ClockListener cl:clockListeners){
                             cl.update();
-
+                            Log.i("Runner", cl.toString());
                         }
                     }
                 });

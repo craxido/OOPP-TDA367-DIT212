@@ -12,11 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sauronsarmy.oopp.clock.Runner;
-import com.example.sauronsarmy.oopp.upgrades.HomeActivity;
-import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.R;
-import com.example.sauronsarmy.oopp.upgrades.ShopActivity;
-import com.example.sauronsarmy.oopp.stats.StatsActivity;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 import com.example.sauronsarmy.oopp.lvlPickFragment;
 
@@ -137,8 +133,8 @@ public class MapActivity extends AppCompatActivity
         //Log the selected level and area
         Log.i("LvlArea",level + " "+ area);
         if(mapPresenter.tryChangeAreaLevel(level,area)) {
-
-            startActivity(new Intent(this, MainActivity.class));
+            intent.setAction("android.intent.action.MAINSCREEN");
+            startActivity(intent);
         }
         else {
 
