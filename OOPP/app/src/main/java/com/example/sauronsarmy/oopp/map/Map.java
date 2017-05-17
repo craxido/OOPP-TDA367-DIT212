@@ -2,6 +2,8 @@ package com.example.sauronsarmy.oopp.map;
 
 import com.example.sauronsarmy.oopp.monsterPack.monsterFactory;
 import com.example.sauronsarmy.oopp.R;
+import com.example.sauronsarmy.oopp.player.PlayerModel;
+import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
 /**
  * @author Jonatan Källman
@@ -16,7 +18,9 @@ class Map implements MapMVPInterface.ModelOps {
     private monsterFactory monfac;
     private int bgRef;
 
-    static Map getInstance() {
+    private static PlayerModelInterface player = PlayerModel.getInstance();
+
+    public static Map getInstance() {
         return mapInstance;
     }
 
@@ -24,7 +28,7 @@ class Map implements MapMVPInterface.ModelOps {
     private Map() {
         bgRef = R.drawable.mapbg;
         areas = createAreas();
-	    currentArea = areas[0];
+	      currentArea = areas[0];
         monfac = new monsterFactory();
     }
 
@@ -77,6 +81,11 @@ class Map implements MapMVPInterface.ModelOps {
         return areas;
     }
 
+
+    public int getPlayerMoney(){
+        return player.getMoney();
+    }
+
     Level createLevel(areaType areaType){
         switch (areaType){
             case MOUNTAIN:
@@ -90,18 +99,10 @@ class Map implements MapMVPInterface.ModelOps {
         }
     }
 
-    int getGoldMultiplier(){ //TODO if needed
-        return 1;
-    }
-
-    int getHealthMultiplier(){ //TODO if needed
-        return 1;
-    }
-
     //Gets the GoldMultiplier for the given Level in the given Area.
     int getLevelGoldMultiplier(int areaIndex, int levelIndex){
-        Level[] levels= areas[areaIndex].getLevels();
-        return levels[levelIndex].getGoldMultiplier();
+        Level level= areas[areaIndex].getLevels()[levelIndex];
+        return level.getGoldMultiplier();
     }
 
     //Gets the HealthMultiplier for the given Level in the given Area.

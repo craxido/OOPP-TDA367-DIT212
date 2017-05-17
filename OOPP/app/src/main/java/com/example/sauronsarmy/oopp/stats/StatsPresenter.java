@@ -13,11 +13,9 @@ import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 public class StatsPresenter implements StatsInterface.Presenter {
 
     private PlayerModelInterface playerModel;
-    private MainMVPInterface.PresenterOps mainPresenter;
 
     StatsPresenter() {
         playerModel = PlayerModel.getInstance();
-        mainPresenter = new MainPresenter();
     }
 
     @Override
@@ -40,8 +38,4 @@ public class StatsPresenter implements StatsInterface.Presenter {
         return playerModel.getDamagePerSecond();
     }
 
-    @Override
-    public Runner getRun() {
-        return mainPresenter.getRun();
-    }
 }

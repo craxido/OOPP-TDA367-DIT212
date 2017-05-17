@@ -11,10 +11,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.sauronsarmy.oopp.MainMVPInterface;
+import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.upgrades.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
-import com.example.sauronsarmy.oopp.MainPresenter;
 import com.example.sauronsarmy.oopp.map.MapActivity;
 import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.upgrades.ShopActivity;
@@ -27,6 +26,7 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
     private TextView moneyText;
     private TextView moneyPerSecText;
     private StatsInterface.Presenter statsPresenter = new StatsPresenter();
+    private Runner run = Runner.getInstance();
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -55,7 +55,7 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
 
         update();
 
-        statsPresenter.getRun().register(this);
+        run.register(this);
 
     }
 
@@ -88,14 +88,14 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
     protected void onPause(){
 
         //Register to clock
-        statsPresenter.getRun().unregister(this);
+        run.unregister(this);
         super.onPause();
     }
 
     @Override
     protected void onStart(){
         //Register to clock
-        statsPresenter.getRun().register(this);
+        run.register(this);
 
         super.onStart();
     }

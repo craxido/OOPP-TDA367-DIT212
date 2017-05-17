@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Gem Clicker</string>
+    <string name="app_name">Monster Clicker</string>
     <string name="dmg">Damage:</string>
     <string name="dpsText">Damage per second:</string>
     <string name="money">Money:</string>
@@ -7,21 +7,21 @@
 
     <string name="stateIdentifier">com.example.sauronsarmy.STATE_Key</string>
 
-    <string name="cost">Cost:</string>
+    <string name="cost">Cost:  </string>
 
     <string name="dmgUpgradeText">Damage Upgrade</string>
     <string name="currentDmg">Current damage:</string>
     <string name="newDmg">New damage:</string>
 
-    <string name="dpsUpgradeText">Damage Per Second Upgrade</string>
+    <string name="dpsUpgradeText">Damage / Sec Upgrade</string>
     <string name="currentDPS">Current DPS:</string>
     <string name="newDPS">New DPS:</string>
 
-    <string name="oilUpgradeText">Oil Pump Upgrade</string>
-    <string name="currentMoneyPerSec">Current money/sec:</string>
-    <string name="newMoneyPerSec">New money/sec:</string>
     <string name="new_game_prompt" >This will override any previous saves, continue?</string>
     <string name="ok" >OK</string>
+    <string name="oilUpgradeText">Money / Sec Upgrade</string>
+    <string name="currentMoneyPerSec">Current MPS:</string>
+    <string name="newMoneyPerSec">New MPS:</string>
     <string name="cancel">Cancel</string>
     <string name="oil_pump_upgrade">oil pump upgrade</string>
     <string name="damage_upgrade">damage upgrade</string>
@@ -30,5 +30,8 @@
     <string name="_continue">Continue</string>
     <string name="button_for_oil_upgrade">Button for oil upgrade</string>
     <string name="picture_of_monster">Picture of monster</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

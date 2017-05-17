@@ -1,7 +1,10 @@
 package com.example.sauronsarmy.oopp.upgrades;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
@@ -15,6 +18,8 @@ import java.util.Map;
 class Home implements HomeMVPInterface.Model  {
     private static final String TAG = "Home";
     private static final Home homeInstance = new Home();
+    private SharedPreferences saveState;
+    private SharedPreferences.Editor editor;
 
     private PlayerModelInterface player = PlayerModel.getInstance();
     private Upgrade oilPumpUpgrade = new Upgrade(1, 100);
@@ -51,23 +56,29 @@ class Home implements HomeMVPInterface.Model  {
         return oilPumpUpgradeCounter;
     }
 
-    public void setOilPumpUpgradeCounter(Map<String, Integer> map) {
-        Log.i(TAG, "Setting old Home state");
-        oilPumpUpgradeCounter = map.get("oil");
-    }
-
-    public Map getUpgradeCounters(){
-        return new HashMap<String, Integer> ()
-        {
-            {
-                put("oil", oilPumpUpgradeCounter);
-            }
-        };
-    }
-
     public int getPlayerMoneyPerSec(){
         return player.getMoneyPerSecond();
     }
 
+    public int getPlayerMoney(){
+        return player.getMoney();
+    }
 
+    @Override
+    public void saveState(Context context) {
+        Log.i(TAG, "Saving home state");
+        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
+                                                 Context.MODE_PRIVATE);
+        editor = saveState.edit();
+        editor.putInt("oil", getOilPumpUpgradeCounter());
+        editor.apply();
+    }
+
+    @Override
+    public void loadState(Context context) {
+        Log.i(TAG, "Loading home state");
+        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
+                Context.MODE_PRIVATE);
+        oilPumpUpgradeCounter = saveState.getInt("oil", 1);
+    }
 }

@@ -10,10 +10,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.MainActivity;
+import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.map.MapActivity;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.stats.StatsActivity;
+import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 
 /**
@@ -21,12 +23,15 @@ import com.example.sauronsarmy.oopp.stats.StatsActivity;
  * Written by bunnyfiscuit
  */
 
-public class ShopActivity extends AppCompatActivity {
+public class ShopActivity extends AppCompatActivity implements ClockListener {
 
     private ShopMVPInterface.Presenter shopPresenter;
+    private Runner run = Runner.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        shopPresenter = new ShopPresenter();
+        shopPresenter.loadState(ShopActivity.this);
         setContentView(R.layout.activity_shop);
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
@@ -44,7 +49,7 @@ public class ShopActivity extends AppCompatActivity {
         statsButton.setOnClickListener(buttonListener);
         mainButton.setOnClickListener(buttonListener);
 
-        shopPresenter = new ShopPresenter();
+        run.register(this);
 
         shopButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
@@ -59,6 +64,8 @@ public class ShopActivity extends AppCompatActivity {
         dmgUpgradeButton.setOnClickListener(buttonListener);
         dpsUpgradeButton.setOnClickListener(buttonListener);
 
+        TextView moneyIndi = (TextView) findViewById(R.id.moneyIndicator);
+        moneyIndi.setText(String.valueOf(shopPresenter.getPlayerMoney()));
         updateDamageInfo();
         updateDPSInfo();
 
@@ -119,6 +126,12 @@ public class ShopActivity extends AppCompatActivity {
         currentDPS.setText(String.valueOf(dps));
         newDPS.setText(String.valueOf(nDps));
 
+    }
+
+    @Override
+    public void update(){
+        TextView moneyIndi = (TextView) findViewById(R.id.moneyIndicator);
+        moneyIndi.setText(String.valueOf(shopPresenter.getPlayerMoney()));
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {

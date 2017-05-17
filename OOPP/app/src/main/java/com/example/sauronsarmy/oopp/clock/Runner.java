@@ -11,9 +11,19 @@ import android.os.Handler;
 
 public class Runner {
 
-    Timer t = new Timer();
-    Handler handler;
-    ArrayList<ClockListener> clockListeners = new ArrayList<>();
+    private static final Runner runnerInstance = new Runner();
+    private Timer t;
+    private Handler handler;
+    private ArrayList<ClockListener> clockListeners;
+
+    private Runner() {
+        clockListeners = new ArrayList<>();
+        t = new Timer();
+    }
+
+    public static Runner getInstance() {
+        return runnerInstance;
+    }
 
 
     public void start() {

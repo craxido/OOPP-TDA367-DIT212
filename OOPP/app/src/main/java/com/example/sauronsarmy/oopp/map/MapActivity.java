@@ -8,16 +8,23 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
+import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.upgrades.HomeActivity;
 import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.upgrades.ShopActivity;
 import com.example.sauronsarmy.oopp.stats.StatsActivity;
+import com.example.sauronsarmy.oopp.clock.ClockListener;
+import com.example.sauronsarmy.oopp.lvlPickFragment;
 
-public class MapActivity extends AppCompatActivity implements MapMVPInterface.ViewOps {
+public class MapActivity extends AppCompatActivity
+        implements MapMVPInterface.ViewOps,lvlPickFragment.ClickListener, ClockListener {
 
-    private static MapMVPInterface.PresenterOps mapPresenter = MapPresenter.getInstance();
+
+    private MapMVPInterface.PresenterOps mapPresenter;
+    private static final Runner run = Runner.getInstance();
     private static final String TAG = "MapActivity";
 
     @Override
@@ -51,6 +58,18 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
 
         mapButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
+        /* Get the map (there is only one map). */
+        mapPresenter = new MapPresenter();
+        run.register(this);
+        TextView moneyIndi = (TextView) findViewById(R.id.moneyIndicator);
+        moneyIndi.setText(String.valueOf(mapPresenter.getPlayerMoney()));
+
+    }
+
+    @Override
+    public void update(){
+        TextView moneyIndi = (TextView) findViewById(R.id.moneyIndicator);
+        moneyIndi.setText(String.valueOf(mapPresenter.getPlayerMoney()));
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {
@@ -76,18 +95,42 @@ public class MapActivity extends AppCompatActivity implements MapMVPInterface.Vi
                 /* TODO: Selecting a new area should result in changing the monsters/ levels
                  * TODO: as well as the background in the MainActivity.
                     */
-                case R.id.b_area1: 
-                    MapPresenter.setBackgroundRef(mapPresenter.getArea(0).getImgRef());
+                case R.id.b_area1:
+
+                    showDia(0);
                     break;
                 case R.id.b_area2:
-                    MapPresenter.setBackgroundRef(mapPresenter.getArea(1).getImgRef());
+
+                    showDia(1);
                     break;
                 case R.id.b_area3:
-                    MapPresenter.setBackgroundRef(mapPresenter.getArea(2).getImgRef());
+
+                    showDia(2);
                     break;
 
             }
 
         }
     };
+
+    public void showDia(int area){
+        //Create a new fragment
+        lvlPickFragment lvlpck = new lvlPickFragment();
+        //Pass the area as a argument
+        Bundle args = new Bundle();
+        args.putInt("area",area);
+        lvlpck.setArguments(args);
+
+        //Show the fragment
+        lvlpck.show(getSupportFragmentManager(),"Lvlpick fragment");
+
+    }
+
+    @Override
+    public void onClick(int level, int area) {
+        //Log the selected level and area
+        Log.i("LvlArea",level + " "+ area);
+        mapPresenter.tryChangeAreaLevel(level,area);
+    }
+
 }

@@ -2,7 +2,9 @@ package com.example.sauronsarmy.oopp.map;
 
 import android.util.Log;
 
+import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.monsterPack.Monster;
+import com.example.sauronsarmy.oopp.MainPresenter;
 
 /**
  * @author Jonatan Källman
@@ -11,7 +13,7 @@ import com.example.sauronsarmy.oopp.monsterPack.Monster;
 public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     private static final String TAG = "MainActivity";
-    private static MapPresenter mapPresenterInstance = new MapPresenter();
+
     private static Map map;
 
     public MapPresenter() {
@@ -23,24 +25,87 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     }
 
     public int getBackgroundRef() {
-        return map.getBackgroundRef();
+        return map.getCurrentArea().getImgRef();
+
     }
 
     public Area getArea(int index) {
         return map.getArea(index);
     }
 
-    public void onError(String errorMsg) {
+    public Area getCurrentArea(){ return map.getCurrentArea();}
+
+    public int getGoal(){return getCurrentArea().getCurrentLevel().getGoal();}
+    public int getPathGoal(){return getCurrentArea().getCurrentLevel().getPathToGoal();}
+
+    public void onError(String errorMsg){
+
         Log.i(TAG, "Error: " + errorMsg);
     }
 
-    public static MapPresenter getInstance() {
-        return mapPresenterInstance;
+
+    public int getPlayerMoney(){
+        return map.getPlayerMoney();
     }
 
-    public Area getCurrentArea() {
-        return map.getCurrentArea();
+    public void changeArea(int index){
+        map.setCurrentArea(map.getArea(index));
+        int imgref= map.getArea(index).getImgRef();
+        setBackgroundRef(imgref);
     }
+
+    public int damageMonster(int damage){
+        int ret = map.getCurrentArea().getCurrentLevel().damageMonster(damage);
+        if (ret >0){
+            map.getCurrentArea().checkComplete();
+        }
+        return ret;
+
+    }
+
+    @Override
+    public void tryChangeAreaLevel(int level, int area) {
+
+        if(area ==0){
+            changeArea(area);
+            if(level ==0){
+                changeLvl(level);
+            }
+            else {
+
+                if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
+                    changeLvl(level);
+                }
+
+            }
+        }
+        else {
+
+            if(getArea(area-1).getComplete() && map.getAreas().length>area){
+                changeArea(area);
+                if(level ==0){
+                    changeLvl(level);
+                }
+                else {
+
+                    if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
+                        changeLvl(level);
+                    }
+                    return;
+                }
+            }
+
+        }
+
+
+    }
+
+    public void changeLvl(int index) {
+
+        getCurrentArea().setCurrentLevel(getCurrentArea().getLevels()[index]);
+    }
+
+
 
     public Level getCurrentLevel() {
         return map.getCurrentLevel();
@@ -50,9 +115,7 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         map.getCurrentArea().getCurrentLevel().setNewMonster();
     }
 
-    public int damageMonster(int damage) {
-        return map.getCurrentArea().getCurrentLevel().damageMonster(damage);
-    }
+
 
     public Monster getCurrentMonster() {
         return map.getCurrentArea().getCurrentLevel().getCurrentMonster();
@@ -92,6 +155,15 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     public int getAreaBgRef(int areaIndex) {
         return map.getAreaBgRef(areaIndex);
+    }
+
+    public boolean compareLevels(Level a, Level b){
+        return a.equals(b);
+    }
+
+    public boolean compareAreas(Area a, Area b){
+        return a.equals(b);
+
     }
 
 }

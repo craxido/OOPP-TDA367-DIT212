@@ -18,22 +18,24 @@ public interface MainMVPInterface {
              }
 
     interface PresenterOps{
+        boolean getLvlCmp();
+        boolean getAreaCmp();
         void monsterClicked();
         Monster getCurrentMonster();
         void saveState(Context value1);
         void loadState(Context value1);
         Runner getRun();
+        int getGoal();
+        int getPathGoal();
+        int getBGRef();
         }
 
     interface ModelInterface {
-        void saveState(Context value1, java.util.Map currentState,
-                                       java.util.Map currentShopUpgrade,
-                                       java.util.Map currentHomeUpgrade);
+        void saveState(Context value1, java.util.Map currentState);
         java.util.Map loadState(Context context);
-        java.util.Map loadShopUpgrade(Context context);
-        java.util.Map loadHomeUpgrade(Context context);
         boolean hasSaveToLoad();
     }
+
 
 
 }

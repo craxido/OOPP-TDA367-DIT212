@@ -8,13 +8,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.sauronsarmy.oopp.map.MapActivity;
+import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.monsterPack.Monster;
-import com.example.sauronsarmy.oopp.stats.StatsActivity;
-import com.example.sauronsarmy.oopp.upgrades.HomeActivity;
-import com.example.sauronsarmy.oopp.upgrades.ShopActivity;
+import com.example.sauronsarmy.oopp.player.PlayerModel;
+import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 
@@ -23,13 +23,16 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     private Monster currentMonster;
     private MainMVPInterface.PresenterOps mainPresenter = new MainPresenter();
     private static final String TAG = "MainActivity";
+    private PlayerModelInterface player;
+    private Runner run = mainPresenter.getRun();
+    private Intent intent = new Intent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate() called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        player = PlayerModel.getInstance();
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
         appropriate activity.
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
 
         update();
-        mainPresenter.getRun().register(this);
+        run.register(this);
     }
 
     @Override
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         Log.i(TAG, "onPause() called");
 
         //Unregister from clock
-        mainPresenter.getRun().unregister(this);
+        run.unregister(this);
         super.onPause();
     }
 
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     protected void onStart(){
 
         //Register to clock
-        mainPresenter.getRun().register(this);
+        run.register(this);
 
         super.onStart();
     }
@@ -96,35 +99,31 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Context context = MainActivity.this;
             // Figure out which button was pressed
             switch (v.getId()) {
                 case R.id.b_home:
-                    startActivity(new Intent(context, HomeActivity.class));
+                    intent.setAction("android.intent.action.HOME");
+                    startActivity(intent);
                     break;
                 case R.id.b_map:
-                    startActivity(new Intent(context, MapActivity.class));
+                    intent.setAction("android.intent.action.MAP");
+                    startActivity(intent);
                     break;
                 case R.id.b_shop:
-                    startActivity(new Intent(context, ShopActivity.class));
+                    intent.setAction("android.intent.action.SHOP");
+                    startActivity(intent);
                     break;
                 case R.id.b_stats:
-                    startActivity(new Intent(context, StatsActivity.class));
+                    intent.setAction("android.intent.action.STATS");
+                    startActivity(intent);
                     break;
                 case R.id.b_main:
                     break;
                 case R.id.b_monster:
-                    ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
-                    TextView hp = (TextView) findViewById(R.id.hp);
-
 
                     mainPresenter.monsterClicked();
 
-                    currentMonster = mainPresenter.getCurrentMonster();
-
-                    hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
-                    monsterButton.setImageResource(currentMonster.getImageRef());
-
+                    update();
                     break;
             }
         }
@@ -133,9 +132,23 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     @Override
     public void update() {
         currentMonster = mainPresenter.getCurrentMonster();
+
+        RelativeLayout bg = (RelativeLayout) findViewById(R.id.b_mainActivity);
+        bg.setBackgroundResource(mainPresenter.getBGRef());
+
         ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
+
         TextView hp = (TextView) findViewById(R.id.hp);
-        hp.setText(currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
+        hp.setText("Health: " + currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
+
+        TextView goal = (TextView) findViewById(R.id.goal);
+        int goali = mainPresenter.getGoal();
+        int path  = mainPresenter.getPathGoal();
+        goal.setText("Goal: " + path +"/" +goali);
+
         monsterButton.setImageResource(currentMonster.getImageRef());
+        TextView moneyIndicator = (TextView) findViewById(R.id.moneyIndicator);
+        moneyIndicator.setText(String.valueOf(player.getMoney()));
+
     }
 }

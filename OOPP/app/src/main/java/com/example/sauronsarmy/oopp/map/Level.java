@@ -7,12 +7,17 @@ import com.example.sauronsarmy.oopp.monsterPack.monsterFactory;
  * @author Jonatan Källman
  */
 
-class Level {
+public class Level {
 
     private Monster monster;
     private int healthMultiplier;
     private int goldMultiplier;
-    private com.example.sauronsarmy.oopp.map.areaType areaType;
+    private areaType areaType;
+
+    private int goal=10;
+    private int pathToGoal=0;
+    private boolean completed=false;
+    boolean available = false;
 
 
     Level(Monster monster, int healthMultiplier, int goldMultiplier, areaType area) {
@@ -20,6 +25,11 @@ class Level {
         this.healthMultiplier = healthMultiplier;
         this.goldMultiplier = goldMultiplier;
         this.areaType = area;
+    }
+
+    public boolean equals(Level other){
+        return this.monster.equals(other.monster) && this.healthMultiplier == other.healthMultiplier
+                && this.goldMultiplier == other.goldMultiplier && this.areaType == other.areaType;
     }
 
     areaType getArea(){
@@ -62,9 +72,17 @@ class Level {
 
     int damageMonster(int damage){
 
-        int ret =0;
+        int ret =-1;
+        //If the monster died, update pathToGoal, the return value and set a new monster
         if(monster.damageMonster(damage)){
+
             ret=monster.getGold();
+
+            pathToGoal++;
+            if(pathToGoal>=goal){
+                completed=true;
+                pathToGoal=goal;
+            }
             setNewMonster();
 
         }
@@ -78,4 +96,23 @@ class Level {
         setCurrentMonster(monFac.getMonster(getHealthMultiplier()*100, getGoldMultiplier()*100, getArea()));
 
     }
+
+
+    public int getGoal(){
+        return goal;
+
+    }
+
+    public int getPathToGoal(){
+        return pathToGoal;
+
+    }
+
+    public boolean getComplete(){
+
+        return completed;
+    }
+
+
+
 }

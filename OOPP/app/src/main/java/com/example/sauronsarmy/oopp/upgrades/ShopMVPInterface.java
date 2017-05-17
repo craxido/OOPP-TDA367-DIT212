@@ -2,7 +2,6 @@ package com.example.sauronsarmy.oopp.upgrades;
 
 import android.content.Context;
 
-import java.util.Map;
 
 /**
  * Created by Sarosh on 2017-05-11.
@@ -15,21 +14,22 @@ public interface ShopMVPInterface {
         boolean buyDPSUpgrade();
         Upgrade getDamageUpgrade();
         Upgrade getDPSUpgrade();
+        int getPlayerMoney();
         int getDamageUpgradeCounter();
         int getDPSUpgradeCounter();
-        Map getUpgradeCounters();
-        void setUpgradeCounters(Map<String, Integer> map);
         void saveState(Context context);
+        void loadState(Context context);
     }
 
     interface Model {
         boolean buyDamageUpgrade();
         boolean buyDPSUpgrade();
+        int getDPSUpgradeCounter();
+        int getDamageUpgradeCounter();
         Upgrade getDamageUpgrade();
         Upgrade getDPSUpgrade();
-        int getDamageUpgradeCounter();
-        int getDPSUpgradeCounter();
-        Map getUpgradeCounters();
-        void setUpgradeCounters(Map<String, Integer> map);
+        int getPlayerMoney();
+        void saveState(Context context);
+        void loadState(Context context);
     }
 }

@@ -1,25 +1,30 @@
 package com.example.sauronsarmy.oopp.upgrades;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+
+import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by bunnyfiscuit on 05/04/17.
+ *
  */
 
 class Shop implements ShopMVPInterface.Model {
 
     private static final Shop shopInstance = new Shop();
     private static final String TAG = "Shop";
+    private SharedPreferences saveState;
+    private SharedPreferences.Editor editor;
 
     // Variables
     private PlayerModelInterface player = PlayerModel.getInstance();
 
-    private Upgrade damageUpgrade = new Upgrade(5,10);
-    private Upgrade dpsUpgrade = new Upgrade(1,10);
+    private Upgrade damageUpgrade = new Upgrade(2,50);
+    private Upgrade dpsUpgrade = new Upgrade(1,100);
     private int damageUpgradeCounter = 1;
     private int dpsUpgradeCounter = 1;
 
@@ -81,18 +86,27 @@ class Shop implements ShopMVPInterface.Model {
         return dpsUpgradeCounter;
     }
 
-    public void setUpgradeCounters(Map<String, Integer> map){
-        damageUpgradeCounter = map.get("damageUpgrade");
-        dpsUpgradeCounter = map.get("dpsUpgrade");
+    public int getPlayerMoney(){
+        return player.getMoney();
     }
 
-    public Map getUpgradeCounters(){
-        return new HashMap<String, Integer>(){
-            {
-                put("damageUpgrade", getDamageUpgradeCounter());
-                put("dpsUpgrade", getDPSUpgradeCounter());
-            }
-        };
+    @Override
+    public void saveState(Context context) {
+        Log.i(TAG, "Saving shop state");
+        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
+                                                Context.MODE_PRIVATE);
+        editor = saveState.edit();
+        editor.putInt("damageUpgrade", getDamageUpgradeCounter());
+        editor.putInt("dpsUpgrade",    getDPSUpgradeCounter());
+        editor.apply();
     }
 
+    @Override
+    public void loadState(Context context) {
+        Log.i(TAG, "Loading shop state");
+        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
+                Context.MODE_PRIVATE);
+        damageUpgradeCounter = saveState.getInt("damageUpgrade", 0);
+        dpsUpgradeCounter    = saveState.getInt("dpsUpgrade", 0);
+    }
 }

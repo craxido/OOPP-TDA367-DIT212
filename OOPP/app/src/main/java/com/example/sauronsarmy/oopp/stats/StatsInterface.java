@@ -17,7 +17,6 @@ public interface StatsInterface {
 
         int getMoneyPerSecond();
 
-        Runner getRun();
     }
 
 }

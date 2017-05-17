@@ -5,8 +5,6 @@ import android.content.Context;
 import com.example.sauronsarmy.oopp.MainMVPInterface;
 import com.example.sauronsarmy.oopp.MainPresenter;
 
-import java.util.Map;
-
 /**
  * Created by Sarosh on 2017-05-11.
  */
@@ -14,12 +12,13 @@ import java.util.Map;
 public class ShopPresenter implements ShopMVPInterface.Presenter {
 
     private ShopMVPInterface.Model shopModel;
-    private MainMVPInterface.PresenterOps mainPresenter;
+    private final static MainMVPInterface.PresenterOps mainPresenter = new MainPresenter();
 
     public ShopPresenter() {
         shopModel = Shop.getInstance();
+        //mainModel = mainModel.getInstance();
         // Hey there circular dependency
-        mainPresenter = new MainPresenter();
+        //mainPresenter = new MainPresenter();
     }
 
     @Override
@@ -43,6 +42,21 @@ public class ShopPresenter implements ShopMVPInterface.Presenter {
     }
 
     @Override
+    public void saveState(Context context) {
+        shopModel.saveState(context);
+    }
+
+    @Override
+    public void loadState(Context context) {
+        shopModel.loadState(context);
+    }
+
+    @Override
+    public int getPlayerMoney(){
+        return shopModel.getPlayerMoney();
+    }
+
+    @Override
     public int getDamageUpgradeCounter() {
         return shopModel.getDamageUpgradeCounter();
     }
@@ -50,21 +64,6 @@ public class ShopPresenter implements ShopMVPInterface.Presenter {
     @Override
     public int getDPSUpgradeCounter() {
         return shopModel.getDPSUpgradeCounter();
-    }
-
-    @Override
-    public Map getUpgradeCounters() {
-        return shopModel.getUpgradeCounters();
-    }
-
-    @Override
-    public void setUpgradeCounters(Map<String, Integer> map) {
-        shopModel.setUpgradeCounters(map);
-    }
-
-    @Override
-    public void saveState(Context context) {
-        mainPresenter.saveState(context);
     }
 }
 
