@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate() called");
+        mainPresenter.loadState(MainActivity.this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         /*
