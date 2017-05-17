@@ -21,16 +21,26 @@ public interface HomeMVPInterface {
         void saveState(Context context);
         int getPlayerMoneyPerSec();
         int getPlayerMoney();
+      
+        //for testing
+        void setOilCounter(int counter);
+        void testOilPumpUpgradeCounter(Map<String, Integer> map);
+      
     }
 
     interface Model {
         Upgrade getOilPumpUpgrade();
         int getOilPumpUpgradeCounter();
-        void setOilPumpUpgradeCounter(Map<String, Integer> map);
         Map getUpgradeCounters();
         boolean buyOilPumpUpgrade();
+        void setOilPumpUpgradeCounter(Map<String, Integer> map);
         int getPlayerMoneyPerSec();
         int getPlayerMoney();
+      
+        //for testing
+        void setOilCounter(int counter);
+        void testOilPumpUpgradeCounter(Map<String, Integer> map);
+      
     }
 
 }

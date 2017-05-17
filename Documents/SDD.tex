@@ -22,8 +22,7 @@
 
 \subsection{Design Goals}
 
-Monster Clicker is a mobile game for Android. So the program must therfore run on Android,
-it must be able to get input from the user, and display the result of these inputs. 
+Monster Clicker is a mobile game for Android. So the program must therfore run on Android, it must be able to get input from the user, and display the result of these inputs. 
 
 \subsection{Definitions, acronyms, abbriviations}
 \begin{itemize}
@@ -83,6 +82,12 @@ The tests for \emph{PlayerModel} can be found in \emph{/OOPP/app/src/test/\ldots
 \subsection{Monster Pack}
 This package contains a monster model, and a monster factory. The model contains the state of the monster, gold, health, etc. A constructor to set the state and methods
 to modify the state. The factory handles the creation of monsters in a simplified way.
+
+\subsection{Diagrams}
+\begin{center}
+    Sequence diagram of what happens when a monster is clicked.\\
+    \fbox{\includegraphics[scale=0.2]{seqDiagrams/monsterClicked.png}}
+\end{center}
 
 \subsection{Map}
 
