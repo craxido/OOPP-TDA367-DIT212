@@ -14,7 +14,7 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     private static final String TAG = "MainActivity";
 
     private static MapPresenter mapPresenterInstance = new MapPresenter();
-    private static Map map;
+    private static MapMVPInterface.ModelOps map;
     private MainPresenter mainPresenter;
 
     public MapPresenter() {
