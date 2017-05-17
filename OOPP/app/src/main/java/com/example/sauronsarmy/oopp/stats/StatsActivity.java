@@ -27,6 +27,7 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
     private TextView moneyPerSecText;
     private StatsInterface.Presenter statsPresenter = new StatsPresenter();
     private Runner run = Runner.getInstance();
+    private Intent intent = new Intent();
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -66,18 +67,22 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
             // Figure out which button was pressed
             switch (v.getId()) {
                 case R.id.b_home:
-                    startActivity(new Intent(context, HomeActivity.class));
+                    intent.setAction("android.intent.action.HOME");
+                    startActivity(intent);
                     break;
                 case R.id.b_map:
-                    startActivity(new Intent(context, MapActivity.class));
+                    intent.setAction("android.intent.action.MAP");
+                    startActivity(intent);
                     break;
                 case R.id.b_shop:
-                    startActivity(new Intent(context, ShopActivity.class));
+                    intent.setAction("android.intent.action.SHOP");
+                    startActivity(intent);
                     break;
                 case R.id.b_stats:
                     break;
                 case R.id.b_main:
-                    startActivity(new Intent(context, MainActivity.class));
+                    intent.setAction("android.intent.action.MAINSCREEN");
+                    startActivity(intent);
                     break;
             }
         }

@@ -5,6 +5,8 @@ import android.util.Log;
 import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.monsterPack.Monster;
 import com.example.sauronsarmy.oopp.MainPresenter;
+import com.example.sauronsarmy.oopp.player.PlayerModel;
+import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
 /**
  * @author Jonatan Källman
@@ -15,12 +17,14 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     private static final String TAG = "MainActivity";
 
     private static Map map;
+    private static PlayerModelInterface playerModel;
 
     public MapPresenter() {
         map = Map.getInstance();
+        playerModel = PlayerModel.getInstance();
     }
 
-    public static void setBackgroundRef(int ref) {
+    private static void setBackgroundRef(int ref) {
         map.setBackgroundRef(ref);
     }
 
@@ -45,7 +49,7 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
 
     public int getPlayerMoney(){
-        return map.getPlayerMoney();
+        return playerModel.getMoney();
     }
 
     public void changeArea(int index){

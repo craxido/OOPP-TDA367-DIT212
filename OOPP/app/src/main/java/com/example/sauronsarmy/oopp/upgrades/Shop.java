@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.sauronsarmy.oopp.R;
-import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
 /**
@@ -18,10 +17,6 @@ class Shop implements ShopMVPInterface.Model {
     private static final Shop shopInstance = new Shop();
     private static final String TAG = "Shop";
     private SharedPreferences saveState;
-    private SharedPreferences.Editor editor;
-
-    // Variables
-    private PlayerModelInterface player = PlayerModel.getInstance();
 
     private Upgrade damageUpgrade = new Upgrade(2,50);
     private Upgrade dpsUpgrade = new Upgrade(1,100);
@@ -34,7 +29,7 @@ class Shop implements ShopMVPInterface.Model {
      *  adds to player damage, and applies the cost
      *  updates how many upgrades has been done, and updates the upgrade
      */
-    public boolean buyDamageUpgrade(){
+    public boolean buyDamageUpgrade(PlayerModelInterface player){
         if(player.getMoney() >= damageUpgrade.getCost()) {
             player.removeMoney(damageUpgrade.getCost());
             player.setDamage(player.getDamage() + damageUpgrade.getStat());
@@ -52,7 +47,7 @@ class Shop implements ShopMVPInterface.Model {
     /**
      * Similar to above, except this upgrade is for damage per second.
      */
-    public boolean buyDPSUpgrade(){
+    public boolean buyDPSUpgrade(PlayerModelInterface player){
         if (player.getMoney() >= dpsUpgrade.getCost()) {
             player.removeMoney(dpsUpgrade.getCost());
             player.setDamagePerSecond(player.getDamagePerSecond() + dpsUpgrade.getStat());
@@ -86,16 +81,12 @@ class Shop implements ShopMVPInterface.Model {
         return dpsUpgradeCounter;
     }
 
-    public int getPlayerMoney(){
-        return player.getMoney();
-    }
-
     @Override
     public void saveState(Context context) {
         Log.i(TAG, "Saving shop state");
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
                                                 Context.MODE_PRIVATE);
-        editor = saveState.edit();
+        SharedPreferences.Editor editor = saveState.edit();
         editor.putInt("damageUpgrade", getDamageUpgradeCounter());
         editor.putInt("dpsUpgrade",    getDPSUpgradeCounter());
         editor.apply();

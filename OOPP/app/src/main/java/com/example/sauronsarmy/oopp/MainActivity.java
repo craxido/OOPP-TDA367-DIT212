@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.clock.Runner;
+import com.example.sauronsarmy.oopp.map.MapMVPInterface;
 import com.example.sauronsarmy.oopp.monsterPack.Monster;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
@@ -21,7 +22,6 @@ import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps,ClockListener {
 
-    private Monster currentMonster;
     private MainMVPInterface.PresenterOps mainPresenter = new MainPresenter();
     private static final String TAG = "MainActivity";
     private PlayerModelInterface player;
@@ -133,12 +133,12 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                     update();
                     break;
                 case R.id.nextLvl:
-                    MapPresenter.getInstance().nextLevel();
+                    mainPresenter.nextLevel();
                     update();
 
                     break;
                 case R.id.prevLvl:
-                    MapPresenter.getInstance().previousLevel();
+                    mainPresenter.previousLevel();
                     update();
 
                     break;
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
     @Override
     public void update() {
-        currentMonster = mainPresenter.getCurrentMonster();
+        Monster currentMonster = mainPresenter.getCurrentMonster();
 
         RelativeLayout bg = (RelativeLayout) findViewById(R.id.b_mainActivity);
         bg.setBackgroundResource(mainPresenter.getBGRef());

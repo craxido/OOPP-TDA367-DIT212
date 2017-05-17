@@ -2,6 +2,9 @@ package com.example.sauronsarmy.oopp.upgrades;
 
 import android.content.Context;
 
+import com.example.sauronsarmy.oopp.player.PlayerModel;
+import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
+
 /**
  * Created by Sarosh on 2017-05-11.
  */
@@ -9,19 +12,21 @@ import android.content.Context;
 class ShopPresenter implements ShopMVPInterface.Presenter {
 
     private ShopMVPInterface.Model shopModel;
+    private PlayerModelInterface playerModel;
 
     ShopPresenter() {
         shopModel = Shop.getInstance();
+        playerModel = PlayerModel.getInstance();
     }
 
     @Override
     public boolean buyDamageUpgrade() {
-        return shopModel.buyDamageUpgrade();
+        return shopModel.buyDamageUpgrade(playerModel);
     }
 
     @Override
     public boolean buyDPSUpgrade() {
-        return shopModel.buyDPSUpgrade();
+        return shopModel.buyDPSUpgrade(playerModel);
     }
 
     @Override
@@ -46,7 +51,7 @@ class ShopPresenter implements ShopMVPInterface.Presenter {
 
     @Override
     public int getPlayerMoney(){
-        return shopModel.getPlayerMoney();
+        return playerModel.getMoney();
     }
 
     @Override

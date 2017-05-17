@@ -3,13 +3,15 @@ package com.example.sauronsarmy.oopp.upgrades;
 
 import android.content.Context;
 
+import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
+
 import java.util.Map;
 
 /**
  * Created by Sarosh on 2017-05-11.
  */
 
-public interface HomeMVPInterface {
+interface HomeMVPInterface {
 
     interface Presenter{
         Upgrade getOilPumpUpgrade();
@@ -29,10 +31,8 @@ public interface HomeMVPInterface {
     interface Model {
         Upgrade getOilPumpUpgrade();
         Map getUpgradeCounters();
-        boolean buyOilPumpUpgrade();
+        boolean buyOilPumpUpgrade(PlayerModelInterface player);
         void setOilPumpUpgradeCounter(Map<String, Integer> map);
-        int getPlayerMoneyPerSec();
-        int getPlayerMoney();
         int getOilPumpUpgradeCounter();
         void loadState(Context context);
         void saveState(Context context);

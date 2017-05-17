@@ -27,6 +27,7 @@ public class MapActivity extends AppCompatActivity
     private MapMVPInterface.PresenterOps mapPresenter;
     private static final Runner run = Runner.getInstance();
     private static final String TAG = "MapActivity";
+    private Intent intent = new Intent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,18 +81,22 @@ public class MapActivity extends AppCompatActivity
             // Figure out which button was pressed
             switch (v.getId()) {
                 case R.id.b_home:
-                    startActivity(new Intent(context, HomeActivity.class));
+                    intent.setAction("android.intent.action.HOME");
+                    startActivity(intent);
                     break;
                 case R.id.b_map:
                     break;
                 case R.id.b_shop:
-                    startActivity(new Intent(context, ShopActivity.class));
+                    intent.setAction("android.intent.action.SHOP");
+                    startActivity(intent);
                     break;
                 case R.id.b_stats:
-                    startActivity(new Intent(context, StatsActivity.class));
+                    intent.setAction("android.intent.action.STATS");
+                    startActivity(intent);
                     break;
                 case R.id.b_main:
-                    startActivity(new Intent(context, MainActivity.class));
+                    intent.setAction("android.intent.action.MAINSCREEN");
+                    startActivity(intent);
                     break;
                 /* TODO: Selecting a new area should result in changing the monsters/ levels
                  * TODO: as well as the background in the MainActivity.

@@ -2,17 +2,22 @@ package com.example.sauronsarmy.oopp.upgrades;
 
 import android.content.Context;
 
+import com.example.sauronsarmy.oopp.player.PlayerModel;
+import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
+
 import java.util.Map;
 
 /**
  * Created by Sarosh on 2017-05-11.
  */
 
-public class HomePresenter implements HomeMVPInterface.Presenter {
+class HomePresenter implements HomeMVPInterface.Presenter {
 
     private HomeMVPInterface.Model homeModel;
+    private PlayerModelInterface playerModel;
     public HomePresenter() {
         homeModel = Home.getInstance();
+        playerModel = PlayerModel.getInstance();
     }
 
     @Override
@@ -35,7 +40,7 @@ public class HomePresenter implements HomeMVPInterface.Presenter {
         homeModel.testOilPumpUpgradeCounter(map);
     }
     public int getPlayerMoneyPerSec(){
-        return homeModel.getPlayerMoneyPerSec();
+        return playerModel.getMoneyPerSecond();
     }
 
     public void saveState(Context context) {
@@ -44,12 +49,12 @@ public class HomePresenter implements HomeMVPInterface.Presenter {
 
     @Override
     public boolean buyOilPumpUpgrade() {
-        return homeModel.buyOilPumpUpgrade();
+        return homeModel.buyOilPumpUpgrade(playerModel);
     }
 
     @Override
     public int getPlayerMoney(){
-        return homeModel.getPlayerMoney();
+        return playerModel.getMoney();
     }
 
     @Override

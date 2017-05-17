@@ -9,11 +9,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.sauronsarmy.oopp.MainActivity;
 import com.example.sauronsarmy.oopp.clock.Runner;
-import com.example.sauronsarmy.oopp.map.MapActivity;
 import com.example.sauronsarmy.oopp.R;
-import com.example.sauronsarmy.oopp.stats.StatsActivity;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 /**
@@ -23,6 +20,7 @@ import com.example.sauronsarmy.oopp.clock.ClockListener;
 public class HomeActivity extends AppCompatActivity implements ClockListener {
 
     private static final String TAG = "HomeActivity";
+    private Intent intent = new Intent();
     HomeMVPInterface.Presenter homePresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,22 +96,25 @@ public class HomeActivity extends AppCompatActivity implements ClockListener {
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Context context = HomeActivity.this;
             // Figure out which button was pressed
             switch (v.getId()) {
                 case R.id.b_home:
                     break;
                 case R.id.b_map:
-                    startActivity(new Intent(context, MapActivity.class));
+                    intent.setAction("android.intent.action.MAP");
+                    startActivity(intent);
                     break;
                 case R.id.b_shop:
-                    startActivity(new Intent(context, ShopActivity.class));
+                    intent.setAction("android.intent.action.SHOP");
+                    startActivity(intent);
                     break;
                 case R.id.b_stats:
-                    startActivity(new Intent(context, StatsActivity.class));
+                    intent.setAction("android.intent.action.STATS");
+                    startActivity(intent);
                     break;
                 case R.id.b_main:
-                    startActivity(new Intent(context, MainActivity.class));
+                    intent.setAction("android.intent.action.MAINSCREEN");
+                    startActivity(intent);
                     break;
                 case R.id.oilUpgradeButton:
                     if (homePresenter.buyOilPumpUpgrade()){

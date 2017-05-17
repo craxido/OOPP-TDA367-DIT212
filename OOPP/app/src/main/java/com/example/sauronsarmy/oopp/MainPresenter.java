@@ -102,6 +102,16 @@ import com.example.sauronsarmy.oopp.clock.Runner;
         return mapPresenter.getBackgroundRef();
     }
 
+    @Override
+    public void nextLevel() {
+        mapPresenter.nextLevel();
+    }
+
+    @Override
+    public void previousLevel() {
+        mapPresenter.previousLevel();
+    }
+
     public boolean getLvlCmp(){
         return mapPresenter.getCurrentArea().getCurrentLevel().getComplete();
     }

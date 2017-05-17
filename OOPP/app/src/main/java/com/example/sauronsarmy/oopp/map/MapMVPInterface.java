@@ -40,6 +40,5 @@ public interface MapMVPInterface {
         int   getBackgroundRef();
         void  setBackgroundRef(int bgRef);
         void  onDestroy();
-        int  getPlayerMoney();
     }
 }

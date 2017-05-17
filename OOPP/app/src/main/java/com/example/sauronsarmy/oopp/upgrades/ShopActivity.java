@@ -27,6 +27,7 @@ public class ShopActivity extends AppCompatActivity implements ClockListener {
 
     private ShopMVPInterface.Presenter shopPresenter;
     private Runner run = Runner.getInstance();
+    private Intent intent = new Intent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,22 +138,25 @@ public class ShopActivity extends AppCompatActivity implements ClockListener {
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Context context = ShopActivity.this;
             // Figure out which button was pressed
             switch (v.getId()) {
                 case R.id.b_home:
-                    startActivity(new Intent(context, HomeActivity.class));
+                    intent.setAction("android.intent.action.HOME");
+                    startActivity(intent);
                     break;
                 case R.id.b_map:
-                    startActivity(new Intent(context, MapActivity.class));
+                    intent.setAction("android.intent.action.MAP");
+                    startActivity(intent);
                     break;
                 case R.id.b_shop:
                     break;
                 case R.id.b_stats:
-                    startActivity(new Intent(context, StatsActivity.class));
+                    intent.setAction("android.intent.action.STATS");
+                    startActivity(intent);
                     break;
                 case R.id.b_main:
-                    startActivity(new Intent(context, MainActivity.class));
+                    intent.setAction("android.intent.action.MAINSCREEN");
+                    startActivity(intent);
                     break;
                 case R.id.dmgUpgradeButton:
                     if (shopPresenter.buyDamageUpgrade()){

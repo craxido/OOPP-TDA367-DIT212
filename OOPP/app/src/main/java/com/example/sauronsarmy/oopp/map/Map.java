@@ -18,8 +18,6 @@ class Map implements MapMVPInterface.ModelOps {
     private monsterFactory monfac;
     private int bgRef;
 
-    private static PlayerModelInterface player = PlayerModel.getInstance();
-
     public static Map getInstance() {
         return mapInstance;
     }
@@ -79,11 +77,6 @@ class Map implements MapMVPInterface.ModelOps {
 
     Area[] getAreas(){
         return areas;
-    }
-
-
-    public int getPlayerMoney(){
-        return player.getMoney();
     }
 
     Level createLevel(areaType areaType){

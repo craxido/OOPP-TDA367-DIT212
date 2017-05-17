@@ -2,6 +2,8 @@ package com.example.sauronsarmy.oopp.upgrades;
 
 import android.content.Context;
 
+import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
+
 
 /**
  * Created by Sarosh on 2017-05-11.
@@ -14,21 +16,20 @@ public interface ShopMVPInterface {
         boolean buyDPSUpgrade();
         Upgrade getDamageUpgrade();
         Upgrade getDPSUpgrade();
-        int getPlayerMoney();
         int getDamageUpgradeCounter();
         int getDPSUpgradeCounter();
         void saveState(Context context);
         void loadState(Context context);
+        int getPlayerMoney();
     }
 
     interface Model {
-        boolean buyDamageUpgrade();
-        boolean buyDPSUpgrade();
+        boolean buyDamageUpgrade(PlayerModelInterface player);
+        boolean buyDPSUpgrade(PlayerModelInterface player);
         int getDPSUpgradeCounter();
         int getDamageUpgradeCounter();
         Upgrade getDamageUpgrade();
         Upgrade getDPSUpgrade();
-        int getPlayerMoney();
         void saveState(Context context);
         void loadState(Context context);
     }

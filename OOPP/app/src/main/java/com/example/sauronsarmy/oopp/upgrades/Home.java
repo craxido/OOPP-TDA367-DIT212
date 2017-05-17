@@ -19,9 +19,7 @@ class Home implements HomeMVPInterface.Model  {
     private static final String TAG = "Home";
     private static final Home homeInstance = new Home();
     private SharedPreferences saveState;
-    private SharedPreferences.Editor editor;
 
-    private PlayerModelInterface player = PlayerModel.getInstance();
     private Upgrade oilPumpUpgrade = new Upgrade(1, 100);
     private int oilPumpUpgradeCounter = 1;
 
@@ -29,13 +27,9 @@ class Home implements HomeMVPInterface.Model  {
         return homeInstance;
     }
 
-    private void makePayment() {
-        player.removeMoney(oilPumpUpgrade.getCost());
-    }
-
-    public boolean buyOilPumpUpgrade() {
+    public boolean buyOilPumpUpgrade(PlayerModelInterface player) {
         if (player.getMoney() >= oilPumpUpgrade.getCost()) {
-            makePayment();
+            player.removeMoney(oilPumpUpgrade.getCost());
             player.setMoneyPerSecond(player.getMoneyPerSecond() + oilPumpUpgrade.getStat());
             oilPumpUpgradeCounter++;
             oilPumpUpgrade.updateStat(oilPumpUpgradeCounter);
@@ -80,20 +74,12 @@ class Home implements HomeMVPInterface.Model  {
         };
     }
 
-    public int getPlayerMoneyPerSec(){
-        return player.getMoneyPerSecond();
-    }
-
-    public int getPlayerMoney(){
-        return player.getMoney();
-    }
-
     @Override
     public void saveState(Context context) {
         Log.i(TAG, "Saving home state");
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
                                                  Context.MODE_PRIVATE);
-        editor = saveState.edit();
+        SharedPreferences.Editor editor = saveState.edit();
         editor.putInt("oil", getOilPumpUpgradeCounter());
         editor.apply();
     }

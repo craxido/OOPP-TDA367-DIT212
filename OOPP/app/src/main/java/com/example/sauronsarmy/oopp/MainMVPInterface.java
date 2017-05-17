@@ -28,6 +28,8 @@ public interface MainMVPInterface {
         int getGoal();
         int getPathGoal();
         int getBGRef();
+        void nextLevel();
+        void previousLevel();
         }
 
     interface ModelInterface {
