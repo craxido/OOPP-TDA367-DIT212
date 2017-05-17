@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select a Level" />
+
+    <Button
+        android:id="@+id/lvl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 1" />
+
+    <Button
+        android:id="@+id/lvl2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 2" />
+
+    <Button
+        android:id="@+id/lvl3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 3" />
+
+    <Button
+        android:id="@+id/lvl4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 4" />
+
+    <Button
+        android:id="@+id/lvl5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Level 5" />
+
+</LinearLayout>

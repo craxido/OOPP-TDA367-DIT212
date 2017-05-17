@@ -99,4 +99,8 @@ class Shop implements ShopMVPInterface.Model {
         };
     }
 
+    public int getPlayerMoney(){
+        return player.getMoney();
+    }
+
 }

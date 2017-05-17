@@ -20,12 +20,13 @@ interface MainMVPInterface {
          void onConfigChange(ViewOps view);
          void onDestroy(boolean isChangingConfig);
          void onError(String errorMsg);
-
+        boolean getLvlCmp();
+        boolean getAreaCmp();
         void monsterClicked();
         Monster getCurrentMonster();
-         // methods to be called from Presenter
         void saveState(Context value1);
         void loadState(Context value1);
+        // methods to be called from Presenter
         }
 
     interface ModelInterface {

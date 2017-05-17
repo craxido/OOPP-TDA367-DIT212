@@ -55,4 +55,10 @@ public class HomePresenter implements HomeMVPInterface.Presenter {
     public boolean buyOilPumpUpgrade() {
         return homeModel.buyOilPumpUpgrade();
     }
+
+    @Override
+    public int getPlayerMoney(){
+        return homeModel.getPlayerMoney();
+    }
+
 }

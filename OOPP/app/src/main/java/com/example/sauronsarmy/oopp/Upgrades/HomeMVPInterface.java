@@ -20,6 +20,7 @@ public interface HomeMVPInterface {
         boolean buyOilPumpUpgrade();
         void saveState(Context context);
         int getPlayerMoneyPerSec();
+        int getPlayerMoney();
     }
 
     interface Model {
@@ -29,6 +30,7 @@ public interface HomeMVPInterface {
         Map getUpgradeCounters();
         boolean buyOilPumpUpgrade();
         int getPlayerMoneyPerSec();
+        int getPlayerMoney();
     }
 
 }

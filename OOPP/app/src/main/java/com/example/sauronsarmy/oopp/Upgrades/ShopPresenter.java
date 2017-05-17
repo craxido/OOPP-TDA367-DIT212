@@ -66,5 +66,10 @@ public class ShopPresenter implements ShopMVPInterface.Presenter {
     public void saveState(Context context) {
         mainPresenter.saveState(context);
     }
+
+    @Override
+    public int getPlayerMoney(){
+        return shopModel.getPlayerMoney();
+    }
 }
 
