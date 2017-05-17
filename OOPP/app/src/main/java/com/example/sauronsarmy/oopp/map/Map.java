@@ -2,8 +2,6 @@ package com.example.sauronsarmy.oopp.map;
 
 import com.example.sauronsarmy.oopp.monsterPack.monsterFactory;
 import com.example.sauronsarmy.oopp.R;
-import com.example.sauronsarmy.oopp.player.PlayerModel;
-import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
 /**
  * @author Jonatan Källman
@@ -67,19 +65,28 @@ class Map implements MapMVPInterface.ModelOps {
     @Override
     public void onDestroy() {}
 
-    Area getCurrentArea(){
+    @Override
+    public Area getCurrentArea(){
         return currentArea;
     }
 
-    void setCurrentArea(Area area){
+    @Override
+    public void setCurrentArea(Area area){
         currentArea=area;
     }
 
-    Area[] getAreas(){
+    @Override
+    public Area[] getAreas(){
         return areas;
     }
 
-    Level createLevel(areaType areaType){
+    @Override
+    public Level getCurrentLevel(){
+        return getCurrentArea().getCurrentLevel();
+    }
+
+    @Override
+    public Level createLevel(areaType areaType){
         switch (areaType){
             case MOUNTAIN:
                 return new Level(monfac.getMonster(100, 100, areaType), 1, 1, areaType);
@@ -93,26 +100,31 @@ class Map implements MapMVPInterface.ModelOps {
     }
 
     //Gets the GoldMultiplier for the given Level in the given Area.
-    int getLevelGoldMultiplier(int areaIndex, int levelIndex){
+    @Override
+    public int getLevelGoldMultiplier(int areaIndex, int levelIndex){
         Level level= areas[areaIndex].getLevels()[levelIndex];
         return level.getGoldMultiplier();
     }
 
     //Gets the HealthMultiplier for the given Level in the given Area.
-    int getLevelHealthMultiplier(int areaIndex, int levelIndex){
+    @Override
+    public int getLevelHealthMultiplier(int areaIndex, int levelIndex){
         Level[] levels= areas[areaIndex].getLevels();
         return levels[levelIndex].getHealthMultiplier();
     }
 
-    int getLevelAmount(int areaIndex){
+    @Override
+    public  int getLevelAmount(int areaIndex){
         return areas[areaIndex].getLevels().length;
     }
 
-    int getAreaAmount(){
+    @Override
+    public  int getAreaAmount(){
         return areas.length;
     }
 
-    Area createArea(int areaIndex){
+    @Override
+    public  Area createArea(int areaIndex){
         switch (areaIndex){
             case 0:
                 return new Area(R.drawable.mountainarea, areaType.MOUNTAIN, lvlfac.getLevels(areaType.MOUNTAIN), 0);
@@ -125,7 +137,8 @@ class Map implements MapMVPInterface.ModelOps {
         }
     }
 
-    areaType getAreaType(int areaIndex) {
+    @Override
+    public  areaType getAreaType(int areaIndex) {
         switch (areaIndex) {
             case 0:
                 return areaType.MOUNTAIN;
@@ -138,7 +151,8 @@ class Map implements MapMVPInterface.ModelOps {
         }
     }
 
-    int getAreaBgRef(int areaIndex){
+    @Override
+    public  int getAreaBgRef(int areaIndex){
         switch (areaIndex) {
             case 0:
                 return R.drawable.mountainarea;
@@ -150,9 +164,4 @@ class Map implements MapMVPInterface.ModelOps {
                 return -1;
         }
     }
-
-    Level getCurrentLevel(){
-        return getCurrentArea().getCurrentLevel();
-    }
-
 }
