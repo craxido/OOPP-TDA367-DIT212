@@ -24,6 +24,7 @@ public interface ShopMVPInterface {
         int getPlayerMoney();
         int getPlayerDamage();
         int getPlayerDamagePerSecond();
+        void update();
     }
 
     interface Model {

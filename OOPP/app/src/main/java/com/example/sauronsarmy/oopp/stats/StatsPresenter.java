@@ -2,6 +2,8 @@ package com.example.sauronsarmy.oopp.stats;
 
 import android.content.Context;
 
+import com.example.sauronsarmy.oopp.map.MapMVPInterface;
+import com.example.sauronsarmy.oopp.map.MapPresenter;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
@@ -12,14 +14,21 @@ import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 public class StatsPresenter implements StatsInterface.Presenter {
 
     private PlayerModelInterface playerModel;
+    private MapMVPInterface.PresenterOps mapPresenter;
 
     StatsPresenter() {
         playerModel = PlayerModel.getInstance();
+        mapPresenter = new MapPresenter();
     }
 
     @Override
     public void saveState(Context context) {
         playerModel.saveState(context);
+    }
+
+    @Override
+    public void update() {
+        mapPresenter.applyDPS();
     }
 
     @Override

@@ -22,6 +22,7 @@ interface HomeMVPInterface {
         void loadState(Context context);
         void saveState(Context context);
         int getOilPumpUpgradeCounter();
+        void update();
 
         //for testing
         void setOilCounter(int counter);

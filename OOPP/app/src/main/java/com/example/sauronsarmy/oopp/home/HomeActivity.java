@@ -130,5 +130,6 @@ public class HomeActivity extends AppCompatActivity implements ClockListener {
     public void update() {
         TextView moneyIndicator = (TextView) findViewById(R.id.moneyIndicator);
         moneyIndicator.setText(String.valueOf(homePresenter.getPlayerMoney()));
+        homePresenter.update();
     }
 }

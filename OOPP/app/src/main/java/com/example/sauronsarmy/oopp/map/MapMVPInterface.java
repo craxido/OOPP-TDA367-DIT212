@@ -26,6 +26,7 @@ public interface MapMVPInterface {
         void saveState(Context context);
         int  getPlayerMoney();
         void damageMonster();
+        void applyDPS();
         Area getCurrentArea();
         int getGoal();
         int getPathGoal();

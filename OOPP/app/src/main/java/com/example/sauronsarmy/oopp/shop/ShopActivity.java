@@ -130,6 +130,7 @@ public class ShopActivity extends AppCompatActivity implements ClockListener {
     public void update(){
         TextView moneyIndi = (TextView) findViewById(R.id.moneyIndicator);
         moneyIndi.setText(String.valueOf(shopPresenter.getPlayerMoney()));
+        shopPresenter.update();
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {

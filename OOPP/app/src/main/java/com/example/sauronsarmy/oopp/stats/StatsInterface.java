@@ -21,6 +21,7 @@ public interface StatsInterface {
 
         void saveState(Context context);
 
+        void update();
     }
 
 }

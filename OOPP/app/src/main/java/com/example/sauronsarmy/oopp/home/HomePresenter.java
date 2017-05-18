@@ -2,6 +2,8 @@ package com.example.sauronsarmy.oopp.home;
 
 import android.content.Context;
 
+import com.example.sauronsarmy.oopp.map.MapMVPInterface;
+import com.example.sauronsarmy.oopp.map.MapPresenter;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 import com.example.sauronsarmy.oopp.upgrade.Upgrade;
@@ -16,9 +18,11 @@ class HomePresenter implements HomeMVPInterface.Presenter {
 
     private HomeMVPInterface.Model homeModel;
     private PlayerModelInterface playerModel;
+    private MapMVPInterface.PresenterOps mapPresenter;
     public HomePresenter() {
         homeModel = Home.getInstance();
         playerModel = PlayerModel.getInstance();
+        mapPresenter = new MapPresenter();
     }
 
     @Override
@@ -29,6 +33,11 @@ class HomePresenter implements HomeMVPInterface.Presenter {
     @Override
     public int getOilPumpUpgradeCounter() {
         return homeModel.getOilPumpUpgradeCounter();
+    }
+
+    @Override
+    public void update() {
+        mapPresenter.applyDPS();
     }
 
     @Override

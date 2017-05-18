@@ -2,6 +2,8 @@ package com.example.sauronsarmy.oopp.shop;
 
 import android.content.Context;
 
+import com.example.sauronsarmy.oopp.map.MapMVPInterface;
+import com.example.sauronsarmy.oopp.map.MapPresenter;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 import com.example.sauronsarmy.oopp.upgrade.Upgrade;
@@ -14,10 +16,12 @@ class ShopPresenter implements ShopMVPInterface.Presenter {
 
     private ShopMVPInterface.Model shopModel;
     private PlayerModelInterface playerModel;
+    private MapMVPInterface.PresenterOps mapPresenter;
 
     ShopPresenter() {
         shopModel = Shop.getInstance();
         playerModel = PlayerModel.getInstance();
+        mapPresenter = new MapPresenter();
     }
 
     @Override
@@ -64,6 +68,11 @@ class ShopPresenter implements ShopMVPInterface.Presenter {
     @Override
     public int getPlayerDamagePerSecond() {
         return playerModel.getDamagePerSecond();
+    }
+
+    @Override
+    public void update() {
+        mapPresenter.applyDPS();
     }
 
     @Override

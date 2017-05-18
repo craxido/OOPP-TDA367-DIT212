@@ -109,5 +109,6 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
         moneyText.setText(String.valueOf(statsPresenter.getMoneyAmount()));
         moneyPerSecText.setText(String.valueOf(statsPresenter.getMoneyPerSecond()));
 
+        statsPresenter.update();
     }
 }

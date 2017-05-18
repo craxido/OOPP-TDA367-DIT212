@@ -66,6 +66,10 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         playerModel.addMoney(map.damageMonster(playerModel.getDamage()));
     }
 
+    public void applyDPS() {
+        playerModel.addMoney(map.damageMonster(playerModel.getDamagePerSecond()));
+    }
+
     @Override
     public boolean tryChangeAreaLevel(int level, int area) {
 

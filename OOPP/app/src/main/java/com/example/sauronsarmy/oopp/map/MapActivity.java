@@ -76,6 +76,7 @@ public class MapActivity extends AppCompatActivity
     public void update(){
         TextView moneyIndi = (TextView) findViewById(R.id.moneyIndicator);
         moneyIndi.setText(String.valueOf(mapPresenter.getPlayerMoney()));
+        mapPresenter.applyDPS();
     }
 
     View.OnClickListener buttonListener = new View.OnClickListener() {

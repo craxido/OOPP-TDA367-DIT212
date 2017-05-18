@@ -50,14 +50,7 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
 
     @Override
     public void update() {
-        applyDPS();
-    }
-
-    private void applyDPS(){
-        int gold = mapPresenter.damageMonster(playerModel.getDamagePerSecond());
-        if(gold > 0){
-            playerModel.addMoney(gold);
-        }
+        mapPresenter.applyDPS();
     }
 
     @Override
