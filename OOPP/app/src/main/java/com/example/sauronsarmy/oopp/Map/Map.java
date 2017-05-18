@@ -176,7 +176,6 @@ class Map implements MapMVPInterface.ModelOps {
     }
 
     public boolean tryChangeAreaLevel(int level, int area) {
-
         if(area ==0){
             changeArea(area);
             if(level ==0){
@@ -184,16 +183,13 @@ class Map implements MapMVPInterface.ModelOps {
                 return true;
             }
             else {
-
                 if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
                     changeLvl(level);
                     return true;
                 }
-
             }
         }
         else {
-
             if(getArea(area-1).getComplete() && getAreas().length>area){
                 changeArea(area);
                 if(level ==0){
@@ -201,7 +197,6 @@ class Map implements MapMVPInterface.ModelOps {
                     return true;
                 }
                 else {
-
                     if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
                         changeLvl(level);
                         return true;
@@ -213,9 +208,9 @@ class Map implements MapMVPInterface.ModelOps {
     }
 
     private void changeLvl(int index) {
-
         getCurrentArea().setCurrentLevel(getCurrentArea().getLevels()[index]);
     }
+
     private void changeArea(int index){
         setCurrentArea(getArea(index));
         int imgref= getArea(index).getImgRef();
@@ -225,14 +220,11 @@ class Map implements MapMVPInterface.ModelOps {
 
 
     public void nextLevel(){
-
         int lvlpos = getLevelIndex() +1;
         if(lvlpos >= getCurrentArea().getLevels().length){
             if(getAreaIndex()+1 < getAreas().length){
-
                 tryChangeAreaLevel(0,getAreaIndex()+1);
             }
-
         }
         else{
             tryChangeAreaLevel(lvlpos,getAreaIndex());
@@ -240,16 +232,14 @@ class Map implements MapMVPInterface.ModelOps {
     }
 
     public void previousLevel(){
-        int lvlpos = getLevelIndex() -1;
-        if(lvlpos <0){
+        int lvlPos = getLevelIndex() -1;
+        if(lvlPos <0){
             if(getAreaIndex()-1 >=0){
-
                 tryChangeAreaLevel(getArea(getAreaIndex()-1).getLevels().length -1 ,getAreaIndex()-1);
             }
-
         }
         else{
-            tryChangeAreaLevel(lvlpos,getAreaIndex());
+            tryChangeAreaLevel(lvlPos,getAreaIndex());
         }
 
     }
@@ -264,12 +254,10 @@ class Map implements MapMVPInterface.ModelOps {
             if(lvls[i].equals(curLvl)){
                 pos =i;
                 break;
-
             }
         }
         return pos;
     }
-
 
     private int getAreaIndex(){
 
@@ -281,7 +269,6 @@ class Map implements MapMVPInterface.ModelOps {
             if(areas[i].equals(currentArea)){
                 pos =i;
                 break;
-
             }
         }
         return pos;
