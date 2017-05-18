@@ -79,7 +79,7 @@ import java.lang.ref.WeakReference;
     }
 
     public Monster getCurrentMonster() {
-        return map.getCurrentMonster();
+        return mapPres.getCurrentMonster();
     }
     /**
      * Asks the PlayerModel for the current state, and sends this
