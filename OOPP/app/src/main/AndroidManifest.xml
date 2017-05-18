@@ -16,13 +16,13 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".upgrades.HomeActivity">
+        <activity android:name=".home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.HOME"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".upgrades.ShopActivity">
+        <activity android:name=".shop.ShopActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SHOP"/>
                 <category android:name="android.intent.category.DEFAULT"/>

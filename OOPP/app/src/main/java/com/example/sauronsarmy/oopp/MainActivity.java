@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.clock.Runner;
-import com.example.sauronsarmy.oopp.map.MapActivity;
 import com.example.sauronsarmy.oopp.monsterPack.Monster;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 
@@ -80,18 +79,11 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         run.register(this);
         super.onStart();
     }
-    @Override
-    protected void onDestroy() {
-        Log.i(TAG, "onDestroy() called");
-        mainPresenter.saveState(MainActivity.this);
-        super.onDestroy();
-    }
 
     @Override
     protected void onStop() {
         Log.i(TAG, "onStop called");
-        //Log.i(TAG, "Calling saveState() in mainPresenter");
-       // mainPresenter.saveState(MainActivity.this);
+        mainPresenter.saveState(MainActivity.this);
         run.unregister(this);
         super.onStop();
     }

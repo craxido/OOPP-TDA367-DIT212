@@ -1,8 +1,9 @@
-package com.example.sauronsarmy.oopp.upgrades;
+package com.example.sauronsarmy.oopp.shop;
 
 import android.content.Context;
 
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
+import com.example.sauronsarmy.oopp.upgrade.Upgrade;
 
 
 /**

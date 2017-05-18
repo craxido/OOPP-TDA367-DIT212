@@ -1,8 +1,6 @@
 package com.example.sauronsarmy.oopp;
 
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
-import com.example.sauronsarmy.oopp.Upgrades.HomePresenter;
-import android.util.Log;
 
 import static org.junit.Assert.*;
 

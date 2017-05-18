@@ -1,9 +1,10 @@
-package com.example.sauronsarmy.oopp.upgrades;
+package com.example.sauronsarmy.oopp.home;
 
 
 import android.content.Context;
 
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
+import com.example.sauronsarmy.oopp.upgrade.Upgrade;
 
 import java.util.Map;
 

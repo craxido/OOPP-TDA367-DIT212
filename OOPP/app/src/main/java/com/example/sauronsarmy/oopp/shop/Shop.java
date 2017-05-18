@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp.upgrades;
+package com.example.sauronsarmy.oopp.shop;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
+import com.example.sauronsarmy.oopp.upgrade.Upgrade;
 
 /**
  * Created by bunnyfiscuit on 05/04/17.

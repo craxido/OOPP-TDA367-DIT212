@@ -1,12 +1,12 @@
-package com.example.sauronsarmy.oopp.upgrades;
+package com.example.sauronsarmy.oopp.home;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.sauronsarmy.oopp.R;
-import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
+import com.example.sauronsarmy.oopp.upgrade.Upgrade;
 
 import java.util.HashMap;
 import java.util.Map;

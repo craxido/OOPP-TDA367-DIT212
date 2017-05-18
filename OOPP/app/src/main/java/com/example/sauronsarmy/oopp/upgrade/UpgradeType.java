@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp.Upgrades;
+package com.example.sauronsarmy.oopp.upgrade;
 
 /**
  * Created by Sarosh on 2017-05-13.

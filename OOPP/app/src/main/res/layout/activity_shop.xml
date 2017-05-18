@@ -6,7 +6,7 @@
     tools:ignore="ContentDescription"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sauronsarmy.oopp.upgrades.ShopActivity"
+    tools:context="com.example.sauronsarmy.oopp.shop.ShopActivity"
     android:background = "@drawable/shopbg2">
 
     <include

@@ -1,4 +1,4 @@
-package com.example.sauronsarmy.oopp.upgrades;
+package com.example.sauronsarmy.oopp.home;
 
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
+import com.example.sauronsarmy.oopp.upgrade.Upgrade;
 
 /**
  * Created by Erik on 04/04/17.
