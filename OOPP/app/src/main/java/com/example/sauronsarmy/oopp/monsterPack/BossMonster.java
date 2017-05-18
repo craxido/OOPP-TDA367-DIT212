@@ -4,18 +4,20 @@ import com.example.sauronsarmy.oopp.clock.ClockListener;
 import com.example.sauronsarmy.oopp.clock.Runner;
 
 /**
- * @Author: Jonatan on 18/05/2017.
+ * @Author: Jonatan Källman
  */
 
 public class BossMonster extends Monster implements ClockListener {
 
     private Runner bossTimer;
     private int time;
+    private int timeLimit;
 
     public BossMonster(int health, int gold, int imageref){
         super(health,gold,imageref);
-        bossTimer=Runner.getInstance();
-        time=0;
+        bossTimer = Runner.getInstance();
+        time = 0;
+        timeLimit = 30;
     }
 
     private void resetHealth(){
@@ -25,7 +27,7 @@ public class BossMonster extends Monster implements ClockListener {
     @Override
     public void update(){
         time++;
-        if (time>30){
+        if (time > timeLimit){
             this.resetHealth();
         }
     }
