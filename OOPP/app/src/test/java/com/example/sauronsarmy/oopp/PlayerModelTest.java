@@ -1,6 +1,6 @@
 package com.example.sauronsarmy.oopp;
 
-import com.example.sauronsarmy.oopp.Player.PlayerModel;
+import com.example.sauronsarmy.oopp.player.PlayerModel;
 
 import org.junit.After;
 import org.junit.Before;
