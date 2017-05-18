@@ -12,13 +12,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.clock.Runner;
+import com.example.sauronsarmy.oopp.map.MapActivity;
 import com.example.sauronsarmy.oopp.monsterPack.Monster;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 
 public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps,ClockListener {
 
-    private MainMVPInterface.PresenterOps mainPresenter = new MainPresenter();
+    private MainMVPInterface.PresenterOps mainPresenter;
     private static final String TAG = "MainActivity";
     //TODO: va fan
     private Runner run = Runner.getInstance();
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate() called");
+        mainPresenter = new MainPresenter(MainActivity.this);
         mainPresenter.loadState(MainActivity.this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -86,8 +88,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     @Override
     protected void onStop() {
         Log.i(TAG, "onStop called");
-        Log.i(TAG, "Calling saveState() in mainPresenter");
-        mainPresenter.saveState(MainActivity.this);
+        //Log.i(TAG, "Calling saveState() in mainPresenter");
+       // mainPresenter.saveState(MainActivity.this);
         run.unregister(this);
         super.onStop();
     }

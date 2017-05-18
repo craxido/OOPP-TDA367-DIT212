@@ -42,6 +42,7 @@ class ShopPresenter implements ShopMVPInterface.Presenter {
     @Override
     public void saveState(Context context) {
         shopModel.saveState(context);
+        playerModel.saveState(context);
     }
 
     @Override

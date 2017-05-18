@@ -1,6 +1,12 @@
 package com.example.sauronsarmy.oopp.player;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.example.sauronsarmy.oopp.MainActivity;
+import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
+import com.example.sauronsarmy.oopp.clock.Runner;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,31 +18,39 @@ import java.util.Map;
  * of a player.
  */
 
-public class PlayerModel implements PlayerModelInterface {
+public class PlayerModel implements PlayerModelInterface, ClockListener {
 
-    private static final PlayerModel ourInstance = new PlayerModel();
+    private static PlayerModel ourInstance;
+    private static SharedPreferences saveState;
 
     private int damage;
     private int damagePerSecond;
     private int money;
     private int moneyPerSecond;
-    // This must be assigned when exiting the app.
-    private long lastLogOn;
-
-    public static PlayerModelInterface getInstance() {
-        return ourInstance;
-    }
+    private  long lastLogOn;
 
     /*
     Constructor is private since this implemented as a singelton.
     Only the model itself is allowed to create a new instance. Everyone
     else just gets to talk with this instance.
      */
-    private PlayerModel() {
+    private PlayerModel(Context context) {
         damage           = 10;
         money            = 0;
         damagePerSecond  = 0;
         moneyPerSecond   = 0;
+        loadState(context);
+        Runner.getInstance().register(this);
+    }
+
+    public static PlayerModelInterface getInstance(Context context) {
+        if (ourInstance == null)
+            ourInstance = new PlayerModel(context);
+        return getInstance();
+    }
+
+    public static PlayerModelInterface getInstance() {
+        return ourInstance;
     }
 
     public long getLastLogOn() {
@@ -67,6 +81,28 @@ public class PlayerModel implements PlayerModelInterface {
         return money;
     }
 
+    @Override
+    public void loadState(Context context) {
+        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
+                Context.MODE_PRIVATE);
+        setMoney(saveState.getInt("money", 0));
+        setMoneyPerSecond(saveState.getInt("moneyPerSec", 0));
+        setDamage(saveState.getInt("damage", 10));
+        setDamagePerSecond(saveState.getInt("damagePerSec", 0));
+    }
+
+    @Override
+    public void saveState(Context context) {
+        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
+                                                 Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = saveState.edit();
+        editor.putInt("money", getMoney());
+        editor.putInt("moneyPerSec", getMoneyPerSecond());
+        editor.putInt("damage", getDamage());
+        editor.putInt("damagePerSec", getDamagePerSecond());
+        editor.apply();
+    }
+
     private void setMoney(int money) {
         this.money = money;
     }
@@ -82,26 +118,12 @@ public class PlayerModel implements PlayerModelInterface {
         this.moneyPerSecond = moneyPerSecond;
     }
 
+    /**
+     * Every second, update the money
+     */
     @Override
-    public void setState(Map newState) {
-        setDamage(          (int) newState.get("damage"));
-        setDamagePerSecond ((int) newState.get("dps"));
-        setMoney(           (int) newState.get("money"));
-        setMoneyPerSecond(  (int) newState.get("moneyPerSec"));
-        setLastLogOn(       (long) newState.get("lastLogOn"));
-    }
-
-    @Override
-    public Map getState() {
-        return new HashMap<String, Object>() {
-            {
-                put("damage",      getDamage());
-                put("dps",         getDamagePerSecond());
-                put("money",       getMoney());
-                put("moneyPerSec", getMoneyPerSecond());
-                put("lastLogOn",   getLastLogOn());
-            }
-        };
+    public void update() {
+        addMoney(moneyPerSecond);
     }
 }
 

@@ -1,5 +1,6 @@
 package com.example.sauronsarmy.oopp.map;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.example.sauronsarmy.oopp.monsterPack.Monster;
@@ -45,6 +46,11 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         Log.i(TAG, "Error: " + errorMsg);
     }
 
+
+    @Override
+    public void saveState(Context context){
+        playerModel.saveState(context);
+    }
 
     public int getPlayerMoney(){
         return playerModel.getMoney();

@@ -45,6 +45,7 @@ class HomePresenter implements HomeMVPInterface.Presenter {
 
     public void saveState(Context context) {
         homeModel.saveState(context);
+        playerModel.saveState(context);
     }
 
     @Override

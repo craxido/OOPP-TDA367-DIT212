@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.map;
 
+import android.content.Context;
+
 import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.monsterPack.Monster;
 
@@ -21,6 +23,7 @@ public interface MapMVPInterface {
         Area   getArea(int index);
         void changeArea(int index);
         void onError(String errorMsg);
+        void saveState(Context context);
         int  getPlayerMoney();
         int damageMonster(int damage);
         Area getCurrentArea();

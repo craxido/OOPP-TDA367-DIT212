@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.player;
 
+import android.content.Context;
+
 /**
  * Created by Erik on 13/04/17.
  */
@@ -19,8 +21,8 @@ public interface PlayerModelInterface {
     void addMoney(int money);
     int getMoney();
 
-    void setState(java.util.Map value1);
-    java.util.Map getState();
+    void loadState(Context context);
+    void saveState(Context context);
 
     void setMoneyPerSecond(int newValue);
     int getMoneyPerSecond();

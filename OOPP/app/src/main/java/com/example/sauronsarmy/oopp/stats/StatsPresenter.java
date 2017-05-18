@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.stats;
 
+import android.content.Context;
+
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
@@ -13,6 +15,11 @@ public class StatsPresenter implements StatsInterface.Presenter {
 
     StatsPresenter() {
         playerModel = PlayerModel.getInstance();
+    }
+
+    @Override
+    public void saveState(Context context) {
+        playerModel.saveState(context);
     }
 
     @Override

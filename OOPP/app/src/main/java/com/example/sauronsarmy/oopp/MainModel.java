@@ -13,6 +13,7 @@ import java.util.Map;
  */
 class MainModel implements MainMVPInterface.ModelInterface {
 
+    private static MainModel mainModelInstance = new MainModel();
     private SharedPreferences saveState;
     private SharedPreferences.Editor editor;
     private static String TAG = "MainModel";
@@ -21,8 +22,12 @@ class MainModel implements MainMVPInterface.ModelInterface {
      */
     private boolean hasSaveToLoad;
 
-    MainModel() {
+    private MainModel() {
         hasSaveToLoad = true;
+    }
+
+    public static MainMVPInterface.ModelInterface getInstance() {
+        return mainModelInstance;
     }
 
     @Override

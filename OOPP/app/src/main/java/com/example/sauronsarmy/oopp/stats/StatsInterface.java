@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.stats;
 
+import android.content.Context;
+
 import com.example.sauronsarmy.oopp.clock.Runner;
 
 /**
@@ -16,6 +18,8 @@ public interface StatsInterface {
         int getMoneyAmount();
 
         int getMoneyPerSecond();
+
+        void saveState(Context context);
 
     }
 

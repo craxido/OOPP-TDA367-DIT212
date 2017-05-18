@@ -2,6 +2,8 @@ package com.example.sauronsarmy.oopp;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.sauronsarmy.oopp.clock.ClockListener;
+import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.map.MapMVPInterface;
 import com.example.sauronsarmy.oopp.monsterPack.Monster;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
@@ -22,9 +24,9 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
     private final static String TAG = "MainPresenter";
 
 
-    public MainPresenter() {
-        playerModel = PlayerModel.getInstance();
-        mainModel = new MainModel();
+    public MainPresenter(Context context) {
+        playerModel = PlayerModel.getInstance(context);
+        mainModel = MainModel.getInstance();
         mapPresenter = new MapPresenter();
     }
 
@@ -48,8 +50,7 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
     @Override
     public void saveState(Context context) {
         Log.i(TAG, "Saving the current state.");
-        java.util.Map currentState       = playerModel.getState();
-        mainModel.saveState(context, currentState);
+        playerModel.saveState(context);
     }
 
     /**
@@ -59,15 +60,13 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
      */
     @Override
     public void loadState(Context context) {
-        if(mainModel.hasSaveToLoad()) {
             Log.i(TAG, "Loading previous save.");
-            playerModel.setState(mainModel.loadState(context));
-        }
+            //playerModel.loadState(context);
     }
 
     @Override
     public void update() {
-        applyGPS();
+    //    applyGPS();
         applyDPS();
     }
 

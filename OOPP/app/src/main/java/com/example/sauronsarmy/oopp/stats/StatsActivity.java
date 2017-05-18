@@ -17,10 +17,6 @@ import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 public class StatsActivity extends AppCompatActivity implements ClockListener {
 
-    private TextView damageText;
-    private TextView dpsText;
-    private TextView moneyText;
-    private TextView moneyPerSecText;
     private StatsInterface.Presenter statsPresenter = new StatsPresenter();
     private Runner run = Runner.getInstance();
     private Intent intent = new Intent();
@@ -83,10 +79,11 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
 
 
     @Override
-    protected void onPause(){
+    protected void onStop(){
         //Register to clock
+        statsPresenter.saveState(StatsActivity.this);
         run.unregister(this);
-        super.onPause();
+        super.onStop();
     }
 
     @Override
@@ -103,10 +100,10 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
            /*
              Setting all the textViews to display the correct stats.
             */
-        damageText      = (TextView) findViewById(R.id.damageText);
-        dpsText         = (TextView) findViewById(R.id.dpsText);
-        moneyText       = (TextView) findViewById(R.id.moneyText);
-        moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
+        TextView damageText = (TextView) findViewById(R.id.damageText);
+        TextView dpsText = (TextView) findViewById(R.id.dpsText);
+        TextView moneyText = (TextView) findViewById(R.id.moneyText);
+        TextView moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
 
         damageText.setText(String.valueOf(statsPresenter.getPlayerDamage()));
         dpsText.setText(String.valueOf(statsPresenter.getPlayerDamagePerSecond()));

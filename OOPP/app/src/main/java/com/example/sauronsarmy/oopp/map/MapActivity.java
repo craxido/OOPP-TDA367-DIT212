@@ -20,7 +20,7 @@ public class MapActivity extends AppCompatActivity
         implements MapMVPInterface.ViewOps,lvlPickFragment.ClickListener, ClockListener {
 
 
-    private MapMVPInterface.PresenterOps mapPresenter;
+    private MapMVPInterface.PresenterOps mapPresenter = new MapPresenter();
     private static final Runner run = Runner.getInstance();
     private static final String TAG = "MapActivity";
     private Intent intent = new Intent();
@@ -56,12 +56,21 @@ public class MapActivity extends AppCompatActivity
 
         mapButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
-        /* Get the map (there is only one map). */
-        mapPresenter = new MapPresenter();
-        run.register(this);
         TextView moneyIndi = (TextView) findViewById(R.id.moneyIndicator);
         moneyIndi.setText(String.valueOf(mapPresenter.getPlayerMoney()));
+    }
 
+    @Override
+    protected void onStart() {
+        run.register(this);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        mapPresenter.saveState(MapActivity.this);
+        run.unregister(this);
+        super.onStop();
     }
 
     @Override
@@ -73,7 +82,6 @@ public class MapActivity extends AppCompatActivity
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Context context = MapActivity.this;
             // Figure out which button was pressed
             switch (v.getId()) {
                 case R.id.b_home:
