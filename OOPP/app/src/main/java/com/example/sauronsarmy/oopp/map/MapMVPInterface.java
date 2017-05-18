@@ -32,8 +32,8 @@ public interface MapMVPInterface {
         int getPathGoal();
         Monster getCurrentMonster();
         boolean tryChangeAreaLevel(int level, int area);
-        void nextLevel();
-        void previousLevel();
+        boolean nextLevel();
+        boolean previousLevel();
 
         // methods to be called from Presenter
     }

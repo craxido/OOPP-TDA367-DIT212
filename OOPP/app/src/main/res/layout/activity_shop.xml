@@ -113,11 +113,8 @@
             android:id="@+id/currentDmg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/dmgUpgradeText"
-            android:layout_alignStart="@+id/dmgUpgradeText"
-            android:layout_below="@+id/dmgUpgradeText"
-            android:layout_marginLeft="140dp"
-            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
@@ -138,13 +135,11 @@
             android:id="@+id/newDmg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/currentDmgText"
+            android:layout_toEndOf="@+id/currentDmgText"
+            android:layout_toRightOf="@+id/currentDmgText"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:layout_below="@+id/currentDmg"
-            android:layout_alignRight="@+id/currentDmg"
-            android:layout_alignEnd="@+id/currentDmg"
-            android:layout_alignLeft="@+id/currentDmg"
-            android:layout_alignStart="@+id/currentDmg" />
+            android:textSize="18sp" />
 
 
         <TextView
@@ -248,13 +243,11 @@
             android:id="@+id/currentDPS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:layout_marginLeft="11dp"
-            android:layout_marginStart="11dp"
+            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/currentDPSText"
-            android:layout_toEndOf="@+id/currentDPSText" />
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
 
         <TextView
             android:id="@+id/newDPSText"
@@ -273,12 +266,11 @@
             android:id="@+id/newDPS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/currentDPSText"
+            android:layout_toEndOf="@+id/currentDPSText"
+            android:layout_toRightOf="@+id/currentDPSText"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:layout_alignBaseline="@+id/newDPSText"
-            android:layout_alignBottom="@+id/newDPSText"
-            android:layout_alignLeft="@+id/currentDPS"
-            android:layout_alignStart="@+id/currentDPS" />
+            android:textSize="18sp" />
 
 
         <TextView

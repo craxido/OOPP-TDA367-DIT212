@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
     private MainMVPInterface.PresenterOps mainPresenter;
     private static final String TAG = "MainActivity";
+
+
     private Runner run = Runner.getInstance();
     private Intent intent = new Intent();
 
@@ -45,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         ImageButton mainButton  = (ImageButton) findViewById(R.id.b_main);
         ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
 
-        Button nxtLvl = (Button) findViewById(R.id.nextLvl);
-        Button prvLvl = (Button) findViewById(R.id.prevLvl);
+        ImageButton nxtLvl = (ImageButton) findViewById(R.id.nextLvl);
+        ImageButton prvLvl = (ImageButton) findViewById(R.id.prevLvl);
 
 
         homeButton.setOnClickListener(buttonListener);
@@ -62,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         mainButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
 
+        Monster currentMonster = mainPresenter.getCurrentMonster();
+        monsterButton.setImageResource(currentMonster.getImageRef());
         update();
     }
 
@@ -111,21 +114,25 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                 case R.id.b_main:
                     break;
                 case R.id.b_monster:
-
                     mainPresenter.monsterClicked();
+                    mainPresenter.checkLevelUnlocked(mainPresenter.getPathGoal());
 
                     update();
                     break;
                 case R.id.nextLvl:
-                    mainPresenter.nextLevel();
-                    update();
+                    if(mainPresenter.nextLevel()){
+                        mainPresenter.incrementCurrentLevel();
+                        update();
+                    }
 
                     break;
                 case R.id.prevLvl:
-                    mainPresenter.previousLevel();
-                    update();
-
+		            if(mainPresenter.previousLevel()) {
+                        mainPresenter.decrementCurrentLevel();
+                        update();
+                    }
                     break;
+
             }
         }
     };
@@ -147,9 +154,15 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         int path  = mainPresenter.getPathGoal();
         goal.setText("Goal: " + path +"/" +goali);
 
-        monsterButton.setImageResource(currentMonster.getImageRef());
         TextView moneyIndicator = (TextView) findViewById(R.id.moneyIndicator);
         moneyIndicator.setText(String.valueOf(mainPresenter.getPlayerMoney()));
+
+        // Update next arrow
+        ImageButton nextButton = (ImageButton) findViewById(R.id.nextLvl);
+        nextButton.setImageResource(mainPresenter.getNextArrowImage());
+        // Update prev arrow
+        ImageButton prevButton = (ImageButton) findViewById(R.id.prevLvl);
+        prevButton.setImageResource(mainPresenter.getPrevArrowImage());
 
         mainPresenter.update();
     }

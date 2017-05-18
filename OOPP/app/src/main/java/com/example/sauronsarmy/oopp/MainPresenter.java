@@ -68,13 +68,38 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
     }
 
     @Override
-    public void nextLevel() {
-        mapPresenter.nextLevel();
+    public boolean nextLevel() {
+        return mapPresenter.nextLevel();
     }
 
     @Override
-    public void previousLevel() {
-        mapPresenter.previousLevel();
+    public void checkLevelUnlocked(int pathGoal){
+        mainModel.checkLevelUnlocked(pathGoal);
+    }
+
+    @Override
+    public void incrementCurrentLevel() {
+        mainModel.incrementCurrentLevel();
+    }
+
+    @Override
+    public void decrementCurrentLevel() {
+        mainModel.decrementCurrentLevel();
+    }
+
+    @Override
+    public int getNextArrowImage(){
+        return mainModel.getNextArrowImage();
+    }
+
+    @Override
+    public int getPrevArrowImage(){
+        return mainModel.getPrevArrowImage();
+    }
+
+    @Override
+    public boolean previousLevel() {
+        return mapPresenter.previousLevel();
     }
 
     @Override

@@ -38,11 +38,11 @@ public class monsterFactory {
         switch (type){
 
             case FOREST:
-                return new Monster(hp, gold, forestMonsters[rand.nextInt(MAX)]);
+                return new Monster(hp, gold, forestMonsters[0]);
             case MOUNTAIN:
-                return new Monster(hp, gold, mountainMonsters[rand.nextInt(MAX)]);
+                return new Monster(hp, gold, mountainMonsters[0]);
             case VOLCANO:
-                return new Monster(hp, gold, volcanoMonsters[rand.nextInt(MAX)]);
+                return new Monster(hp, gold, volcanoMonsters[0]);
             default:
                 return new Monster(hp, gold, R.drawable.mike );
 
