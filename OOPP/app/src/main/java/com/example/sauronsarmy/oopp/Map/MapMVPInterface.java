@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.Map;
 
+import com.example.sauronsarmy.oopp.MonsterPack.Monster;
+
 /**
  * Author: Jonatan Källman
  */
@@ -16,7 +18,7 @@ public interface MapMVPInterface {
     interface PresenterOps{
         int    getBackgroundRef();
         Area   getArea(int index);
-        void changeArea(int index);
+        Monster getCurrentMonster();
         void onError(String errorMsg);
         int  getPlayerMoney();
         int damageMonster(int damage);
@@ -47,6 +49,10 @@ public interface MapMVPInterface {
         int getLevelHealthMultiplier(int areaIndex, int levelIndex);
         int getLevelAmount(int areaIndex);
         int getAreaAmount();
+        boolean tryChangeAreaLevel(int level, int area);
+
+        void nextLevel();
+        void previousLevel();
         // methods to be called from Model
     }
 }
