@@ -23,7 +23,6 @@ public interface MainMVPInterface {
         void monsterClicked();
         Monster getCurrentMonster();
         void saveState(Context value1);
-        void loadState(Context value1);
         int getGoal();
         int getPathGoal();
         int getBGRef();

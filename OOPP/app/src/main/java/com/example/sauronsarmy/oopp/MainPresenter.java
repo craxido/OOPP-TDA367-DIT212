@@ -51,20 +51,8 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
         playerModel.saveState(context);
     }
 
-    /**
-     * If there is a previous saved state, asks the MainModel for this state
-     * and sends this state to the PlayerModel for loading.
-     * @param context The context from which this method was called.
-     */
-    @Override
-    public void loadState(Context context) {
-            Log.i(TAG, "Loading previous save.");
-            //playerModel.loadState(context);
-    }
-
     @Override
     public void update() {
-    //    applyGPS();
         applyDPS();
     }
 
@@ -73,9 +61,6 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
         if(gold > 0){
             playerModel.addMoney(gold);
         }
-    }
-    private void applyGPS(){
-        playerModel.addMoney(playerModel.getMoneyPerSecond());
     }
 
     @Override
