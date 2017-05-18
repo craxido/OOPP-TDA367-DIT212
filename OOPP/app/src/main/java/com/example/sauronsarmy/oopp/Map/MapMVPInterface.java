@@ -35,7 +35,18 @@ public interface MapMVPInterface {
         void  setBackgroundRef(int bgRef);
         void  onDestroy();
         int  getPlayerMoney();
-
+        Area getCurrentArea();
+        void setCurrentArea(Area area);
+        Area[] getAreas();
+        Area createArea(int areaIndex);
+        areaType getAreaType(int areaIndex);
+        int getAreaBgRef(int areaIndex);
+        Level getCurrentLevel();
+        Level createLevel(areaType areaType);
+        int getLevelGoldMultiplier(int areaIndex, int levelIndex);
+        int getLevelHealthMultiplier(int areaIndex, int levelIndex);
+        int getLevelAmount(int areaIndex);
+        int getAreaAmount();
         // methods to be called from Model
     }
 }

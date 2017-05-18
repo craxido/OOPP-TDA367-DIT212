@@ -9,10 +9,10 @@ import com.example.sauronsarmy.oopp.Map.MapPresenter;
 import com.example.sauronsarmy.oopp.MonsterPack.Monster;
 import com.example.sauronsarmy.oopp.Player.PlayerModel;
 import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
-import com.example.sauronsarmy.oopp.Upgrades.HomeMVPInterface;
-import com.example.sauronsarmy.oopp.Upgrades.HomePresenter;
-import com.example.sauronsarmy.oopp.Upgrades.ShopMVPInterface;
-import com.example.sauronsarmy.oopp.Upgrades.ShopPresenter;
+import com.example.sauronsarmy.oopp.Home.HomeMVPInterface;
+import com.example.sauronsarmy.oopp.Home.HomePresenter;
+import com.example.sauronsarmy.oopp.Shop.ShopMVPInterface;
+import com.example.sauronsarmy.oopp.Shop.ShopPresenter;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 import com.example.sauronsarmy.oopp.clock.Runner;
 
