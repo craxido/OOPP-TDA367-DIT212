@@ -14,7 +14,7 @@ import java.util.Map;
  * Created by Sarosh on 2017-05-11.
  */
 
-class HomePresenter implements HomeMVPInterface.Presenter {
+public class HomePresenter implements HomeMVPInterface.Presenter {
 
     private HomeMVPInterface.Model homeModel;
     private PlayerModelInterface playerModel;

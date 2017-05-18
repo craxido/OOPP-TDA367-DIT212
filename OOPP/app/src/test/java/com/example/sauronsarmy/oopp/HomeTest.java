@@ -1,6 +1,8 @@
 package com.example.sauronsarmy.oopp;
 
-import com.example.sauronsarmy.oopp.Player.PlayerModel;
+import com.example.sauronsarmy.oopp.home.HomePresenter;
+import com.example.sauronsarmy.oopp.player.PlayerModel;
+import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
 import static org.junit.Assert.*;
 
@@ -17,7 +19,7 @@ import java.util.Map;
  */
 
 public class HomeTest {
-    private PlayerModel player;
+    private PlayerModelInterface player;
     private HomePresenter home;
 
     /**
@@ -67,14 +69,6 @@ public class HomeTest {
 
         home.setOilCounter(5);
         assertEquals(5, home.getOilPumpUpgradeCounter());
-        home.testOilPumpUpgradeCounter(new HashMap<String, Integer> ()
-        {
-            {
-                put("oil", 10);
-            }
-        });
-        Map map2 = home.getUpgradeCounters();
-        assertEquals(10,map2.get("oil"));
     }
 
     /**
@@ -99,7 +93,7 @@ public class HomeTest {
         // check player init stats and set money
         assertEquals(0, player.getMoney());
         assertEquals(0, player.getMoneyPerSecond());
-        player.setMoney(100);
+        player.addMoney(100);
         assertEquals(100, player.getMoney());
         // check upgrade init stats
         assertEquals(100, home.getOilPumpUpgrade().getCost());
