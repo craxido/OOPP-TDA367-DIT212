@@ -17,15 +17,19 @@
     <string name="currentDPS">Current DPS:</string>
     <string name="newDPS">New DPS:</string>
 
+    <string name="new_game_prompt" >This will override any previous saves, continue?</string>
+    <string name="ok" >OK</string>
     <string name="oilUpgradeText">Money / Sec Upgrade</string>
-
     <string name="currentMoneyPerSec">Current MPS:</string>
     <string name="newMoneyPerSec">New MPS:</string>
-
-    <string name="new_game" >This will override any previous saves, continue?</string>
-    <string name="ok" >Ok</string>
-
     <string name="cancel">Cancel</string>
+    <string name="oil_pump_upgrade">oil pump upgrade</string>
+    <string name="damage_upgrade">damage upgrade</string>
+    <string name="welcome_to_gem_clicker">Welcome to Gem Clicker!</string>
+    <string name="new_game">New Game</string>
+    <string name="_continue">Continue</string>
+    <string name="button_for_oil_upgrade">Button for oil upgrade</string>
+    <string name="picture_of_monster">Picture of monster</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -5,14 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sauronsarmy.oopp.MainActivity"
-    android:id="@+id/b_mainActivity">
+    android:id="@+id/b_mainActivity"
+    tools:context="com.example.sauronsarmy.oopp.MainActivity">
 
     <include layout="@layout/bottom_bar" />
     <include layout="@layout/top_bar" />
 
     <ImageButton
         android:id="@+id/b_monster"
+        android:contentDescription="@string/picture_of_monster"
         android:layout_width="@android:dimen/thumbnail_height"
         android:layout_height="@android:dimen/thumbnail_width"
         android:layout_centerHorizontal="true"

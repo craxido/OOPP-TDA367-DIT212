@@ -5,8 +5,8 @@ package com.example.sauronsarmy.oopp;
  */
 
 //Imports
-import com.example.sauronsarmy.oopp.Map.MapPresenter;
-import com.example.sauronsarmy.oopp.Map.areaType;
+import com.example.sauronsarmy.oopp.map.areaType;
+import com.example.sauronsarmy.oopp.map.MapPresenter;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
@@ -18,7 +18,7 @@ public class MapTest {
 
     @Before
     public void setUp() throws Exception {
-        map = MapPresenter.getInstance();
+        map = new MapPresenter();
     }
 
     @After

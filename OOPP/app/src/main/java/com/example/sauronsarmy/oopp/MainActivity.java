@@ -1,6 +1,5 @@
 package com.example.sauronsarmy.oopp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -11,34 +10,35 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.sauronsarmy.oopp.Map.MapActivity;
-import com.example.sauronsarmy.oopp.Map.MapPresenter;
-import com.example.sauronsarmy.oopp.MonsterPack.Monster;
-import com.example.sauronsarmy.oopp.Player.PlayerModel;
-import com.example.sauronsarmy.oopp.Player.PlayerModelInterface;
-import com.example.sauronsarmy.oopp.Stats.StatsActivity;
-import com.example.sauronsarmy.oopp.Upgrades.HomeActivity;
-import com.example.sauronsarmy.oopp.Upgrades.ShopActivity;
+import com.example.sauronsarmy.oopp.clock.Runner;
+import com.example.sauronsarmy.oopp.monsterPack.Monster;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 
 public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps,ClockListener {
 
-    private Monster currentMonster;
-    private MainMVPInterface.PresenterOps mainPresenter = MainPresenter.getInstance();
+    private MainMVPInterface.PresenterOps mainPresenter;
     private static final String TAG = "MainActivity";
+
     private PlayerModelInterface player;
     private static int CURRENT_LEVEL = 1;
     private static int LEVELS_UNLOCKED = 1;
     private static final int MAX_LEVELS = 3;
     private static final int MIN_LEVEL = 1;
 
+    private Runner run = Runner.getInstance();
+    private Intent intent = new Intent();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate() called");
         super.onCreate(savedInstanceState);
+
+        // Calling the constructor in onCreate since we need to send the context
+        // and the activity must be created before sending it.
+        mainPresenter = new MainPresenter(MainActivity.this);
+
         setContentView(R.layout.activity_main);
-        player = PlayerModel.getInstance();
 
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
@@ -69,63 +69,50 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
 
         update();
-        MainPresenter.getInstance().getRun().register(this);
     }
 
     @Override
     protected void onPause() {
         Log.i(TAG, "onPause() called");
-
         //Unregister from clock
-        MainPresenter.getInstance().getRun().unregister(this);
+        //run.unregister(this);
         super.onPause();
     }
 
     @Override
-    protected void onResume() {
-        Log.i(TAG, "onResume() called");
-        super.onResume();
-    }
-
-    @Override
     protected void onStart(){
-
         //Register to clock
-        MainPresenter.getInstance().getRun().register(this);
-
+        run.register(this);
         super.onStart();
-    }
-    @Override
-    protected void onDestroy() {
-        Log.i(TAG, "onDestroy() called");
-        mainPresenter.saveState(MainActivity.this);
-        super.onDestroy();
     }
 
     @Override
     protected void onStop() {
         Log.i(TAG, "onStop called");
-        Log.i(TAG, "Calling saveState() in mainPresenter");
         mainPresenter.saveState(MainActivity.this);
+        run.unregister(this);
         super.onStop();
     }
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Context context = MainActivity.this;
             // Figure out which button was pressed
             switch (v.getId()) {
                 case R.id.b_home:
-                    startActivity(new Intent(context, HomeActivity.class));
+                    intent.setAction("android.intent.action.HOME");
+                    startActivity(intent);
                     break;
                 case R.id.b_map:
-                    startActivity(new Intent(context, MapActivity.class));
+                    intent.setAction("android.intent.action.MAP");
+                    startActivity(intent);
                     break;
                 case R.id.b_shop:
-                    startActivity(new Intent(context, ShopActivity.class));
+                    intent.setAction("android.intent.action.SHOP");
+                    startActivity(intent);
                     break;
                 case R.id.b_stats:
-                    startActivity(new Intent(context, StatsActivity.class));
+                    intent.setAction("android.intent.action.STATS");
+                    startActivity(intent);
                     break;
                 case R.id.b_main:
                     break;
@@ -140,12 +127,20 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                         CURRENT_LEVEL++;
                         update();
                     }
+                    mainPresenter.nextLevel();
+                    update();
+
                     break;
                 case R.id.prevLvl:
                     if(MapPresenter.getInstance().previousLevel()){
                         CURRENT_LEVEL--;
                         update();
                     }
+		    mainPresenter.previousLevel();
+                    update();
+
+                    break;
+                case R.id.prevLvl:
                     break;
             }
         }
@@ -153,24 +148,24 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
     @Override
     public void update() {
+        Monster currentMonster = mainPresenter.getCurrentMonster();
 
         RelativeLayout bg = (RelativeLayout) findViewById(R.id.b_mainActivity);
-        bg.setBackgroundResource(MainPresenter.getInstance().getBGRef());
+        bg.setBackgroundResource(mainPresenter.getBGRef());
 
-        currentMonster=MainPresenter.getInstance().getCurrentMonster();
         ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
 
         TextView hp = (TextView) findViewById(R.id.hp);
         hp.setText("Health: " + currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
 
         TextView goal = (TextView) findViewById(R.id.goal);
-        int goali = MapPresenter.getInstance().getGoal();
-        int path  = MapPresenter.getInstance().getPathGoal();
+        int goali = mainPresenter.getGoal();
+        int path  = mainPresenter.getPathGoal();
         goal.setText("Goal: " + path +"/" +goali);
 
         monsterButton.setImageResource(currentMonster.getImageRef());
         TextView moneyIndicator = (TextView) findViewById(R.id.moneyIndicator);
-        moneyIndicator.setText(String.valueOf(player.getMoney()));
+        moneyIndicator.setText(String.valueOf(mainPresenter.getPlayerMoney()));
 
         if(
                 CURRENT_LEVEL == LEVELS_UNLOCKED &&
@@ -194,5 +189,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
             ((ImageButton) findViewById(R.id.nextLvl))
                     .setImageResource(R.drawable.red_arrow_right);
         }
+
+        mainPresenter.update();
     }
 }

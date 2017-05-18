@@ -1,6 +1,7 @@
 package com.example.sauronsarmy.oopp;
 
-import com.example.sauronsarmy.oopp.Player.PlayerModel;
+import com.example.sauronsarmy.oopp.player.PlayerModel;
+import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
 import org.junit.After;
 import org.junit.Before;
@@ -12,7 +13,7 @@ import static org.junit.Assert.*;
  * Created by erik on 18/04/17.
  */
 public class PlayerModelTest {
-    private PlayerModel player;
+    private PlayerModelInterface player;
     private static final double DELTA = 1e-15;
 
     /*
@@ -63,9 +64,9 @@ public class PlayerModelTest {
 
     @Test
     public void setMoney() throws Exception {
-        player.setMoney(40);
+        player.addMoney(40);
         assertEquals(40, player.getMoney());
-        player.setMoney(0);
+        player.addMoney(0);
     }
 
     @Test

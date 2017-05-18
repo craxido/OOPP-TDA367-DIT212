@@ -10,15 +10,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".Upgrades.HomeActivity" />
-        <activity android:name=".Upgrades.ShopActivity" />
-        <activity android:name=".Stats.StatsActivity" />
-        <activity android:name=".Map.MapActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAINSCREEN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".home.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.HOME"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".shop.ShopActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SHOP"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".stats.StatsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.STATS"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".map.MapActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAP"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

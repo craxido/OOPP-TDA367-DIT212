@@ -9,8 +9,9 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.widget.ArrayAdapter;
 
-import com.example.sauronsarmy.oopp.Map.Area;
-import com.example.sauronsarmy.oopp.Map.MapPresenter;
+import com.example.sauronsarmy.oopp.map.Area;
+import com.example.sauronsarmy.oopp.map.MapMVPInterface;
+import com.example.sauronsarmy.oopp.map.MapPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.List;
 
 public class lvlPickFragment extends DialogFragment {
 
+    private MapMVPInterface.PresenterOps mapPresenter;
 
     //Interface for users of this fragment
     public interface ClickListener{
@@ -54,7 +56,8 @@ public class lvlPickFragment extends DialogFragment {
         //Get the argument
         area = getArguments().getInt("area");
 
-        Area areas = MapPresenter.getInstance().getArea(area);
+        mapPresenter = new MapPresenter();
+        Area areas = mapPresenter.getArea(area);
 
         //Make a list and add all the levels from the selected area
         List<String> levelElements = new ArrayList<>();
