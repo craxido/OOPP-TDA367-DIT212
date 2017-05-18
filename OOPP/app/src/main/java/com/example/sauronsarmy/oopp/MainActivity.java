@@ -7,9 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -30,6 +28,10 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     private MainMVPInterface.PresenterOps mainPresenter = MainPresenter.getInstance();
     private static final String TAG = "MainActivity";
     private PlayerModelInterface player;
+    private static int currentLevel = 1;
+    private static int LEVELS_UNLOCKED = 1;
+    private static final int MAX_LEVELS = 3;
+    private static final int MIN_LEVEL = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         player = PlayerModel.getInstance();
+
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
         appropriate activity.
@@ -48,8 +51,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         ImageButton mainButton  = (ImageButton) findViewById(R.id.b_main);
         ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
 
-        Button nxtLvl = (Button) findViewById(R.id.nextLvl);
-        Button prvLvl = (Button) findViewById(R.id.prevLvl);
+        ImageButton nxtLvl = (ImageButton) findViewById(R.id.nextLvl);
+        ImageButton prvLvl = (ImageButton) findViewById(R.id.prevLvl);
 
 
         homeButton.setOnClickListener(buttonListener);
@@ -133,14 +136,16 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                     update();
                     break;
                 case R.id.nextLvl:
-                    MapPresenter.getInstance().nextLevel();
-                    update();
-
+                    if(MapPresenter.getInstance().nextLevel()){
+                        currentLevel++;
+                        update();
+                    }
                     break;
                 case R.id.prevLvl:
-                    MapPresenter.getInstance().previousLevel();
-                    update();
-
+                    if(MapPresenter.getInstance().previousLevel()){
+                        currentLevel--;
+                        update();
+                    }
                     break;
             }
         }
@@ -167,5 +172,27 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         TextView moneyIndicator = (TextView) findViewById(R.id.moneyIndicator);
         moneyIndicator.setText(String.valueOf(player.getMoney()));
 
+        if(
+                currentLevel == LEVELS_UNLOCKED &&
+                LEVELS_UNLOCKED < MAX_LEVELS &&
+                MapPresenter.getInstance().getPathGoal() == 10){
+            LEVELS_UNLOCKED++;
+        }
+
+        if(currentLevel == MIN_LEVEL) {
+            ((ImageButton) findViewById(R.id.prevLvl))
+                    .setImageResource(R.drawable.red_arrow_left);
+        } else {
+            ((ImageButton) findViewById(R.id.prevLvl))
+                    .setImageResource(R.drawable.green_arrow_left);
+        }
+
+        if(currentLevel < LEVELS_UNLOCKED ){
+            ImageButton nxtLvl = (ImageButton) findViewById(R.id.nextLvl);
+            nxtLvl.setImageResource(R.drawable.green_arrow_right);
+        } else {
+            ((ImageButton) findViewById(R.id.nextLvl))
+                    .setImageResource(R.drawable.red_arrow_right);
+        }
     }
 }

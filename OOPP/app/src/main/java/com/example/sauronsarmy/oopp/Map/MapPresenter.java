@@ -178,37 +178,38 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
 
 
-    public void nextLevel(){
+    public boolean nextLevel(){
 
         int lvlpos = getLevelIndex() +1;
         if(lvlpos >= getCurrentArea().getLevels().length){
             if(getAreaIndex()+1 < getAreas().length){
 
-                tryChangeAreaLevel(0,getAreaIndex()+1);
+                return tryChangeAreaLevel(0,getAreaIndex()+1);
             }
+            return false;
 
         }
         else{
-            tryChangeAreaLevel(lvlpos,getAreaIndex());
+            return tryChangeAreaLevel(lvlpos,getAreaIndex());
         }
     }
 
-    public void previousLevel(){
+    public boolean previousLevel(){
         int lvlpos = getLevelIndex() -1;
         if(lvlpos <0){
             if(getAreaIndex()-1 >=0){
-
-                tryChangeAreaLevel(getArea(getAreaIndex()-1).getLevels().length -1 ,getAreaIndex()-1);
+                return tryChangeAreaLevel(getArea(getAreaIndex()-1).getLevels().length -1 ,getAreaIndex()-1);
             }
+            return false;
 
         }
         else{
-            tryChangeAreaLevel(lvlpos,getAreaIndex());
+            return tryChangeAreaLevel(lvlpos,getAreaIndex());
         }
 
     }
 
-    private int getLevelIndex(){
+    public int getLevelIndex(){
 
         int pos =0;
         Level curLvl = getCurrentLevel();

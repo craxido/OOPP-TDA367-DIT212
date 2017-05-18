@@ -31,7 +31,8 @@
         android:layout_above="@+id/b_monster"
         android:layout_centerHorizontal="true"
         android:background="@android:color/white"
-        android:textAlignment="viewStart"/>
+        android:textAlignment="viewStart"
+        android:gravity= "start"/>
 
     <TextView
         android:id="@+id/goal"
@@ -40,25 +41,31 @@
         android:layout_above="@+id/hp"
         android:layout_centerHorizontal="true"
         android:background="@android:color/white"
-        android:textAlignment="viewStart"/>
+        android:textAlignment="viewStart"
+        android:gravity= "start" />
 
-    <Button
-        android:id="@+id/prevLvl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/b_monster"
-        android:layout_toStartOf="@+id/b_monster"
-        android:text="@string/leftarrow" />
-
-    <Button
+    <ImageButton
         android:id="@+id/nextLvl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/rightarrow"
-        android:layout_alignBaseline="@+id/prevLvl"
-        android:layout_alignBottom="@+id/prevLvl"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/red_arrow_right"
+        android:padding = "0dp"
+        android:background = "@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:layout_alignTop="@+id/prevLvl"
         android:layout_toRightOf="@+id/b_monster"
         android:layout_toEndOf="@+id/b_monster" />
+
+    <ImageButton
+        android:id="@+id/prevLvl"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/red_arrow_left"
+        android:padding = "0dp"
+        android:background = "@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/b_monster"
+        android:layout_toStartOf="@+id/b_monster" />
 
 </RelativeLayout>
