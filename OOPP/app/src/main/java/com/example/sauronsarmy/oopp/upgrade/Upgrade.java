@@ -39,7 +39,7 @@ public class Upgrade {
     public void updateCost(int multiplier){
         float f = 1.5f;
         if(multiplier > 1) {
-            f = cost * 1.5f;
+            f = cost *  1.5f;
         }else if (multiplier > 10){
             f = cost * 1.7f;
         }else if (multiplier > 20){

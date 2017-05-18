@@ -20,11 +20,6 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     private MainMVPInterface.PresenterOps mainPresenter;
     private static final String TAG = "MainActivity";
 
-    private PlayerModelInterface player;
-    private static int CURRENT_LEVEL = 1;
-    private static int LEVELS_UNLOCKED = 1;
-    private static final int MAX_LEVELS = 3;
-    private static final int MIN_LEVEL = 1;
 
     private Runner run = Runner.getInstance();
     private Intent intent = new Intent();
@@ -123,25 +118,19 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                     update();
                     break;
                 case R.id.nextLvl:
-                    if(MapPresenter.getInstance().nextLevel()){
-                        CURRENT_LEVEL++;
+                    if(mainPresenter.nextLevel()){
+                        mainPresenter.incrementCurrentLevel();
                         update();
                     }
-                    mainPresenter.nextLevel();
-                    update();
 
                     break;
                 case R.id.prevLvl:
-                    if(MapPresenter.getInstance().previousLevel()){
-                        CURRENT_LEVEL--;
+		            if(mainPresenter.previousLevel()) {
+                        mainPresenter.decrementCurrentLevel();
                         update();
                     }
-		    mainPresenter.previousLevel();
-                    update();
+                    break;
 
-                    break;
-                case R.id.prevLvl:
-                    break;
             }
         }
     };
@@ -167,28 +156,13 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         TextView moneyIndicator = (TextView) findViewById(R.id.moneyIndicator);
         moneyIndicator.setText(String.valueOf(mainPresenter.getPlayerMoney()));
 
-        if(
-                CURRENT_LEVEL == LEVELS_UNLOCKED &&
-                LEVELS_UNLOCKED < MAX_LEVELS &&
-                MapPresenter.getInstance().getPathGoal() == 10){
-            LEVELS_UNLOCKED++;
-        }
-
-        if(CURRENT_LEVEL == MIN_LEVEL) {
-            ((ImageButton) findViewById(R.id.prevLvl))
-                    .setImageResource(R.drawable.red_arrow_left);
-        } else {
-            ((ImageButton) findViewById(R.id.prevLvl))
-                    .setImageResource(R.drawable.green_arrow_left);
-        }
-
-        if(CURRENT_LEVEL < LEVELS_UNLOCKED ){
-            ImageButton nxtLvl = (ImageButton) findViewById(R.id.nextLvl);
-            nxtLvl.setImageResource(R.drawable.green_arrow_right);
-        } else {
-            ((ImageButton) findViewById(R.id.nextLvl))
-                    .setImageResource(R.drawable.red_arrow_right);
-        }
+        mainPresenter.checkLevelUnlocked(path);
+        // Update next arrow
+        ((ImageButton) findViewById(R.id.nextLvl))
+                .setImageResource(mainPresenter.getNextArrowImage());
+        // Update prev arrow
+        ((ImageButton) findViewById(R.id.prevLvl))
+                .setImageResource(mainPresenter.getPrevArrowImage());
 
         mainPresenter.update();
     }

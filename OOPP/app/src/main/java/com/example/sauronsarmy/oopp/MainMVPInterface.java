@@ -15,7 +15,7 @@ public interface MainMVPInterface {
 
     interface ViewOps {
          // methods to be called from View
-             }
+    }
 
     interface PresenterOps{
         boolean getLvlCmp();
@@ -26,16 +26,26 @@ public interface MainMVPInterface {
         int getGoal();
         int getPathGoal();
         int getBGRef();
-        void nextLevel();
-        void previousLevel();
+        boolean nextLevel();
+        boolean previousLevel();
         int getPlayerMoney();
         void update();
+        int getNextArrowImage();
+        int getPrevArrowImage();
+        void checkLevelUnlocked(int pathGoal);
+        void incrementCurrentLevel();
+        void decrementCurrentLevel();
         }
 
     interface ModelInterface {
         void saveState(Context value1, java.util.Map currentState);
         java.util.Map loadState(Context context);
         boolean hasSaveToLoad();
+        void checkLevelUnlocked(int pathGoal);
+        int getNextArrowImage();
+        int getPrevArrowImage();
+        void incrementCurrentLevel();
+        void decrementCurrentLevel();
     }
 
 
