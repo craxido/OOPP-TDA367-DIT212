@@ -32,7 +32,7 @@ public class monsterFactory {
             R.drawable.volcano_monster_11
     };
 
-    public Monster getMonster(int hp, int gold, areaType type){
+    public IMonster getMonster(int hp, int gold, areaType type){
         Random rand = new Random();
 
         switch (type){

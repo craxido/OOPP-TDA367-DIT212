@@ -3,7 +3,7 @@ package com.example.sauronsarmy.oopp;
 import android.content.Context;
 
 import com.example.sauronsarmy.oopp.clock.Runner;
-import com.example.sauronsarmy.oopp.monsterPack.Monster;
+import com.example.sauronsarmy.oopp.monsterPack.IMonster;
 
 /**
    * Created by Jonatan on 2017-04-17.
@@ -21,7 +21,7 @@ public interface MainMVPInterface {
         boolean getLvlCmp();
         boolean getAreaCmp();
         void monsterClicked();
-        Monster getCurrentMonster();
+        IMonster getCurrentMonster();
         void saveState(Context value1);
         int getGoal();
         int getPathGoal();

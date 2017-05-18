@@ -3,7 +3,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.sauronsarmy.oopp.map.MapMVPInterface;
-import com.example.sauronsarmy.oopp.monsterPack.Monster;
+import com.example.sauronsarmy.oopp.monsterPack.IMonster;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 import com.example.sauronsarmy.oopp.map.MapPresenter;
@@ -33,7 +33,7 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
         mapPresenter.damageMonster();
     }
 
-    public Monster getCurrentMonster() {
+    public IMonster getCurrentMonster() {
         return mapPresenter.getCurrentMonster();
     }
 

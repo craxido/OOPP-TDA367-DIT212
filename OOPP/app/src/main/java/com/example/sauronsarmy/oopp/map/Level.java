@@ -1,5 +1,6 @@
 package com.example.sauronsarmy.oopp.map;
 
+import com.example.sauronsarmy.oopp.monsterPack.IMonster;
 import com.example.sauronsarmy.oopp.monsterPack.Monster;
 import com.example.sauronsarmy.oopp.monsterPack.monsterFactory;
 
@@ -9,7 +10,7 @@ import com.example.sauronsarmy.oopp.monsterPack.monsterFactory;
 
 public class Level {
 
-    private Monster monster;
+    private IMonster monster;
     private int healthMultiplier;
     private int goldMultiplier;
     private areaType areaType;
@@ -18,7 +19,7 @@ public class Level {
     private int pathToGoal=0;
     private boolean completed=false;
 
-    Level(Monster monster, int healthMultiplier, int goldMultiplier, areaType area) {
+    Level(IMonster monster, int healthMultiplier, int goldMultiplier, areaType area) {
         this.monster = monster;
         this.healthMultiplier = healthMultiplier;
         this.goldMultiplier = goldMultiplier;
@@ -54,7 +55,7 @@ public class Level {
         this.goldMultiplier = goldMultiplier;
     }
 
-    Monster getCurrentMonster() {
+    IMonster getCurrentMonster() {
 
         if(monster ==null){
             setNewMonster();
@@ -64,7 +65,7 @@ public class Level {
         return monster;
     }
 
-    void setCurrentMonster(Monster currentMonster) {
+    void setCurrentMonster(IMonster currentMonster) {
         this.monster = currentMonster;
     }
 
