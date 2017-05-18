@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     private MainMVPInterface.PresenterOps mainPresenter = MainPresenter.getInstance();
     private static final String TAG = "MainActivity";
     private PlayerModelInterface player;
-    private static int currentLevel = 1;
+    private static int CURRENT_LEVEL = 1;
     private static int LEVELS_UNLOCKED = 1;
     private static final int MAX_LEVELS = 3;
     private static final int MIN_LEVEL = 1;
@@ -137,13 +137,13 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                     break;
                 case R.id.nextLvl:
                     if(MapPresenter.getInstance().nextLevel()){
-                        currentLevel++;
+                        CURRENT_LEVEL++;
                         update();
                     }
                     break;
                 case R.id.prevLvl:
                     if(MapPresenter.getInstance().previousLevel()){
-                        currentLevel--;
+                        CURRENT_LEVEL--;
                         update();
                     }
                     break;
@@ -173,13 +173,13 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         moneyIndicator.setText(String.valueOf(player.getMoney()));
 
         if(
-                currentLevel == LEVELS_UNLOCKED &&
+                CURRENT_LEVEL == LEVELS_UNLOCKED &&
                 LEVELS_UNLOCKED < MAX_LEVELS &&
                 MapPresenter.getInstance().getPathGoal() == 10){
             LEVELS_UNLOCKED++;
         }
 
-        if(currentLevel == MIN_LEVEL) {
+        if(CURRENT_LEVEL == MIN_LEVEL) {
             ((ImageButton) findViewById(R.id.prevLvl))
                     .setImageResource(R.drawable.red_arrow_left);
         } else {
@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                     .setImageResource(R.drawable.green_arrow_left);
         }
 
-        if(currentLevel < LEVELS_UNLOCKED ){
+        if(CURRENT_LEVEL < LEVELS_UNLOCKED ){
             ImageButton nxtLvl = (ImageButton) findViewById(R.id.nextLvl);
             nxtLvl.setImageResource(R.drawable.green_arrow_right);
         } else {
