@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         mainButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
 
+        Monster currentMonster = mainPresenter.getCurrentMonster();
+        monsterButton.setImageResource(currentMonster.getImageRef());
         update();
     }
 
@@ -112,8 +114,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                 case R.id.b_main:
                     break;
                 case R.id.b_monster:
-
                     mainPresenter.monsterClicked();
+                    mainPresenter.checkLevelUnlocked(mainPresenter.getPathGoal());
 
                     update();
                     break;
@@ -152,17 +154,15 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         int path  = mainPresenter.getPathGoal();
         goal.setText("Goal: " + path +"/" +goali);
 
-        monsterButton.setImageResource(currentMonster.getImageRef());
         TextView moneyIndicator = (TextView) findViewById(R.id.moneyIndicator);
         moneyIndicator.setText(String.valueOf(mainPresenter.getPlayerMoney()));
 
-        mainPresenter.checkLevelUnlocked(path);
         // Update next arrow
-        ((ImageButton) findViewById(R.id.nextLvl))
-                .setImageResource(mainPresenter.getNextArrowImage());
+        ImageButton nextButton = (ImageButton) findViewById(R.id.nextLvl);
+        nextButton.setImageResource(mainPresenter.getNextArrowImage());
         // Update prev arrow
-        ((ImageButton) findViewById(R.id.prevLvl))
-                .setImageResource(mainPresenter.getPrevArrowImage());
+        ImageButton prevButton = (ImageButton) findViewById(R.id.prevLvl);
+        prevButton.setImageResource(mainPresenter.getPrevArrowImage());
 
         mainPresenter.update();
     }

@@ -98,7 +98,7 @@ class Shop implements ShopMVPInterface.Model {
         Log.i(TAG, "Loading shop state");
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
                 Context.MODE_PRIVATE);
-        damageUpgradeCounter = saveState.getInt("damageUpgrade", 0);
-        dpsUpgradeCounter    = saveState.getInt("dpsUpgrade", 0);
+        damageUpgradeCounter = saveState.getInt("damageUpgrade", 1);
+        dpsUpgradeCounter    = saveState.getInt("dpsUpgrade", 1);
     }
 }

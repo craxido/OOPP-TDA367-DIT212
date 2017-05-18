@@ -157,13 +157,16 @@ public class ShopActivity extends AppCompatActivity implements ClockListener {
                     startActivity(intent);
                     break;
                 case R.id.dmgUpgradeButton:
+
                     if (shopPresenter.buyDamageUpgrade()){
                         updateDamageInfo();
+                        update();
                     }
                     break;
                 case R.id.dpsUpgradeButton:
                     if (shopPresenter.buyDPSUpgrade()){
                         updateDPSInfo();
+                        update();
                     }
                     break;
             }
