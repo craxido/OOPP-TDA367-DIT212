@@ -35,10 +35,6 @@ public class PlayerModel implements PlayerModelInterface, ClockListener {
     else just gets to talk with this instance.
      */
     private PlayerModel(Context context) {
-        damage           = 10;
-        money            = 0;
-        damagePerSecond  = 0;
-        moneyPerSecond   = 0;
         loadState(context);
         Runner.getInstance().register(this);
     }

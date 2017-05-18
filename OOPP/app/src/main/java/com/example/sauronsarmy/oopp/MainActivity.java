@@ -21,17 +21,20 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
     private MainMVPInterface.PresenterOps mainPresenter;
     private static final String TAG = "MainActivity";
-    //TODO: va fan
     private Runner run = Runner.getInstance();
     private Intent intent = new Intent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate() called");
-        mainPresenter = new MainPresenter(MainActivity.this);
-        mainPresenter.loadState(MainActivity.this);
         super.onCreate(savedInstanceState);
+
+        // Calling the constructor in onCreate since we need to send the context
+        // and the activity must be created before sending it.
+        mainPresenter = new MainPresenter(MainActivity.this);
+
         setContentView(R.layout.activity_main);
+
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
         appropriate activity.
@@ -61,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
 
         update();
-        run.register(this);
     }
 
     @Override
