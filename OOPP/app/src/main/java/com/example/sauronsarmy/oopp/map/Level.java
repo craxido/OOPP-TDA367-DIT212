@@ -91,8 +91,12 @@ public class Level {
     void setNewMonster(){
 
         monsterFactory monFac=new monsterFactory();
-
-        setCurrentMonster(monFac.getMonster(getHealthMultiplier()*100, getGoldMultiplier()*100, getArea()));
+        if (pathToGoal==9){
+            setCurrentMonster(monFac.getBossMonster(getHealthMultiplier()*10000, getGoldMultiplier()*1000, getArea()));
+        }
+        else {
+            setCurrentMonster(monFac.getMonster(getHealthMultiplier()*100, getGoldMultiplier()*100, getArea()));
+        }
 
     }
 

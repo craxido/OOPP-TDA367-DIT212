@@ -32,6 +32,8 @@ public class monsterFactory {
             R.drawable.volcano_monster_11
     };
 
+    private int bossMonsterImg= R.drawable.boss_monster;
+
     public IMonster getMonster(int hp, int gold, areaType type){
         Random rand = new Random();
 
@@ -42,10 +44,15 @@ public class monsterFactory {
             case MOUNTAIN:
                 return new Monster(hp, gold, mountainMonsters[rand.nextInt(MAX)]);
             case VOLCANO:
-                return new BossMonster(hp, gold, volcanoMonsters[rand.nextInt(MAX)]);
+                return new Monster(hp, gold, volcanoMonsters[rand.nextInt(MAX)]);
             default:
                 return new Monster(hp, gold, R.drawable.mike );
 
         }
     }
+
+    public IMonster getBossMonster(int hp, int gold, areaType type){ //type not used for now ass all bosses are the same.
+        return new BossMonster(hp, gold, bossMonsterImg);
+    }
+
 }
