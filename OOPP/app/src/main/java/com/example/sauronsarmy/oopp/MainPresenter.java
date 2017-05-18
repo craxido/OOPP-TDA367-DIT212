@@ -30,10 +30,7 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
 
     //Called from MainActivity when a monster is clicked
     public void monsterClicked(){
-        int gold = mapPresenter.damageMonster(playerModel.getDamage());
-        if (gold > 0) {
-            playerModel.addMoney(gold);
-        }
+        mapPresenter.damageMonster();
     }
 
     public Monster getCurrentMonster() {

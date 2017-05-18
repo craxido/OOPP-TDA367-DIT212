@@ -28,6 +28,15 @@ class Map implements MapMVPInterface.ModelOps {
         monfac = new monsterFactory();
     }
 
+    public int damageMonster(int damage) {
+        int ret = getCurrentArea().getCurrentLevel().damageMonster(damage);
+        if (ret > 0) {
+            getCurrentArea().checkComplete();
+            return ret;
+        }
+        return 0;
+    }
+
     //Creates areas for the mapInstance
     private static Area[] createAreas(){
         Area[] areas= new Area[3];

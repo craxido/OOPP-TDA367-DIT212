@@ -62,13 +62,8 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         setBackgroundRef(imgref);
     }
 
-    public int damageMonster(int damage){
-        int ret = map.getCurrentArea().getCurrentLevel().damageMonster(damage);
-        if (ret >0){
-            map.getCurrentArea().checkComplete();
-        }
-        return ret;
-
+    public void damageMonster(){
+        playerModel.addMoney(map.damageMonster(playerModel.getDamage()));
     }
 
     @Override

@@ -25,7 +25,7 @@ public interface MapMVPInterface {
         void onError(String errorMsg);
         void saveState(Context context);
         int  getPlayerMoney();
-        int damageMonster(int damage);
+        void damageMonster();
         Area getCurrentArea();
         int getGoal();
         int getPathGoal();
@@ -39,6 +39,7 @@ public interface MapMVPInterface {
 
     interface ModelOps {
         Area  getArea(int index);
+        int damageMonster(int damage);
         void  setArea(Area area, int index);
         int   getBackgroundRef();
         void  setBackgroundRef(int bgRef);
