@@ -42,7 +42,7 @@ public class monsterFactory {
             case MOUNTAIN:
                 return new Monster(hp, gold, mountainMonsters[rand.nextInt(MAX)]);
             case VOLCANO:
-                return new Monster(hp, gold, volcanoMonsters[rand.nextInt(MAX)]);
+                return new BossMonster(hp, gold, volcanoMonsters[rand.nextInt(MAX)]);
             default:
                 return new Monster(hp, gold, R.drawable.mike );
 

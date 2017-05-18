@@ -29,6 +29,7 @@ public class BossMonster extends Monster implements ClockListener {
         time++;
         if (time > timeLimit){
             this.resetHealth();
+            this.time=0;
         }
     }
 }
