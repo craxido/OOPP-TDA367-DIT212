@@ -115,22 +115,19 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                     break;
                 case R.id.b_monster:
                     mainPresenter.monsterClicked();
-                    mainPresenter.checkLevelUnlocked(mainPresenter.getPathGoal());
+                    //mainPresenter.checkLevelUnlocked(mainPresenter.getPathGoal());
 
                     update();
                     break;
                 case R.id.nextLvl:
-                    if(mainPresenter.nextLevel()){
-                        mainPresenter.incrementCurrentLevel();
-                        update();
-                    }
+                    mainPresenter.nextLevel();
+                    update();
 
                     break;
                 case R.id.prevLvl:
-		            if(mainPresenter.previousLevel()) {
-                        mainPresenter.decrementCurrentLevel();
-                        update();
-                    }
+		            mainPresenter.previousLevel();
+                    update();
+
                     break;
 
             }
@@ -145,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         bg.setBackgroundResource(mainPresenter.getBGRef());
 
         ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
+        monsterButton.setImageResource(currentMonster.getImageRef());
 
         TextView hp = (TextView) findViewById(R.id.hp);
         hp.setText("Health: " + currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
@@ -159,10 +157,10 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         // Update next arrow
         ImageButton nextButton = (ImageButton) findViewById(R.id.nextLvl);
-        nextButton.setImageResource(mainPresenter.getNextArrowImage());
+        //nextButton.setImageResource(mainPresenter.getNextArrowImage());
         // Update prev arrow
         ImageButton prevButton = (ImageButton) findViewById(R.id.prevLvl);
-        prevButton.setImageResource(mainPresenter.getPrevArrowImage());
+        //prevButton.setImageResource(mainPresenter.getPrevArrowImage());
 
         mainPresenter.update();
     }

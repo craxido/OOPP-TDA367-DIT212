@@ -89,12 +89,24 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
 
     @Override
     public int getNextArrowImage(){
-        return mainModel.getNextArrowImage();
+        if(mapPresenter.getCurrentArea().getCurrentLevel().getComplete()){
+            return R.drawable.green_arrow_right;
+        }
+        else {
+            return R.drawable.red_arrow_right;
+        }
     }
 
     @Override
     public int getPrevArrowImage(){
-        return mainModel.getPrevArrowImage();
+        if(mapPresenter.getAreas()[0].equals(mapPresenter.getCurrentArea()) &&
+                mapPresenter.getCurrentArea().getLevels()[0].equals(mapPresenter.getCurrentArea().getCurrentLevel()))
+        {
+            return R.drawable.red_arrow_left;
+        }else {
+            return R.drawable.green_arrow_left;
+        }
+
     }
 
     @Override
@@ -113,4 +125,5 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
     public boolean getAreaCmp(){
         return mapPresenter.getCurrentArea().getComplete();
     }
+
 }
