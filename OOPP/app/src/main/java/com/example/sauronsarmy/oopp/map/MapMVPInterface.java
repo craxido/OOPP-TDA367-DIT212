@@ -57,6 +57,11 @@ public interface MapMVPInterface {
         int getLevelHealthMultiplier(int areaIndex, int levelIndex);
         int getLevelAmount(int areaIndex);
         int getAreaAmount();
+        boolean tryChangeAreaLevel(int level, int area);
+        void nextLevel();
+        void previousLevel();
+        void changeArea(int index);
+        void changeLevel(int index);
         // methods to be called from Model
     }
 }

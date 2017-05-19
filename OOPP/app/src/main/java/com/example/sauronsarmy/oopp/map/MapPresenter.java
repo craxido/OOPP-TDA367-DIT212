@@ -57,9 +57,8 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     }
 
     public void changeArea(int index){
-        map.setCurrentArea(map.getArea(index));
-        int imgref= map.getArea(index).getImgRef();
-        setBackgroundRef(imgref);
+        map.changeArea(index);
+
     }
 
     public void damageMonster(){
@@ -72,45 +71,11 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     @Override
     public boolean tryChangeAreaLevel(int level, int area) {
-
-        if(area ==0){
-            changeArea(area);
-            if(level ==0){
-                changeLvl(level);
-                return true;
-            }
-            else {
-
-                if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
-                    changeLvl(level);
-                    return true;
-                }
-
-            }
-        }
-        else {
-
-            if(getArea(area-1).getComplete() && map.getAreas().length>area){
-                changeArea(area);
-                if(level ==0){
-                    changeLvl(level);
-                    return true;
-                }
-                else {
-
-                    if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
-                        changeLvl(level);
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
+        return map.tryChangeAreaLevel(level,area);
     }
 
     public void changeLvl(int index) {
-
-        getCurrentArea().setCurrentLevel(getCurrentArea().getLevels()[index]);
+        map.changeLevel(index);
     }
 
 
@@ -178,65 +143,12 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     public void nextLevel(){
 
-        int lvlpos = getLevelIndex() +1;
-        if(lvlpos >= getCurrentArea().getLevels().length){
-            if(getAreaIndex()+1 < getAreas().length){
-
-                tryChangeAreaLevel(0,getAreaIndex()+1);
-            }
-
-        }
-        else{
-            tryChangeAreaLevel(lvlpos,getAreaIndex());
-        }
+       map.nextLevel();
     }
 
     public void previousLevel(){
-        int lvlpos = getLevelIndex() -1;
-        if(lvlpos <0){
-            if(getAreaIndex()-1 >=0){
+        map.previousLevel();
 
-                tryChangeAreaLevel(getArea(getAreaIndex()-1).getLevels().length -1 ,getAreaIndex()-1);
-            }
-
-        }
-        else{
-            tryChangeAreaLevel(lvlpos,getAreaIndex());
-        }
-
-    }
-
-    private int getLevelIndex(){
-
-        int pos =0;
-        Level curLvl = getCurrentLevel();
-        Level[] lvls = getCurrentArea().getLevels();
-
-        for(int i =0; i< lvls.length ; i++){
-            if(lvls[i].equals(curLvl)){
-                pos =i;
-                break;
-
-            }
-        }
-        return pos;
-    }
-
-
-    private int getAreaIndex(){
-
-        int pos =0;
-        Area currentArea = getCurrentArea();
-        Area[] areas = getAreas();
-
-        for(int i =0; i< areas.length ; i++){
-            if(areas[i].equals(currentArea)){
-                pos =i;
-                break;
-
-            }
-        }
-        return pos;
     }
 
 }
