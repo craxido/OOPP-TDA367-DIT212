@@ -243,13 +243,13 @@ class Map implements MapMVPInterface.ModelOps {
         if(area ==0){
             changeArea(area);
             if(level ==0){
-                changeLvl(level);
+                changeLevel(level);
                 return true;
             }
             else {
 
                 if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
-                    changeLvl(level);
+                    changeLevel(level);
                     return true;
                 }
 
@@ -260,13 +260,13 @@ class Map implements MapMVPInterface.ModelOps {
             if(getArea(area-1).getComplete() && getAreas().length>area){
                 changeArea(area);
                 if(level ==0){
-                    changeLvl(level);
+                    changeLevel(level);
                     return true;
                 }
                 else {
 
                     if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
-                        changeLvl(level);
+                        changeLevel(level);
                         return true;
                     }
                 }
@@ -274,8 +274,8 @@ class Map implements MapMVPInterface.ModelOps {
         }
         return false;
     }
-
-    public void changeLvl(int index) {
+    @Override
+    public void changeLevel(int index) {
 
         getCurrentArea().setCurrentLevel(getCurrentArea().getLevels()[index]);
     }
@@ -284,6 +284,7 @@ class Map implements MapMVPInterface.ModelOps {
         int imgref= getArea(index).getImgRef();
         setBackgroundRef(imgref);
     }
+
 
 
 }
