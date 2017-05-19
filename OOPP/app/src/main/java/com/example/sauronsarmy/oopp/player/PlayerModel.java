@@ -35,13 +35,13 @@ public class PlayerModel implements PlayerModelInterface, ClockListener {
     else just gets to talk with this instance.
      */
     private PlayerModel(Context context) {
-        loadState(context);
+        loadState(context.getApplicationContext());
         Runner.getInstance().register(this);
     }
 
     public static PlayerModelInterface getInstance(Context context) {
         if (ourInstance == null)
-            ourInstance = new PlayerModel(context);
+            ourInstance = new PlayerModel(context.getApplicationContext());
         return getInstance();
     }
 

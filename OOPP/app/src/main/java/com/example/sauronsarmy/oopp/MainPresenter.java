@@ -20,6 +20,8 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
     private MainMVPInterface.ModelInterface mainModel;
     private MapMVPInterface.PresenterOps mapPresenter;
     private final static String TAG = "MainPresenter";
+    private int prevArrow = R.drawable.red_arrow_left;
+    private int nextArrow = R.drawable.red_arrow_right;
 
 
     public MainPresenter(Context context) {
@@ -89,12 +91,26 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
 
     @Override
     public int getNextArrowImage(){
-        return mainModel.getNextArrowImage();
+
+        return nextArrow;
+       /* if(mapPresenter.getCurrentArea().getCurrentLevel().getComplete()){
+            return R.drawable.green_arrow_right;
+        }
+        else {
+            return R.drawable.red_arrow_right;
+        }*/
     }
 
     @Override
     public int getPrevArrowImage(){
-        return mainModel.getPrevArrowImage();
+        return prevArrow;
+        /*
+        if(mapPresenter.getAreas()[0].equals(mapPresenter.getCurrentArea()) && mapPresenter.getCurrentArea().getLevels()[0].equals(mapPresenter.getCurrentArea().getCurrentLevel())){
+            return R.drawable.red_arrow_left;
+        }
+        else {
+            return R.drawable.green_arrow_left;
+        }*/
     }
 
     @Override

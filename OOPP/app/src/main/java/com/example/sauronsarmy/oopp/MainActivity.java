@@ -18,7 +18,7 @@ import com.example.sauronsarmy.oopp.clock.ClockListener;
 public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps,ClockListener {
 
     private MainMVPInterface.PresenterOps mainPresenter;
-    private static final String TAG = "MainActivity";
+    private final String TAG = "MainActivity";
 
 
     private Runner run = Runner.getInstance();
@@ -31,8 +31,9 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         // Calling the constructor in onCreate since we need to send the context
         // and the activity must be created before sending it.
-        mainPresenter = new MainPresenter(MainActivity.this);
-
+        if(mainPresenter ==null) {
+            mainPresenter = new MainPresenter(getApplicationContext());
+        }
         setContentView(R.layout.activity_main);
 
         /*
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     protected void onPause() {
         Log.i(TAG, "onPause() called");
         //Unregister from clock
-        //run.unregister(this);
+        run.unregister(this);
         super.onPause();
     }
 
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     @Override
     protected void onStop() {
         Log.i(TAG, "onStop called");
-        mainPresenter.saveState(MainActivity.this);
+        //mainPresenter.saveState(MainActivity.this);
         run.unregister(this);
         super.onStop();
     }
@@ -98,39 +99,36 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                 case R.id.b_home:
                     intent.setAction("android.intent.action.HOME");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_map:
                     intent.setAction("android.intent.action.MAP");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_shop:
                     intent.setAction("android.intent.action.SHOP");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_stats:
                     intent.setAction("android.intent.action.STATS");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_main:
                     break;
                 case R.id.b_monster:
                     mainPresenter.monsterClicked();
-                    mainPresenter.checkLevelUnlocked(mainPresenter.getPathGoal());
-
                     update();
                     break;
                 case R.id.nextLvl:
-                    if(mainPresenter.nextLevel()){
-                        mainPresenter.incrementCurrentLevel();
+                        mainPresenter.nextLevel();
                         update();
-                    }
-
                     break;
                 case R.id.prevLvl:
-		            if(mainPresenter.previousLevel()) {
-                        mainPresenter.decrementCurrentLevel();
+		                mainPresenter.previousLevel();
                         update();
-                    }
                     break;
 
             }
@@ -159,9 +157,11 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         // Update next arrow
         ImageButton nextButton = (ImageButton) findViewById(R.id.nextLvl);
+        //nextButton.setVisibility(View.GONE);
         nextButton.setImageResource(mainPresenter.getNextArrowImage());
         // Update prev arrow
         ImageButton prevButton = (ImageButton) findViewById(R.id.prevLvl);
+        //prevButton.setVisibility(View.GONE);
         prevButton.setImageResource(mainPresenter.getPrevArrowImage());
 
         mainPresenter.update();

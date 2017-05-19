@@ -57,20 +57,24 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
                 case R.id.b_home:
                     intent.setAction("android.intent.action.HOME");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_map:
                     intent.setAction("android.intent.action.MAP");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_shop:
                     intent.setAction("android.intent.action.SHOP");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_stats:
                     break;
                 case R.id.b_main:
                     intent.setAction("android.intent.action.MAINSCREEN");
                     startActivity(intent);
+                    finish();
                     break;
             }
         }

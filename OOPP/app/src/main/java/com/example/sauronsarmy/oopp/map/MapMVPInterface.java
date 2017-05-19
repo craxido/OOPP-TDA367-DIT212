@@ -34,6 +34,7 @@ public interface MapMVPInterface {
         boolean tryChangeAreaLevel(int level, int area);
         boolean nextLevel();
         boolean previousLevel();
+        Area[] getAreas();
 
         // methods to be called from Presenter
     }
