@@ -23,7 +23,7 @@
         android:cropToPadding="false"
         android:scaleType="fitXY"
         android:tint="@android:color/transparent"
-        app:srcCompat="@drawable/mike" />
+        />
 
     <TextView
         android:id="@+id/hp"

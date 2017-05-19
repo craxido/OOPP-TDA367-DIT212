@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         // Calling the constructor in onCreate since we need to send the context
         // and the activity must be created before sending it.
         mainPresenter = new MainPresenter(MainActivity.this);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main);
 
@@ -157,9 +160,11 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         // Update next arrow
         ImageButton nextButton = (ImageButton) findViewById(R.id.nextLvl);
+        nextButton.setVisibility(View.GONE);
         //nextButton.setImageResource(mainPresenter.getNextArrowImage());
         // Update prev arrow
         ImageButton prevButton = (ImageButton) findViewById(R.id.prevLvl);
+        prevButton.setVisibility(View.GONE);
         //prevButton.setImageResource(mainPresenter.getPrevArrowImage());
 
         mainPresenter.update();

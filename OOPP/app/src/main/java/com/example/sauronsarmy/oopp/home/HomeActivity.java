@@ -5,6 +5,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -28,6 +29,8 @@ public class HomeActivity extends AppCompatActivity implements ClockListener {
         super.onCreate(savedInstanceState);
         homePresenter = new HomePresenter();
         homePresenter.loadState(HomeActivity.this);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_home);
 
         /*

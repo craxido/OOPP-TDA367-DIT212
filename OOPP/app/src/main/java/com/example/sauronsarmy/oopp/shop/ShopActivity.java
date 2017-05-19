@@ -5,6 +5,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -29,6 +30,8 @@ public class ShopActivity extends AppCompatActivity implements ClockListener {
         super.onCreate(savedInstanceState);
         shopPresenter = new ShopPresenter();
         shopPresenter.loadState(ShopActivity.this);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_shop);
         /*
         Clicking on Home/Shop/Map/Stats should send the user to the
