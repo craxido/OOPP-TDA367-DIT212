@@ -143,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         bg.setBackgroundResource(mainPresenter.getBGRef());
 
         ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
+        monsterButton.setImageResource(currentMonster.getImageRef());
 
         TextView hp = (TextView) findViewById(R.id.hp);
         hp.setText("Health: " + currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());

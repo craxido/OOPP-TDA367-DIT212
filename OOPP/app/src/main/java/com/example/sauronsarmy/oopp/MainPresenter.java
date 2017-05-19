@@ -20,12 +20,10 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
     private MainMVPInterface.ModelInterface mainModel;
     private MapMVPInterface.PresenterOps mapPresenter;
     private final static String TAG = "MainPresenter";
-    private int prevArrow = R.drawable.red_arrow_left;
-    private int nextArrow = R.drawable.red_arrow_right;
 
 
     public MainPresenter(Context context) {
-        playerModel = PlayerModel.getInstance(context);
+        playerModel = PlayerModel.getInstance(context.getApplicationContext());
         mainModel = MainModel.getInstance();
         mapPresenter = new MapPresenter();
     }
@@ -92,25 +90,24 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
     @Override
     public int getNextArrowImage(){
 
-        return nextArrow;
-       /* if(mapPresenter.getCurrentArea().getCurrentLevel().getComplete()){
+         if(getLvlCmp() && !mapPresenter.getAreas()[mapPresenter.getAreas().length-1].equals(mapPresenter.getCurrentArea()) &&
+                 mapPresenter.getCurrentArea().getLevels()[mapPresenter.getCurrentArea().getLevels().length -1].equals(mapPresenter.getCurrentArea().getCurrentLevel())){
             return R.drawable.green_arrow_right;
         }
         else {
             return R.drawable.red_arrow_right;
-        }*/
+        }
     }
 
     @Override
     public int getPrevArrowImage(){
-        return prevArrow;
-        /*
+
         if(mapPresenter.getAreas()[0].equals(mapPresenter.getCurrentArea()) && mapPresenter.getCurrentArea().getLevels()[0].equals(mapPresenter.getCurrentArea().getCurrentLevel())){
             return R.drawable.red_arrow_left;
         }
         else {
             return R.drawable.green_arrow_left;
-        }*/
+        }
     }
 
     @Override
