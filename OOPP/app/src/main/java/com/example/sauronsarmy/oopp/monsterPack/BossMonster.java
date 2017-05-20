@@ -46,7 +46,7 @@ public class BossMonster extends Monster implements ClockListener {
 
     @Override
     public boolean isBoss(){
-        return false;
+        return true;
     }
 
 }
