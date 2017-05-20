@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.clock.Runner;
+import com.example.sauronsarmy.oopp.monsterPack.BossMonster;
 import com.example.sauronsarmy.oopp.monsterPack.IMonster;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 

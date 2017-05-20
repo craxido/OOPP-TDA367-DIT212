@@ -17,19 +17,36 @@ public class BossMonster extends Monster implements ClockListener {
         super(health,gold,imageref);
         bossTimer = Runner.getInstance();
         time = 0;
-        timeLimit = 30;
+        timeLimit = 20;
+
     }
 
     private void resetHealth(){
-        super.setHealth(super.getMaxHealth());
+        setHealth(getMaxHealth());
     }
 
     @Override
     public void update(){
         time++;
         if (time > timeLimit){
-            this.resetHealth();
-            this.time=0;
+            resetHealth();
+            time=0;
         }
     }
+
+    @Override
+    public void setHealth(int health){
+        super.setHealth(health);
+    }
+
+    @Override
+    public int getMaxHealth(){
+        return super.getMaxHealth();
+    }
+
+    @Override
+    public boolean isBoss(){
+        return false;
+    }
+
 }

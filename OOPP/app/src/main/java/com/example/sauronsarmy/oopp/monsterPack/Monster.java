@@ -57,4 +57,8 @@ public class Monster implements IMonster {
         this.health=health;
     }
 
+    public boolean isBoss(){
+        return false;
+    }
+
 }
