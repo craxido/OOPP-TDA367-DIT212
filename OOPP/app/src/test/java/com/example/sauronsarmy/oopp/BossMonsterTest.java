@@ -1,11 +1,13 @@
 package com.example.sauronsarmy.oopp;
 
-import com.example.sauronsarmy.oopp.clock.ClockListener;
-import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.monsterPack.BossMonster;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+
+/**
+ * @author Jonatan Källman
+ */
 
 public class BossMonsterTest {
 
@@ -34,4 +36,13 @@ public class BossMonsterTest {
         assert (boss.getTime()==1);
     }
 
+    @Test
+    public void testUpdate(){
+        boss.setTime(20);         //Set time so that boss should reset
+        boss.damageMonster(1);    //Damage monster so that update affects health
+        int healthBeforeUpdate = boss.getHealth();
+        boss.update();
+        assert (!(healthBeforeUpdate == boss.getHealth()));
+        assert (boss.getTime() == 0);
+    }
 }

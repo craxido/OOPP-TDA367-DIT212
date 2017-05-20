@@ -56,9 +56,4 @@ public class Monster implements IMonster {
     public void setHealth(int health){
         this.health=health;
     }
-
-    public boolean isBoss(){
-        return false;
-    }
-
 }
