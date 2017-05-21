@@ -20,8 +20,8 @@ import org.junit.runner.RunWith;
 @RunWith(MockitoJUnitRunner.class)
 public class BossMonsterTest {
 
-    private BossMonster boss=mock(BossMonster.class);
-    private monsterFactory monfac=mock(monsterFactory.class);
+    private BossMonster boss = mock (BossMonster.class);
+    private monsterFactory monfac  =mock (monsterFactory.class);
 
     @Mock
     private Context mMockContext;
@@ -46,7 +46,7 @@ public class BossMonsterTest {
     @Test
     public void testTime(){
         boss.setTime(1);
-        assert (boss.getTime()==1);
+        assert (boss.getTime() == 1);
     }
 
     @Test
