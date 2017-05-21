@@ -1,21 +1,34 @@
 package com.example.sauronsarmy.oopp;
 
+import com.example.sauronsarmy.oopp.map.areaType;
 import com.example.sauronsarmy.oopp.monsterPack.BossMonster;
+import com.example.sauronsarmy.oopp.monsterPack.monsterFactory;
+
+import android.content.Context;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import static org.mockito.Mockito.*;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
+import org.junit.runner.RunWith;
 
 /**
  * @author Jonatan Källman
  */
 
+@RunWith(MockitoJUnitRunner.class)
 public class BossMonsterTest {
 
-    private BossMonster boss;
+    private BossMonster boss=mock(BossMonster.class);
+    private monsterFactory monfac=mock(monsterFactory.class);
+
+    @Mock
+    private Context mMockContext;
 
     @Before
     public void setUp() throws Exception {
-        boss = new BossMonster(10000, 10000, R.drawable.boss_monster);
+        when(monfac.getBossMonster(10000, 10000, areaType.FOREST)).thenReturn(boss);
     }
 
     @After
