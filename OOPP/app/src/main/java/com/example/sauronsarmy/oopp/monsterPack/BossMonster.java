@@ -9,14 +9,12 @@ import com.example.sauronsarmy.oopp.clock.Runner;
 
 public class BossMonster extends Monster implements ClockListener {
 
-    private Runner bossTimer;
     private int time;
     private int timeLimit;
 
     public BossMonster(int health, int gold, int imageref){
         super(health,gold,imageref);
-        bossTimer = Runner.getInstance();
-        bossTimer.register(this);
+        Runner.getInstance().register(this);
         time = 0;
         timeLimit = 20;
     }
@@ -28,7 +26,7 @@ public class BossMonster extends Monster implements ClockListener {
     @Override
     public void update(){
         time++;
-        if (time >= timeLimit){
+        if (time > timeLimit){
             resetHealth();
             time=0;
         }
