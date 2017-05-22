@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         IMonster currentMonster = mainPresenter.getCurrentMonster();
         monsterButton.setImageResource(currentMonster.getImageRef());
+        monsterButton.setTag(currentMonster.getImageRef());
         update();
     }
 
@@ -146,6 +147,11 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         bg.setBackgroundResource(mainPresenter.getBGRef());
 
         ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
+        int imageRef = (Integer) monsterButton.getTag();
+        if (imageRef != currentMonster.getImageRef()){
+            monsterButton.setImageResource(currentMonster.getImageRef());
+            monsterButton.setTag(currentMonster.getImageRef());
+        }
 
         TextView hp = (TextView) findViewById(R.id.hp);
         hp.setText("Health: " + currentMonster.getHealth() + " /"+ currentMonster.getMaxHealth());
