@@ -32,9 +32,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         // Calling the constructor in onCreate since we need to send the context
         // and the activity must be created before sending it.
-        if(mainPresenter ==null) {
-            mainPresenter = new MainPresenter(getApplicationContext());
-        }
+
+        mainPresenter = new MainPresenter(this);
         setContentView(R.layout.activity_main);
 
         /*
@@ -50,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         ImageButton nxtLvl = (ImageButton) findViewById(R.id.nextLvl);
         ImageButton prvLvl = (ImageButton) findViewById(R.id.prevLvl);
+        nxtLvl.setTag(0);
+        prvLvl.setTag(0);
 
 
         homeButton.setOnClickListener(buttonListener);
@@ -65,18 +66,11 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         mainButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
 
-        Monster currentMonster = mainPresenter.getCurrentMonster();
+        IMonster currentMonster = mainPresenter.getCurrentMonster();
         monsterButton.setImageResource(currentMonster.getImageRef());
         update();
     }
 
-    @Override
-    protected void onPause() {
-        Log.i(TAG, "onPause() called");
-        //Unregister from clock
-        run.unregister(this);
-        super.onPause();
-    }
 
     @Override
     protected void onStart(){
@@ -88,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     @Override
     protected void onStop() {
         Log.i(TAG, "onStop called");
-        //mainPresenter.saveState(MainActivity.this);
+        mainPresenter.saveState(MainActivity.this);
         run.unregister(this);
         super.onStop();
     }
@@ -160,11 +154,21 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         // Update next arrow
         ImageButton nextButton = (ImageButton) findViewById(R.id.nextLvl);
         //nextButton.setVisibility(View.GONE);
-        nextButton.setImageResource(mainPresenter.getNextArrowImage());
+        int nextArrow =(Integer) mainPresenter.getNextArrowImage();
+        if((Integer) nextButton.getTag()!=nextArrow) {
+            nextButton.setImageResource(nextArrow);
+            nextButton.setTag(nextArrow);
+        }
         // Update prev arrow
         ImageButton prevButton = (ImageButton) findViewById(R.id.prevLvl);
         //prevButton.setVisibility(View.GONE);
-        prevButton.setImageResource(mainPresenter.getPrevArrowImage());
+
+        int prevArrow = (Integer)mainPresenter.getPrevArrowImage();
+        if((Integer) prevButton.getTag() != prevArrow){
+            prevButton.setImageResource(prevArrow);
+            prevButton.setTag(prevArrow);
+        }
+
 
         mainPresenter.update();
     }

@@ -225,20 +225,11 @@ class Map implements MapMVPInterface.ModelOps {
 
     private int getAreaIndex(){
 
-        int pos =0;
-        Area currentArea = getCurrentArea();
-        Area[] areas = getAreas();
-
-        for(int i =0; i< areas.length ; i++){
-            if(areas[i].equals(currentArea)){
-                pos =i;
-                break;
-
-            }
-        }
-        return pos;
+       return currentArea.getAreaIndex();
     }
 
+
+    //Check to see if allowed to change to given area[level], if you can , change, otherwise do nothing
     @Override
     public boolean tryChangeAreaLevel(int level, int area) {
 
