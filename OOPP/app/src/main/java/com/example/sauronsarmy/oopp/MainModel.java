@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.R.drawable.*;
+
+import com.example.sauronsarmy.oopp.monsterPack.Monster;
+
 import java.util.HashMap;
 import java.util.Map;
 

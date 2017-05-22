@@ -1,12 +1,16 @@
 package com.example.sauronsarmy.oopp;
 
 import android.content.Intent;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,6 +18,8 @@ import com.example.sauronsarmy.oopp.clock.Runner;
 import com.example.sauronsarmy.oopp.monsterPack.BossMonster;
 import com.example.sauronsarmy.oopp.monsterPack.IMonster;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
+
+import static android.view.View.VISIBLE;
 
 
 public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps,ClockListener {
@@ -66,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         IMonster currentMonster = mainPresenter.getCurrentMonster();
         monsterButton.setImageResource(currentMonster.getImageRef());
+        monsterButton.setTag(currentMonster.getImageRef());
         update();
     }
 
@@ -145,7 +152,33 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         RelativeLayout bg = (RelativeLayout) findViewById(R.id.b_mainActivity);
         bg.setBackgroundResource(mainPresenter.getBGRef());
 
-        ImageButton monsterButton=(ImageButton) findViewById(R.id.b_monster);
+        ImageButton monsterButton = (ImageButton) findViewById(R.id.b_monster);
+        int imageRef = (Integer) monsterButton.getTag();
+        if (imageRef != currentMonster.getImageRef()){
+            monsterButton.setImageResource(currentMonster.getImageRef());
+            monsterButton.setTag(currentMonster.getImageRef());
+            if(currentMonster.isBoss()){
+                // show the text and progress bar.
+                ImageView bossFight = (ImageView) findViewById(R.id.bossFightText);
+                bossFight.setVisibility(View.VISIBLE);
+                ProgressBar bossTimer = (ProgressBar) findViewById(R.id.bossTimer);
+                bossTimer.getProgressDrawable().setColorFilter(0xFFFF0000, PorterDuff.Mode.SRC_ATOP);
+                bossTimer.setVisibility(View.VISIBLE);
+                int max = ((BossMonster) currentMonster).getTimeLimit();
+                bossTimer.setMax(max);
+            } else {
+                // hide the boss text and progress bar
+                (findViewById(R.id.bossFightText)).setVisibility(View.INVISIBLE);
+                (findViewById(R.id.bossTimer)).setVisibility(View.INVISIBLE);
+            }
+        }
+
+        if(currentMonster.isBoss()){
+            // if boss then update the progress bar
+            ProgressBar bossTimer = (ProgressBar) findViewById(R.id.bossTimer);
+            int progress = ((BossMonster) currentMonster).getTime();
+            bossTimer.setProgress(progress);
+        }
 
         TextView hp = (TextView) findViewById(R.id.hp);
         hp.setText("Health: " + currentMonster.getHealth() + " /"+ currentMonster.getMaxHealth());
