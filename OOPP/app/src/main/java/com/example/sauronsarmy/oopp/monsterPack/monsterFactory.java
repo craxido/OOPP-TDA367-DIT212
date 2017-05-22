@@ -32,7 +32,9 @@ public class monsterFactory {
             R.drawable.volcano_monster_11
     };
 
-    public Monster getMonster(int hp, int gold, areaType type){
+    private int bossMonsterImg= R.drawable.boss_monster;
+
+    public IMonster getMonster(int hp, int gold, areaType type){
         Random rand = new Random();
 
         switch (type){
@@ -48,4 +50,9 @@ public class monsterFactory {
 
         }
     }
+
+    public IMonster getBossMonster(int hp, int gold, areaType type){ //type not used for now ass all bosses are the same.
+        return new BossMonster(hp, gold, bossMonsterImg);
+    }
+
 }

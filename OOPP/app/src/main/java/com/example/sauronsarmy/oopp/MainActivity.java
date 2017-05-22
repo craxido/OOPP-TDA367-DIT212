@@ -11,7 +11,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.sauronsarmy.oopp.clock.Runner;
-import com.example.sauronsarmy.oopp.monsterPack.Monster;
+import com.example.sauronsarmy.oopp.monsterPack.BossMonster;
+import com.example.sauronsarmy.oopp.monsterPack.IMonster;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 
 
@@ -137,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
     @Override
     public void update() {
-        Monster currentMonster = mainPresenter.getCurrentMonster();
+        IMonster currentMonster = mainPresenter.getCurrentMonster();
 
         RelativeLayout bg = (RelativeLayout) findViewById(R.id.b_mainActivity);
         bg.setBackgroundResource(mainPresenter.getBGRef());
@@ -146,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         monsterButton.setImageResource(currentMonster.getImageRef());
 
         TextView hp = (TextView) findViewById(R.id.hp);
-        hp.setText("Health: " + currentMonster.getHealth() + " /"+ currentMonster.getMaxhealth());
+        hp.setText("Health: " + currentMonster.getHealth() + " /"+ currentMonster.getMaxHealth());
 
         TextView goal = (TextView) findViewById(R.id.goal);
         int goali = mainPresenter.getGoal();

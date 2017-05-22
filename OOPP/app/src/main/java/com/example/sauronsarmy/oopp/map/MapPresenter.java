@@ -3,7 +3,7 @@ package com.example.sauronsarmy.oopp.map;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.sauronsarmy.oopp.monsterPack.Monster;
+import com.example.sauronsarmy.oopp.monsterPack.IMonster;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
@@ -93,7 +93,7 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
 
 
-    public Monster getCurrentMonster() {
+    public IMonster getCurrentMonster() {
         return map.getCurrentArea().getCurrentLevel().getCurrentMonster();
     }
 

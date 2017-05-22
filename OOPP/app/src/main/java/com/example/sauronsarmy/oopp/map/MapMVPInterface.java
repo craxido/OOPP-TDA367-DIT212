@@ -3,7 +3,7 @@ package com.example.sauronsarmy.oopp.map;
 import android.content.Context;
 
 import com.example.sauronsarmy.oopp.clock.Runner;
-import com.example.sauronsarmy.oopp.monsterPack.Monster;
+import com.example.sauronsarmy.oopp.monsterPack.IMonster;
 
 /**
  * Author: Jonatan Källman
@@ -30,7 +30,7 @@ public interface MapMVPInterface {
         Area getCurrentArea();
         int getGoal();
         int getPathGoal();
-        Monster getCurrentMonster();
+        IMonster getCurrentMonster();
         boolean tryChangeAreaLevel(int level, int area);
         boolean nextLevel();
         boolean previousLevel();
