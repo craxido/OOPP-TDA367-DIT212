@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         mainButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
 
-        Monster currentMonster = mainPresenter.getCurrentMonster();
+        IMonster currentMonster = mainPresenter.getCurrentMonster();
         monsterButton.setImageResource(currentMonster.getImageRef());
         update();
     }
