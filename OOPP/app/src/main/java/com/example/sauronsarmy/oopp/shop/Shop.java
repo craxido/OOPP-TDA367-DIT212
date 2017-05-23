@@ -24,7 +24,7 @@ class Shop implements ShopMVPInterface.Model {
     private int damageUpgradeCounter = 1;
     private int dpsUpgradeCounter = 1;
 
-    public static Shop getInstance() { return shopInstance; }
+    public static ShopMVPInterface.Model getInstance() { return shopInstance; }
 
     /** Buy damage upgrade for player.
      *  adds to player damage, and applies the cost

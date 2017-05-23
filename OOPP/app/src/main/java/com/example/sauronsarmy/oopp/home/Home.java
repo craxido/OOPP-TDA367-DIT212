@@ -23,7 +23,7 @@ class Home implements HomeMVPInterface.Model  {
     private Upgrade oilPumpUpgrade = new Upgrade(1, 100);
     private int oilPumpUpgradeCounter = 1;
 
-    public static Home getInstance() {
+    public static HomeMVPInterface.Model getInstance() {
         return homeInstance;
     }
 
