@@ -203,16 +203,16 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         moneyIndicator.setText(String.valueOf(mainPresenter.getPlayerMoney()));
 
         // Update next arrow
-        int nextArrow = (Integer) mainPresenter.getNextArrowImage();
+        int nextArrow = mainPresenter.getNextArrowImage();
         //See if the image has changed
-        if((Integer) nextButton.getTag()!=nextArrow) {
+        if(((Integer) nextButton.getTag()) != nextArrow) {
             nextButton.setImageResource(nextArrow);
             nextButton.setTag(nextArrow);
         }
         // Update prev arrow
-        int prevArrow = (Integer)mainPresenter.getPrevArrowImage();
+        int prevArrow = mainPresenter.getPrevArrowImage();
         //See if the image has changed
-        if((Integer) prevButton.getTag() != prevArrow){
+        if(((Integer) prevButton.getTag()) != prevArrow){
             prevButton.setImageResource(prevArrow);
             prevButton.setTag(prevArrow);
         }
