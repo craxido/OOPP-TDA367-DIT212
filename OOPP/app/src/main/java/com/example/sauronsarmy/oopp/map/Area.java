@@ -11,6 +11,11 @@ public class Area {
     private Level[] levels;
     private Level currentLevel;
     private boolean finished=false;
+
+    public int getAreaIndex() {
+        return areaIndex;
+    }
+
     private int areaIndex;
     private MapPresenter map;
 
@@ -89,8 +94,4 @@ public class Area {
         return null;
     }
 
-    int getAreaIndex(Area area){
-        return area.areaIndex;
-
-    }
 }
