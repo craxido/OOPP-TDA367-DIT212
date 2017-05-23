@@ -19,7 +19,6 @@ public class Area {
     }
 
     private int areaIndex;
-    private MapPresenter map;
 
 
     Area(int imgRef, areaType area, Level[] levels, int areaIndex){
