@@ -5,7 +5,6 @@ package com.example.sauronsarmy.oopp;
  */
 
 //Imports
-import com.example.sauronsarmy.oopp.map.areaType;
 import com.example.sauronsarmy.oopp.map.MapPresenter;
 import org.junit.Test;
 import org.junit.Before;

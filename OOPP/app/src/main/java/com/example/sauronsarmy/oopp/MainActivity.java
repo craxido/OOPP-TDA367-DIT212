@@ -159,16 +159,15 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         // Update next arrow
         ImageButton nextButton = (ImageButton) findViewById(R.id.nextLvl);
-        //nextButton.setVisibility(View.GONE);
         int nextArrow =(Integer) mainPresenter.getNextArrowImage();
+        //See if the image has changed
         if((Integer) nextButton.getTag()!=nextArrow) {
             nextButton.setImageResource(nextArrow);
             nextButton.setTag(nextArrow);
         }
         // Update prev arrow
         ImageButton prevButton = (ImageButton) findViewById(R.id.prevLvl);
-        //prevButton.setVisibility(View.GONE);
-
+        //See if the image has changed
         int prevArrow = (Integer)mainPresenter.getPrevArrowImage();
         if((Integer) prevButton.getTag() != prevArrow){
             prevButton.setImageResource(prevArrow);

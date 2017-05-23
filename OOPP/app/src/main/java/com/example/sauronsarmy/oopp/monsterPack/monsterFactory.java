@@ -1,7 +1,7 @@
 package com.example.sauronsarmy.oopp.monsterPack;
 
 
-import com.example.sauronsarmy.oopp.map.areaType;
+import com.example.sauronsarmy.oopp.areaType;
 import com.example.sauronsarmy.oopp.R;
 
 import java.util.Random;
