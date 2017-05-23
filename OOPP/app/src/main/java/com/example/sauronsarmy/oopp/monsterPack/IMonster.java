@@ -13,5 +13,5 @@ public interface IMonster {
     int getImageRef();
     boolean damageMonster(int damage);
     void setHealth(int health);
-
+    boolean isBoss();
 }

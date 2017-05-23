@@ -9,7 +9,26 @@
     tools:context="com.example.sauronsarmy.oopp.MainActivity">
 
     <include layout="@layout/bottom_bar" />
-    <include layout="@layout/top_bar" />
+    <include layout="@layout/top_bar"
+        android:layout_height = "wrap_content"
+        android:layout_width= "wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/include4" />
+
+    <ProgressBar
+        android:id="@+id/bossTimer"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/goal"
+        android:layout_alignEnd="@+id/b_monster"
+        android:layout_alignLeft="@+id/b_monster"
+        android:layout_alignRight="@+id/b_monster"
+        android:layout_alignStart="@+id/b_monster"
+        android:max="20"
+        android:progress="0"
+        android:visibility="invisible" />
 
     <ImageButton
         android:id="@+id/b_monster"
@@ -68,5 +87,17 @@
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/b_monster"
         android:layout_toStartOf="@+id/b_monster" />
+
+    <ImageView
+        android:id="@+id/bossFightText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bossTimer"
+        android:layout_below="@+id/include4"
+        android:layout_centerHorizontal="true"
+        android:padding = "3dp"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/boss_fight" />
 
 </RelativeLayout>
