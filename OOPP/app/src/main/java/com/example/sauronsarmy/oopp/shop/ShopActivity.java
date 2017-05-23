@@ -141,20 +141,24 @@ public class ShopActivity extends AppCompatActivity implements ClockListener {
                 case R.id.b_home:
                     intent.setAction("android.intent.action.HOME");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_map:
                     intent.setAction("android.intent.action.MAP");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_shop:
                     break;
                 case R.id.b_stats:
                     intent.setAction("android.intent.action.STATS");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_main:
                     intent.setAction("android.intent.action.MAINSCREEN");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.dmgUpgradeButton:
 

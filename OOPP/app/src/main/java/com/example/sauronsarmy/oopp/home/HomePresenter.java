@@ -54,8 +54,8 @@ public class HomePresenter implements HomeMVPInterface.Presenter {
     }
 
     public void saveState(Context context) {
-        homeModel.saveState(context);
-        playerModel.saveState(context);
+        homeModel.saveState(context.getApplicationContext());
+        playerModel.saveState(context.getApplicationContext());
     }
 
     @Override
@@ -70,6 +70,6 @@ public class HomePresenter implements HomeMVPInterface.Presenter {
 
     @Override
     public void loadState(Context context) {
-        homeModel.loadState(context);
+        homeModel.loadState(context.getApplicationContext());
     }
 }
