@@ -1,8 +1,5 @@
 package com.example.sauronsarmy.oopp.upgrade;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by bunnyfiscuit on 05/04/17.
  */
@@ -67,18 +64,11 @@ public class Upgrade {
         return this.cost;
     }
 
-    public Map getUpgradeStats(){
-        return new HashMap<String, Integer> () {
-            {
-                put("stat", getStat());
-                put("cost", getCost());
-            }
-        };
+    public void setStat(int stat){
+        this.stat = stat;
     }
 
-    public void setUpgradeStats(Map<String, Integer> map){
-        stat = map.get("stat");
-        cost = map.get("cost");
+    public void setCost(int cost){
+        this.cost = cost;
     }
-
 }

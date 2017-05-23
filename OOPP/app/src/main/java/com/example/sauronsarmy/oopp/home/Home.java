@@ -23,7 +23,7 @@ class Home implements HomeMVPInterface.Model  {
     private Upgrade oilPumpUpgrade = new Upgrade(1, 100);
     private int oilPumpUpgradeCounter = 1;
 
-    public static Home getInstance() {
+    public static HomeMVPInterface.Model getInstance() {
         return homeInstance;
     }
 
@@ -81,6 +81,8 @@ class Home implements HomeMVPInterface.Model  {
                                                  Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = saveState.edit();
         editor.putInt("oil", getOilPumpUpgradeCounter());
+        editor.putInt("oilStat", getOilPumpUpgrade().getStat());
+        editor.putInt("oilCost", getOilPumpUpgrade().getCost());
         editor.apply();
     }
 
@@ -90,5 +92,7 @@ class Home implements HomeMVPInterface.Model  {
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
                 Context.MODE_PRIVATE);
         oilPumpUpgradeCounter = saveState.getInt("oil", 1);
+        oilPumpUpgrade.setStat(saveState.getInt("oilStat",1));
+        oilPumpUpgrade.setCost(saveState.getInt("oilCost",100));
     }
 }

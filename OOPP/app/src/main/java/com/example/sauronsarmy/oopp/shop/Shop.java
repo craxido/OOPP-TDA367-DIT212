@@ -24,7 +24,7 @@ class Shop implements ShopMVPInterface.Model {
     private int damageUpgradeCounter = 1;
     private int dpsUpgradeCounter = 1;
 
-    public static Shop getInstance() { return shopInstance; }
+    public static ShopMVPInterface.Model getInstance() { return shopInstance; }
 
     /** Buy damage upgrade for player.
      *  adds to player damage, and applies the cost
@@ -90,6 +90,10 @@ class Shop implements ShopMVPInterface.Model {
         SharedPreferences.Editor editor = saveState.edit();
         editor.putInt("damageUpgrade", getDamageUpgradeCounter());
         editor.putInt("dpsUpgrade",    getDPSUpgradeCounter());
+        editor.putInt("damageUpgradeStat", getDamageUpgrade().getStat());
+        editor.putInt("damageUpgradeCost", getDamageUpgrade().getCost());
+        editor.putInt("dpsUpgradeStat", getDPSUpgrade().getStat());
+        editor.putInt("dpsUpgradeCost", getDPSUpgrade().getCost());
         editor.apply();
     }
 
@@ -100,5 +104,9 @@ class Shop implements ShopMVPInterface.Model {
                 Context.MODE_PRIVATE);
         damageUpgradeCounter = saveState.getInt("damageUpgrade", 1);
         dpsUpgradeCounter    = saveState.getInt("dpsUpgrade", 1);
+        damageUpgrade.setStat(saveState.getInt("damageUpgradeStat",2));
+        damageUpgrade.setCost(saveState.getInt("damageUpgradeCost",50));
+        dpsUpgrade.setStat(saveState.getInt("dpsUpgradeStat",1));
+        dpsUpgrade.setCost(saveState.getInt("dpsUpgradeCost",100));
     }
 }
