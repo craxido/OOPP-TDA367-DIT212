@@ -12,13 +12,13 @@ import com.example.sauronsarmy.oopp.upgrade.Upgrade;
  * Created by Sarosh on 2017-05-11.
  */
 
-class ShopPresenter implements ShopMVPInterface.Presenter {
+public class ShopPresenter implements ShopMVPInterface.Presenter {
 
     private ShopMVPInterface.Model shopModel;
     private PlayerModelInterface playerModel;
     private MapMVPInterface.PresenterOps mapPresenter;
 
-    ShopPresenter() {
+    public ShopPresenter() {
         shopModel = Shop.getInstance();
         playerModel = PlayerModel.getInstance();
         mapPresenter = new MapPresenter();

@@ -38,8 +38,8 @@ public class HomeTest {
 
     @Before
     public void setUp(){
-        player = PlayerModel.getInstance();
         home = new HomePresenter();
+        player = PlayerModel.getInstance();
     }
 
     @After
