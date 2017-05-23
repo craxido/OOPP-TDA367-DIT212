@@ -3,6 +3,7 @@
 *.fdb_latexmk
 *.fls
 *.log
+*.dvi
 *.synctex.gz
 
 # Vim swap files
@@ -16,3 +17,12 @@ OOPP/.idea/modules.xml
 OOPP/.idea/misc.xml
 OOPP/.idea/runConfigurations.xml
 OOPP/.idea/vcs.xml
+.idea/compiler.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/OOPP-TDA367-DIT212.iml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/copyright/profiles_settings.xml
+OOPP/.classpath
+OOPP/.project
