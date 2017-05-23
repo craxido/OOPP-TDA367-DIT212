@@ -27,7 +27,6 @@ public class PlayerModel implements PlayerModelInterface, ClockListener {
     private int damagePerSecond;
     private int money;
     private int moneyPerSecond;
-    private  long lastLogOn;
 
     /*
     Constructor is private since this implemented as a singelton.
@@ -47,14 +46,6 @@ public class PlayerModel implements PlayerModelInterface, ClockListener {
 
     public static PlayerModelInterface getInstance() {
         return ourInstance;
-    }
-
-    public long getLastLogOn() {
-        return lastLogOn;
-    }
-
-    public void setLastLogOn(long lastLogOn) {
-        this.lastLogOn = lastLogOn;
     }
 
     public int getDamagePerSecond() {

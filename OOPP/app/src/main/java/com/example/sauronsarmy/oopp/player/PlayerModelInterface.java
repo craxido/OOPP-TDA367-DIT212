@@ -8,9 +8,6 @@ import android.content.Context;
 
 public interface PlayerModelInterface {
 
-    void setLastLogOn(long newValue);
-    long getLastLogOn();
-
     void setDamagePerSecond(int newValue);
     int getDamagePerSecond();
 
