@@ -58,7 +58,9 @@ The application is subdivided into several packages:
     \item \emph{Monster Pack}
     \item \emph{Map}
     \item \emph{Stats}
-    \item \emph{Upgrades}
+    \item \emph{Home}
+    \item \emph{Shop}
+    \item \emph{Upgrade}
     \item \emph{Clock}
 \end{itemize}
 
@@ -73,8 +75,10 @@ This package contains a player model, and an interface for this model. The model
 \newpage
 \subsubsection{Diagrams}
 \begin{center}
+    Package UML diagram: \\
+    \fbox{ \includegraphics[scale=0.3]{uml/playerUml.png}}
     Sequence diagram of getState()\\
-    %\fbox{ \includegraphics[scale=0.3]{seqDiagrams/playerModel.png}}
+    \fbox{ \includegraphics[scale=0.2]{seqDiagrams/playerModel.png}}
 \end{center}
 
 \subsubsection{Quality}
@@ -133,6 +137,13 @@ The shop package represents the shop activity in the app. It consits of the file
     \item ShopActivity: The view
     \item ShopMVPInterface: The interface which regulates how the presenter communicates with the model and the view, and how everyone else can communicate with the presenter.
 \end{itemize}
+
+\subsection{Upgrade}
+Contains the class Upgrade which is the class representation of an upgrade in this game, used in Shop and Home, where one can buy upgrades.
+
+\subsubsection{Diagrams}
+
+\subsubsection{Quality}
 
 \subsection{Clock}
 The clock package is the implementation of the game-loop. The Runner class is implemented as a singelton so that everone that wants to register to the loop can get an instance of the runner. 
