@@ -1,6 +1,5 @@
 package com.example.sauronsarmy.oopp;
 
-import com.example.sauronsarmy.oopp.map.areaType;
 import com.example.sauronsarmy.oopp.monsterPack.BossMonster;
 import com.example.sauronsarmy.oopp.monsterPack.monsterFactory;
 

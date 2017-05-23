@@ -1,7 +1,7 @@
 package com.example.sauronsarmy.oopp.monsterPack;
 
 
-import com.example.sauronsarmy.oopp.map.areaType;
+import com.example.sauronsarmy.oopp.areaType;
 import com.example.sauronsarmy.oopp.R;
 
 import java.util.Random;
@@ -40,13 +40,13 @@ public class monsterFactory {
         switch (type){
 
             case FOREST:
-                return new Monster(hp, gold, forestMonsters[0]);
+                return new Monster(hp, gold, forestMonsters[0], false);
             case MOUNTAIN:
-                return new Monster(hp, gold, mountainMonsters[0]);
+                return new Monster(hp, gold, mountainMonsters[0], false);
             case VOLCANO:
-                return new Monster(hp, gold, volcanoMonsters[0]);
+                return new Monster(hp, gold, volcanoMonsters[0], false);
             default:
-                return new Monster(hp, gold, R.drawable.mike );
+                return new Monster(hp, gold, R.drawable.mike, false );
 
         }
     }

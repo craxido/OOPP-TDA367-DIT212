@@ -10,13 +10,15 @@ public class Monster implements IMonster {
     private int maxhealth;
     private int gold;
     private int imageref;
+    private boolean isBoss;
 
 
-    public Monster(int health, int gold, int imageref){
+    public Monster(int health, int gold, int imageref, boolean boss){
         this.maxhealth = health;
         this.health = health;
         this.gold = gold;
         this.imageref = imageref;
+        this.isBoss = boss;
     }
 
     @Override
@@ -55,5 +57,10 @@ public class Monster implements IMonster {
     @Override
     public void setHealth(int health){
         this.health=health;
+    }
+
+    @Override
+    public boolean isBoss(){
+        return isBoss;
     }
 }

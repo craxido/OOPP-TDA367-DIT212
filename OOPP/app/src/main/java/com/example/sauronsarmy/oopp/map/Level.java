@@ -1,7 +1,7 @@
 package com.example.sauronsarmy.oopp.map;
 
+import com.example.sauronsarmy.oopp.areaType;
 import com.example.sauronsarmy.oopp.monsterPack.IMonster;
-import com.example.sauronsarmy.oopp.monsterPack.Monster;
 import com.example.sauronsarmy.oopp.monsterPack.monsterFactory;
 
 /**
@@ -13,7 +13,7 @@ public class Level {
     private IMonster monster;
     private int healthMultiplier;
     private int goldMultiplier;
-    private areaType areaType;
+    private com.example.sauronsarmy.oopp.areaType areaType;
 
     private int goal=10;
     private int pathToGoal=0;
