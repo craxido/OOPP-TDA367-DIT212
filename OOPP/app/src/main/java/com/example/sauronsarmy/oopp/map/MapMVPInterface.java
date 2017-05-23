@@ -2,7 +2,7 @@ package com.example.sauronsarmy.oopp.map;
 
 import android.content.Context;
 
-import com.example.sauronsarmy.oopp.clock.Runner;
+import com.example.sauronsarmy.oopp.areaType;
 import com.example.sauronsarmy.oopp.monsterPack.IMonster;
 
 /**

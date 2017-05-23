@@ -1,5 +1,7 @@
 package com.example.sauronsarmy.oopp.map;
 
+import com.example.sauronsarmy.oopp.areaType;
+
 /**
  * @author Jonatan Källman
  */
@@ -7,7 +9,7 @@ package com.example.sauronsarmy.oopp.map;
 public class Area {
 
     private int imgRef;
-    private areaType areaType;
+    private com.example.sauronsarmy.oopp.areaType areaType;
     private Level[] levels;
     private Level currentLevel;
     private boolean finished=false;
