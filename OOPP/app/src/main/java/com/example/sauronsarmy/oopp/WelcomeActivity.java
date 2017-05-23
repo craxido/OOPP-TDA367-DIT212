@@ -61,6 +61,7 @@ public class WelcomeActivity extends AppCompatActivity implements MainMVPInterfa
     // Load a previous game
     private void loadGame(){
         startActivity(new Intent().setAction("android.intent.action.MAINSCREEN"));
+        finish();
     }
     // Create a new game
     private void newGame(){
@@ -76,6 +77,7 @@ public class WelcomeActivity extends AppCompatActivity implements MainMVPInterfa
                         saveData.edit().clear().apply();
                         //Chose new game
                         startActivity(new Intent().setAction("android.intent.action.MAINSCREEN"));
+                        finish();
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

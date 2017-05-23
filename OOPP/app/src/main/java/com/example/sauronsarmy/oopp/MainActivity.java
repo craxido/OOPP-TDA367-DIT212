@@ -23,7 +23,7 @@ import com.example.sauronsarmy.oopp.clock.ClockListener;
 public class MainActivity extends AppCompatActivity implements MainMVPInterface.ViewOps,ClockListener {
 
     private MainMVPInterface.PresenterOps mainPresenter;
-    private static final String TAG = "MainActivity";
+    private final String TAG = "MainActivity";
 
 
     private Runner run = Runner.getInstance();
@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
 
         // Calling the constructor in onCreate since we need to send the context
         // and the activity must be created before sending it.
-        mainPresenter = new MainPresenter(MainActivity.this);
 
+        mainPresenter = new MainPresenter(this);
         setContentView(R.layout.activity_main);
 
         /*
@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         nextButton = (ImageButton) findViewById(R.id.nextLvl);
         prevButton = (ImageButton) findViewById(R.id.prevLvl);
 
-
+        nextButton.setTag(0);
+        prevButton.setTag(0);
 
 
         homeButton.setOnClickListener(buttonListener);
@@ -87,8 +88,6 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         monsterButton.setImageResource(currentMonster.getImageRef());
         monsterButton.setTag(currentMonster.getImageRef());
 
-
-
         if(currentMonster.isBoss()){
             // show the text and progress bar.
             bossFight.setVisibility(View.VISIBLE);
@@ -105,13 +104,6 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         update();
     }
 
-    @Override
-    protected void onPause() {
-        Log.i(TAG, "onPause() called");
-        //Unregister from clock
-        //run.unregister(this);
-        super.onPause();
-    }
 
     @Override
     protected void onStart(){
@@ -135,39 +127,36 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
                 case R.id.b_home:
                     intent.setAction("android.intent.action.HOME");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_map:
                     intent.setAction("android.intent.action.MAP");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_shop:
                     intent.setAction("android.intent.action.SHOP");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_stats:
                     intent.setAction("android.intent.action.STATS");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_main:
                     break;
                 case R.id.b_monster:
                     mainPresenter.monsterClicked();
-                    mainPresenter.checkLevelUnlocked(mainPresenter.getPathGoal());
-
                     update();
                     break;
                 case R.id.nextLvl:
-                    if(mainPresenter.nextLevel()){
-                        mainPresenter.incrementCurrentLevel();
+                        mainPresenter.nextLevel();
                         update();
-                    }
-
                     break;
                 case R.id.prevLvl:
-		            if(mainPresenter.previousLevel()) {
-                        mainPresenter.decrementCurrentLevel();
+		                mainPresenter.previousLevel();
                         update();
-                    }
                     break;
 
             }
@@ -214,9 +203,19 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         moneyIndicator.setText(String.valueOf(mainPresenter.getPlayerMoney()));
 
         // Update next arrow
-        nextButton.setImageResource(mainPresenter.getNextArrowImage());
+        int nextArrow = (Integer) mainPresenter.getNextArrowImage();
+        //See if the image has changed
+        if((Integer) nextButton.getTag()!=nextArrow) {
+            nextButton.setImageResource(nextArrow);
+            nextButton.setTag(nextArrow);
+        }
         // Update prev arrow
-        prevButton.setImageResource(mainPresenter.getPrevArrowImage());
+        int prevArrow = (Integer)mainPresenter.getPrevArrowImage();
+        //See if the image has changed
+        if((Integer) prevButton.getTag() != prevArrow){
+            prevButton.setImageResource(prevArrow);
+            prevButton.setTag(prevArrow);
+        }
 
         mainPresenter.update();
     }

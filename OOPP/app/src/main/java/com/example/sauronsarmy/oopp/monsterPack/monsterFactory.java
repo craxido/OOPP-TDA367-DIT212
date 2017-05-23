@@ -1,7 +1,7 @@
 package com.example.sauronsarmy.oopp.monsterPack;
 
 
-import com.example.sauronsarmy.oopp.map.areaType;
+import com.example.sauronsarmy.oopp.areaType;
 import com.example.sauronsarmy.oopp.R;
 
 import java.util.Random;
@@ -32,7 +32,7 @@ public class monsterFactory {
             R.drawable.volcano_monster_11
     };
 
-    private int bossMonsterImg= R.drawable.boss_monster;
+    private int bossMonsterImg = R.drawable.boss_monster;
 
     public IMonster getMonster(int hp, int gold, areaType type){
         Random rand = new Random();
@@ -51,7 +51,7 @@ public class monsterFactory {
         }
     }
 
-    public IMonster getBossMonster(int hp, int gold, areaType type){ //type not used for now ass all bosses are the same.
+    public IMonster getBossMonster(int hp, int gold, areaType type){ //type not used for now as all bosses are the same.
         return new BossMonster(hp, gold, bossMonsterImg);
     }
 

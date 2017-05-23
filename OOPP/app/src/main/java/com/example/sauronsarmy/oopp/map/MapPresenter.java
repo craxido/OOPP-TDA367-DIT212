@@ -3,6 +3,7 @@ package com.example.sauronsarmy.oopp.map;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.sauronsarmy.oopp.areaType;
 import com.example.sauronsarmy.oopp.monsterPack.IMonster;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
@@ -73,39 +74,7 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     @Override
     public boolean tryChangeAreaLevel(int level, int area) {
 
-        if(area ==0){
-            changeArea(area);
-            if(level ==0){
-                changeLvl(level);
-                return true;
-            }
-            else {
-
-                if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
-                    changeLvl(level);
-                    return true;
-                }
-
-            }
-        }
-        else {
-
-            if(getArea(area-1).getComplete() && map.getAreas().length>area){
-                changeArea(area);
-                if(level ==0){
-                    changeLvl(level);
-                    return true;
-                }
-                else {
-
-                    if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
-                        changeLvl(level);
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
+        return map.tryChangeAreaLevel(level,area);
     }
 
     public void changeLvl(int index) {
@@ -178,66 +147,14 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     public boolean nextLevel(){
 
-        int lvlpos = getLevelIndex() +1;
-        if(lvlpos >= getCurrentArea().getLevels().length){
-            if(getAreaIndex()+1 < getAreas().length){
-
-                return tryChangeAreaLevel(0,getAreaIndex()+1);
-            }
-            return false;
-
-        }
-        else{
-            return tryChangeAreaLevel(lvlpos,getAreaIndex());
-        }
+        return map.nextLevel();
     }
 
     public boolean previousLevel(){
-        int lvlpos = getLevelIndex() -1;
-        if(lvlpos <0){
-            if(getAreaIndex()-1 >=0){
-                return tryChangeAreaLevel(getArea(getAreaIndex()-1).getLevels().length -1 ,getAreaIndex()-1);
-            }
-            return false;
 
-        }
-        else{
-            return tryChangeAreaLevel(lvlpos,getAreaIndex());
-        }
+        return map.previousLevel();
 
     }
 
-    public int getLevelIndex(){
-
-        int pos =0;
-        Level curLvl = getCurrentLevel();
-        Level[] lvls = getCurrentArea().getLevels();
-
-        for(int i =0; i< lvls.length ; i++){
-            if(lvls[i].equals(curLvl)){
-                pos =i;
-                break;
-
-            }
-        }
-        return pos;
-    }
-
-
-    private int getAreaIndex(){
-
-        int pos =0;
-        Area currentArea = getCurrentArea();
-        Area[] areas = getAreas();
-
-        for(int i =0; i< areas.length ; i++){
-            if(areas[i].equals(currentArea)){
-                pos =i;
-                break;
-
-            }
-        }
-        return pos;
-    }
 
 }

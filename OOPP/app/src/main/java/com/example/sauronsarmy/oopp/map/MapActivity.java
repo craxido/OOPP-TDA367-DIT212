@@ -87,20 +87,24 @@ public class MapActivity extends AppCompatActivity
                 case R.id.b_home:
                     intent.setAction("android.intent.action.HOME");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_map:
                     break;
                 case R.id.b_shop:
                     intent.setAction("android.intent.action.SHOP");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_stats:
                     intent.setAction("android.intent.action.STATS");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_main:
                     intent.setAction("android.intent.action.MAINSCREEN");
                     startActivity(intent);
+                    finish();
                     break;
                 /* TODO: Selecting a new area should result in changing the monsters/ levels
                  * TODO: as well as the background in the MainActivity.
@@ -143,6 +147,7 @@ public class MapActivity extends AppCompatActivity
         if(mapPresenter.tryChangeAreaLevel(level,area)) {
             intent.setAction("android.intent.action.MAINSCREEN");
             startActivity(intent);
+            finish();
         }
         else {
 

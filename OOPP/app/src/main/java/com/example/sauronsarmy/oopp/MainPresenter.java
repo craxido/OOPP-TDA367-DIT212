@@ -23,7 +23,7 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
 
 
     public MainPresenter(Context context) {
-        playerModel = PlayerModel.getInstance(context);
+        playerModel = PlayerModel.getInstance(context.getApplicationContext());
         mainModel = MainModel.getInstance();
         mapPresenter = new MapPresenter();
     }
@@ -89,12 +89,25 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
 
     @Override
     public int getNextArrowImage(){
-        return mainModel.getNextArrowImage();
+
+         if(getLvlCmp() && !(mapPresenter.getCurrentArea().getAreaIndex()==mapPresenter.getAreas().length-1) &&
+                 mapPresenter.getCurrentArea().getLevels()[mapPresenter.getCurrentArea().getLevels().length -1].equals(mapPresenter.getCurrentArea().getCurrentLevel())){
+            return R.drawable.green_arrow_right;
+        }
+        else {
+            return R.drawable.red_arrow_right;
+        }
     }
 
     @Override
     public int getPrevArrowImage(){
-        return mainModel.getPrevArrowImage();
+
+        if(mapPresenter.getAreas()[0].equals(mapPresenter.getCurrentArea()) && mapPresenter.getCurrentArea().getLevels()[0].equals(mapPresenter.getCurrentArea().getCurrentLevel())){
+            return R.drawable.red_arrow_left;
+        }
+        else {
+            return R.drawable.green_arrow_left;
+        }
     }
 
     @Override
