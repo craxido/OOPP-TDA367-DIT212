@@ -16,7 +16,7 @@ public class MonsterTest {
 
     @Before
     public void setUp() throws  Exception{
-        monster = new Monster(10,10,R.drawable.mike);
+        monster = new Monster(10,10,R.drawable.mike, false);
 
     }
 
