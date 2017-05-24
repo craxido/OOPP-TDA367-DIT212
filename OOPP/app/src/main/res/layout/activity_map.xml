@@ -27,36 +27,36 @@
 
     <ImageButton
         android:id="@+id/b_area1"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:background="@android:color/transparent"
-        android:layout_marginBottom="31dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginBottom="26dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
         android:layout_above="@+id/include"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <ImageButton
         android:id="@+id/b_area2"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginRight="64dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginRight="55dp"
         android:background="@android:color/transparent"
-        android:layout_marginTop="57dp"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/b_area3"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <ImageButton
         android:id="@+id/b_area3"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="51dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="52dp"
         android:background="@android:color/transparent"
-        android:layout_marginLeft="33dp"
-        android:layout_marginStart="33dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/b_area1"
         android:layout_alignStart="@+id/b_area1" />

@@ -90,8 +90,8 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
     @Override
     public int getNextArrowImage(){
 
-         if(getLvlCmp() && !(mapPresenter.getCurrentArea().getAreaIndex()==mapPresenter.getAreas().length-1) &&
-                 mapPresenter.getCurrentArea().getLevels()[mapPresenter.getCurrentArea().getLevels().length -1].equals(mapPresenter.getCurrentArea().getCurrentLevel())){
+         if(getLvlCmp() && !(mapPresenter.getArea(mapPresenter.getAreas().length-1).equals(mapPresenter.getCurrentArea())
+                 && mapPresenter.getCurrentArea().getLevel(mapPresenter.getCurrentArea().getLevels().length-1).equals(mapPresenter.getCurrentArea().getCurrentLevel()))){
             return R.drawable.green_arrow_right;
         }
         else {
