@@ -11,7 +11,7 @@ import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
  * Created by Erik on 13/04/17.
  */
 
-public class StatsPresenter implements StatsInterface.Presenter {
+class StatsPresenter implements StatsInterface.Presenter {
 
     private PlayerModelInterface playerModel;
     private MapMVPInterface.PresenterOps mapPresenter;
@@ -50,5 +50,4 @@ public class StatsPresenter implements StatsInterface.Presenter {
     public int getPlayerDamagePerSecond() {
         return playerModel.getDamagePerSecond();
     }
-
 }

@@ -2,6 +2,7 @@
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{caption}
+\usepackage[margin=1in]{geometry}
 
 \setlength\fboxsep{0pt}
 \setlength\fboxrule{0.5pt}
@@ -27,6 +28,10 @@ Monster Clicker is a mobile game for Android. So the program must therfore run o
 \subsection{Definitions, acronyms, abbriviations}
 \begin{itemize}
     \item \emph{Monster Clicker} - The name of the project.
+    \item \emph{Activity} - The class which is presented to the user. Allowing him or her to interact with the app.
+    \item \emph{View} - Abstraction, in this case it is implemented as an activity.
+    \item \emph{Presenter} - The main comunicator for a specific package. All method calls should go through this class.
+    \item \emph{Model} - Where all the logic for a specific package is contained.
 \end{itemize}
 
 \section{System architecture}
@@ -72,17 +77,18 @@ run on android phones running 4.0 or later versions of the operating system.
 
 \subsection{Player}
 This package contains a player model, and an interface for this model. The model contains the state of the player, damage, gold, etc. And methods to access and/or change the state. The interface provides a layer between the model and anyone who wishes to access it, only exposing non-internal methods.
-\newpage
 \subsubsection{Diagrams}
 \begin{center}
     Package UML diagram: \\
     \fbox{ \includegraphics[scale=0.3]{uml/playerUml.png}}
+\end{center}
+\begin{center}
     Sequence diagram of getState()\\
     \fbox{ \includegraphics[scale=0.2]{seqDiagrams/playerModel.png}}
 \end{center}
 
 \subsubsection{Quality}
-The tests for \emph{PlayerModel} can be found in \emph{/OOPP/app/src/test/\ldots/oopp/PlayerModelTest.java}
+The tests for \emph{PlayerModel} can be found in \emph{/OOPP/app/src/androidTest/\ldots/oopp/PlayerModelTest.java}
 
 \subsection{Monster Pack}
 This package contains a monster model, and a monster factory. The model contains the state of the monster, gold, health, etc. A constructor to set the state and methods
@@ -90,10 +96,12 @@ to modify the state. The factory handles the creation of monsters in a simplifie
 
 \subsection{Diagrams}
 \begin{center}
-    Sequence diagram of what happens when a monster is clicked.\\
-    % \fbox{\includegraphics[scale=0.2]{seqDiagrams/monsterClicked.png}}
-    Package UML diagram:
+    Package UML diagram:\\
     \includegraphics[scale=0.5]{uml/monsterPackUml.png}
+\end{center}
+\begin{center}
+    Sequence diagram of what happens when a monster is clicked.\\
+     \fbox{\includegraphics[scale=0.2]{seqDiagrams/monsterClicked.png}}
 \end{center}
 
 \subsubsection{Quality}
@@ -107,14 +115,15 @@ The map package consists of the files:
     \item Map: The model.
     \item MapActivity: The view.
     \item MapPresenter: The presenter.
-    \item areaType: A simple enum type.
     \item levelFactory: Produces levels.
     \item MapMVPInterface: The interfaces which regulate how the classes communicate internally and how other packages can communicate with the the presenter.
 \end{itemize}
 
 \subsection{Diagrams}
+\begin{center}
     Package UML diagram:\\
-    \includegraphics[scale=0.2]{uml/mapUml.png}
+    \includegraphics[scale=0.25]{uml/mapUml.png}
+\end{center}
 
 \subsection{Stats}
 The stats package presents the state stored in the PlayerModel in a readable way.\\
@@ -142,7 +151,7 @@ The home package represents the home activity in the app. It consists of the fil
 \subsubsection{Diagrams}
 \begin{center}
     Package UML diagram:\\
-    \fbox{ \includegraphics[scale=0.3]{uml/homeUml.png}}
+    \includegraphics[scale=0.3]{uml/homeUml.png}
 \end{center}
 
 \subsection{Shop}
