@@ -106,6 +106,7 @@ class Map implements MapMVPInterface.ModelOps {
                 return new Level(monfac.getMonster(300, 300, areaType), 3, 3, areaType);
             default:
                 return null; //Can this be handled better?
+                             // Ja, throw exception
         }
     }
 
