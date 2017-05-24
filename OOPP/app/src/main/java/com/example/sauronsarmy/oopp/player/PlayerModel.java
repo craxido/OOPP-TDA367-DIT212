@@ -25,29 +25,43 @@ public class PlayerModel implements PlayerModelInterface, ClockListener {
     private int money;
     private int moneyPerSecond;
 
-    /*
-    Constructor is private since this implemented as a singelton.
-    Only the model itself is allowed to create a new instance. Everyone
-    else just gets to talk with this instance.
+    /**
+     * On creation loads the state. Since the constructor is only called once
+     * during the app's lifecycle we only have to load the state once!
+     * Also registers itself as a ClockListener.
+     * @param context Used for loading state.
      */
     private PlayerModel(Context context) {
         loadState(context.getApplicationContext());
         Runner.getInstance().register(this);
     }
 
+    /**
+     * In a perfect world, this should only be called once in the app's
+     * lifecycle. If it is the first time the method is called it
+     * constructs a new playerModel otherwise it just returns the
+     * instance of the playerModel.
+     * @param context Used for loading state
+     * @return The playerModel instance
+     */
     public static PlayerModelInterface getInstance(Context context) {
         if (ourInstance == null)
             ourInstance = new PlayerModel(context.getApplicationContext());
         return ourInstance;
     }
 
+    /**
+     * Can be used safely when it is known that the playerModel instance
+     * has already been created. If in doubt, use the above method.
+     * @return The playerModel instance.
+     */
     public static PlayerModelInterface getInstance() {
         return ourInstance;
     }
 
     /**
      * {@inheritDoc}
-     * Sharedpreference is just a glorified key-value storage, the
+     * SharedPreference is just a glorified key-value storage, the
      * advantage being that it can be accessed from anywhere in the
      * app, as long as there is a Context to use.
      *
