@@ -48,22 +48,27 @@ public class PlayerModel implements PlayerModelInterface, ClockListener {
         return ourInstance;
     }
 
+    @Override
     public int getDamagePerSecond() {
         return damagePerSecond;
     }
 
+    @Override
     public void setDamagePerSecond(int damagePerSecond) {
         this.damagePerSecond = damagePerSecond;
     }
 
+    @Override
     public int getDamage() {
         return damage;
     }
 
+    @Override
     public void setDamage(int damage) {
         this.damage = damage;
     }
 
+    @Override
     public int getMoney() {
         return money;
     }
@@ -94,13 +99,18 @@ public class PlayerModel implements PlayerModelInterface, ClockListener {
         this.money = money;
     }
 
+    @Override
     public void addMoney(int money) { this.money += money; }
+
+    @Override
     public void removeMoney(int money) { this.money -= money; }
 
+    @Override
     public int getMoneyPerSecond() {
         return moneyPerSecond;
     }
 
+    @Override
     public void setMoneyPerSecond(int moneyPerSecond) {
         this.moneyPerSecond = moneyPerSecond;
     }
