@@ -92,6 +92,8 @@ to modify the state. The factory handles the creation of monsters in a simplifie
 \begin{center}
     Sequence diagram of what happens when a monster is clicked.\\
     % \fbox{\includegraphics[scale=0.2]{seqDiagrams/monsterClicked.png}}
+    Package UML diagram:
+    \includegraphics[scale=0.5]{uml/monsterPackUml.png}
 \end{center}
 
 \subsubsection{Quality}
@@ -133,6 +135,12 @@ The home package represents the home activity in the app. It consists of the fil
     \item HomeMVPInterface: The interface which regulates how the presenter communicates with the model and the view, and how everyone else can communicate with the presenter.
 \end{itemize}
 
+\subsubsection{Diagrams}
+\begin{center}
+    Package UML diagram:\\
+    \fbox{ \includegraphics[scale=0.3]{uml/homeUml.png}}
+\end{center}
+
 \subsection{Shop}
 The shop package represents the shop activity in the app. It consits of the files:
 \begin{itemize}
@@ -161,6 +169,10 @@ Contains the class Upgrade which is the class representation of an upgrade in th
 The clock package is the implementation of the game-loop. The Runner class is implemented as a singelton so that everone that wants to register to the loop can get an instance of the runner. 
 
 \subsubsection{Diagrams}
+\begin{center}
+    Package UML diagram:
+    \includegraphics[scale=0.7]{uml/clockUml.png}
+\end{center}
 
 \subsubsection{Quality}
 
