@@ -2,8 +2,8 @@ package com.example.sauronsarmy.oopp.map;
 
 import android.content.Context;
 
-import com.example.sauronsarmy.oopp.clock.Runner;
-import com.example.sauronsarmy.oopp.monsterPack.Monster;
+import com.example.sauronsarmy.oopp.areaType;
+import com.example.sauronsarmy.oopp.monsterPack.IMonster;
 
 /**
  * Author: Jonatan Källman
@@ -30,10 +30,11 @@ public interface MapMVPInterface {
         Area getCurrentArea();
         int getGoal();
         int getPathGoal();
-        Monster getCurrentMonster();
+        IMonster getCurrentMonster();
         boolean tryChangeAreaLevel(int level, int area);
-        void nextLevel();
-        void previousLevel();
+        boolean nextLevel();
+        boolean previousLevel();
+        Area[] getAreas();
 
         // methods to be called from Presenter
     }
@@ -57,6 +58,9 @@ public interface MapMVPInterface {
         int getLevelHealthMultiplier(int areaIndex, int levelIndex);
         int getLevelAmount(int areaIndex);
         int getAreaAmount();
+        boolean tryChangeAreaLevel(int level, int area);
+        boolean nextLevel();
+        boolean previousLevel();
         // methods to be called from Model
     }
 }

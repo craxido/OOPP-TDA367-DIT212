@@ -7,8 +7,6 @@ import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 import com.example.sauronsarmy.oopp.clock.Runner;
 
-import java.lang.annotation.Inherited;
-
 /**
  * Created by Erik on 04/04/17.
  * @author erik
@@ -33,13 +31,13 @@ public class PlayerModel implements PlayerModelInterface, ClockListener {
     else just gets to talk with this instance.
      */
     private PlayerModel(Context context) {
-        loadState(context);
+        loadState(context.getApplicationContext());
         Runner.getInstance().register(this);
     }
 
     public static PlayerModelInterface getInstance(Context context) {
         if (ourInstance == null)
-            ourInstance = new PlayerModel(context);
+            ourInstance = new PlayerModel(context.getApplicationContext());
         return ourInstance;
     }
 

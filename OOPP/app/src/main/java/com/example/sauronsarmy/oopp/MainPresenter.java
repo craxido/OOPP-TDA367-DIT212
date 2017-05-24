@@ -3,7 +3,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.sauronsarmy.oopp.map.MapMVPInterface;
-import com.example.sauronsarmy.oopp.monsterPack.Monster;
+import com.example.sauronsarmy.oopp.monsterPack.IMonster;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 import com.example.sauronsarmy.oopp.map.MapPresenter;
@@ -23,7 +23,7 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
 
 
     public MainPresenter(Context context) {
-        playerModel = PlayerModel.getInstance(context);
+        playerModel = PlayerModel.getInstance(context.getApplicationContext());
         mainModel = MainModel.getInstance();
         mapPresenter = new MapPresenter();
     }
@@ -33,7 +33,7 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
         mapPresenter.damageMonster();
     }
 
-    public Monster getCurrentMonster() {
+    public IMonster getCurrentMonster() {
         return mapPresenter.getCurrentMonster();
     }
 
@@ -68,13 +68,51 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
     }
 
     @Override
-    public void nextLevel() {
-        mapPresenter.nextLevel();
+    public boolean nextLevel() {
+        return mapPresenter.nextLevel();
     }
 
     @Override
-    public void previousLevel() {
-        mapPresenter.previousLevel();
+    public void checkLevelUnlocked(int pathGoal){
+        mainModel.checkLevelUnlocked(pathGoal);
+    }
+
+    @Override
+    public void incrementCurrentLevel() {
+        mainModel.incrementCurrentLevel();
+    }
+
+    @Override
+    public void decrementCurrentLevel() {
+        mainModel.decrementCurrentLevel();
+    }
+
+    @Override
+    public int getNextArrowImage(){
+
+         if(getLvlCmp() && !(mapPresenter.getArea(mapPresenter.getAreas().length-1).equals(mapPresenter.getCurrentArea())
+                 && mapPresenter.getCurrentArea().getLevel(mapPresenter.getCurrentArea().getLevels().length-1).equals(mapPresenter.getCurrentArea().getCurrentLevel()))){
+            return R.drawable.green_arrow_right;
+        }
+        else {
+            return R.drawable.red_arrow_right;
+        }
+    }
+
+    @Override
+    public int getPrevArrowImage(){
+
+        if(mapPresenter.getAreas()[0].equals(mapPresenter.getCurrentArea()) && mapPresenter.getCurrentArea().getLevels()[0].equals(mapPresenter.getCurrentArea().getCurrentLevel())){
+            return R.drawable.red_arrow_left;
+        }
+        else {
+            return R.drawable.green_arrow_left;
+        }
+    }
+
+    @Override
+    public boolean previousLevel() {
+        return mapPresenter.previousLevel();
     }
 
     @Override

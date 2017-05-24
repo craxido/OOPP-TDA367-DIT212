@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity implements ClockListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         homePresenter = new HomePresenter();
-        homePresenter.loadState(HomeActivity.this);
+        homePresenter.loadState(getApplicationContext());
         setContentView(R.layout.activity_home);
 
         /*
@@ -104,18 +104,22 @@ public class HomeActivity extends AppCompatActivity implements ClockListener {
                 case R.id.b_map:
                     intent.setAction("android.intent.action.MAP");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_shop:
                     intent.setAction("android.intent.action.SHOP");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_stats:
                     intent.setAction("android.intent.action.STATS");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.b_main:
                     intent.setAction("android.intent.action.MAINSCREEN");
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.oilUpgradeButton:
                     if (homePresenter.buyOilPumpUpgrade()){

@@ -3,6 +3,9 @@ package com.example.sauronsarmy.oopp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.R.drawable.*;
+
+import com.example.sauronsarmy.oopp.monsterPack.Monster;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +20,16 @@ class MainModel implements MainMVPInterface.ModelInterface {
     private SharedPreferences saveState;
     private SharedPreferences.Editor editor;
     private static String TAG = "MainModel";
+    /**
+     *  Variables to check what level you are at,
+     *  how many levels you've unlocked,
+     *  and the min/max amount of levels.
+     * */
+    private static int CURRENT_LEVEL = 1;
+    private static int LEVELS_UNLOCKED = 1;
+    private static final int MAX_LEVELS = 3;
+    private static final int MIN_LEVEL = 1;
+
     /**
      * Indicates whether there is a previous state to load.
      */
@@ -83,5 +96,45 @@ class MainModel implements MainMVPInterface.ModelInterface {
                 put("lastLogOn", saveState.getLong("lastLogOn", -1));
             }
         };
+    }
+
+    @Override
+    public int getPrevArrowImage(){
+        if(CURRENT_LEVEL == MIN_LEVEL) {
+            return R.drawable.red_arrow_left;
+        } else {
+            return R.drawable.green_arrow_left;
+        }
+    }
+
+    @Override
+    public int getNextArrowImage(){
+        if(CURRENT_LEVEL < LEVELS_UNLOCKED ){
+            return R.drawable.green_arrow_right;
+        } else {
+            return R.drawable.red_arrow_right;
+        }
+    }
+
+    @Override
+    public void checkLevelUnlocked(int pathGoal){
+        if(
+                CURRENT_LEVEL == LEVELS_UNLOCKED &&
+                        LEVELS_UNLOCKED < MAX_LEVELS &&
+                        pathGoal == 10){
+            incrementLevelsUnlocked();
+        }
+    }
+
+    public void incrementCurrentLevel(){
+        CURRENT_LEVEL++;
+    }
+
+    public void decrementCurrentLevel(){
+        CURRENT_LEVEL--;
+    }
+
+    public void incrementLevelsUnlocked(){
+        LEVELS_UNLOCKED++;
     }
 }

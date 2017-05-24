@@ -13,7 +13,9 @@ import org.junit.runners.Suite;
         PlayerModelTest.class,
         MonsterTest.class,
         MapTest.class,
-        HomeTest.class
+        HomeTest.class,
+        BossMonsterTest.class,
+        ShopTest.class
 })
 
 public class TestSuite {
