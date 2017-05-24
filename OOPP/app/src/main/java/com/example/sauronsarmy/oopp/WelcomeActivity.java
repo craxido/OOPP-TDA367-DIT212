@@ -74,7 +74,7 @@ public class WelcomeActivity extends AppCompatActivity implements MainMVPInterfa
                     public void onClick(DialogInterface dialog, int id) {
                         // Clear all saved data
                         saveData = context.getSharedPreferences(context.getString(R.string.stateIdentifier), Context.MODE_PRIVATE);
-                        saveData.edit().clear().apply();
+                        saveData.edit().clear().commit();
                         //Chose new game
                         startActivity(new Intent().setAction("android.intent.action.MAINSCREEN"));
                         finish();
