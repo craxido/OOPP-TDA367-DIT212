@@ -148,7 +148,4 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         return map.previousLevel();
     }
 
-    public void addClearedGoal(int goal){
-        map.addClearedGoal(goal);
-    }
 }

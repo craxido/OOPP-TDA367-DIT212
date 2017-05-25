@@ -91,8 +91,8 @@ public class Level {
 
             ret = monster.getGold();
             pathToGoal++;
+            completed = true;
             if (pathToGoal >= goal) {
-                completed = true;
                 pathToGoal = goal;
             }
             setNewMonster();

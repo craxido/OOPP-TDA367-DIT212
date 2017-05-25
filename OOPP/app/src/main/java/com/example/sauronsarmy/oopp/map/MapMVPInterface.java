@@ -35,7 +35,6 @@ public interface MapMVPInterface {
         boolean nextLevel();
         boolean previousLevel();
         Area[] getAreas();
-        void addClearedGoal(int goal);
 
         // methods to be called from Presenter
     }
@@ -64,7 +63,6 @@ public interface MapMVPInterface {
         boolean previousLevel();
         void saveState(Context context);
         void loadState(Context context);
-        void addClearedGoal(int goal);
         // methods to be called from Model
     }
 }

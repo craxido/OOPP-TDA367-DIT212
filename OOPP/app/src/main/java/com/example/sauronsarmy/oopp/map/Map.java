@@ -21,7 +21,7 @@ class Map implements MapMVPInterface.ModelOps {
     private static levelFactory lvlfac;
     private monsterFactory monfac;
     private int bgRef;
-    private int clearedGoals;
+    private int completedGoals;
 
     //Overloading so that context doesn't have to be sent once map is created
     public static MapMVPInterface.ModelOps getInstance() {
@@ -51,7 +51,7 @@ class Map implements MapMVPInterface.ModelOps {
         editor.putInt("bgRef", getBackgroundRef());
         editor.putInt("currentArea", currentArea.getAreaIndex());
         editor.putInt("currentLevel", currentArea.getCurrentLevel().getLevelIndex());
-        editor.putInt("clearedGoals", clearedGoals);
+        editor.putInt("completedGoals", completedGoals);
         editor.apply();
         Log.i(TAG, "Map state saved.");
     }
@@ -63,17 +63,17 @@ class Map implements MapMVPInterface.ModelOps {
         setBackgroundRef(saveState.getInt("bgRef", 0));
         setCurrentArea(areas[saveState.getInt("currentArea", 0)]);
         setCurrentLevel(getCurrentArea().getLevels()[saveState.getInt("currentLevel", 0)]);
-        this.clearedGoals = saveState.getInt("clearedGoals", 0);
-        setClearedGoals(clearedGoals);
+        this.completedGoals = saveState.getInt("completedGoals", 0);
+        setCompletedGoals(completedGoals);
         Log.i(TAG, "Map state loaded.");
     }
 
-    private void setClearedGoals(int cleared){
+    private void setCompletedGoals(int completed){
         for (Area a : areas){
-            if (!(cleared == 0)){
-                for(int i = 0; i < (cleared % 10); i++){
+            if (!(completed == 0)){
+                for(int i = 0; i < (completed % 10); i++){
                     a.completeLevel(i);
-                    cleared--;
+                    completed--;
                 }
             }
         }
@@ -83,8 +83,9 @@ class Map implements MapMVPInterface.ModelOps {
         int ret = getCurrentArea().getCurrentLevel().damageMonster(damage);
         if (ret > 0) {
             getCurrentArea().checkComplete();
-            if(getCurrentLevel().getComplete() && !getCurrentLevel().isChecked()){
-                clearedGoals++;
+            if(getCurrentLevel().getComplete() && !(getCurrentLevel().isChecked())){
+                completedGoals++;
+                Log.i(TAG, "Goals: " + completedGoals); //This never runs, levels are always checked?
                 getCurrentLevel().setChecked(true);
             }
             return ret;
@@ -106,13 +107,7 @@ class Map implements MapMVPInterface.ModelOps {
         return areas;
     }
 
-    public void addClearedGoal(int goal){
-        clearedGoals = clearedGoals + goal;
-    }
 
-    private void setCurrentMonsterHealth(int health){
-        getCurrentArea().getCurrentLevel().getCurrentMonster().setHealth(health);
-    }
 
     private void setCurrentLevel(Level level){
         currentArea.setCurrentLevel(level);
@@ -310,7 +305,8 @@ class Map implements MapMVPInterface.ModelOps {
     }
 
     public void changeLvl(int index) {
-        getCurrentArea().setCurrentLevel(getCurrentArea().getLevels()[index]);
+        Level newLevel = getCurrentArea().getLevels()[index];
+        getCurrentArea().setCurrentLevel(newLevel);
     }
 
     public void changeArea(int index){
