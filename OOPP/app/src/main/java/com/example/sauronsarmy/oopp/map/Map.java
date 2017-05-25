@@ -3,6 +3,8 @@ package com.example.sauronsarmy.oopp.map;
 import com.example.sauronsarmy.oopp.areaType;
 import com.example.sauronsarmy.oopp.monsterPack.monsterFactory;
 import com.example.sauronsarmy.oopp.R;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 /**
  * @author Jonatan Källman
@@ -10,9 +12,10 @@ import com.example.sauronsarmy.oopp.R;
 
 class Map implements MapMVPInterface.ModelOps {
 
+    private static SharedPreferences saveState;
     private static Area[] areas;
     private Area currentArea;
-    private static final Map mapInstance = new Map();
+    private static Map mapInstance;
     private static levelFactory lvlfac;
     private monsterFactory monfac;
     private int bgRef;
@@ -21,13 +24,26 @@ class Map implements MapMVPInterface.ModelOps {
         return mapInstance;
     }
 
+    //If there is not map yet, create one. Else, get the instance.
+    public static MapMVPInterface.ModelOps getInstance(Context context) {
+        if (mapInstance == null)
+            mapInstance = new Map(context.getApplicationContext());
+        return mapInstance;
+    }
 
-    private Map() {
+
+    private Map (Context context) {
+        loadState(context.getApplicationContext()); //Load the map progress/ state
+        
         bgRef = R.drawable.mapbg;
         areas = createAreas();
         currentArea = areas[0];
         monfac = new monsterFactory();
     }
+
+    public void saveState(Context context) {}
+
+    public void loadState(Context context) {}
 
     public int damageMonster(int damage) {
         int ret = getCurrentArea().getCurrentLevel().damageMonster(damage);
