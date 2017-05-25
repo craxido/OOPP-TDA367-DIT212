@@ -95,6 +95,7 @@ public class Area {
 
     void completeLevel(int levelIndex){
         this.levels[levelIndex].setComplete(true);
+        this.levels[levelIndex].setChecked(true);
     }
 
 }

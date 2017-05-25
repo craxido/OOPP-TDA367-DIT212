@@ -15,7 +15,7 @@ class levelFactory {
         int LevelAmount=10;
         Level[] levels = new Level[10];
         for(int i=0; i < LevelAmount; i++){
-            levels[i]=new Level(monfac.getForestMonster(20000*(i+1), 500), 20000*(i+1) , 20*(i+1), areaType.FOREST);
+            levels[i]=new Level(monfac.getForestMonster(20000*(i+1), 500), 20000*(i+1) , 20*(i+1), areaType.FOREST, i);
         }
         return levels;
     }
@@ -24,7 +24,7 @@ class levelFactory {
         int LevelAmount=10;
         Level[] levels = new Level[10];
         for(int i=0; i < LevelAmount; i++){
-            levels[i]=new Level(monfac.getMountainMonster(100*(i+1), 100), 100*(i+1), 10*(i+1), areaType.MOUNTAIN);
+            levels[i]=new Level(monfac.getMountainMonster(100*(i+1), 100), 100*(i+1), 10*(i+1), areaType.MOUNTAIN, i);
         }
         return levels;
     }
@@ -33,11 +33,11 @@ class levelFactory {
         int LevelAmount=10;
         Level[] levels = new Level[10];
         for(int i=0; i < LevelAmount; i++){
-            levels[i]=new Level(monfac.getVolcanoMonster(300000*(i+1), 3000), 300000*(i+1), 30*(i+1), areaType.VOLCANO);
+            levels[i]=new Level(monfac.getVolcanoMonster(300000*(i+1), 3000), 300000*(i+1), 30*(i+1), areaType.VOLCANO, i);
         }
         return levels;
     }
-
+/*
     Level getLevel(areaType type, int scale) {
 
         // Level constructor:
@@ -55,5 +55,5 @@ class levelFactory {
                 return null;
         }
     }
-
+*/
 }

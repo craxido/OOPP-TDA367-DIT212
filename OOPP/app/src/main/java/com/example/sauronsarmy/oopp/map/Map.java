@@ -50,7 +50,7 @@ class Map implements MapMVPInterface.ModelOps {
         SharedPreferences.Editor editor = saveState.edit();
         editor.putInt("bgRef", getBackgroundRef());
         editor.putInt("currentArea", currentArea.getAreaIndex());
-        editor.putInt("currentLevel", currentArea.getCurrentLevel().getPathToGoal());
+        editor.putInt("currentLevel", currentArea.getCurrentLevel().getLevelIndex());
         editor.putInt("clearedGoals", clearedGoals);
         editor.apply();
         Log.i(TAG, "Map state saved.");
@@ -63,7 +63,8 @@ class Map implements MapMVPInterface.ModelOps {
         setBackgroundRef(saveState.getInt("bgRef", 0));
         setCurrentArea(areas[saveState.getInt("currentArea", 0)]);
         setCurrentLevel(getCurrentArea().getLevels()[saveState.getInt("currentLevel", 0)]);
-        setClearedGoals(saveState.getInt("clearedGoals", 0));
+        this.clearedGoals = saveState.getInt("clearedGoals", 0);
+        setClearedGoals(clearedGoals);
         Log.i(TAG, "Map state loaded.");
     }
 
@@ -338,11 +339,11 @@ class Map implements MapMVPInterface.ModelOps {
     public Level createLevel(areaType areaType){
         switch (areaType) {
             case MOUNTAIN:
-                return new Level(monfac.getMountainMonster(100, 100), 1, 1, areaType);
+                return new Level(monfac.getMountainMonster(100, 100), 1, 1, areaType,0);
             case FOREST:
-                return new Level(monfac.getForestMonster(200, 200), 2, 2, areaType);
+                return new Level(monfac.getForestMonster(200, 200), 2, 2, areaType, 0);
             case VOLCANO:
-                return new Level(monfac.getVolcanoMonster(300, 300), 3, 3, areaType);
+                return new Level(monfac.getVolcanoMonster(300, 300), 3, 3, areaType, 0);
             default:
                 Log.e(TAG, "ERROR: createLevel(areaType) was called," +
                         " but no valid areaType was given.");
