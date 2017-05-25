@@ -61,7 +61,13 @@ class Map implements MapMVPInterface.ModelOps {
         setBackgroundRef(saveState.getInt("bgRef", 0));
         setCurrentArea(areas[saveState.getInt("currentArea", 0)]);
         setCurrentLevel(getCurrentArea().getLevels()[saveState.getInt("currentLevel", 0)]);
+        setCurrentMonsterHealth(saveState.getInt("monsterHealth", 0));
         Log.i(TAG, "Map state loaded.");
+    }
+
+    //Helper method to simplify setting the current monster's health
+    private void setCurrentMonsterHealth(int health){
+        getCurrentArea().getCurrentLevel().getCurrentMonster().setHealth(health);
     }
 
     private void setCurrentLevel(Level level){
