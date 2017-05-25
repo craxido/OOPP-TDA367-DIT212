@@ -5,6 +5,7 @@ import com.example.sauronsarmy.oopp.monsterPack.monsterFactory;
 import com.example.sauronsarmy.oopp.R;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 /**
  * @author Jonatan Källman
@@ -12,6 +13,7 @@ import android.content.SharedPreferences;
 
 class Map implements MapMVPInterface.ModelOps {
 
+    private static final String TAG = "Map";
     private static SharedPreferences saveState;
     private static Area[] areas;
     private Area currentArea;
@@ -31,16 +33,14 @@ class Map implements MapMVPInterface.ModelOps {
         return mapInstance;
     }
 
-
     private Map (Context context) {
         loadState(context.getApplicationContext()); //Load the map progress/ state
         bgRef = R.drawable.mapbg;
         areas = createAreas();
         currentArea = areas[0];
         monfac = new monsterFactory();
+        Log.i(TAG, "A new map instance was created.");
     }
-
-
 
     public void saveState(Context context) {
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
@@ -49,7 +49,9 @@ class Map implements MapMVPInterface.ModelOps {
         editor.putInt("bgRef", getBackgroundRef());
         editor.putInt("currentArea", currentArea.getAreaIndex());
         editor.putInt("currentLevel", currentArea.getCurrentLevel().getPathToGoal());
+        editor.putInt("monsterHealth", currentArea.getCurrentLevel().getCurrentMonster().getHealth());
         editor.apply();
+        Log.i(TAG, "Map state saved.");
     }
 
     public void loadState(Context context) {
@@ -59,7 +61,7 @@ class Map implements MapMVPInterface.ModelOps {
         setBackgroundRef(saveState.getInt("bgRef", 0));
         setCurrentArea(areas[saveState.getInt("currentArea", 0)]);
         setCurrentLevel(getCurrentArea().getLevels()[saveState.getInt("currentLevel", 0)]);
-
+        Log.i(TAG, "Map state loaded.");
     }
 
     private void setCurrentLevel(Level level){
@@ -132,19 +134,21 @@ class Map implements MapMVPInterface.ModelOps {
         return getCurrentArea().getCurrentLevel();
     }
 
+
     @Override
     public Level createLevel(areaType areaType){
-        switch (areaType){
-            case MOUNTAIN:
-                return new Level(monfac.getMonster(100, 100, areaType), 1, 1, areaType);
-            case FOREST:
-                return new Level(monfac.getMonster(200, 200, areaType), 2, 2, areaType);
-            case VOLCANO:
-                return new Level(monfac.getMonster(300, 300, areaType), 3, 3, areaType);
-            default:
-                return null; //Can this be handled better?
-                             // Ja, throw exception
-        }
+            switch (areaType) {
+                case MOUNTAIN:
+                    return new Level(monfac.getMonster(100, 100, areaType), 1, 1, areaType);
+                case FOREST:
+                    return new Level(monfac.getMonster(200, 200, areaType), 2, 2, areaType);
+                case VOLCANO:
+                    return new Level(monfac.getMonster(300, 300, areaType), 3, 3, areaType);
+                default:
+                    Log.e(TAG, "ERROR: createLevel(areaType) was called," +
+                            " but no valid areaType was given.");
+                    throw new IllegalArgumentException("No valid areaType found");
+            }
     }
 
     //Gets the GoldMultiplier for the given Level in the given Area.
@@ -181,7 +185,9 @@ class Map implements MapMVPInterface.ModelOps {
             case 2:
                 return new Area(R.drawable.volcanoarea, areaType.VOLCANO, lvlfac.getLevels(areaType.VOLCANO), 2);
             default: //Not a valid (or yet listed) area.
-                return null;
+                Log.e(TAG, "ERROR: createArea(int areaIndex) was called," +
+                        " but no valid areaIndex was given.");
+                throw new IllegalArgumentException("No valid areaIndex found");
         }
     }
 
@@ -195,7 +201,9 @@ class Map implements MapMVPInterface.ModelOps {
             case 2:
                 return areaType.VOLCANO;
             default: //Not a valid (or yet listed) area.
-                return null;
+                Log.e(TAG, "ERROR: getAreaType(int areaIndex) was called," +
+                        " but no valid areaIndex was given.");
+                throw new IllegalArgumentException("No valid areaIndex found");
         }
     }
 
@@ -209,7 +217,9 @@ class Map implements MapMVPInterface.ModelOps {
             case 2:
                 return R.drawable.volcanoarea;
             default: //Not a valid (or yet listed) area.
-                return -1;
+                Log.e(TAG, "ERROR: getAreaBgRef(int areaIndex) was called," +
+                        " but no valid areaIndex was given.");
+                throw new IllegalArgumentException("No valid areaIndex found");
         }
     }
 

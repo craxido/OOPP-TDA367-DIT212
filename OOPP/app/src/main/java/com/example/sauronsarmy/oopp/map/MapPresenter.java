@@ -14,7 +14,7 @@ import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
 public class MapPresenter implements MapMVPInterface.PresenterOps {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "MapPresenter";
 
     private static PlayerModelInterface playerModel;
     private static MapMVPInterface.ModelOps map;
@@ -30,7 +30,6 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     public int getBackgroundRef() {
         return map.getCurrentArea().getImgRef();
-
     }
 
     public Area getArea(int index) {
@@ -43,10 +42,8 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     public int getPathGoal(){return getCurrentArea().getCurrentLevel().getPathToGoal();}
 
     public void onError(String errorMsg){
-
         Log.i(TAG, "Error: " + errorMsg);
     }
-
 
     @Override
     public void saveState(Context context){
@@ -73,16 +70,12 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     @Override
     public boolean tryChangeAreaLevel(int level, int area) {
-
         return map.tryChangeAreaLevel(level,area);
     }
 
     public void changeLvl(int index) {
-
         getCurrentArea().setCurrentLevel(getCurrentArea().getLevels()[index]);
     }
-
-
 
     public Level getCurrentLevel() {
         return map.getCurrentLevel();
@@ -91,8 +84,6 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     public void setNewMonster() {
         map.getCurrentArea().getCurrentLevel().setNewMonster();
     }
-
-
 
     public IMonster getCurrentMonster() {
         return map.getCurrentArea().getCurrentLevel().getCurrentMonster();
@@ -143,18 +134,12 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     }
 
-
-
     public boolean nextLevel(){
-
         return map.nextLevel();
     }
 
     public boolean previousLevel(){
-
         return map.previousLevel();
 
     }
-
-
 }
