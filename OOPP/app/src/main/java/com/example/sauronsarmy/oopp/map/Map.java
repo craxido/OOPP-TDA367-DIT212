@@ -20,7 +20,7 @@ class Map implements MapMVPInterface.ModelOps {
     private monsterFactory monfac;
     private int bgRef;
 
-    public static Map getInstance() {
+    public static MapMVPInterface.ModelOps getInstance() {
         return mapInstance;
     }
 
@@ -34,16 +34,37 @@ class Map implements MapMVPInterface.ModelOps {
 
     private Map (Context context) {
         loadState(context.getApplicationContext()); //Load the map progress/ state
-        
         bgRef = R.drawable.mapbg;
         areas = createAreas();
         currentArea = areas[0];
         monfac = new monsterFactory();
     }
 
-    public void saveState(Context context) {}
 
-    public void loadState(Context context) {}
+
+    public void saveState(Context context) {
+        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = saveState.edit();
+        editor.putInt("bgRef", getBackgroundRef());
+        editor.putInt("currentArea", currentArea.getAreaIndex());
+        editor.putInt("currentLevel", currentArea.getCurrentLevel().getPathToGoal());
+        editor.apply();
+    }
+
+    public void loadState(Context context) {
+        saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
+                Context.MODE_PRIVATE);
+
+        setBackgroundRef(saveState.getInt("bgRef", 0));
+        setCurrentArea(areas[saveState.getInt("currentArea", 0)]);
+        setCurrentLevel(getCurrentArea().getLevels()[saveState.getInt("currentLevel", 0)]);
+
+    }
+
+    private void setCurrentLevel(Level level){
+        currentArea.setCurrentLevel(level);
+    }
 
     public int damageMonster(int damage) {
         int ret = getCurrentArea().getCurrentLevel().damageMonster(damage);

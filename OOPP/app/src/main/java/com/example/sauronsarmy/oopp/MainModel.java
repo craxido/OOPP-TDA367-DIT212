@@ -71,7 +71,11 @@ class MainModel implements MainMVPInterface.ModelInterface {
         editor.putInt("money", (int) currentState.get("money"));
         editor.putInt("moneyPerSec", (int) currentState.get("moneyPerSec"));
         editor.putLong("lastLogOn", (long) currentState.get("lastLogOn"));
+        // Map state
+
+
         editor.apply();
+
     }
 
     /**
