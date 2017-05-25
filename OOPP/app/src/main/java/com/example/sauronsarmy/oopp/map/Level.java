@@ -14,10 +14,10 @@ public class Level {
     private int healthMultiplier;
     private int goldMultiplier;
     private com.example.sauronsarmy.oopp.areaType areaType;
-    MapPresenter map = new MapPresenter();
     private int goal=10;
     private int pathToGoal=0;
     private boolean completed=false;
+    private boolean checked=false;
 
     Level(IMonster monster, int healthMultiplier, int goldMultiplier, areaType area) {
         this.monster = monster;
@@ -29,6 +29,14 @@ public class Level {
     public boolean equals(Level other){
         return this.monster.equals(other.monster) && this.healthMultiplier == other.healthMultiplier
                 && this.goldMultiplier == other.goldMultiplier && this.areaType == other.areaType;
+    }
+
+    void setChecked(boolean bool){
+        checked=bool;
+    }
+
+    boolean isChecked(){
+        return this.checked;
     }
 
     areaType getArea(){
@@ -77,7 +85,6 @@ public class Level {
 
             ret=monster.getGold();
             pathToGoal++;
-            map.addClearedGoal(1); //A goal is cleared, save it in map.
             if(pathToGoal>=goal){
                 completed=true;
                 pathToGoal=goal;
@@ -100,15 +107,15 @@ public class Level {
     }
 
 
-    public int getGoal(){
+    int getGoal(){
         return goal;
     }
 
-    public int getPathToGoal(){
+    int getPathToGoal(){
         return pathToGoal;
     }
 
-    public void setComplete(boolean bool){
+    void setComplete(boolean bool){
         completed=bool;
     }
 

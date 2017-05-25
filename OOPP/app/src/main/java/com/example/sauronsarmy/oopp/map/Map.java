@@ -51,7 +51,6 @@ class Map implements MapMVPInterface.ModelOps {
         editor.putInt("bgRef", getBackgroundRef());
         editor.putInt("currentArea", currentArea.getAreaIndex());
         editor.putInt("currentLevel", currentArea.getCurrentLevel().getPathToGoal());
-        editor.putInt("monsterHealth", currentArea.getCurrentLevel().getCurrentMonster().getHealth());
         editor.putInt("clearedGoals", clearedGoals);
         editor.apply();
         Log.i(TAG, "Map state saved.");
@@ -64,8 +63,7 @@ class Map implements MapMVPInterface.ModelOps {
         setBackgroundRef(saveState.getInt("bgRef", 0));
         setCurrentArea(areas[saveState.getInt("currentArea", 0)]);
         setCurrentLevel(getCurrentArea().getLevels()[saveState.getInt("currentLevel", 0)]);
-        setCurrentMonsterHealth(saveState.getInt("monsterHealth", 0));
-        setClearedGoals(clearedGoals);
+        setClearedGoals(saveState.getInt("clearedGoals", 0));
         Log.i(TAG, "Map state loaded.");
     }
 
@@ -84,6 +82,10 @@ class Map implements MapMVPInterface.ModelOps {
         int ret = getCurrentArea().getCurrentLevel().damageMonster(damage);
         if (ret > 0) {
             getCurrentArea().checkComplete();
+            if(getCurrentLevel().getComplete() && !getCurrentLevel().isChecked()){
+                clearedGoals++;
+                getCurrentLevel().setChecked(true);
+            }
             return ret;
         }
         return 0;
