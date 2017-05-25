@@ -19,9 +19,15 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     private static PlayerModelInterface playerModel;
     private static MapMVPInterface.ModelOps map;
 
+    //Overloading
     public MapPresenter() {
         map = Map.getInstance();
         playerModel = PlayerModel.getInstance();
+    }
+
+    public MapPresenter(Context context){
+        map = Map.getInstance(context.getApplicationContext());
+        playerModel = PlayerModel.getInstance(context.getApplicationContext());
     }
 
     private static void setBackgroundRef(int ref) {
@@ -140,5 +146,9 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     public boolean previousLevel(){
         return map.previousLevel();
+    }
+
+    public void addClearedGoal(int goal){
+        map.addClearedGoal(goal);
     }
 }

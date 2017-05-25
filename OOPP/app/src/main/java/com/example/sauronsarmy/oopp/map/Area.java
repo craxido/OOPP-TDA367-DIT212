@@ -93,4 +93,8 @@ public class Area {
         return null;
     }
 
+    void completeLevel(int levelIndex){
+        this.levels[levelIndex].setComplete(true);
+    }
+
 }

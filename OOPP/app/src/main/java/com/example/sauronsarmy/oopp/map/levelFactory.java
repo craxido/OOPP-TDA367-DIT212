@@ -54,18 +54,6 @@ class levelFactory {
             default:
                 return null;
         }
-
     }
 
-    Level[] getLevels(areaType type) {
-        // LevelAmount could be set depending on area.
-        int LevelAmount=3;
-        Level[] levels = new Level[LevelAmount];
-        for(int i=0; i < LevelAmount; i++){
-            levels[i]=getLevel(type,i+1);
-        }
-        // Uses getLevel().
-        // Right now, this only creates one level for each area.
-        return levels;
-    }
 }

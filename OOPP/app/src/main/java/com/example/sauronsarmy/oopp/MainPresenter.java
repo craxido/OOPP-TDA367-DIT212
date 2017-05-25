@@ -25,7 +25,7 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
     public MainPresenter(Context context) {
         playerModel = PlayerModel.getInstance(context.getApplicationContext());
         mainModel = MainModel.getInstance();
-        mapPresenter = new MapPresenter();
+        mapPresenter = new MapPresenter(context.getApplicationContext());
     }
 
     //Called from MainActivity when a monster is clicked

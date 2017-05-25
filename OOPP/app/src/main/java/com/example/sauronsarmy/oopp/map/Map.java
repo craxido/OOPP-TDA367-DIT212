@@ -21,7 +21,9 @@ class Map implements MapMVPInterface.ModelOps {
     private static levelFactory lvlfac;
     private monsterFactory monfac;
     private int bgRef;
+    private int clearedGoals;
 
+    //Overloading so that context doesn't have to be sent once map is created
     public static MapMVPInterface.ModelOps getInstance() {
         return mapInstance;
     }
@@ -34,11 +36,11 @@ class Map implements MapMVPInterface.ModelOps {
     }
 
     private Map (Context context) {
-        loadState(context.getApplicationContext()); //Load the map progress/ state
         bgRef = R.drawable.mapbg;
         areas = createAreas();
         currentArea = areas[0];
         monfac = new monsterFactory();
+        loadState(context.getApplicationContext()); //Load the map progress/ state
         Log.i(TAG, "A map instance was created.");
     }
 
@@ -50,6 +52,7 @@ class Map implements MapMVPInterface.ModelOps {
         editor.putInt("currentArea", currentArea.getAreaIndex());
         editor.putInt("currentLevel", currentArea.getCurrentLevel().getPathToGoal());
         editor.putInt("monsterHealth", currentArea.getCurrentLevel().getCurrentMonster().getHealth());
+        editor.putInt("clearedGoals", clearedGoals);
         editor.apply();
         Log.i(TAG, "Map state saved.");
     }
@@ -62,16 +65,19 @@ class Map implements MapMVPInterface.ModelOps {
         setCurrentArea(areas[saveState.getInt("currentArea", 0)]);
         setCurrentLevel(getCurrentArea().getLevels()[saveState.getInt("currentLevel", 0)]);
         setCurrentMonsterHealth(saveState.getInt("monsterHealth", 0));
+        setClearedGoals(clearedGoals);
         Log.i(TAG, "Map state loaded.");
     }
 
-    //Helper method to simplify setting the current monster's health
-    private void setCurrentMonsterHealth(int health){
-        getCurrentArea().getCurrentLevel().getCurrentMonster().setHealth(health);
-    }
-
-    private void setCurrentLevel(Level level){
-        currentArea.setCurrentLevel(level);
+    private void setClearedGoals(int cleared){
+        for (Area a : areas){
+            if (!(cleared == 0)){
+                for(int i = 0; i < (cleared % 10); i++){
+                    a.completeLevel(i);
+                    cleared--;
+                }
+            }
+        }
     }
 
     public int damageMonster(int damage) {
@@ -96,6 +102,19 @@ class Map implements MapMVPInterface.ModelOps {
 
         return areas;
     }
+
+    public void addClearedGoal(int goal){
+        clearedGoals = clearedGoals + goal;
+    }
+
+    private void setCurrentMonsterHealth(int health){
+        getCurrentArea().getCurrentLevel().getCurrentMonster().setHealth(health);
+    }
+
+    private void setCurrentLevel(Level level){
+        currentArea.setCurrentLevel(level);
+    }
+
 
     @Override
     public int getBackgroundRef() {

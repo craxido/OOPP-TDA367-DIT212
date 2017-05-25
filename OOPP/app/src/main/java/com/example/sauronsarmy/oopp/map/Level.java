@@ -14,7 +14,7 @@ public class Level {
     private int healthMultiplier;
     private int goldMultiplier;
     private com.example.sauronsarmy.oopp.areaType areaType;
-
+    MapPresenter map = new MapPresenter();
     private int goal=10;
     private int pathToGoal=0;
     private boolean completed=false;
@@ -76,8 +76,8 @@ public class Level {
         if(monster.damageMonster(damage)){
 
             ret=monster.getGold();
-
             pathToGoal++;
+            map.addClearedGoal(1); //A goal is cleared, save it in map.
             if(pathToGoal>=goal){
                 completed=true;
                 pathToGoal=goal;
@@ -97,22 +97,22 @@ public class Level {
         else { //It's time for a boss monster!
             setCurrentMonster(monFac.getBossMonster(getHealthMultiplier()*10, getGoldMultiplier()*100, getArea()));
         }
-
     }
 
 
     public int getGoal(){
         return goal;
-
     }
 
     public int getPathToGoal(){
         return pathToGoal;
+    }
 
+    public void setComplete(boolean bool){
+        completed=bool;
     }
 
     public boolean getComplete(){
-
         return completed;
     }
 
