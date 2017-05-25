@@ -45,7 +45,7 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
     @Override
     public void saveState(Context context) {
         Log.i(TAG, "Saving the current state.");
-        playerModel.saveState(context);
+        mapPresenter.saveState(context); //Saves player state and map state.
     }
 
     @Override
