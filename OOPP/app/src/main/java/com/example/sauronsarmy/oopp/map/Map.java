@@ -39,7 +39,7 @@ class Map implements MapMVPInterface.ModelOps {
         areas = createAreas();
         currentArea = areas[0];
         monfac = new monsterFactory();
-        Log.i(TAG, "A new map instance was created.");
+        Log.i(TAG, "A map instance was created.");
     }
 
     public void saveState(Context context) {
@@ -134,7 +134,6 @@ class Map implements MapMVPInterface.ModelOps {
         return getCurrentArea().getCurrentLevel();
     }
 
-
     @Override
     public Level createLevel(areaType areaType){
             switch (areaType) {
@@ -223,7 +222,6 @@ class Map implements MapMVPInterface.ModelOps {
         }
     }
 
-
     public boolean nextLevel(){
 
         int lvlpos = getLevelIndex() +1;
@@ -271,12 +269,10 @@ class Map implements MapMVPInterface.ModelOps {
         return pos;
     }
 
-
     private int getAreaIndex(){
 
        return currentArea.getAreaIndex();
     }
-
 
     //Check to see if allowed to change to given area[level], if you can , change, otherwise do nothing
     @Override
@@ -318,9 +314,9 @@ class Map implements MapMVPInterface.ModelOps {
     }
 
     public void changeLvl(int index) {
-
         getCurrentArea().setCurrentLevel(getCurrentArea().getLevels()[index]);
     }
+
     public void changeArea(int index){
         setCurrentArea(getArea(index));
         int imgref= getArea(index).getImgRef();

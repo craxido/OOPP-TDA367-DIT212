@@ -131,7 +131,6 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     public boolean compareAreas(Area a, Area b){
         return a.equals(b);
-
     }
 
     public boolean nextLevel(){
@@ -140,6 +139,5 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     public boolean previousLevel(){
         return map.previousLevel();
-
     }
 }
