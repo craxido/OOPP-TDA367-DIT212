@@ -51,6 +51,19 @@ public class monsterFactory {
         }
     }
 
+
+    public IMonster getMountainMonster(int hp, int gold){
+        return new Monster(hp, gold, mountainMonsters[0], false);
+    }
+
+    public IMonster getForestMonster(int hp, int gold){
+        return new Monster(hp, gold, forestMonsters[0], false);
+    }
+
+    public IMonster getVolcanoMonster(int hp, int gold){
+        return new Monster(hp, gold, volcanoMonsters[0], false);
+    }
+
     public IMonster getBossMonster(int hp, int gold, areaType type){ //type not used for now as all bosses are the same.
         return new BossMonster(hp, gold, bossMonsterImg);
     }
