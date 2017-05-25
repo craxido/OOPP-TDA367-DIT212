@@ -61,6 +61,8 @@ public interface MapMVPInterface {
         boolean tryChangeAreaLevel(int level, int area);
         boolean nextLevel();
         boolean previousLevel();
+        void saveState(Context context);
+        void loadState(Context context);
         // methods to be called from Model
     }
 }

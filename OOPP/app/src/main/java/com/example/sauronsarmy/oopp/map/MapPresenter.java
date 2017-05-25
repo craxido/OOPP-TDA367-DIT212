@@ -48,6 +48,7 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     @Override
     public void saveState(Context context){
         playerModel.saveState(context);
+        map.saveState(context);
     }
 
     public int getPlayerMoney(){
