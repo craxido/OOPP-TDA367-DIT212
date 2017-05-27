@@ -316,12 +316,12 @@ class Map implements MapMVPInterface.ModelOps {
         return false;
     }
 
-    public void changeLvl(int index) {
+    private void changeLvl(int index) {
         Level newLevel = getCurrentArea().getLevels()[index];
         getCurrentArea().setCurrentLevel(newLevel);
     }
 
-    public void changeArea(int index){
+    private void changeArea(int index){
         setCurrentArea(getArea(index));
         int imgref= getArea(index).getImgRef();
         setBackgroundRef(imgref);

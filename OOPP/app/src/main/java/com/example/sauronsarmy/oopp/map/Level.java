@@ -42,7 +42,7 @@ public class Level {
         return this.checked;
     }
 
-    public int getLevelIndex(){
+    int getLevelIndex(){
         return this.levelIndex;
     }
 
@@ -80,7 +80,7 @@ public class Level {
         return monster;
     }
 
-    void setCurrentMonster(IMonster currentMonster) {
+    private void setCurrentMonster(IMonster currentMonster) {
         this.monster = currentMonster;
     }
 

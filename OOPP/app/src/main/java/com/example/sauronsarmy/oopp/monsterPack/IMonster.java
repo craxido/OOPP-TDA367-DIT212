@@ -1,7 +1,7 @@
 package com.example.sauronsarmy.oopp.monsterPack;
 
 /**
- * Created by Jonatan on 18/05/2017.
+ * @author Jonatan Källman
  */
 
 public interface IMonster {

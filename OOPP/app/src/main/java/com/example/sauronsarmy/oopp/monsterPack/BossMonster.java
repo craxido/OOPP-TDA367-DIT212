@@ -12,7 +12,7 @@ public class BossMonster extends Monster implements ClockListener {
     private int time;
     private int timeLimit;
 
-    public BossMonster(int health, int gold, int imageref){
+    BossMonster(int health, int gold, int imageref){
         super(health,gold,imageref,true);
         Runner.getInstance().register(this);
         timeLimit = 20;
@@ -23,11 +23,11 @@ public class BossMonster extends Monster implements ClockListener {
         setHealth(getMaxHealth());
     }
 
-    public void resetTime() {
+    private void resetTime() {
         time = timeLimit;
     }
 
-    public void resetBoss() {
+    private void resetBoss() {
         resetHealth();
         resetTime();
     }
