@@ -26,8 +26,8 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     }
 
     public MapPresenter(Context context){
-        map = Map.getInstance(context.getApplicationContext());
-        playerModel = PlayerModel.getInstance(context.getApplicationContext());
+        map = Map.getInstance(context);
+        playerModel = PlayerModel.getInstance(context);
     }
 
     private static void setBackgroundRef(int ref) {
