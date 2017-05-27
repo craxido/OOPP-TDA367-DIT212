@@ -117,12 +117,9 @@ class Map implements MapMVPInterface.ModelOps {
         return areas;
     }
 
-
-
     private void setCurrentLevel(Level level){
         currentArea.setCurrentLevel(level);
     }
-
 
     @Override
     public int getBackgroundRef() {
@@ -334,11 +331,11 @@ class Map implements MapMVPInterface.ModelOps {
     public  Area createArea(int areaIndex){
         switch (areaIndex){
             case 0:
-                return new Area(R.drawable.mountainarea, areaType.MOUNTAIN, lvlfac.getMountainLevels(), 0);
+                return new Area(R.drawable.mountainarea, areaType.MOUNTAIN, lvlfac.getMountainLevels(), areaIndex);
             case 1:
-                return new Area(R.drawable.forestarea, areaType.FOREST, lvlfac.getForestLevels(), 1);
+                return new Area(R.drawable.forestarea, areaType.FOREST, lvlfac.getForestLevels(), areaIndex);
             case 2:
-                return new Area(R.drawable.volcanoarea, areaType.VOLCANO, lvlfac.getVolcanoLevels(), 2);
+                return new Area(R.drawable.volcanoarea, areaType.VOLCANO, lvlfac.getVolcanoLevels(), areaIndex);
             default: //Not a valid (or yet listed) area.
                 Log.e(TAG, "ERROR: createArea(int areaIndex) was called," +
                         " but no valid areaIndex was given.");
@@ -346,24 +343,17 @@ class Map implements MapMVPInterface.ModelOps {
         }
     }
 
-    @Override
-    public Level createLevel(areaType areaType){
-        switch (areaType) {
-            case MOUNTAIN:
-                return lvlfac.getMountainLevels()[0];//new Level(monfac.getMountainMonster(100, 100), 1, 1, areaType,0);
-            case FOREST:
-                return lvlfac.getForestLevels()[0]; //new Level(monfac.getForestMonster(200, 200), 2, 2, areaType, 0);
-            case VOLCANO:
-                return lvlfac.getVolcanoLevels()[0]; //new Level(monfac.getVolcanoMonster(300, 300), 3, 3, areaType, 0);
-            default:
-                Log.e(TAG, "ERROR: createLevel(areaType) was called," +
-                        " but no valid areaType was given.");
-                throw new IllegalArgumentException("No valid areaType found");
-        }
+    //Functions accessible for tests (must be reached via MapPresenter).
+    public Level createMountainLvl(int levelIndex){
+        return lvlfac.getMountainLevel(levelIndex);
     }
 
-    public Level createLevelM(){
-        return lvlfac.getMountainLevels()[0];
+    public Level createForestLvl(int levelIndex){
+        return lvlfac.getForestLevel(levelIndex);
+    }
+
+    public Level createVolcanoLvl(int levelIndex){
+        return lvlfac.getVolcanoLevel(levelIndex);
     }
 
 }

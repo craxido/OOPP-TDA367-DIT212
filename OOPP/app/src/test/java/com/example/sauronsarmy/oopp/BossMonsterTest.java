@@ -11,6 +11,7 @@ import static org.mockito.Mockito.*;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.junit.runner.RunWith;
+import static org.junit.Assert.*;
 
 /**
  * @author Jonatan Källman
@@ -27,12 +28,17 @@ public class BossMonsterTest {
 
     @Before
     public void setUp() throws Exception {
-        when(monfac.getBossMonster(10000, 10000, areaType.FOREST)).thenReturn(boss);
+        when(monfac.getBossMonster(10000, 10000)).thenReturn(boss);
     }
 
     @After
     public void tearDown() throws Exception {
         boss = null;
+    }
+
+    @Test
+    public void exists() throws Exception {
+        assertTrue(boss != null);
     }
 
     @Test
@@ -57,4 +63,5 @@ public class BossMonsterTest {
         assert (!(healthBeforeUpdate == boss.getHealth()));
         assert (boss.getTime() == 0);
     }
+
 }

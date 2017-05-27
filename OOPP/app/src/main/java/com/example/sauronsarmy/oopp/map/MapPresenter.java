@@ -96,10 +96,6 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         return map.getCurrentArea().getCurrentLevel().getCurrentMonster();
     }
 
-    public Level createLevel(areaType areaType) {
-        return map.createLevel(areaType);
-    }
-
     public Area[] getAreas() {
         return map.getAreas();
     }
@@ -152,8 +148,16 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         return map.getMapBgRef();
     }
 
-    public Level createLevelM(){
-        return map.createLevelM();
+    public Level createMountainLvl(int levelIndex){
+        return map.createMountainLvl(levelIndex);
+    }
+
+    public Level createForestLvl(int levelIndex){
+        return map.createForestLvl(levelIndex);
+    }
+
+    public Level createVolcanoLvl(int levelIndex){
+        return map.createVolcanoLvl(levelIndex);
     }
 
 }

@@ -108,7 +108,7 @@ public class Level {
         if (!(pathToGoal == 9)) {
             setCurrentMonster(monFac.getMonster(getHealthMultiplier(), getGoldMultiplier() * 100, getArea()));
         } else { //It's time for a boss monster!
-            setCurrentMonster(monFac.getBossMonster(getHealthMultiplier() * 10, getGoldMultiplier() * 100, getArea()));
+            setCurrentMonster(monFac.getBossMonster(getHealthMultiplier() * 10, getGoldMultiplier() * 100));
         }
     }
 

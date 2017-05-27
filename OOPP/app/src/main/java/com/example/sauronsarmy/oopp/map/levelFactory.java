@@ -13,30 +13,47 @@ class levelFactory {
 
     private monsterFactory monfac = new monsterFactory();
 
+    Level getForestLevel(int levelIndex){
+        return new Level(monfac.getForestMonster(20000 * (levelIndex + 1), 500),
+                20000 * (levelIndex + 1), 20 * (levelIndex + 1), areaType.FOREST, levelIndex);
+    }
+
+    Level getMountainLevel(int levelIndex){
+        return new Level(monfac.getMountainMonster(100 * (levelIndex + 1), 100),
+                100 * (levelIndex + 1), 10 * (levelIndex + 1), areaType.MOUNTAIN, levelIndex);
+    }
+
+
+    Level getVolcanoLevel(int levelIndex){
+        return new Level(monfac.getVolcanoMonster(300000 * (levelIndex + 1), 3000),
+                300000 * (levelIndex + 1), 30 * (levelIndex + 1), areaType.VOLCANO, levelIndex);
+    }
+
     Level[] getForestLevels() {
         int LevelAmount = 10;
-        Level[] levels = new Level[10];
+        Level[] levels = new Level[LevelAmount];
         for (int i = 0; i < LevelAmount; i++) {
-            levels[i] = new Level(monfac.getForestMonster(20000 * (i + 1), 500), 20000 * (i + 1), 20 * (i + 1), areaType.FOREST, i);
+            levels[i] = getForestLevel(i);
         }
         return levels;
     }
 
     Level[] getMountainLevels() {
         int LevelAmount = 10;
-        Level[] levels = new Level[10];
+        Level[] levels = new Level[LevelAmount];
         for (int i = 0; i < LevelAmount; i++) {
-            levels[i] = new Level(monfac.getMountainMonster(100 * (i + 1), 100), 100 * (i + 1), 10 * (i + 1), areaType.MOUNTAIN, i);
+            levels[i] = getMountainLevel(i);
         }
         return levels;
     }
 
     Level[] getVolcanoLevels() {
         int LevelAmount = 10;
-        Level[] levels = new Level[10];
+        Level[] levels = new Level[LevelAmount];
         for (int i = 0; i < LevelAmount; i++) {
-            levels[i] = new Level(monfac.getVolcanoMonster(300000 * (i + 1), 3000), 300000 * (i + 1), 30 * (i + 1), areaType.VOLCANO, i);
+            levels[i] = getVolcanoLevel(i);
         }
         return levels;
     }
+
 }
