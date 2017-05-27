@@ -25,6 +25,9 @@ class Map implements MapMVPInterface.ModelOps {
 
     //Overloading so that context doesn't have to be sent once map is created
     public static MapMVPInterface.ModelOps getInstance() {
+        if (mapInstance == null){
+            mapInstance = new Map();
+        }
         return mapInstance;
     }
 
@@ -35,13 +38,20 @@ class Map implements MapMVPInterface.ModelOps {
         return mapInstance;
     }
 
+    //Overload
+    private Map () {
+        bgRef = R.drawable.mapbg;
+        areas = createAreas();
+        currentArea = areas[0];
+        monfac = new monsterFactory();
+    }
+
     private Map (Context context) {
         bgRef = R.drawable.mapbg;
         areas = createAreas();
         currentArea = areas[0];
         monfac = new monsterFactory();
         loadState(context.getApplicationContext()); //Load the map progress/ state
-        Log.i(TAG, "A map instance was created.");
     }
 
     public void saveState(Context context) {
@@ -85,8 +95,8 @@ class Map implements MapMVPInterface.ModelOps {
             getCurrentArea().checkComplete();
             if(getCurrentLevel().getComplete() && !(getCurrentLevel().isChecked())){
                 completedGoals++;
-                Log.i(TAG, "Goals: " + completedGoals); //This never runs, levels are always checked?
-                getCurrentLevel().setChecked(true);
+                Log.i(TAG, "Goals: " + completedGoals);
+                getCurrentArea().getCurrentLevel().setChecked(true);
             }
             return ret;
         }
@@ -117,6 +127,11 @@ class Map implements MapMVPInterface.ModelOps {
     @Override
     public int getBackgroundRef() {
         return this.bgRef;
+    }
+
+    @Override
+    public int getMapBgRef() {
+        return R.drawable.mapbg;
     }
 
     @Override
@@ -335,16 +350,20 @@ class Map implements MapMVPInterface.ModelOps {
     public Level createLevel(areaType areaType){
         switch (areaType) {
             case MOUNTAIN:
-                return new Level(monfac.getMountainMonster(100, 100), 1, 1, areaType,0);
+                return lvlfac.getMountainLevels()[0];//new Level(monfac.getMountainMonster(100, 100), 1, 1, areaType,0);
             case FOREST:
-                return new Level(monfac.getForestMonster(200, 200), 2, 2, areaType, 0);
+                return lvlfac.getForestLevels()[0]; //new Level(monfac.getForestMonster(200, 200), 2, 2, areaType, 0);
             case VOLCANO:
-                return new Level(monfac.getVolcanoMonster(300, 300), 3, 3, areaType, 0);
+                return lvlfac.getVolcanoLevels()[0]; //new Level(monfac.getVolcanoMonster(300, 300), 3, 3, areaType, 0);
             default:
                 Log.e(TAG, "ERROR: createLevel(areaType) was called," +
                         " but no valid areaType was given.");
                 throw new IllegalArgumentException("No valid areaType found");
         }
+    }
+
+    public Level createLevelM(){
+        return lvlfac.getMountainLevels()[0];
     }
 
 }

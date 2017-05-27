@@ -63,6 +63,8 @@ public interface MapMVPInterface {
         boolean previousLevel();
         void saveState(Context context);
         void loadState(Context context);
+        int getMapBgRef();
+        Level createLevelM();
         // methods to be called from Model
     }
 }

@@ -148,4 +148,12 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         return map.previousLevel();
     }
 
+    public int getMapBgRef(){
+        return map.getMapBgRef();
+    }
+
+    public Level createLevelM(){
+        return map.createLevelM();
+    }
+
 }

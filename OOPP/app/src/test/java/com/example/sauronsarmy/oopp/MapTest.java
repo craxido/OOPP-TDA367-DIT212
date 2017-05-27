@@ -13,6 +13,7 @@ import static org.junit.Assert.*;
 
 //This is a test file for the Map package and its files.
 public class MapTest {
+
     private MapPresenter map;
 
     @Before
@@ -23,6 +24,11 @@ public class MapTest {
     @After
     public void tearDown() throws Exception {
         map = null;
+    }
+
+    @Test
+    public void exists() throws Exception {
+        assertTrue(map != null);
     }
 
     @Test
@@ -67,12 +73,13 @@ public class MapTest {
 
     @Test
     public void testGetMapBgRef() throws Exception{
-        assertEquals(map.getBackgroundRef(),R.drawable.mapbg);
+        assertEquals(map.getMapBgRef(), R.drawable.mapbg);
     }
 
     @Test
     public void testCurrentLevel() throws Exception { //Will have to be updated as more levels are added.
         for (int i = 0; i < map.getAreaAmount(); i++) {
+            map.changeArea(i);
             switch (map.getAreaType(i)) {
                 case MOUNTAIN:
                     assertTrue(map.compareLevels(map.getCurrentLevel(), map.createLevel(areaType.MOUNTAIN)));
@@ -90,6 +97,14 @@ public class MapTest {
         }
     }
 
+    //Trying to test only one area/ level at first
+    @Test
+    public void testCurrentLevelM() throws Exception{
+        map.changeArea(0);
+        map.changeLvl(0);
+        assertTrue(map.compareLevels(map.getCurrentLevel(), map.createLevelM()));
+    }
+
     @Test
     public void testGoldMultiplier(){
         for (int i = 0; i < map.getAreaAmount(); i++) { //For every area
@@ -98,19 +113,19 @@ public class MapTest {
 
                 case MOUNTAIN:
                     for (int j = 0; j < map.getLevelAmount(i); j++){ //For every level in that area
-                        assertEquals(map.getLevelGoldMultiplier(i,j),1);
+                        assertEquals(map.getLevelGoldMultiplier(i,j), 10*(j+1));
                     }
                     break;
 
                 case FOREST:
                     for (int j = 0; j < map.getLevelAmount(i); j++) { //For every level in that area
-                        assertEquals(map.getLevelGoldMultiplier(i,j),2);
+                        assertEquals(map.getLevelGoldMultiplier(i,j), 20*(j+1));
                     }
                     break;
 
                 case VOLCANO:
                     for (int j = 0; j < map.getLevelAmount(i); j++){ //For every level in that area
-                        assertEquals(map.getLevelGoldMultiplier(i,j),3);
+                        assertEquals(map.getLevelGoldMultiplier(i,j), 30*(j+1));
                     }
                     break;
 
@@ -128,19 +143,19 @@ public class MapTest {
 
                 case MOUNTAIN:
                     for (int j = 0; j < map.getLevelAmount(i); j++){ //For every level in that area
-                        assertEquals(map.getLevelHealthMultiplier(i,j), 1);
+                        assertEquals(map.getLevelHealthMultiplier(i,j), 100*(j+1));
                     }
                     break;
 
                 case FOREST:
                     for (int j = 0; j < map.getLevelAmount(i); j++) { //For every level in that area
-                        assertEquals(map.getLevelHealthMultiplier(i,j), 2);
+                        assertEquals(map.getLevelHealthMultiplier(i,j), 20000*(j+1));
                     }
                     break;
 
                 case VOLCANO:
                     for (int j = 0; j < map.getLevelAmount(i); j++){ //For every level in that area
-                        assertEquals(map.getLevelHealthMultiplier(i,j), 3);
+                        assertEquals(map.getLevelHealthMultiplier(i,j), 300000*(j+1));
                     }
                     break;
 

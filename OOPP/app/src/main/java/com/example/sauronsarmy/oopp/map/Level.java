@@ -41,7 +41,7 @@ public class Level {
         return this.checked;
     }
 
-    int getLevelIndex(){
+    public int getLevelIndex(){
         return this.levelIndex;
     }
 
