@@ -6,7 +6,7 @@ package com.example.sauronsarmy.oopp.monsterPack;
 
 public interface IMonster {
 
-    boolean equals(Monster other);
+    boolean equals(IMonster other);
     int getHealth();
     int getMaxHealth();
     int getGold();
@@ -14,4 +14,5 @@ public interface IMonster {
     boolean damageMonster(int damage);
     void setHealth(int health);
     boolean isBoss();
+
 }

@@ -29,8 +29,9 @@ public class Level {
     }
 
     public boolean equals(Level other) {
-        return this.monster.equals(other.monster) && this.healthMultiplier == other.healthMultiplier
-                && this.goldMultiplier == other.goldMultiplier && this.areaType == other.areaType;
+        return (this.monster.equals(other.monster)) && (this.healthMultiplier == other.healthMultiplier)
+                && (this.goldMultiplier == other.goldMultiplier) && (this.areaType == other.areaType)
+                && (this.levelIndex == other.levelIndex);
     }
 
     void setChecked(boolean bool) {

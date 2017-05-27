@@ -102,7 +102,7 @@ public class MapTest {
     public void testCurrentLevelM() throws Exception{
         map.changeArea(0);
         map.changeLvl(0);
-        assertTrue(map.compareLevels(map.getCurrentLevel(), map.createLevelM()));
+        assertTrue("This should be true: ", map.compareLevels(map.getCurrentLevel(), map.createLevelM()));
     }
 
     @Test
