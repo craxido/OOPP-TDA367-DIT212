@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 /**
- * @author Jonatan Källman
+ * @author Jonatan Källman & Filip Labe
  */
 
 class Map implements MapMVPInterface.ModelOps {
@@ -34,11 +34,11 @@ class Map implements MapMVPInterface.ModelOps {
     //If there is not map yet, create one. Else, get the instance.
     public static MapMVPInterface.ModelOps getInstance(Context context) {
         if (mapInstance == null)
-            mapInstance = new Map(context.getApplicationContext());
+            mapInstance = new Map(context);
         return mapInstance;
     }
 
-    //Overload
+    //Overload for testing
     private Map () {
         bgRef = R.drawable.mapbg;
         areas = createAreas();
@@ -51,7 +51,7 @@ class Map implements MapMVPInterface.ModelOps {
         areas = createAreas();
         currentArea = areas[0];
         monfac = new monsterFactory();
-        loadState(context.getApplicationContext()); //Load the map progress/ state
+        loadState(context); //Load the map progress/ state
     }
 
     public void saveState(Context context) {
