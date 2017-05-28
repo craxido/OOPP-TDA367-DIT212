@@ -10,21 +10,27 @@ import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
 /**
  * @author Jonatan Källman
+ *  This presenter handles the communication within the map package.
+ *  Most methods are explained in their class file from the object which they are called.
  */
-
 public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     private static final String TAG = "MapPresenter";
-
     private static PlayerModelInterface playerModel;
     private static MapMVPInterface.ModelOps map;
 
-    //Overloading
+    /**
+     * Constructor without context, mainly for testing.
+     */
     public MapPresenter() {
         map = Map.getInstance();
         playerModel = PlayerModel.getInstance();
     }
 
+    /**
+     * Constructor with context sent from MainActivity.
+     * @param context : Context from MainActivity.
+     */
     public MapPresenter(Context context){
         map = Map.getInstance(context);
         playerModel = PlayerModel.getInstance(context);
@@ -67,6 +73,9 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         setBackgroundRef(imgref);
     }
 
+    /**
+     * Method that applies damage to a monster. Also checks if monster is dead.
+     */
     public void damageMonster(){
         int gold = map.damageMonster(playerModel.getDamage());
         if (gold >0) {
@@ -75,6 +84,9 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         }
     }
 
+    /**
+     * Method that applies damage per second. Also checks if monster is dead.
+     */
     public void applyDPS() {
         int gold = map.damageMonster(playerModel.getDamagePerSecond());
         if (gold >0) {

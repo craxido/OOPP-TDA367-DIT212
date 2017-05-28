@@ -13,7 +13,6 @@ import org.junit.runners.Suite;
         MonsterTest.class,
         MapTest.class,
         BossMonsterTest.class,
-        ShopTest.class
 })
 
 public class TestSuite {

@@ -6,8 +6,8 @@ import com.example.sauronsarmy.oopp.monsterPack.monsterFactory;
 
 /**
  * @author Jonatan Källman
+ * Class for the Level(s) inside the Areas.
  */
-
 public class Level {
 
     private IMonster monster;
@@ -20,6 +20,14 @@ public class Level {
     private boolean checked = false;
     private int levelIndex;
 
+    /**
+     * Constructor for the Levels contained in an Area.
+     * @param monster: A Monster for the Level.
+     * @param healthMultiplier: The monster health multiplier for the level.
+     * @param goldMultiplier: The monster gold multiplier for the level.
+     * @param area: The areaType of the Area that the Level belongs to.
+     * @param levelIndex: The index of the Level.
+     */
     Level(IMonster monster, int healthMultiplier, int goldMultiplier, areaType area, int levelIndex) {
         this.monster = monster;
         this.healthMultiplier = healthMultiplier;
@@ -27,7 +35,9 @@ public class Level {
         this.areaType = area;
         this.levelIndex = levelIndex;
     }
-
+    /**
+     *  Equals method for Level. Used to compare one Level to another.
+     */
     public boolean equals(Level other) {
         return (this.monster.equals(other.monster)) && (this.healthMultiplier == other.healthMultiplier)
                 && (this.goldMultiplier == other.goldMultiplier) && (this.areaType == other.areaType)
@@ -71,12 +81,9 @@ public class Level {
     }
 
     IMonster getCurrentMonster() {
-
         if (monster == null) {
             setNewMonster();
-
         }
-
         return monster;
     }
 
@@ -84,8 +91,12 @@ public class Level {
         this.monster = currentMonster;
     }
 
+    /**
+     *  Method used to damage the current monster of the area.
+     *  Returns the monster's gold if the monster's health is =< 0.
+     *  Also sets up a new monster.
+     */
     int damageMonster(int damage) {
-
         int ret = -1;
         //If the monster died, update pathToGoal, the return value and set a new monster
         if (monster.damageMonster(damage)) {
@@ -103,6 +114,9 @@ public class Level {
         return ret;
     }
 
+    /**
+     *  Sets a monster or a boss monster depending on the progress of the Level.
+     */
     void setNewMonster() {
 
         monsterFactory monFac = new monsterFactory();

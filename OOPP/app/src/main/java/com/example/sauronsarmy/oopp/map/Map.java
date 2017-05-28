@@ -9,8 +9,8 @@ import android.util.Log;
 
 /**
  * @author Jonatan Källman & Filip Labe
+ * The class for the Map, the main model of the Map package.
  */
-
 class Map implements MapMVPInterface.ModelOps {
 
     private static final String TAG = "Map";
@@ -23,7 +23,10 @@ class Map implements MapMVPInterface.ModelOps {
     private int bgRef;
     private int completedGoals;
 
-    //Overloading so that context doesn't have to be sent once map is created
+    /**
+     * Overloading so that context doesn't have to be sent once map is created.
+     * @return : The map instance.
+     */
     public static MapMVPInterface.ModelOps getInstance() {
         if (mapInstance == null){
             mapInstance = new Map();
@@ -32,20 +35,30 @@ class Map implements MapMVPInterface.ModelOps {
     }
 
     //If there is not map yet, create one. Else, get the instance.
+
+    /**
+     * @param context: Context gotten from MainActivity on app start.
+     * @return : The map instance.
+     */
     public static MapMVPInterface.ModelOps getInstance(Context context) {
         if (mapInstance == null)
             mapInstance = new Map(context);
         return mapInstance;
     }
 
-    //Overload for testing
-    private Map () {
+    /**
+     * Constructor for map, used for testing (context free).
+     */
+    private Map () { //Overload for testing
         bgRef = R.drawable.mapbg;
         areas = createAreas();
         currentArea = areas[0];
         monfac = new monsterFactory();
     }
 
+    /**
+     * Constructor for map with context so that state and progress can be saved.
+     */
     private Map (Context context) {
         bgRef = R.drawable.mapbg;
         areas = createAreas();
@@ -54,6 +67,10 @@ class Map implements MapMVPInterface.ModelOps {
         loadState(context); //Load the map progress/ state
     }
 
+    /**
+     * Method for saving the map state.
+     * @param context : Context used to save.
+     */
     public void saveState(Context context) {
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
                 Context.MODE_PRIVATE);
@@ -66,6 +83,10 @@ class Map implements MapMVPInterface.ModelOps {
         Log.i(TAG, "Map state saved.");
     }
 
+    /**
+     * Method for loading the map state.
+     * @param context : State loaded that is sent by MainActivity.
+     */
     public void loadState(Context context) {
         saveState = context.getSharedPreferences(context.getString(R.string.stateIdentifier),
                 Context.MODE_PRIVATE);
@@ -79,6 +100,12 @@ class Map implements MapMVPInterface.ModelOps {
     }
 
     //Sets the level to complete bases on the saved value
+
+    /**
+     * Method used to set levels to completed.
+     * Used when a state is loaded and loads the goals achieved.
+     * @param completed : Amount of completed goals. Goals are defeated monsters in a level.
+     */
     private void setCompletedGoals(int completed){
         int com = completed;
         Log.i(TAG, "Goals: " + completedGoals);
@@ -96,6 +123,11 @@ class Map implements MapMVPInterface.ModelOps {
         }
     }
 
+    /**
+     * A method for damaging a monster.
+     * @param damage : The damage that is dealt to the monster.
+     * @return Returns the gold of the monster if it is killed (from Level.damageMonster method).
+     */
     public int damageMonster(int damage) {
         int ret = getCurrentArea().getCurrentLevel().damageMonster(damage);
         if (ret > 0) {
@@ -110,7 +142,10 @@ class Map implements MapMVPInterface.ModelOps {
         return 0;
     }
 
-    //Creates areas for the mapInstance
+    /**
+     * A method used at map instantiation.
+     * @return : Returns the Areas stated below.
+     */
     private static Area[] createAreas(){
         Area[] areas= new Area[3];
         lvlfac = new levelFactory();
@@ -176,14 +211,12 @@ class Map implements MapMVPInterface.ModelOps {
         return getCurrentArea().getCurrentLevel();
     }
 
-    //Gets the GoldMultiplier for the given Level in the given Area.
     @Override
     public int getLevelGoldMultiplier(int areaIndex, int levelIndex){
         Level level= areas[areaIndex].getLevels()[levelIndex];
         return level.getGoldMultiplier();
     }
 
-    //Gets the HealthMultiplier for the given Level in the given Area.
     @Override
     public int getLevelHealthMultiplier(int areaIndex, int levelIndex){
         Level[] levels= areas[areaIndex].getLevels();
@@ -232,8 +265,11 @@ class Map implements MapMVPInterface.ModelOps {
         }
     }
 
+    /**
+     * Method used to check if it is possible to change to next level.
+     * @return : true/ false depending on previous statement.
+     */
     public boolean nextLevel(){
-
         int lvlpos = getLevelIndex() +1;
         if(lvlpos >= getCurrentArea().getLevels().length){
             if(getAreaIndex()+1 < getAreas().length){
@@ -248,6 +284,10 @@ class Map implements MapMVPInterface.ModelOps {
         }
     }
 
+    /**
+     * Method used to check if it is possible to change to previous level.
+     * @return : true/ false depending on previous statement.
+     */
     public boolean previousLevel(){
         int lvlpos = getLevelIndex() -1;
         if(lvlpos <0){
@@ -263,6 +303,10 @@ class Map implements MapMVPInterface.ModelOps {
 
     }
 
+    /**
+     * Method used to get the index of a Level.
+     * @return : The index of the Level.
+     */
     private int getLevelIndex(){
 
         int pos =0;
@@ -285,6 +329,14 @@ class Map implements MapMVPInterface.ModelOps {
     }
 
     //Check to see if allowed to change to given area[level], if you can , change, otherwise do nothing
+
+    /**
+     * Method used to switch both Area and Level.
+     * Used after the last monster in the last level of an area is defeated.
+     * @param level : The index of the Level that the method tries to change to.
+     * @param area : The index of the Area that the method tries to change to.
+     * @return : true/ false depending on if changing area and level was possible.
+     */
     @Override
     public boolean tryChangeAreaLevel(int level, int area) {
 
@@ -326,17 +378,30 @@ class Map implements MapMVPInterface.ModelOps {
         return false;
     }
 
+    /**
+     * Method to change the current level.
+     * @param index : Index of the new level.
+     */
     private void changeLvl(int index) {
         Level newLevel = getCurrentArea().getLevels()[index];
         getCurrentArea().setCurrentLevel(newLevel);
     }
 
+    /**
+     * Method to change the current area.
+     * @param index : Index of the new area.
+     */
     private void changeArea(int index){
         setCurrentArea(getArea(index));
         int imgref= getArea(index).getImgRef();
         setBackgroundRef(imgref);
     }
 
+    /**
+     * Method to create an area.
+     * @param areaIndex : Index of the area to create.
+     * @return : The created area.
+     */
     @Override
     public  Area createArea(int areaIndex){
         switch (areaIndex){
@@ -353,15 +418,29 @@ class Map implements MapMVPInterface.ModelOps {
         }
     }
 
-    //Functions accessible for tests (must be reached via MapPresenter).
+    /**
+     * Method used for testing mountain levels.
+     * @param levelIndex : Index of the level to create.
+     * @return : The created level.
+     */
     public Level createMountainLvl(int levelIndex){
         return lvlfac.getMountainLevel(levelIndex);
     }
 
+    /**
+     * Method used for testing forest levels.
+     * @param levelIndex : Index of the level to create.
+     * @return : The created level.
+     */
     public Level createForestLvl(int levelIndex){
         return lvlfac.getForestLevel(levelIndex);
     }
 
+    /**
+     * Method used for testing volcano levels.
+     * @param levelIndex : Index of the level to create.
+     * @return : The created level.
+     */
     public Level createVolcanoLvl(int levelIndex){
         return lvlfac.getVolcanoLevel(levelIndex);
     }
