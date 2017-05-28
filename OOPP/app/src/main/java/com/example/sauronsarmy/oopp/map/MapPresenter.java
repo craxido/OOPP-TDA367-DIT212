@@ -68,11 +68,19 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     }
 
     public void damageMonster(){
-        playerModel.addMoney(map.damageMonster(playerModel.getDamage()));
+        int gold = map.damageMonster(playerModel.getDamage());
+        if (gold >0) {
+            playerModel.addMoney(gold);
+            playerModel.increaseMonsterKilled();
+        }
     }
 
     public void applyDPS() {
-        playerModel.addMoney(map.damageMonster(playerModel.getDamagePerSecond()));
+        int gold = map.damageMonster(playerModel.getDamagePerSecond());
+        if (gold >0) {
+            playerModel.addMoney(gold);
+            playerModel.increaseMonsterKilled();
+        }
     }
 
     @Override

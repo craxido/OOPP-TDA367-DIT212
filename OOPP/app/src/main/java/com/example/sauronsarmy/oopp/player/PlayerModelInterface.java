@@ -72,4 +72,10 @@ public interface PlayerModelInterface {
      * @param context Used to access the internal storage
      */
     void loadState(Context context);
+
+
+
+    void increaseMonsterKilled();
+
+    int getMonstersKilled();
 }

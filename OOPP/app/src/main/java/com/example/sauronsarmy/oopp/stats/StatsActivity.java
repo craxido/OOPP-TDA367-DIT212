@@ -107,11 +107,13 @@ public class StatsActivity extends AppCompatActivity implements ClockListener {
         TextView dpsText = (TextView) findViewById(R.id.dpsText);
         TextView moneyText = (TextView) findViewById(R.id.moneyText);
         TextView moneyPerSecText = (TextView) findViewById(R.id.moneyperSecText);
+        TextView monstersKilled = (TextView) findViewById(R.id.monstersKilled);
 
         damageText.setText(String.valueOf(statsPresenter.getPlayerDamage()));
         dpsText.setText(String.valueOf(statsPresenter.getPlayerDamagePerSecond()));
         moneyText.setText(String.valueOf(statsPresenter.getMoneyAmount()));
         moneyPerSecText.setText(String.valueOf(statsPresenter.getMoneyPerSecond()));
+        monstersKilled.setText(String.valueOf(statsPresenter.getMonstersKilled()));
 
         statsPresenter.update();
     }

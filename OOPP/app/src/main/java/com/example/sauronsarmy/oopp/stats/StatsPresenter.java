@@ -32,6 +32,11 @@ class StatsPresenter implements StatsInterface.Presenter {
     }
 
     @Override
+    public int getMonstersKilled() {
+        return playerModel.getMonstersKilled();
+    }
+
+    @Override
     public int getMoneyPerSecond() {
         return playerModel.getMoneyPerSecond();
     }
