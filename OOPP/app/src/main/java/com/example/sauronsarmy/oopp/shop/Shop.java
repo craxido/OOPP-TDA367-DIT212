@@ -10,7 +10,7 @@ import com.example.sauronsarmy.oopp.upgrade.Upgrade;
 
 /**
  * Created by bunnyfiscuit on 05/04/17.
- *
+ * @Author Sarosh
  */
 
 class Shop implements ShopMVPInterface.Model {

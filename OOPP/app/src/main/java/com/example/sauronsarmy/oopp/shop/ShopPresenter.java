@@ -10,6 +10,7 @@ import com.example.sauronsarmy.oopp.upgrade.Upgrade;
 
 /**
  * Created by Sarosh on 2017-05-11.
+ * @Author Sarosh
  */
 
 public class ShopPresenter implements ShopMVPInterface.Presenter {

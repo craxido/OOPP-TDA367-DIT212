@@ -5,19 +5,14 @@ import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
 import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
-
 /**
  * Created by Sarosh on 2017-05-13.
+ * @Author Sarosh
  */
-
 public class HomeTest {
     private PlayerModelInterface player;
     private HomePresenter home;
@@ -34,7 +29,6 @@ public class HomeTest {
      * Oil upgrade stat: 1
      * Oil upgrade cost: 100
      */
-
 
     @Before
     public void setUp(){
