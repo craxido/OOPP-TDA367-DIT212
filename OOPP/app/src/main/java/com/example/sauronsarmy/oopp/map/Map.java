@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 /**
- * @author Jonatan Källman
+ * @author Jonatan Källman & Filip Labe
  */
 
 class Map implements MapMVPInterface.ModelOps {
@@ -34,11 +34,11 @@ class Map implements MapMVPInterface.ModelOps {
     //If there is not map yet, create one. Else, get the instance.
     public static MapMVPInterface.ModelOps getInstance(Context context) {
         if (mapInstance == null)
-            mapInstance = new Map(context.getApplicationContext());
+            mapInstance = new Map(context);
         return mapInstance;
     }
 
-    //Overload
+    //Overload for testing
     private Map () {
         bgRef = R.drawable.mapbg;
         areas = createAreas();
@@ -51,7 +51,7 @@ class Map implements MapMVPInterface.ModelOps {
         areas = createAreas();
         currentArea = areas[0];
         monfac = new monsterFactory();
-        loadState(context.getApplicationContext()); //Load the map progress/ state
+        loadState(context); //Load the map progress/ state
     }
 
     public void saveState(Context context) {
@@ -78,14 +78,17 @@ class Map implements MapMVPInterface.ModelOps {
         Log.i(TAG, "Map state loaded.");
     }
 
+    //Sets the level to complete bases on the saved value
     private void setCompletedGoals(int completed){
         for (Area a : areas){
-            if (!(completed == 0)){
-                for(int i = 0; i < (completed % 10); i++){
+            for(int i = 0; i < a.getLevels().length-1; i++){
+                if (completed >0){
                     a.completeLevel(i);
                     completed--;
                 }
+                else{break;}
             }
+
         }
     }
 
@@ -274,7 +277,7 @@ class Map implements MapMVPInterface.ModelOps {
 
     private int getAreaIndex(){
 
-       return currentArea.getAreaIndex();
+        return currentArea.getAreaIndex();
     }
 
     //Check to see if allowed to change to given area[level], if you can , change, otherwise do nothing

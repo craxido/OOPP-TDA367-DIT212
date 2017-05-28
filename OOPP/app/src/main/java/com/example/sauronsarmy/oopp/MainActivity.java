@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         // Calling the constructor in onCreate since we need to send the context
         // and the activity must be created before sending it.
 
-        mainPresenter = new MainPresenter(this);
+        mainPresenter = new MainPresenter(this.getApplicationContext());
         setContentView(R.layout.activity_main);
 
         /*

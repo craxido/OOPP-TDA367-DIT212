@@ -59,14 +59,12 @@ public class HomeTest {
     }
 
     /**
-     *  Tests the set and get on the upgrade counter
+     *  Tests the set and get on the upgrade counter. 
+     *  Should always start at 1
      * */
     @Test
     public void homeGetSetCounter(){
-        /** Detta ska vara sant men vet ej fan vf det inte är det.
-         * Den ska ha 1 som start värde, men getOilPumpUpradeCounter() returnerar 2 */
-        // assertEquals(1, home.getOilPumpUpgradeCounter());
-
+        assertEquals(1, home.getOilPumpUpgradeCounter());
         home.setOilCounter(5);
         assertEquals(5, home.getOilPumpUpgradeCounter());
     }
