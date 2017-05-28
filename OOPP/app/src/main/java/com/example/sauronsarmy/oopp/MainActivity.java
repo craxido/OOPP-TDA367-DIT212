@@ -59,14 +59,15 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         ImageButton statsButton = (ImageButton) findViewById(R.id.b_stats);
         ImageButton shopButton  = (ImageButton) findViewById(R.id.b_shop);
         ImageButton mainButton  = (ImageButton) findViewById(R.id.b_main);
+
         monsterButton = (ImageButton) findViewById(R.id.b_monster);
         bossFight = (ImageView) findViewById(R.id.bossFightText);
         bossTimer = (ProgressBar) findViewById(R.id.bossTimer);
         bg  = (RelativeLayout) findViewById(R.id.b_mainActivity);
         hp = (TextView) findViewById(R.id.hp);
         goal = (TextView) findViewById(R.id.goal);
-        areaText=(TextView) findViewById(R.id.area);
-        levelText=(TextView) findViewById(R.id.level);
+        areaText = (TextView) findViewById(R.id.area);
+        levelText = (TextView) findViewById(R.id.level);
 
 
         nextButton = (ImageButton) findViewById(R.id.nextLvl);
