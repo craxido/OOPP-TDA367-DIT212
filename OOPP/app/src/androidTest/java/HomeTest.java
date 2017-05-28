@@ -1,21 +1,41 @@
-package com.example.sauronsarmy.oopp;
-
+import com.example.sauronsarmy.oopp.R;
+import com.example.sauronsarmy.oopp.WelcomeActivity;
 import com.example.sauronsarmy.oopp.home.HomePresenter;
 import com.example.sauronsarmy.oopp.player.PlayerModel;
 import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.RootMatchers.isDialog;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import android.support.test.espresso.Espresso;
+import android.support.test.filters.SmallTest;
+import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
 
 /**
  * Created by Sarosh on 2017-05-13.
  * @Author Sarosh
  */
+@RunWith(AndroidJUnit4.class)
+@SmallTest
 public class HomeTest {
     private PlayerModelInterface player;
     private HomePresenter home;
+
+
+    @Rule
+    public ActivityTestRule<WelcomeActivity> wActivityRule =
+            new ActivityTestRule<>(WelcomeActivity.class);
 
     /**
      * Initial stats for player:
@@ -30,10 +50,20 @@ public class HomeTest {
      * Oil upgrade cost: 100
      */
 
+
+    /**
+     *  Check out the PlayerModelTest to find out what the
+     *  Espresso code does.
+     * */
     @Before
     public void setUp(){
-        home = new HomePresenter();
+        Espresso.onView(withId(R.id.newGame)).perform(click());
+        Espresso.onView(withText("OK"))
+                .inRoot(isDialog())
+                .check(matches(isDisplayed()))
+                .perform(click());
         player = PlayerModel.getInstance();
+        home = new HomePresenter();
     }
 
     @After
@@ -53,11 +83,14 @@ public class HomeTest {
     }
 
     /**
-     *  Tests the set and get on the upgrade counter. 
+     *  Tests the set and get on the upgrade counter.
      *  Should always start at 1
+     *
      * */
+    /* FAILS */
     @Test
     public void homeGetSetCounter(){
+        /** Why is this 2 ;_; */
         assertEquals(1, home.getOilPumpUpgradeCounter());
         home.setOilCounter(5);
         assertEquals(5, home.getOilPumpUpgradeCounter());
@@ -78,7 +111,7 @@ public class HomeTest {
      *  Tests on upgrade:
      *  getCost();
      *
-     *  stats not checked since they are subject to change
+     *  Stats not checked since they are subject to change
      * */
     @Test
     public void playerBuysUpgrade(){
@@ -102,9 +135,11 @@ public class HomeTest {
 
     }
 
+    /* FAILS */
     @Test
     public void poorPlayerBuysUpgrade(){
         // check player init stats, make sure 0
+        /** Why does the player have 9 gold? ;_; */
         assertEquals(0, player.getMoney());
 
         //try to buy upgrade
