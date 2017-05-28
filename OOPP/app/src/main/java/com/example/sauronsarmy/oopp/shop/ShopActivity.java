@@ -16,7 +16,7 @@ import com.example.sauronsarmy.oopp.upgrade.Upgrade;
 
 /**
  * Created by Erik on 04/04/17.
- * Written by bunnyfiscuit
+ * @Author Sarosh
  */
 
 public class ShopActivity extends AppCompatActivity implements ClockListener {
