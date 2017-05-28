@@ -25,6 +25,10 @@ public class PlayerModel implements PlayerModelInterface, ClockListener {
     private int money;
     private int moneyPerSecond;
 
+
+
+    private int monstersKilled =0;
+
     /**
      * On creation loads the state. Since the constructor is only called once
      * during the app's lifecycle we only have to load the state once!
@@ -78,6 +82,7 @@ public class PlayerModel implements PlayerModelInterface, ClockListener {
         editor.putInt("moneyPerSec", getMoneyPerSecond());
         editor.putInt("damage", getDamage());
         editor.putInt("damagePerSec", getDamagePerSecond());
+        editor.putInt("monstersKilled",getMonstersKilled());
         editor.apply();
     }
 
@@ -93,6 +98,7 @@ public class PlayerModel implements PlayerModelInterface, ClockListener {
         setMoneyPerSecond(saveState.getInt("moneyPerSec", 0));
         setDamage(saveState.getInt("damage", 10));
         setDamagePerSecond(saveState.getInt("damagePerSec", 0));
+        setMonstersKilled(saveState.getInt("monstersKilled",0));
     }
     /**
      * {@inheritDoc}
@@ -152,6 +158,19 @@ public class PlayerModel implements PlayerModelInterface, ClockListener {
     @Override
     public void setMoneyPerSecond(int moneyPerSecond) {
         this.moneyPerSecond = moneyPerSecond;
+    }
+
+    @Override
+    public int getMonstersKilled() {
+        return monstersKilled;
+    }
+
+    private void setMonstersKilled(int monstersKilled) {
+        this.monstersKilled = monstersKilled;
+    }
+
+    public void increaseMonsterKilled(){
+        monstersKilled++;
     }
 }
 

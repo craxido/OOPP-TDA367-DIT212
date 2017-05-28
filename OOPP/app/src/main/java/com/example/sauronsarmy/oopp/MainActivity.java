@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
     private RelativeLayout bg;
     private TextView hp;
     private TextView goal;
+    private TextView areaText;
+    private TextView levelText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +59,16 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         ImageButton statsButton = (ImageButton) findViewById(R.id.b_stats);
         ImageButton shopButton  = (ImageButton) findViewById(R.id.b_shop);
         ImageButton mainButton  = (ImageButton) findViewById(R.id.b_main);
+
         monsterButton = (ImageButton) findViewById(R.id.b_monster);
         bossFight = (ImageView) findViewById(R.id.bossFightText);
         bossTimer = (ProgressBar) findViewById(R.id.bossTimer);
         bg  = (RelativeLayout) findViewById(R.id.b_mainActivity);
         hp = (TextView) findViewById(R.id.hp);
         goal = (TextView) findViewById(R.id.goal);
+        areaText = (TextView) findViewById(R.id.area);
+        levelText = (TextView) findViewById(R.id.level);
+
 
         nextButton = (ImageButton) findViewById(R.id.nextLvl);
         prevButton = (ImageButton) findViewById(R.id.prevLvl);
@@ -170,6 +176,7 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         bg.setBackgroundResource(mainPresenter.getBGRef());
 
         int imageRef = (Integer) monsterButton.getTag();
+        //If the image has changed
         if (imageRef != currentMonster.getImageRef()){
             monsterButton.setImageResource(currentMonster.getImageRef());
             monsterButton.setTag(currentMonster.getImageRef());
@@ -198,6 +205,12 @@ public class MainActivity extends AppCompatActivity implements MainMVPInterface.
         int goali = mainPresenter.getGoal();
         int path  = mainPresenter.getPathGoal();
         goal.setText("Goal: " + path +"/" +goali);
+
+        int level = mainPresenter.getLevelIndex() +1;
+        int area = mainPresenter.getAreaIndex() +1;
+
+        levelText.setText("Level: " + level);
+        areaText.setText("Area: " + area);
 
         TextView moneyIndicator = (TextView) findViewById(R.id.moneyIndicator);
         moneyIndicator.setText(String.valueOf(mainPresenter.getPlayerMoney()));

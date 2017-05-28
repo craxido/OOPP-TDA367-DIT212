@@ -88,6 +88,16 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
     }
 
     @Override
+    public int getLevelIndex() {
+        return  mapPresenter.getLevelIndex();
+    }
+
+    @Override
+    public int getAreaIndex() {
+        return mapPresenter.getAreaIndex();
+    }
+
+    @Override
     public int getNextArrowImage(){
 
          if(getLvlCmp() && !(mapPresenter.getArea(mapPresenter.getAreas().length-1).equals(mapPresenter.getCurrentArea())
@@ -126,4 +136,6 @@ import com.example.sauronsarmy.oopp.map.MapPresenter;
     public boolean getAreaCmp(){
         return mapPresenter.getCurrentArea().getComplete();
     }
+
+
 }

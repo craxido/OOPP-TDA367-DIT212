@@ -27,24 +27,23 @@ public class monsterFactory {
             R.drawable.mountain_monster_11
     };
 
-    private int[] volcanoMonsters = {
+    private int[] volcanoMonsters={
             R.drawable.volcano_monster_01,
             R.drawable.volcano_monster_11
     };
-
+    private Random rand = new Random();
     private int bossMonsterImg = R.drawable.boss_monster;
 
     public IMonster getMonster(int hp, int gold, areaType type){
-        Random rand = new Random();
 
         switch (type){
 
             case FOREST:
-                return new Monster(hp, gold, forestMonsters[0], false);
+                return new Monster(hp, gold, forestMonsters[rand.nextInt(MAX)], false);
             case MOUNTAIN:
-                return new Monster(hp, gold, mountainMonsters[0], false);
+                return new Monster(hp, gold, mountainMonsters[rand.nextInt(MAX)], false);
             case VOLCANO:
-                return new Monster(hp, gold, volcanoMonsters[0], false);
+                return new Monster(hp, gold, volcanoMonsters[rand.nextInt(MAX)], false);
             default:
                 return new Monster(hp, gold, R.drawable.mike, false );
 

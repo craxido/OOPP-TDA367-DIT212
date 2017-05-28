@@ -35,6 +35,8 @@ public interface MainMVPInterface {
         void checkLevelUnlocked(int pathGoal);
         void incrementCurrentLevel();
         void decrementCurrentLevel();
+        int getLevelIndex();
+        int getAreaIndex();
         }
 
     interface ModelInterface {
