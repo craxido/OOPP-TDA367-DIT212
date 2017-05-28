@@ -9,8 +9,8 @@ import android.util.Log;
 
 /**
  * @author Jonatan Källman & Filip Labe
+ * The class for the Map, the main model of the Map package.
  */
-
 class Map implements MapMVPInterface.ModelOps {
 
     private static final String TAG = "Map";
