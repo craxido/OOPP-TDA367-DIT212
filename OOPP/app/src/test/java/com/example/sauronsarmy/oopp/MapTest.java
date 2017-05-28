@@ -13,6 +13,7 @@ import static org.junit.Assert.*;
 
 //This is a test file for the Map package and its files.
 public class MapTest {
+
     private MapPresenter map;
 
     @Before
@@ -26,40 +27,53 @@ public class MapTest {
     }
 
     @Test
+    public void exists() throws Exception {
+        assertTrue(map != null);
+    }
+
+    @Test
     public void testGetCurrentArea() throws Exception {
         map.compareAreas(map.getCurrentArea(), map.createArea(0));
     }
 
     @Test
     public void testAreaTypes() throws Exception{
+
         for(int i = 0; i < map.getAreaAmount(); i++) {
-            switch (map.getAreaType(i)){
-                case FOREST:
-                    assertEquals(map.getAreaType(i), areaType.FOREST);
-                    break;
+            map.changeArea(i);
+            areaType currentAreaType = map.getAreaType(i);
+
+            switch (currentAreaType){
                 case MOUNTAIN:
-                    assertEquals(map.getAreaType(i), areaType.MOUNTAIN);
+                    assertEquals(currentAreaType, areaType.MOUNTAIN);
+                    break;
+                case FOREST:
+                    assertEquals(currentAreaType, areaType.FOREST);
                     break;
                 case VOLCANO:
-                    assertEquals(map.getAreaType(i), areaType.VOLCANO);
+                    assertEquals(currentAreaType, areaType.VOLCANO);
                     break;
                 default: throw new AssertionError();
             }
+
         }
     }
 
     @Test
-    public void testImageRef() throws Exception{
+    public void testImageRefs() throws Exception{
         for(int i=0; i < map.getAreaAmount(); i++){
+            map.changeArea(i);
+            int currentBgRef = map.getAreaBgRef(i);
+
             switch (map.getAreaType(i)) {
                 case MOUNTAIN:
-                    assertEquals(map.getAreaBgRef(i), R.drawable.mountainarea);
+                    assertEquals(currentBgRef, R.drawable.mountainarea);
                     break;
                 case FOREST:
-                    assertEquals(map.getAreaBgRef(i), R.drawable.forestarea);
+                    assertEquals(currentBgRef, R.drawable.forestarea);
                     break;
                 case VOLCANO:
-                    assertEquals(map.getAreaBgRef(i), R.drawable.volcanoarea);
+                    assertEquals(currentBgRef, R.drawable.volcanoarea);
                     break;
             }
         }
@@ -67,86 +81,69 @@ public class MapTest {
 
     @Test
     public void testGetMapBgRef() throws Exception{
-        assertEquals(map.getBackgroundRef(),R.drawable.mapbg);
+        assertEquals(map.getMapBgRef(), R.drawable.mapbg);
     }
 
     @Test
-    public void testCurrentLevel() throws Exception { //Will have to be updated as more levels are added.
-        for (int i = 0; i < map.getAreaAmount(); i++) {
-            switch (map.getAreaType(i)) {
-                case MOUNTAIN:
-                    assertTrue(map.compareLevels(map.getCurrentLevel(), map.createLevel(areaType.MOUNTAIN)));
-                    break;
-                case FOREST:
-                    assertTrue(map.compareLevels(map.getCurrentLevel(), map.createLevel(areaType.FOREST)));
-                    break;
-                case VOLCANO:
-                    assertTrue(map.compareLevels(map.getCurrentLevel(), map.createLevel(areaType.VOLCANO)));
-                    break;
-                default: //Not a valid area
-                    throw new AssertionError();
-            }
-            break;
+    public void testMountainLevel() throws Exception{
+        map.changeArea(0);
+        map.changeLvl(0);
+        assertTrue("This should be true: ", map.compareLevels(map.getCurrentLevel(), map.createMountainLvl(0)));
+    }
+
+    @Test
+    public void testForestLevel() throws Exception{
+        map.changeArea(1);
+        map.changeLvl(0);
+        assertTrue("This should be true: ", map.compareLevels(map.getCurrentLevel(), map.createForestLvl(0)));
+    }
+
+    @Test
+    public void testVolcanoLevel() throws Exception{
+        map.changeArea(2);
+        map.changeLvl(0);
+        assertTrue("This should be true: ", map.compareLevels(map.getCurrentLevel(), map.createVolcanoLvl(0)));
+    }
+
+    @Test
+    public void testMountainGoldMultipliers(){
+        for (int j = 0; j < map.getLevelAmount(0); j++){ //For every level in that area
+            assertEquals(map.getLevelGoldMultiplier(0,j), 10*(j+1));
         }
     }
 
     @Test
-    public void testGoldMultiplier(){
-        for (int i = 0; i < map.getAreaAmount(); i++) { //For every area
-            switch (map.getAreaType(i)) { //Check the area type
-                //NOTICE: "j" is the index of the level, "i" is the index of the area.
-
-                case MOUNTAIN:
-                    for (int j = 0; j < map.getLevelAmount(i); j++){ //For every level in that area
-                        assertEquals(map.getLevelGoldMultiplier(i,j),1);
-                    }
-                    break;
-
-                case FOREST:
-                    for (int j = 0; j < map.getLevelAmount(i); j++) { //For every level in that area
-                        assertEquals(map.getLevelGoldMultiplier(i,j),2);
-                    }
-                    break;
-
-                case VOLCANO:
-                    for (int j = 0; j < map.getLevelAmount(i); j++){ //For every level in that area
-                        assertEquals(map.getLevelGoldMultiplier(i,j),3);
-                    }
-                    break;
-
-                default: //Not a valid area
-                    throw new AssertionError();
-            }
+    public void testForestGoldMultipliers(){
+        for (int j = 0; j < map.getLevelAmount(1); j++){ //For every level in that area
+            assertEquals(map.getLevelGoldMultiplier(1,j), 20*(j+1));
         }
     }
 
     @Test
-    public void testHealthMultiplier(){
-        for (int i = 0; i < map.getAreaAmount(); i++) { //For every area
-            switch (map.getAreaType(i)) { //Check the area type
-                //NOTICE: "j" is the index of the level, "i" is the index of the area.
+    public void testVolcanoGoldMultipliers(){
+        for (int j = 0; j < map.getLevelAmount(2); j++){ //For every level in that area
+            assertEquals(map.getLevelGoldMultiplier(2,j), 30*(j+1));
+        }
+    }
 
-                case MOUNTAIN:
-                    for (int j = 0; j < map.getLevelAmount(i); j++){ //For every level in that area
-                        assertEquals(map.getLevelHealthMultiplier(i,j), 1);
-                    }
-                    break;
+    @Test
+    public void testMountainHealthMultipliers(){
+        for (int j = 0; j < map.getLevelAmount(0); j++){ //For every level in that area
+            assertEquals(map.getLevelHealthMultiplier(0,j), 100*(j+1));
+        }
+    }
 
-                case FOREST:
-                    for (int j = 0; j < map.getLevelAmount(i); j++) { //For every level in that area
-                        assertEquals(map.getLevelHealthMultiplier(i,j), 2);
-                    }
-                    break;
+    @Test
+    public void testForestHealthMultipliers(){
+        for (int j = 0; j < map.getLevelAmount(1); j++){ //For every level in that area
+            assertEquals(map.getLevelHealthMultiplier(1,j), 20000*(j+1));
+        }
+    }
 
-                case VOLCANO:
-                    for (int j = 0; j < map.getLevelAmount(i); j++){ //For every level in that area
-                        assertEquals(map.getLevelHealthMultiplier(i,j), 3);
-                    }
-                    break;
-
-                default: //Not a valid area
-                    throw new AssertionError();
-            }
+    @Test
+    public void testVolcanoHealthMultipliers(){
+        for (int j = 0; j < map.getLevelAmount(2); j++){ //For every level in that area
+            assertEquals(map.getLevelHealthMultiplier(2,j), 300000*(j+1));
         }
     }
 }

@@ -22,9 +22,9 @@ public class Monster implements IMonster {
     }
 
     @Override
-    public boolean equals(Monster other){
-        return this.maxhealth == other.maxhealth && this.health == other.health
-                && this.gold == other.gold && this.imageref == other.imageref;
+    public boolean equals(IMonster other){
+        return (this.getMaxHealth() == other.getMaxHealth()) && (this.getHealth() == other.getHealth())
+                && (this.getGold() == other.getGold()) && (this.getImageRef() == other.getImageRef());
     }
 
     @Override

@@ -127,6 +127,7 @@ public class MapActivity extends AppCompatActivity
         }
     };
 
+    @Override
     public void showDia(int area){
         //Create a new fragment
         lvlPickFragment lvlpck = new lvlPickFragment();

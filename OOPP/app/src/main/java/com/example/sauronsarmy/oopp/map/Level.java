@@ -14,29 +14,44 @@ public class Level {
     private int healthMultiplier;
     private int goldMultiplier;
     private com.example.sauronsarmy.oopp.areaType areaType;
+    int goal = 10;
+    int pathToGoal = 0;
+    private boolean completed = false;
+    private boolean checked = false;
+    private int levelIndex;
 
-    private int goal=10;
-    private int pathToGoal=0;
-    private boolean completed=false;
-
-    Level(IMonster monster, int healthMultiplier, int goldMultiplier, areaType area) {
+    Level(IMonster monster, int healthMultiplier, int goldMultiplier, areaType area, int levelIndex) {
         this.monster = monster;
         this.healthMultiplier = healthMultiplier;
         this.goldMultiplier = goldMultiplier;
         this.areaType = area;
+        this.levelIndex = levelIndex;
     }
 
-    public boolean equals(Level other){
-        return this.monster.equals(other.monster) && this.healthMultiplier == other.healthMultiplier
-                && this.goldMultiplier == other.goldMultiplier && this.areaType == other.areaType;
+    public boolean equals(Level other) {
+        return (this.monster.equals(other.monster)) && (this.healthMultiplier == other.healthMultiplier)
+                && (this.goldMultiplier == other.goldMultiplier) && (this.areaType == other.areaType)
+                && (this.levelIndex == other.levelIndex);
     }
 
-    areaType getArea(){
+    void setChecked(boolean bool) {
+        checked = bool;
+    }
+
+    boolean isChecked() {
+        return this.checked;
+    }
+
+    int getLevelIndex(){
+        return this.levelIndex;
+    }
+
+    areaType getArea() {
         return this.areaType;
     }
 
-    void setArea(areaType areaType){
-        this.areaType=areaType;
+    void setArea(areaType areaType) {
+        this.areaType = areaType;
     }
 
     int getHealthMultiplier() {
@@ -57,7 +72,7 @@ public class Level {
 
     IMonster getCurrentMonster() {
 
-        if(monster ==null){
+        if (monster == null) {
             setNewMonster();
 
         }
@@ -65,22 +80,21 @@ public class Level {
         return monster;
     }
 
-    void setCurrentMonster(IMonster currentMonster) {
+    private void setCurrentMonster(IMonster currentMonster) {
         this.monster = currentMonster;
     }
 
-    int damageMonster(int damage){
+    int damageMonster(int damage) {
 
-        int ret =-1;
+        int ret = -1;
         //If the monster died, update pathToGoal, the return value and set a new monster
-        if(monster.damageMonster(damage)){
+        if (monster.damageMonster(damage)) {
 
-            ret=monster.getGold();
-
+            ret = monster.getGold();
             pathToGoal++;
-            if(pathToGoal>=goal){
-                completed=true;
-                pathToGoal=goal;
+            completed = true;
+            if (pathToGoal >= goal) {
+                pathToGoal = goal;
             }
             setNewMonster();
 
@@ -88,34 +102,31 @@ public class Level {
         return ret;
     }
 
-    void setNewMonster(){
+    void setNewMonster() {
 
-        monsterFactory monFac=new monsterFactory();
-        if (!(pathToGoal==9)){
-            setCurrentMonster(monFac.getMonster(getHealthMultiplier(), getGoldMultiplier()*100, getArea()));
+        monsterFactory monFac = new monsterFactory();
+        if (!(pathToGoal == 9)) {
+            setCurrentMonster(monFac.getMonster(getHealthMultiplier(), getGoldMultiplier() * 100, getArea()));
+        } else { //It's time for a boss monster!
+            setCurrentMonster(monFac.getBossMonster(getHealthMultiplier() * 10, getGoldMultiplier() * 100));
         }
-        else { //It's time for a boss monster!
-            setCurrentMonster(monFac.getBossMonster(getHealthMultiplier()*10, getGoldMultiplier()*100, getArea()));
-        }
-
     }
 
 
-    public int getGoal(){
+    int getGoal() {
         return goal;
-
     }
 
-    public int getPathToGoal(){
+    int getPathToGoal() {
         return pathToGoal;
-
     }
 
-    public boolean getComplete(){
+    void setComplete(boolean bool) {
+        completed = bool;
+    }
 
+    public boolean getComplete() {
         return completed;
     }
-
-
 
 }

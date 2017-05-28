@@ -8,37 +8,52 @@ import com.example.sauronsarmy.oopp.monsterPack.monsterFactory;
  */
 
 class levelFactory {
-    levelFactory(){}
+    levelFactory() {
+    }
 
     private monsterFactory monfac = new monsterFactory();
-    private Level getLevel(areaType type, int scale) {
 
-        // Level constructor:
-        // Level(Monster monster, double healthMultiplier, double goldMultiplier, areaType area)
-        // I just added some random values for health/ gold/ multipliers for now.
-        switch (type) {
-
-            case FOREST:
-                return new Level(monfac.getMonster(20000*scale, 500, type),20000*scale , 20*scale, type);
-            case MOUNTAIN:
-                return new Level(monfac.getMonster(100*scale, 100, type), 100*scale, 1*scale, type);
-            case VOLCANO:
-                return new Level(monfac.getMonster(300000*scale, 3000, type), 300000*scale, 30*scale, type);
-            default:
-                return null;
-        }
-
+    Level getForestLevel(int levelIndex){
+        return new Level(monfac.getForestMonster(20000 * (levelIndex + 1), 500),
+                20000 * (levelIndex + 1), 20 * (levelIndex + 1), areaType.FOREST, levelIndex);
     }
 
-    Level[] getLevels(areaType type) {
-        // LevelAmount could be set depending on area.
-        int LevelAmount=3;
+    Level getMountainLevel(int levelIndex){
+        return new Level(monfac.getMountainMonster(100 * (levelIndex + 1), 100),
+                100 * (levelIndex + 1), 10 * (levelIndex + 1), areaType.MOUNTAIN, levelIndex);
+    }
+
+
+    Level getVolcanoLevel(int levelIndex){
+        return new Level(monfac.getVolcanoMonster(300000 * (levelIndex + 1), 3000),
+                300000 * (levelIndex + 1), 30 * (levelIndex + 1), areaType.VOLCANO, levelIndex);
+    }
+
+    Level[] getForestLevels() {
+        int LevelAmount = 10;
         Level[] levels = new Level[LevelAmount];
-        for(int i=0; i < LevelAmount; i++){
-            levels[i]=getLevel(type,i+1);
+        for (int i = 0; i < LevelAmount; i++) {
+            levels[i] = getForestLevel(i);
         }
-        // Uses getLevel().
-        // Right now, this only creates one level for each area.
         return levels;
     }
+
+    Level[] getMountainLevels() {
+        int LevelAmount = 10;
+        Level[] levels = new Level[LevelAmount];
+        for (int i = 0; i < LevelAmount; i++) {
+            levels[i] = getMountainLevel(i);
+        }
+        return levels;
+    }
+
+    Level[] getVolcanoLevels() {
+        int LevelAmount = 10;
+        Level[] levels = new Level[LevelAmount];
+        for (int i = 0; i < LevelAmount; i++) {
+            levels[i] = getVolcanoLevel(i);
+        }
+        return levels;
+    }
+
 }

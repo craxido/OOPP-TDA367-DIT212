@@ -13,13 +13,11 @@ public class Area {
     private Level[] levels;
     private Level currentLevel;
     private boolean finished=false;
+    private int areaIndex;
 
     public int getAreaIndex() {
         return areaIndex;
     }
-
-    private int areaIndex;
-
 
     Area(int imgRef, areaType area, Level[] levels, int areaIndex){
         this.imgRef = imgRef;
@@ -93,6 +91,12 @@ public class Area {
         }
 
         return null;
+    }
+
+    void completeLevel(int levelIndex){
+        this.levels[levelIndex].setComplete(true);
+        this.levels[levelIndex].setChecked(true);
+        this.levels[levelIndex].pathToGoal =this.levels[levelIndex].goal;
     }
 
 }

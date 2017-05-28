@@ -15,6 +15,9 @@ import com.example.sauronsarmy.oopp.monsterPack.IMonster;
 public interface MapMVPInterface {
 
     interface ViewOps {
+        void update();
+        void showDia(int area);
+        void onClick(int level, int area);
         // methods to be called from View
     }
 
@@ -53,7 +56,6 @@ public interface MapMVPInterface {
         areaType getAreaType(int areaIndex);
         int getAreaBgRef(int areaIndex);
         Level getCurrentLevel();
-        Level createLevel(areaType areaType);
         int getLevelGoldMultiplier(int areaIndex, int levelIndex);
         int getLevelHealthMultiplier(int areaIndex, int levelIndex);
         int getLevelAmount(int areaIndex);
@@ -61,6 +63,12 @@ public interface MapMVPInterface {
         boolean tryChangeAreaLevel(int level, int area);
         boolean nextLevel();
         boolean previousLevel();
+        void saveState(Context context);
+        void loadState(Context context);
+        int getMapBgRef();
+        Level createMountainLvl(int levelIndex);
+        Level createForestLvl(int levelIndex);
+        Level createVolcanoLvl(int levelIndex);
         // methods to be called from Model
     }
 }

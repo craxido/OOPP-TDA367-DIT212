@@ -10,7 +10,6 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 
 @Suite.SuiteClasses({
-        PlayerModelTest.class,
         MonsterTest.class,
         MapTest.class,
         HomeTest.class,

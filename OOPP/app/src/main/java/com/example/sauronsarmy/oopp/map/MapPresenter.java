@@ -14,14 +14,20 @@ import com.example.sauronsarmy.oopp.player.PlayerModelInterface;
 
 public class MapPresenter implements MapMVPInterface.PresenterOps {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "MapPresenter";
 
     private static PlayerModelInterface playerModel;
     private static MapMVPInterface.ModelOps map;
 
+    //Overloading
     public MapPresenter() {
         map = Map.getInstance();
         playerModel = PlayerModel.getInstance();
+    }
+
+    public MapPresenter(Context context){
+        map = Map.getInstance(context);
+        playerModel = PlayerModel.getInstance(context);
     }
 
     private static void setBackgroundRef(int ref) {
@@ -30,7 +36,6 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     public int getBackgroundRef() {
         return map.getCurrentArea().getImgRef();
-
     }
 
     public Area getArea(int index) {
@@ -43,14 +48,13 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
     public int getPathGoal(){return getCurrentArea().getCurrentLevel().getPathToGoal();}
 
     public void onError(String errorMsg){
-
         Log.i(TAG, "Error: " + errorMsg);
     }
-
 
     @Override
     public void saveState(Context context){
         playerModel.saveState(context);
+        map.saveState(context);
     }
 
     public int getPlayerMoney(){
@@ -73,16 +77,12 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     @Override
     public boolean tryChangeAreaLevel(int level, int area) {
-
         return map.tryChangeAreaLevel(level,area);
     }
 
     public void changeLvl(int index) {
-
         getCurrentArea().setCurrentLevel(getCurrentArea().getLevels()[index]);
     }
-
-
 
     public Level getCurrentLevel() {
         return map.getCurrentLevel();
@@ -92,14 +92,8 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         map.getCurrentArea().getCurrentLevel().setNewMonster();
     }
 
-
-
     public IMonster getCurrentMonster() {
         return map.getCurrentArea().getCurrentLevel().getCurrentMonster();
-    }
-
-    public Level createLevel(areaType areaType) {
-        return map.createLevel(areaType);
     }
 
     public Area[] getAreas() {
@@ -140,21 +134,30 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
 
     public boolean compareAreas(Area a, Area b){
         return a.equals(b);
-
     }
 
-
-
     public boolean nextLevel(){
-
         return map.nextLevel();
     }
 
     public boolean previousLevel(){
-
         return map.previousLevel();
-
     }
 
+    public int getMapBgRef(){
+        return map.getMapBgRef();
+    }
+
+    public Level createMountainLvl(int levelIndex){
+        return map.createMountainLvl(levelIndex);
+    }
+
+    public Level createForestLvl(int levelIndex){
+        return map.createForestLvl(levelIndex);
+    }
+
+    public Level createVolcanoLvl(int levelIndex){
+        return map.createVolcanoLvl(levelIndex);
+    }
 
 }
