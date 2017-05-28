@@ -13,7 +13,7 @@ public class Level {
     private IMonster monster;
     private int healthMultiplier;
     private int goldMultiplier;
-    private com.example.sauronsarmy.oopp.areaType areaType;
+    private areaType areaType;
     int goal = 10;
     int pathToGoal = 0;
     private boolean completed = false;
@@ -107,7 +107,7 @@ public class Level {
 
         monsterFactory monFac = new monsterFactory();
         if (!(pathToGoal == 9)) {
-            setCurrentMonster(monFac.getMonster(getHealthMultiplier(), getGoldMultiplier() * 100, getArea()));
+            setCurrentMonster(monFac.getMonster(getHealthMultiplier(), getGoldMultiplier() * 10, getArea()));
         } else { //It's time for a boss monster!
             setCurrentMonster(monFac.getBossMonster(getHealthMultiplier() * 10, getGoldMultiplier() * 100));
         }

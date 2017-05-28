@@ -30,7 +30,7 @@ class levelFactory {
     }
 
     Level[] getForestLevels() {
-        int LevelAmount = 10;
+        int LevelAmount = 3;
         Level[] levels = new Level[LevelAmount];
         for (int i = 0; i < LevelAmount; i++) {
             levels[i] = getForestLevel(i);
@@ -39,7 +39,7 @@ class levelFactory {
     }
 
     Level[] getMountainLevels() {
-        int LevelAmount = 10;
+        int LevelAmount = 3;
         Level[] levels = new Level[LevelAmount];
         for (int i = 0; i < LevelAmount; i++) {
             levels[i] = getMountainLevel(i);
@@ -48,7 +48,7 @@ class levelFactory {
     }
 
     Level[] getVolcanoLevels() {
-        int LevelAmount = 10;
+        int LevelAmount = 3;
         Level[] levels = new Level[LevelAmount];
         for (int i = 0; i < LevelAmount; i++) {
             levels[i] = getVolcanoLevel(i);

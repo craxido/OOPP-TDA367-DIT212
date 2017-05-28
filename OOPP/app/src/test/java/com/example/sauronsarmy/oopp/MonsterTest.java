@@ -18,8 +18,6 @@ public class MonsterTest {
     public void setUp() throws  Exception{
         monster = new Monster(10,10,R.drawable.mike, false);
         monster2 = new Monster(10,10,R.drawable.mike,false);
-
-
     }
 
     @After
@@ -49,33 +47,33 @@ public class MonsterTest {
     }
 
     @Test
-    public void isBossTest(){
+    public void isBossTest() throws Exception{
 
         assert (monster.isBoss() ==false);
     }
 
     @Test
-    public void getHealthTest(){
+    public void getHealthTest()throws Exception{
 
         assert (monster.getHealth() == 10);
 
     }
 
     @Test
-    public void setHealthTest(){
+    public void setHealthTest()throws Exception{
         monster.setHealth(15);
         assert (monster.getHealth() ==15);
 
     }
 
     @Test
-    public void getGold(){
+    public void getGold()throws Exception{
 
         assert (monster.getGold()==10);
     }
 
     @Test
-    public void getMaxHealth(){
+    public void getMaxHealth()throws Exception{
 
         assert (monster.getMaxHealth() == 10);
     }
