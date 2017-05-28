@@ -100,6 +100,16 @@ public class MapPresenter implements MapMVPInterface.PresenterOps {
         return map.getAreas();
     }
 
+    @Override
+    public int getLevelIndex() {
+        return map.getCurrentLevel().getLevelIndex();
+    }
+
+    @Override
+    public int getAreaIndex() {
+        return map.getCurrentArea().getAreaIndex();
+    }
+
     public int getLevelGoldMultiplier(int areaIndex, int levelIndex){
         return map.getLevelGoldMultiplier(areaIndex, levelIndex);
     }

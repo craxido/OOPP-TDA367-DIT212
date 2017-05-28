@@ -38,6 +38,8 @@ public interface MapMVPInterface {
         boolean nextLevel();
         boolean previousLevel();
         Area[] getAreas();
+        int getLevelIndex();
+        int getAreaIndex();
 
         // methods to be called from Presenter
     }
