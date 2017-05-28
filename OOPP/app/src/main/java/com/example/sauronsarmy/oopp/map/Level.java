@@ -14,8 +14,8 @@ public class Level {
     private int healthMultiplier;
     private int goldMultiplier;
     private com.example.sauronsarmy.oopp.areaType areaType;
-    private int goal = 10;
-    private int pathToGoal = 0;
+    int goal = 10;
+    int pathToGoal = 0;
     private boolean completed = false;
     private boolean checked = false;
     private int levelIndex;
