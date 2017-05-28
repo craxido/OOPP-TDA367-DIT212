@@ -2,7 +2,7 @@ package com.example.sauronsarmy.oopp.upgrade;
 
 /**
  * Created by bunnyfiscuit on 05/04/17.
- * @Author Sarosh
+ * @author Sarosh
  */
 
 public class Upgrade {
@@ -10,6 +10,7 @@ public class Upgrade {
     private int stat;
     private int cost;
 
+    /** Constructor */
     public Upgrade(int baseStat, int baseCost){
         this.stat = baseStat;
         this.cost = baseCost;
@@ -56,19 +57,23 @@ public class Upgrade {
         cost = Math.round(f);
     }
 
+    // returns the stat of the upgrade
     public int getStat(){
         return stat;
 
     }
 
+    // returns the cost of the upgrade
     public int getCost(){
         return this.cost;
     }
 
+    // sets the stat of the upgrade
     public void setStat(int stat){
         this.stat = stat;
     }
 
+    // sets the cost of the upgrade
     public void setCost(int cost){
         this.cost = cost;
     }

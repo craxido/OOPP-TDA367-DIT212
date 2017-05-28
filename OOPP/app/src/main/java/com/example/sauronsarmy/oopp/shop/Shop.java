@@ -10,7 +10,7 @@ import com.example.sauronsarmy.oopp.upgrade.Upgrade;
 
 /**
  * Created by bunnyfiscuit on 05/04/17.
- * @Author Sarosh
+ * @author Sarosh
  */
 
 class Shop implements ShopMVPInterface.Model {
@@ -19,11 +19,13 @@ class Shop implements ShopMVPInterface.Model {
     private static final String TAG = "Shop";
     private SharedPreferences saveState;
 
+    /** The upgrades available at the shop and their counters */
     private Upgrade damageUpgrade = new Upgrade(2,50);
     private Upgrade dpsUpgrade = new Upgrade(1,100);
     private int damageUpgradeCounter = 1;
     private int dpsUpgradeCounter = 1;
 
+    // there can only be one!
     public static ShopMVPInterface.Model getInstance() { return shopInstance; }
 
     /** Buy damage upgrade for player.
@@ -65,7 +67,6 @@ class Shop implements ShopMVPInterface.Model {
     /**
      * Setters & Getters
      */
-
     public Upgrade getDamageUpgrade(){
         return damageUpgrade;
     }
@@ -82,6 +83,7 @@ class Shop implements ShopMVPInterface.Model {
         return dpsUpgradeCounter;
     }
 
+    /** Save and Load state*/
     @Override
     public void saveState(Context context) {
         Log.i(TAG, "Saving shop state");

@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * Created by bunnyfiscuit on 05/04/17.
- * @Author Sarosh
+ * @author Sarosh
  */
 
 class Home implements HomeMVPInterface.Model  {
@@ -21,9 +21,11 @@ class Home implements HomeMVPInterface.Model  {
     private static final Home homeInstance = new Home();
     private SharedPreferences saveState;
 
+    /** The upgrade available at the shop and its counter */
     private Upgrade oilPumpUpgrade = new Upgrade(1, 100);
     private int oilPumpUpgradeCounter = 1;
 
+    // There can only be one!
     public static HomeMVPInterface.Model getInstance() {
         return homeInstance;
     }
@@ -43,14 +45,17 @@ class Home implements HomeMVPInterface.Model  {
 
     }
 
+    // get the upgrade
     public Upgrade getOilPumpUpgrade() {
         return oilPumpUpgrade;
     }
 
+    // get the upgrade counter
     public int getOilPumpUpgradeCounter() {
         return oilPumpUpgradeCounter;
     }
 
+    // set the counter via a map
     public void setOilPumpUpgradeCounter(Map<String, Integer> map) {
         Log.i(TAG, "Setting old Home state");
         oilPumpUpgradeCounter = map.get("oil");
@@ -66,6 +71,7 @@ class Home implements HomeMVPInterface.Model  {
         oilPumpUpgradeCounter = i;
     }
 
+    // get the upgrade counter through map
     public Map getUpgradeCounters(){
         return new HashMap<String, Integer> ()
         {
@@ -75,6 +81,9 @@ class Home implements HomeMVPInterface.Model  {
         };
     }
 
+    /**
+     * Save and load state
+     * */
     @Override
     public void saveState(Context context) {
         Log.i(TAG, "Saving home state");

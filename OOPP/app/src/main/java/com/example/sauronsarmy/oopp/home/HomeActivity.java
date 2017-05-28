@@ -15,7 +15,7 @@ import com.example.sauronsarmy.oopp.upgrade.Upgrade;
 
 /**
  * Created by Erik on 04/04/17.
- * @Author Sarosh
+ * @author Sarosh
  */
 public class HomeActivity extends AppCompatActivity implements ClockListener {
 
@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity implements ClockListener {
 
         homeButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
-        /**
+        /*
          * Get upgrade buttons
          * Add listeners to buttons
          */
@@ -63,8 +63,9 @@ public class HomeActivity extends AppCompatActivity implements ClockListener {
 
     }
 
+    /** Updates the information for the upgrade shown at home*/
     void updateOilInfo(){
-        /** TextView objects */
+        /* TextView objects */
         TextView oilUpgradeCounter = (TextView) findViewById(R.id.oilUpgradeCounter);
         TextView oilUpgradeCost = (TextView) findViewById(R.id.oilUpgradeCost);
         TextView currentMps = (TextView) findViewById(R.id.currentMps);
@@ -94,6 +95,7 @@ public class HomeActivity extends AppCompatActivity implements ClockListener {
         super.onStop();
     }
 
+    // Listener
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

@@ -24,7 +24,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 /**
  * Created by Sarosh on 2017-05-13.
- * @Author Sarosh
+ * @author Sarosh
  */
 @RunWith(AndroidJUnit4.class)
 @SmallTest
@@ -37,7 +37,7 @@ public class HomeTest {
     public ActivityTestRule<WelcomeActivity> wActivityRule =
             new ActivityTestRule<>(WelcomeActivity.class);
 
-    /**
+    /*
      * Initial stats for player:
      * Damage: 10
      * DPS: 0
@@ -90,7 +90,7 @@ public class HomeTest {
     /* FAILS */
     @Test
     public void homeGetSetCounter(){
-        /** Why is this 2 ;_; */
+        /* Why is this 2 ;_; should be 1 */
         assertEquals(1, home.getOilPumpUpgradeCounter());
         home.setOilCounter(5);
         assertEquals(5, home.getOilPumpUpgradeCounter());
@@ -139,7 +139,7 @@ public class HomeTest {
     @Test
     public void poorPlayerBuysUpgrade(){
         // check player init stats, make sure 0
-        /** Why does the player have 9 gold? ;_; */
+        /* Why does the player have 9 gold? ;_; should have 0 */
         assertEquals(0, player.getMoney());
 
         //try to buy upgrade

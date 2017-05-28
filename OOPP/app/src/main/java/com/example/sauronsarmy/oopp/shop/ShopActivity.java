@@ -16,7 +16,7 @@ import com.example.sauronsarmy.oopp.upgrade.Upgrade;
 
 /**
  * Created by Erik on 04/04/17.
- * @Author Sarosh
+ * @author Sarosh
  */
 
 public class ShopActivity extends AppCompatActivity implements ClockListener {
@@ -50,7 +50,7 @@ public class ShopActivity extends AppCompatActivity implements ClockListener {
 
         shopButton.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorPrimary));
 
-        /**
+        /*
          * Get upgrade buttons
          * Add listeners to buttons
          */
@@ -75,8 +75,11 @@ public class ShopActivity extends AppCompatActivity implements ClockListener {
         super.onStop();
     }
 
+    /**
+     *  Updates the damage information on the upgrade shown at the shop
+     * */
     void updateDamageInfo(){
-        /** TextView objects */
+        /* TextView objects */
         /* DAMAGE */
         TextView dmgCounter = (TextView) findViewById(R.id.dmgUpgradeCounter);
         TextView dmgCost = (TextView) findViewById(R.id.dmgUpgradeCost);
@@ -84,10 +87,11 @@ public class ShopActivity extends AppCompatActivity implements ClockListener {
         TextView currentDmg = (TextView) findViewById(R.id.currentDmg);
         TextView newDmg = (TextView) findViewById(R.id.newDmg);
 
-        /** Set the values to the view from the upgrade object
+        /*
+         * Set the values to the view from the upgrade object
          *
-         * */
-        /* DAMAGE UPGRADE */
+         * DAMAGE UPGRADE
+         */
         Upgrade damageUpgrade = shopPresenter.getDamageUpgrade();
 
         dmgCost.setText(String.valueOf(damageUpgrade.getCost() + " g"));
@@ -102,8 +106,11 @@ public class ShopActivity extends AppCompatActivity implements ClockListener {
 
     }
 
+    /**
+     *  Updates the dps information on the upgrade shown at the shop
+     * */
     void updateDPSInfo(){
-        /** TextView objects */
+        /* TextView objects */
         /* DAMAGE PER SECOND */
         TextView dpsCounter = (TextView) findViewById(R.id.dpsUpgradeCounter);
         TextView dpsCost = (TextView) findViewById(R.id.dpsUpgradeCost);
@@ -133,6 +140,7 @@ public class ShopActivity extends AppCompatActivity implements ClockListener {
         shopPresenter.update();
     }
 
+    // Listener
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
