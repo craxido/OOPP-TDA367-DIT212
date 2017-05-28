@@ -80,14 +80,18 @@ class Map implements MapMVPInterface.ModelOps {
 
     //Sets the level to complete bases on the saved value
     private void setCompletedGoals(int completed){
+        int com = completed;
+        Log.i(TAG, "Goals: " + completedGoals);
+
         for (Area a : areas){
-            for(int i = 0; i < a.getLevels().length-1; i++){
-                if (completed >0){
+            for(int i = 0; i < a.getLevels().length; i++){
+                if (com >0){
+                    Log.i(TAG, ""+com);
                     a.completeLevel(i);
-                    completed--;
+                    com--;
                 }
-                else{break;}
             }
+            a.checkComplete();
 
         }
     }
@@ -97,9 +101,9 @@ class Map implements MapMVPInterface.ModelOps {
         if (ret > 0) {
             getCurrentArea().checkComplete();
             if(getCurrentLevel().getComplete() && !(getCurrentLevel().isChecked())){
+                getCurrentArea().getCurrentLevel().setChecked(true);
                 completedGoals++;
                 Log.i(TAG, "Goals: " + completedGoals);
-                getCurrentArea().getCurrentLevel().setChecked(true);
             }
             return ret;
         }
@@ -287,6 +291,7 @@ class Map implements MapMVPInterface.ModelOps {
         if(area ==0){
             changeArea(area);
             if(level ==0){
+
                 changeLvl(level);
                 return true;
             }
@@ -304,12 +309,14 @@ class Map implements MapMVPInterface.ModelOps {
             if(getArea(area-1).getComplete() && getAreas().length>area){
                 changeArea(area);
                 if(level ==0){
+
                     changeLvl(level);
                     return true;
                 }
                 else {
 
                     if(getCurrentArea().getLevel(level-1)!=null && (getCurrentArea().getLevel(level-1).getComplete())){
+                        changeArea(area);
                         changeLvl(level);
                         return true;
                     }
