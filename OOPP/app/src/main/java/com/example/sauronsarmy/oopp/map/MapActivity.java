@@ -15,15 +15,23 @@ import com.example.sauronsarmy.oopp.R;
 import com.example.sauronsarmy.oopp.clock.ClockListener;
 import com.example.sauronsarmy.oopp.lvlPickFragment;
 
+/**
+ * @author : all
+ * Class for the Map activity.
+ */
 public class MapActivity extends AppCompatActivity
         implements MapMVPInterface.ViewOps,lvlPickFragment.ClickListener, ClockListener {
-
 
     private MapMVPInterface.PresenterOps mapPresenter = new MapPresenter();
     private static final Runner run = Runner.getInstance();
     private static final String TAG = "MapActivity";
     private Intent intent = new Intent();
 
+    /**
+     * Method called when activity is created.
+     * Loads buttons, pictures and text fields.
+     * @param savedInstanceState : The state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate() called");
@@ -59,12 +67,19 @@ public class MapActivity extends AppCompatActivity
         moneyIndi.setText(String.valueOf(mapPresenter.getPlayerMoney()));
     }
 
+    /**
+     * Method called once the activity is started. Registers the Runner.
+     */
     @Override
     protected void onStart() {
         run.register(this);
         super.onStart();
     }
 
+    /**
+     * Method called once the activity is stopped.
+     * Unregisters runner and saves the state.
+     */
     @Override
     protected void onStop() {
         mapPresenter.saveState(MapActivity.this);
@@ -72,6 +87,10 @@ public class MapActivity extends AppCompatActivity
         super.onStop();
     }
 
+    /**
+     * Update method that is run every second.
+     * Updates money and applies passive dps to monster.
+     */
     @Override
     public void update(){
         TextView moneyIndi = (TextView) findViewById(R.id.moneyIndicator);
@@ -79,6 +98,9 @@ public class MapActivity extends AppCompatActivity
         mapPresenter.applyDPS();
     }
 
+    /**
+     * The buttons in the activity.
+     */
     View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -127,6 +149,10 @@ public class MapActivity extends AppCompatActivity
         }
     };
 
+    /**
+     * Dialog for selecting area and level in the map activity.
+     * @param area : The index of the area to show its levels.
+     */
     @Override
     public void showDia(int area){
         //Create a new fragment
@@ -141,6 +167,11 @@ public class MapActivity extends AppCompatActivity
 
     }
 
+    /**
+     * Method called when area and level are selected.
+     * @param level : The selected level.
+     * @param area : The selected area.
+     */
     @Override
     public void onClick(int level, int area) {
         //Log the selected level and area

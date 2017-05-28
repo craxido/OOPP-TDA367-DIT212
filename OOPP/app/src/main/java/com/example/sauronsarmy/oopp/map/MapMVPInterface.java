@@ -6,10 +6,8 @@ import com.example.sauronsarmy.oopp.areaType;
 import com.example.sauronsarmy.oopp.monsterPack.IMonster;
 
 /**
- * Author: Jonatan Källman
- */
-
-/* "Umbrella" class containing the interfaces
+  * @author : Jonatan Källman
+  *  "Umbrella" class containing the interfaces
   * used to communicate between MVP layers.
   */
 public interface MapMVPInterface {
@@ -40,7 +38,6 @@ public interface MapMVPInterface {
         Area[] getAreas();
         int getLevelIndex();
         int getAreaIndex();
-
         // methods to be called from Presenter
     }
 
