@@ -12,7 +12,6 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         MonsterTest.class,
         MapTest.class,
-        HomeTest.class,
         BossMonsterTest.class,
         ShopTest.class
 })
